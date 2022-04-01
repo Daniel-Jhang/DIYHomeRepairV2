@@ -54,7 +54,7 @@ namespace DIY_v2.Controllers
 
                 #endregion
                 //更新權限
-                Session["Permission"]= member.Permission;
+                Session["Permission"] = member.Permission;
                 Session["MemberName"] = member.MemberName;
             }
             //使用Session變數記錄歡迎詞
@@ -67,7 +67,7 @@ namespace DIY_v2.Controllers
             }
 
 
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
         //Get:Home/Register
         public ActionResult Register()

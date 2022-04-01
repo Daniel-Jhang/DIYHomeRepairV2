@@ -9,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{92DAC2A9-C3EB-4777-87B8-9E93AF9F9B63}</ProjectGuid>
+    <ProjectGuid>{31A328D6-437C-42A7-ADFA-06300EBF4D53}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -19,13 +19,17 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44303</IISExpressSSLPort>
+    <IISExpressSSLPort>44332</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -343,10 +347,7 @@
     <Content Include="Images\TaskerImages\demo03.jpg" />
     <Content Include="Images\TaskerImages\demo04.jpg" />
     <Content Include="Images\TaskerImages\demo05.jpg" />
-    <Content Include="Images\TaskerImages\favpng_air-filter-vacuum-cleaner-pump-sludge.png" />
     <Content Include="Images\TaskerImages\living room.jpg" />
-    <Content Include="Images\TaskerImages\Pt046.jpg" />
-    <Content Include="Images\TaskerImages\Pt049.jpg" />
     <Content Include="Images\TaskerImages\Tasker01.png" />
     <Content Include="Images\TaskerImages\Tasker02.png" />
     <Content Include="Images\TaskerImages\Tasker03.png" />
@@ -407,7 +408,6 @@
     <Content Include="Images\TaskerImages\testPlumber3.jpg" />
     <Content Include="Images\TaskerImages\user01.png" />
     <Content Include="Images\TaskerImages\未命名.png" />
-    <Content Include="Images\ToolImages\button.png" />
     <Content Include="Images\ToolImages\DSCN2840.JPG" />
     <Content Include="Images\ToolImages\favpng_air-filter-vacuum-cleaner-pump-sludge.png" />
     <Content Include="Images\ToolImages\Pt001.jpg" />
@@ -537,7 +537,6 @@
     <Content Include="Images\ToolImages\不鏽鋼管束-10入 小.jpg" />
     <Content Include="Images\ToolImages\兩段360度防濺增壓節水龍頭 大.jpg" />
     <Content Include="Images\ToolImages\兩段360度防濺增壓節水龍頭小.jpg" />
-    <Content Include="Images\ToolImages\未命名.png" />
     <Content Include="Images\ToolImages\止洩帶12PCS組大.jpg" />
     <Content Include="Images\ToolImages\止洩帶12PCS組小.jpg" />
     <Content Include="Images\ToolImages\水晶外牙%28紅%29 小.jpg" />
@@ -590,8 +589,8 @@
     <Content Include="Images\元件\馬桶03.png" />
     <Content Include="Models\dbDIYModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>dbDIYModel.Context.cs</LastGenOutput>
       <DependentUpon>dbDIYModel.edmx</DependentUpon>
+      <LastGenOutput>dbDIYModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\dbDIYModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -613,11 +612,13 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.twzipcode.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\taiwan_address_auto_change.js" />
     <Content Include="static\css\animate.css" />
     <Content Include="static\css\aos.css" />
     <Content Include="static\css\bootstrap-datepicker.css" />
@@ -694,9 +695,31 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Tasker\Tasker.cshtml" />
+    <Content Include="Views\PartialView\ToolPartial.cshtml" />
+    <Content Include="Views\PartialView\TaskerPartial.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Member\BasicData.cshtml" />
+    <Content Include="Views\Member\Myorder.cshtml" />
+    <Content Include="Views\Member\TaskerOrder.cshtml" />
+    <Content Include="Views\Member\PasswordChange.cshtml" />
+    <Content Include="Views\Tasker\TaskerDetail.cshtml" />
+    <Content Include="Views\Tool\Product.cshtml" />
+    <Content Include="Views\Tool\ProductDetail.cshtml" />
+    <Content Include="Views\MemberLogin\Index.cshtml" />
+    <Content Include="Views\MemberLogin\Login.cshtml" />
+    <Content Include="Views\MemberLogin\Register.cshtml" />
+    <Content Include="Views\Member\Index.cshtml" />
+    <Content Include="Views\Member\OrderDetail.cshtml" />
+    <Content Include="Views\Member\ShoppingCar.cshtml" />
+    <Content Include="Views\Home\MyDIYChangeLight_1.cshtml" />
+    <Content Include="Views\Home\MyDIYChangePipe_1.cshtml" />
+    <Content Include="Views\Home\MyDIYChangFaucet.cshtml" />
+    <Content Include="Views\Backend\AddProduct.cshtml" />
+    <Content Include="Views\Backend\EditProduct.cshtml" />
+    <Content Include="Views\Backend\ManageProduct.cshtml" />
+    <Content Include="Views\Home\MyDIY.cshtml" />
+    <Content Include="Views\Home\MyDIYChangeLight_2.cshtml" />
     <Content Include="static\font\Flaticon.eot" />
     <Content Include="static\font\Flaticon.ttf" />
     <Content Include="static\font\Flaticon.woff" />
@@ -710,38 +733,21 @@
     <Content Include="static\font\open-iconic.eot" />
     <Content Include="static\font\open-iconic.ttf" />
     <Content Include="static\font\open-iconic.woff" />
-    <Content Include="Views\Backend\AddProduct.cshtml" />
+    <Content Include="Views\Home\test.cshtml" />
     <Content Include="Views\Backend\BackendUI.cshtml" />
-    <Content Include="Views\Backend\EditProduct.cshtml" />
+    <Content Include="Views\Backend\TaskerIndex.cshtml" />
     <Content Include="Views\Backend\EditTasker.cshtml" />
     <Content Include="Views\Backend\ManageMember.cshtml" />
-    <Content Include="Views\Backend\ManageOrder.cshtml" />
-    <Content Include="Views\Backend\ManageOrderDetail.cshtml" />
-    <Content Include="Views\Backend\ManageProduct.cshtml" />
-    <Content Include="Views\Backend\ManageReply.cshtml" />
-    <Content Include="Views\Backend\MemberDetail.cshtml" />
-    <Content Include="Views\Backend\TaskerIndex.cshtml" />
-    <Content Include="Views\MemberLogin\Index.cshtml" />
-    <Content Include="Views\MemberLogin\Login.cshtml" />
-    <Content Include="Views\MemberLogin\Register.cshtml" />
-    <Content Include="Views\Member\BasicData.cshtml" />
-    <Content Include="Views\Member\EditData.cshtml" />
-    <Content Include="Views\Member\Index.cshtml" />
-    <Content Include="Views\Member\Myorder.cshtml" />
-    <Content Include="Views\Member\OrderDetail.cshtml" />
-    <Content Include="Views\Member\PasswordChange.cshtml" />
-    <Content Include="Views\Member\ShoppingCar.cshtml" />
-    <Content Include="Views\Member\TaskerOrder.cshtml" />
-    <Content Include="Views\PartialView\TaskerPartial.cshtml" />
-    <Content Include="Views\PartialView\ToolPartial.cshtml" />
     <Content Include="Views\TaskerMember\Index.cshtml" />
     <Content Include="Views\TaskerMember\TaskerAccoumt.cshtml" />
     <Content Include="Views\TaskerMember\TaskerMemberEdit.cshtml" />
     <Content Include="Views\TaskerMember\TaskerRegister.cshtml" />
-    <Content Include="Views\Tasker\Tasker.cshtml" />
-    <Content Include="Views\Tasker\TaskerDetail.cshtml" />
-    <Content Include="Views\Tool\Product.cshtml" />
-    <Content Include="Views\Tool\ProductDetail.cshtml" />
+    <Content Include="Views\Member\EditData.cshtml" />
+    <Content Include="Views\Shared\_LayoutForAdmin.cshtml" />
+    <Content Include="Views\Backend\ManageOrder.cshtml" />
+    <Content Include="Views\Backend\ManageOrderDetail.cshtml" />
+    <Content Include="Views\Backend\ManageReply.cshtml" />
+    <Content Include="Views\Backend\MemberDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -778,9 +784,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>59675</DevelopmentServerPort>
+          <DevelopmentServerPort>63423</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44303/</IISUrl>
+          <IISUrl>https://localhost:44332/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
