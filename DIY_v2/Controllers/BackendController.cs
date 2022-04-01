@@ -399,6 +399,15 @@ namespace DIY_v2.Controllers
             var result = db.ProductReply.Where(x => x.ProductID == ProductID).ToList();
             return View(result);
         }
+        public ActionResult deleteReply(int ReplyID, string ProductID)
+
+        {
+
+           var result= db.ProductReply.Where(x=>x.ReplyID==ReplyID).FirstOrDefault();
+            db.ProductReply.Remove(result);
+            db.SaveChanges();
+            return RedirectToAction("ManageReply");
+        }
         #endregion
         #region 會員權限管理
         public ActionResult MemberDetail(int MemberID)
@@ -438,7 +447,6 @@ namespace DIY_v2.Controllers
             {
                 od = result
             };
-            int i = 0;
             return View(result);
         }
         #endregion
