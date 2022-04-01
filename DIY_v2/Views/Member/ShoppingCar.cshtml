@@ -3,13 +3,19 @@
 @{
     ViewBag.Title = "會員購物車清單";
 }
+<style>
+    .shoppingCarImage {
+        width: 100px;
+        height: 100px;
+    }
+</style>
 <script src="~/static/js/jquery.min.js"></script>
 <script>
     function btclick() {
         document.getElementById("shoppingCarOrder").style.display = "block";
         document.getElementById("shoppingCarList").style.display = "none";
         obj = document.getElementsByName("selectGroups");
-        console.log(obj);
+        total = 0;
         check_value = [];
         for (i in obj) {
             if (obj[i].checked == false)
@@ -24,6 +30,31 @@
         }
     }
 
+    //const countMoney = document.querySelectorAll('input[name="selectGroups"]');
+    //countMoney.forEach(function (money) {
+    //    money.addEventListener("change", refreshTotal);
+    //});
+
+    function countclick() {
+        obj = document.getElementsByName("selectGroups");
+        check_value = [];
+        Count_value = [];
+        countnumber
+        total = 0;
+
+        for (i in obj) {
+
+            if (obj[i].checked == true) {
+                var countnumber = "count" + obj[i].value
+                total += Number(document.getElementById(countnumber).value)
+
+            } document.getElementById("countTotal").textContent = total;
+        }
+    }
+
+
+
+
     $(document).ready(function () {
         $("#CheckAll").click(function () {
             if ($("#CheckAll").prop("checked")) {
@@ -32,7 +63,7 @@
                 $("input[name='selectGroups']").prop("checked", false);
             }
         })
-   /*     設定付款方式*/
+        /*     設定付款方式*/
         $('.pay-now').click(function () {
             $('.paymethod').val("貨到付款")
         })
@@ -40,7 +71,7 @@
             $('.paymethod').val("信用卡付款")
         })
     })
-/*    信用卡帳號自動換下一格*/
+    /*    信用卡帳號自動換下一格*/
     function setBlur(obj, target2) {
         var target = document.getElementById(target2);
         if (obj.value.length == obj.getAttribute('maxlength')) {
@@ -64,6 +95,9 @@
                 @Html.DisplayNameFor(model => model.OrderDate)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Product.ProductImage)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Product.ProductName)
             </th>
             <th>
@@ -81,6 +115,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Orders.RecipientName)
             </th>
+            <th>小計</th>
             <th></th>
         </tr>
 
@@ -88,13 +123,16 @@
         {
             <tr>
                 <td>
-                    <input type="checkbox" value="@item.SerialNumber" name="selectGroups" />
+                    <input type="checkbox" value="@item.SerialNumber" name="selectGroups" onclick="countclick(count@(@item.SerialNumber))" />
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.OrderID)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.OrderDate)
+                </td>
+                <td>
+                    <img class="shoppingCarImage" src="@item.Product.ProductImage" alt="Colorlib Template">
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Product.ProductName)
@@ -115,6 +153,9 @@
                     @Html.DisplayFor(modelItem => item.Orders.RecipientName)
                 </td>
                 <td>
+                    <label>@(item.ProductPrice * item.OrderQuantity)</label><input type="hidden" id="count@(@item.SerialNumber)" value="@(item.ProductPrice*item.OrderQuantity)" />
+                </td>
+                <td>
                     <a href="@Url.Action("DeleteCar")?SerialNumber=@item.SerialNumber"
                        class="btn btn-danger"
                        onclick="return confirm('確定放棄購買 @item.ProductName 嗎？')">刪除購物車</a>
@@ -123,10 +164,16 @@
         }
         <tr>
             <td>
-                <input type="checkbox" id="CheckAll" value="" name="CheckALL" />
+                <input type="checkbox" id="CheckAll" value="" name="CheckALL" onclick="countclick()" />
             </td>
             <td>
                 <p class="text-justify">選擇全部</p>
+            </td>
+            <td>
+                總計
+            </td>
+            <td>
+                <label id="countTotal"></label>
             </td>
         </tr>
     </table>
@@ -172,7 +219,7 @@
             <div class="form-group">
                 <span class="control-label col-md-2">繳費方式</span>
                 <div class="col-md-10">
-                    <input type="hidden" class="paymethod" name="paymethod"  value="" />
+                    <input type="hidden" class="paymethod" name="paymethod" value="" />
                     <ul class="nav" role="tablist">
                         <li role="presentation" class="active"><a href="#work" role="tab" class="btn btn-block blue-btn active-btn pay-now" data-toggle="tab">貨到付款</a></li>
                         <li role="presentation"><a href="#hire" class="btn btn-primary btn-block blue-btn pay-card" role="tab" data-toggle="tab">信用卡付款</a></li>
@@ -182,11 +229,11 @@
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="work"></div>
                         <div role="tabpanel" class="tab-pane" id="hire">
-                            
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                    新增信用卡
-                                </button>
-                         
+
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                新增信用卡
+                            </button>
+
                         </div>
                     </div>
 
@@ -230,7 +277,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                                    <button type="button" class="btn btn-primary"  data-dismiss="modal">完成</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">完成</button>
                                 </div>
                             </div>
                         </div>
