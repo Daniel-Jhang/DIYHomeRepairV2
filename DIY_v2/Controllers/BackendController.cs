@@ -438,6 +438,7 @@ namespace DIY_v2.Controllers
             {
                 od = result
             };
+            int i = 0;
             return View(result);
         }
         #endregion
