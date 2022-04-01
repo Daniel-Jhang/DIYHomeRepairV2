@@ -1,0 +1,112 @@
+﻿@model DIY_v2.Models.Product
+
+@{
+    ViewBag.Title = "EditProduct";
+}
+
+<h2>EditProduct</h2>
+<style>
+    .productImage {
+        width: 300px;
+        height: 300px;
+    }
+</style>
+
+@*20220329 修改AddProduct >>> EditProduct*@
+@using (Html.BeginForm("EditProduct", "Backend", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Product</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ProductID)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ProductPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ProductPrice, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ProductPrice, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+ 
+    <div class="form-group">
+        @Html.LabelFor(model => model.ProductImage, htmlAttributes: new { @class = "control-label col-md-2" })
+
+        <div class="col-md-10">
+            <img class="productImage" src=@Model.ProductImage id="showImg" name="photo">
+            <input type="file" name="photo" onchange="selectImgFile(this.files)" />
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ProductCost, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ProductCost, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ProductCost, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ProductDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ProductDescription, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ProductDescription, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.InStock, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.InStock, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.InStock, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ProductCategoryID, "ProductCategoryID", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.ProductCategoryID, (IEnumerable<SelectListItem>)@Session["choosect"], new { @class = "form-control", name = "ProductCategoryID" })
+            @Html.ValidationMessageFor(model => model.ProductCategoryID, "", new { @class = "text-danger" })
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script>
+    function selectImgFile(files) {
+        if (!files.length) {
+            return false;
+        }
+
+        let file = files[0];
+        let reader = new FileReader();
+        reader.onload = function () {
+            document.getElementById('showImg').src = this.result;
+        };
+
+        reader.readAsDataURL(file);
+    }
+</script>

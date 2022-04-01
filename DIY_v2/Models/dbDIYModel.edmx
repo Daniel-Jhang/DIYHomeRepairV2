@@ -1,0 +1,762 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DIY_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="MemberID" />
+          </Key>
+          <Property Name="MemberID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberAccount" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="MemberPwd" Type="char" MaxLength="64" Nullable="false" />
+          <Property Name="MemberName" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="MemberGender" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="MemberBirthday" Type="date" Nullable="false" />
+          <Property Name="MemberNickname" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="MemberEmail" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="MemberAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MemberPhone" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Permission" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order_Detail">
+          <Key>
+            <PropertyRef Name="SerialNumber" />
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="SerialNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderDate" Type="date" Nullable="false" />
+          <Property Name="OrderID" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="ProductID" Type="char" MaxLength="5" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductPrice" Type="smallint" />
+          <Property Name="OrderQuantity" Type="smallint" />
+          <Property Name="OrderStatus" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="MemberID" Type="int" Nullable="false" />
+          <Property Name="RecipientName" Type="nvarchar" MaxLength="15" />
+          <Property Name="RecipientEmail" Type="varchar" MaxLength="30" />
+          <Property Name="RecipientPhone" Type="varchar" MaxLength="12" />
+          <Property Name="RecipientAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Paymethod" Type="nvarchar" MaxLength="10" />
+          <Property Name="OrderStatus" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductPrice" Type="smallint" />
+          <Property Name="ProductImage" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductCost" Type="smallint" />
+          <Property Name="InStock" Type="smallint" Nullable="false" />
+          <Property Name="ProductDescription" Type="nvarchar" MaxLength="500" />
+          <Property Name="ProductCategoryID" Type="char" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="Product_Category">
+          <Key>
+            <PropertyRef Name="ProductCategoryID" />
+          </Key>
+          <Property Name="ProductCategoryID" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="ProductCategory" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductReply">
+          <Key>
+            <PropertyRef Name="ReplyID" />
+          </Key>
+          <Property Name="ReplyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="char" MaxLength="5" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="MemberAccount" Type="nvarchar" MaxLength="15" />
+          <Property Name="Replymain" Type="nvarchar" MaxLength="255" />
+          <Property Name="Initdate" Type="date" />
+          <Property Name="Star" Type="smallint" />
+        </EntityType>
+        <EntityType Name="Tasker">
+          <Key>
+            <PropertyRef Name="TaskerID" />
+          </Key>
+          <Property Name="TaskerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaskerName" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="ServiceQuote" Type="smallint" Nullable="false" />
+          <Property Name="TaskerTel" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="TaskerPhone" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="ServiceTime_Start" Type="time" Precision="0" Nullable="false" />
+          <Property Name="ServiceTime_End" Type="time" Precision="0" Nullable="false" />
+          <Property Name="ServiceArea" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="TaskerImage" Type="nvarchar" MaxLength="50" />
+          <Property Name="License" Type="nvarchar" MaxLength="15" />
+          <Property Name="Feature" Type="nvarchar" MaxLength="50" />
+          <Property Name="TaskerDescription" Type="nvarchar" MaxLength="500" />
+          <Property Name="CaseImage" Type="nvarchar" MaxLength="50" />
+          <Property Name="Rate" Type="decimal" Precision="2" Scale="1" />
+          <Property Name="MemberID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TaskerComment">
+          <Key>
+            <PropertyRef Name="ReplyID" />
+          </Key>
+          <Property Name="ReplyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaskerID" Type="int" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="MemberAccount" Type="nvarchar" MaxLength="15" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreateDate" Type="date" />
+          <Property Name="Star" Type="smallint" />
+        </EntityType>
+        <EntityType Name="TaskerService">
+          <Key>
+            <PropertyRef Name="TaskerID" />
+            <PropertyRef Name="ServiceCategoryID" />
+          </Key>
+          <Property Name="TaskerID" Type="int" Nullable="false" />
+          <Property Name="ServiceCategoryID" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="ServiceCategory" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Order_Det__Membe__5070F446">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Order_Detail" Type="Self.Order_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Order_Detail">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order_Det__Order__4F7CD00D">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="Order_Detail" Type="Self.Order_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="Order_Detail">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order_Det__Produ__5165187F">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Order_Detail" Type="Self.Order_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Order_Detail">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__Product__3A81B327">
+          <End Role="Product_Category" Type="Self.Product_Category" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Category">
+              <PropertyRef Name="ProductCategoryID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProductCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductRe__Membe__45F365D3">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="ProductReply" Type="Self.ProductReply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="ProductReply">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductRe__Produ__44FF419A">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ProductReply" Type="Self.ProductReply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductReply">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TaskerCom__Membe__49C3F6B7">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="TaskerComment" Type="Self.TaskerComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="TaskerComment">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TaskerCom__Taske__48CFD27E">
+          <End Role="Tasker" Type="Self.Tasker" Multiplicity="0..1" />
+          <End Role="TaskerComment" Type="Self.TaskerComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tasker">
+              <PropertyRef Name="TaskerID" />
+            </Principal>
+            <Dependent Role="TaskerComment">
+              <PropertyRef Name="TaskerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TaskerSer__Taske__4222D4EF">
+          <End Role="Tasker" Type="Self.Tasker" Multiplicity="1" />
+          <End Role="TaskerService" Type="Self.TaskerService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tasker">
+              <PropertyRef Name="TaskerID" />
+            </Principal>
+            <Dependent Role="TaskerService">
+              <PropertyRef Name="TaskerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DIY_DBModelStoreContainer">
+          <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order_Detail" EntityType="Self.Order_Detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Category" EntityType="Self.Product_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductReply" EntityType="Self.ProductReply" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tasker" EntityType="Self.Tasker" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaskerComment" EntityType="Self.TaskerComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaskerService" EntityType="Self.TaskerService" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Order_Det__Membe__5070F446" Association="Self.FK__Order_Det__Membe__5070F446">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Order_Detail" EntitySet="Order_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_Det__Order__4F7CD00D" Association="Self.FK__Order_Det__Order__4F7CD00D">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Order_Detail" EntitySet="Order_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_Det__Produ__5165187F" Association="Self.FK__Order_Det__Produ__5165187F">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Order_Detail" EntitySet="Order_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__Product__3A81B327" Association="Self.FK__Product__Product__3A81B327">
+            <End Role="Product_Category" EntitySet="Product_Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductRe__Membe__45F365D3" Association="Self.FK__ProductRe__Membe__45F365D3">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="ProductReply" EntitySet="ProductReply" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductRe__Produ__44FF419A" Association="Self.FK__ProductRe__Produ__44FF419A">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductReply" EntitySet="ProductReply" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TaskerCom__Membe__49C3F6B7" Association="Self.FK__TaskerCom__Membe__49C3F6B7">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="TaskerComment" EntitySet="TaskerComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TaskerCom__Taske__48CFD27E" Association="Self.FK__TaskerCom__Taske__48CFD27E">
+            <End Role="Tasker" EntitySet="Tasker" />
+            <End Role="TaskerComment" EntitySet="TaskerComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TaskerSer__Taske__4222D4EF" Association="Self.FK__TaskerSer__Taske__4222D4EF">
+            <End Role="Tasker" EntitySet="Tasker" />
+            <End Role="TaskerService" EntitySet="TaskerService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Member" Association="Self.FK_Orders_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DIY_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="MemberID" />
+          </Key>
+          <Property Name="MemberID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberAccount" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MemberPwd" Type="String" MaxLength="64" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MemberName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MemberGender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MemberBirthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MemberNickname" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MemberEmail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MemberAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MemberPhone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Permission" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Order_Detail" Relationship="Self.FK__Order_Det__Membe__5070F446" FromRole="Member" ToRole="Order_Detail" />
+          <NavigationProperty Name="ProductReply" Relationship="Self.FK__ProductRe__Membe__45F365D3" FromRole="Member" ToRole="ProductReply" />
+          <NavigationProperty Name="TaskerComment" Relationship="Self.FK__TaskerCom__Membe__49C3F6B7" FromRole="Member" ToRole="TaskerComment" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Member" FromRole="Member" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Order_Detail">
+          <Key>
+            <PropertyRef Name="SerialNumber" />
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="SerialNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="OrderID" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="ProductID" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductPrice" Type="Int16" />
+          <Property Name="OrderQuantity" Type="Int16" />
+          <Property Name="OrderStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Member" Relationship="Self.FK__Order_Det__Membe__5070F446" FromRole="Order_Detail" ToRole="Member" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Order_Det__Order__4F7CD00D" FromRole="Order_Detail" ToRole="Orders" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Order_Det__Produ__5165187F" FromRole="Order_Detail" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MemberID" Type="Int32" Nullable="false" />
+          <Property Name="RecipientName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="RecipientEmail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="RecipientPhone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="RecipientAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Paymethod" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="OrderStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_Orders_Member" FromRole="Orders" ToRole="Member" />
+          <NavigationProperty Name="Order_Detail" Relationship="Self.FK__Order_Det__Order__4F7CD00D" FromRole="Orders" ToRole="Order_Detail" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductPrice" Type="Int16" />
+          <Property Name="ProductImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCost" Type="Int16" />
+          <Property Name="InStock" Type="Int16" Nullable="false" />
+          <Property Name="ProductDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCategoryID" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Order_Detail" Relationship="Self.FK__Order_Det__Produ__5165187F" FromRole="Product" ToRole="Order_Detail" />
+          <NavigationProperty Name="Product_Category" Relationship="Self.FK__Product__Product__3A81B327" FromRole="Product" ToRole="Product_Category" />
+          <NavigationProperty Name="ProductReply" Relationship="Self.FK__ProductRe__Produ__44FF419A" FromRole="Product" ToRole="ProductReply" />
+        </EntityType>
+        <EntityType Name="Product_Category">
+          <Key>
+            <PropertyRef Name="ProductCategoryID" />
+          </Key>
+          <Property Name="ProductCategoryID" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ProductCategory" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Product__Product__3A81B327" FromRole="Product_Category" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="ProductReply">
+          <Key>
+            <PropertyRef Name="ReplyID" />
+          </Key>
+          <Property Name="ReplyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="MemberAccount" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Replymain" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Initdate" Type="DateTime" Precision="0" />
+          <Property Name="Star" Type="Int16" />
+          <NavigationProperty Name="Member" Relationship="Self.FK__ProductRe__Membe__45F365D3" FromRole="ProductReply" ToRole="Member" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__ProductRe__Produ__44FF419A" FromRole="ProductReply" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Tasker">
+          <Key>
+            <PropertyRef Name="TaskerID" />
+          </Key>
+          <Property Name="TaskerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskerName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ServiceQuote" Type="Int16" Nullable="false" />
+          <Property Name="TaskerTel" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TaskerPhone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ServiceTime_Start" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="ServiceTime_End" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="ServiceArea" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TaskerImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="License" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Feature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TaskerDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CaseImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rate" Type="Decimal" Precision="2" Scale="1" />
+          <Property Name="MemberID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TaskerComment" Relationship="Self.FK__TaskerCom__Taske__48CFD27E" FromRole="Tasker" ToRole="TaskerComment" />
+          <NavigationProperty Name="TaskerService" Relationship="Self.FK__TaskerSer__Taske__4222D4EF" FromRole="Tasker" ToRole="TaskerService" />
+        </EntityType>
+        <EntityType Name="TaskerComment">
+          <Key>
+            <PropertyRef Name="ReplyID" />
+          </Key>
+          <Property Name="ReplyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskerID" Type="Int32" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="MemberAccount" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="0" />
+          <Property Name="Star" Type="Int16" />
+          <NavigationProperty Name="Member" Relationship="Self.FK__TaskerCom__Membe__49C3F6B7" FromRole="TaskerComment" ToRole="Member" />
+          <NavigationProperty Name="Tasker" Relationship="Self.FK__TaskerCom__Taske__48CFD27E" FromRole="TaskerComment" ToRole="Tasker" />
+        </EntityType>
+        <EntityType Name="TaskerService">
+          <Key>
+            <PropertyRef Name="TaskerID" />
+            <PropertyRef Name="ServiceCategoryID" />
+          </Key>
+          <Property Name="TaskerID" Type="Int32" Nullable="false" />
+          <Property Name="ServiceCategoryID" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ServiceCategory" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Tasker" Relationship="Self.FK__TaskerSer__Taske__4222D4EF" FromRole="TaskerService" ToRole="Tasker" />
+        </EntityType>
+        <Association Name="FK__Order_Det__Membe__5070F446">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Order_Detail" Type="Self.Order_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Order_Detail">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductRe__Membe__45F365D3">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="ProductReply" Type="Self.ProductReply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="ProductReply">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TaskerCom__Membe__49C3F6B7">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="TaskerComment" Type="Self.TaskerComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="TaskerComment">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order_Det__Order__4F7CD00D">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="Order_Detail" Type="Self.Order_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="Order_Detail">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order_Det__Produ__5165187F">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Order_Detail" Type="Self.Order_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Order_Detail">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__Product__3A81B327">
+          <End Role="Product_Category" Type="Self.Product_Category" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Category">
+              <PropertyRef Name="ProductCategoryID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProductCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductRe__Produ__44FF419A">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ProductReply" Type="Self.ProductReply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductReply">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TaskerCom__Taske__48CFD27E">
+          <End Role="Tasker" Type="Self.Tasker" Multiplicity="0..1" />
+          <End Role="TaskerComment" Type="Self.TaskerComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tasker">
+              <PropertyRef Name="TaskerID" />
+            </Principal>
+            <Dependent Role="TaskerComment">
+              <PropertyRef Name="TaskerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TaskerSer__Taske__4222D4EF">
+          <End Role="Tasker" Type="Self.Tasker" Multiplicity="1" />
+          <End Role="TaskerService" Type="Self.TaskerService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tasker">
+              <PropertyRef Name="TaskerID" />
+            </Principal>
+            <Dependent Role="TaskerService">
+              <PropertyRef Name="TaskerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DIY_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Member" EntityType="Self.Member" />
+          <EntitySet Name="Order_Detail" EntityType="Self.Order_Detail" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" />
+          <EntitySet Name="Product" EntityType="Self.Product" />
+          <EntitySet Name="Product_Category" EntityType="Self.Product_Category" />
+          <EntitySet Name="ProductReply" EntityType="Self.ProductReply" />
+          <EntitySet Name="Tasker" EntityType="Self.Tasker" />
+          <EntitySet Name="TaskerComment" EntityType="Self.TaskerComment" />
+          <EntitySet Name="TaskerService" EntityType="Self.TaskerService" />
+          <AssociationSet Name="FK__Order_Det__Membe__5070F446" Association="Self.FK__Order_Det__Membe__5070F446">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Order_Detail" EntitySet="Order_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductRe__Membe__45F365D3" Association="Self.FK__ProductRe__Membe__45F365D3">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="ProductReply" EntitySet="ProductReply" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TaskerCom__Membe__49C3F6B7" Association="Self.FK__TaskerCom__Membe__49C3F6B7">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="TaskerComment" EntitySet="TaskerComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Member" Association="Self.FK_Orders_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_Det__Order__4F7CD00D" Association="Self.FK__Order_Det__Order__4F7CD00D">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Order_Detail" EntitySet="Order_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_Det__Produ__5165187F" Association="Self.FK__Order_Det__Produ__5165187F">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Order_Detail" EntitySet="Order_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__Product__3A81B327" Association="Self.FK__Product__Product__3A81B327">
+            <End Role="Product_Category" EntitySet="Product_Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductRe__Produ__44FF419A" Association="Self.FK__ProductRe__Produ__44FF419A">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductReply" EntitySet="ProductReply" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TaskerCom__Taske__48CFD27E" Association="Self.FK__TaskerCom__Taske__48CFD27E">
+            <End Role="Tasker" EntitySet="Tasker" />
+            <End Role="TaskerComment" EntitySet="TaskerComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TaskerSer__Taske__4222D4EF" Association="Self.FK__TaskerSer__Taske__4222D4EF">
+            <End Role="Tasker" EntitySet="Tasker" />
+            <End Role="TaskerService" EntitySet="TaskerService" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DIY_DBModelStoreContainer" CdmEntityContainer="DIY_DBEntities">
+          <EntitySetMapping Name="Member">
+            <EntityTypeMapping TypeName="DIY_DBModel.Member">
+              <MappingFragment StoreEntitySet="Member">
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="MemberAccount" ColumnName="MemberAccount" />
+                <ScalarProperty Name="MemberPwd" ColumnName="MemberPwd" />
+                <ScalarProperty Name="MemberName" ColumnName="MemberName" />
+                <ScalarProperty Name="MemberGender" ColumnName="MemberGender" />
+                <ScalarProperty Name="MemberBirthday" ColumnName="MemberBirthday" />
+                <ScalarProperty Name="MemberNickname" ColumnName="MemberNickname" />
+                <ScalarProperty Name="MemberEmail" ColumnName="MemberEmail" />
+                <ScalarProperty Name="MemberAddress" ColumnName="MemberAddress" />
+                <ScalarProperty Name="MemberPhone" ColumnName="MemberPhone" />
+                <ScalarProperty Name="Permission" ColumnName="Permission" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order_Detail">
+            <EntityTypeMapping TypeName="DIY_DBModel.Order_Detail">
+              <MappingFragment StoreEntitySet="Order_Detail">
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+                <ScalarProperty Name="OrderQuantity" ColumnName="OrderQuantity" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="DIY_DBModel.Orders">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="RecipientName" ColumnName="RecipientName" />
+                <ScalarProperty Name="RecipientEmail" ColumnName="RecipientEmail" />
+                <ScalarProperty Name="RecipientPhone" ColumnName="RecipientPhone" />
+                <ScalarProperty Name="RecipientAddress" ColumnName="RecipientAddress" />
+                <ScalarProperty Name="Paymethod" ColumnName="Paymethod" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="DIY_DBModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+                <ScalarProperty Name="ProductCost" ColumnName="ProductCost" />
+                <ScalarProperty Name="InStock" ColumnName="InStock" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="ProductCategoryID" ColumnName="ProductCategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Category">
+            <EntityTypeMapping TypeName="DIY_DBModel.Product_Category">
+              <MappingFragment StoreEntitySet="Product_Category">
+                <ScalarProperty Name="ProductCategoryID" ColumnName="ProductCategoryID" />
+                <ScalarProperty Name="ProductCategory" ColumnName="ProductCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductReply">
+            <EntityTypeMapping TypeName="DIY_DBModel.ProductReply">
+              <MappingFragment StoreEntitySet="ProductReply">
+                <ScalarProperty Name="ReplyID" ColumnName="ReplyID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="MemberAccount" ColumnName="MemberAccount" />
+                <ScalarProperty Name="Replymain" ColumnName="Replymain" />
+                <ScalarProperty Name="Initdate" ColumnName="Initdate" />
+                <ScalarProperty Name="Star" ColumnName="Star" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tasker">
+            <EntityTypeMapping TypeName="DIY_DBModel.Tasker">
+              <MappingFragment StoreEntitySet="Tasker">
+                <ScalarProperty Name="TaskerID" ColumnName="TaskerID" />
+                <ScalarProperty Name="TaskerName" ColumnName="TaskerName" />
+                <ScalarProperty Name="ServiceQuote" ColumnName="ServiceQuote" />
+                <ScalarProperty Name="TaskerTel" ColumnName="TaskerTel" />
+                <ScalarProperty Name="TaskerPhone" ColumnName="TaskerPhone" />
+                <ScalarProperty Name="ServiceTime_Start" ColumnName="ServiceTime_Start" />
+                <ScalarProperty Name="ServiceTime_End" ColumnName="ServiceTime_End" />
+                <ScalarProperty Name="ServiceArea" ColumnName="ServiceArea" />
+                <ScalarProperty Name="TaskerImage" ColumnName="TaskerImage" />
+                <ScalarProperty Name="License" ColumnName="License" />
+                <ScalarProperty Name="Feature" ColumnName="Feature" />
+                <ScalarProperty Name="TaskerDescription" ColumnName="TaskerDescription" />
+                <ScalarProperty Name="CaseImage" ColumnName="CaseImage" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaskerComment">
+            <EntityTypeMapping TypeName="DIY_DBModel.TaskerComment">
+              <MappingFragment StoreEntitySet="TaskerComment">
+                <ScalarProperty Name="ReplyID" ColumnName="ReplyID" />
+                <ScalarProperty Name="TaskerID" ColumnName="TaskerID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="MemberAccount" ColumnName="MemberAccount" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Star" ColumnName="Star" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaskerService">
+            <EntityTypeMapping TypeName="DIY_DBModel.TaskerService">
+              <MappingFragment StoreEntitySet="TaskerService">
+                <ScalarProperty Name="TaskerID" ColumnName="TaskerID" />
+                <ScalarProperty Name="ServiceCategoryID" ColumnName="ServiceCategoryID" />
+                <ScalarProperty Name="ServiceCategory" ColumnName="ServiceCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

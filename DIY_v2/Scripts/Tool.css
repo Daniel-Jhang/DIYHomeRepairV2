@@ -1,0 +1,111 @@
+﻿
+.apple {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: space-around;
+    justify-content: Space-evenly;
+  
+}
+
+.myrow {
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fle {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin:50px;
+}
+
+
+
+
+/*.mycolumn {
+    float: left;
+    width: 33.3%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+}*/
+
+
+
+
+.mycard 
+ {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+   
+}
+
+
+
+
+
+.mycontainer 
+{
+    padding: 0 16px;
+}
+.mycontainer::after, .myrow::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+
+
+.button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+}
+.button:hover 
+{
+        background-color: #555;
+    }
+.dog {
+    border: 1px;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: black;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+}
+
+
+.egg {
+    display: flex;
+    text-align: center;
+    padding: 13px;
+}
+
+.but {
+    background-color: red;
+    background: #da190b;
+    width: 90px;
+    height: 25px;
+}
+
+.imgbig {
+    border: 1px solid black;
+    
+}
+
+.box
+{
+    width:40px;
+    height:25px;
+    
+}

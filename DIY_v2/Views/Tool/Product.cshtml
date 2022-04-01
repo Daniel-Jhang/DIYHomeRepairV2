@@ -1,0 +1,355 @@
+﻿@model DIY_v2.Models.Check
+@using PagedList
+@using PagedList.Mvc
+
+
+@{
+    ViewBag.Title = "Product";
+}
+<style>
+    /*    .price{
+        box-sizing:border-box;
+        overflow:hidden;
+        width:150px;
+    }*/
+    .buy-button {
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        padding: 12px 24px;
+        border: 1px solid #a99c99;
+        border-radius: 8px;
+        background: #f1dfda;
+        background: -webkit-gradient(linear, left top, left bottom, from(#f1dfda), to(#a99c99));
+        background: -moz-linear-gradient(top, #f1dfda, #a99c99);
+        background: linear-gradient(to bottom, #f1dfda, #a99c99);
+        -webkit-box-shadow: #ffffff 0px 0px 40px 0px;
+        -moz-box-shadow: #ffffff 0px 0px 40px 0px;
+        box-shadow: #ffffff 0px 0px 40px 0px;
+        text-shadow: #ffffff 1px 1px 1px;
+        font: normal normal bold 16px arial;
+        color: #111111;
+        text-decoration: none;
+    }
+
+        .buy-button:hover,
+        .buy-button:focus {
+            border: 1px solid ##f1dfda;
+            background: #ffffff;
+            background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#cbbbb8));
+            background: -moz-linear-gradient(top, #ffffff, #cbbbb8);
+            background: linear-gradient(to bottom, #ffffff, #cbbbb8);
+            color: #111111;
+            text-decoration: none;
+        }
+
+        .buy-button:active {
+            background: #a99c99;
+            background: -webkit-gradient(linear, left top, left bottom, from(#a99c99), to(#a99c99));
+            background: -moz-linear-gradient(top, #a99c99, #a99c99);
+            background: linear-gradient(to bottom, #a99c99, #a99c99);
+        }
+
+        .buy-button:before {
+            content: "\0000a0";
+            display: inline-block;
+            height: 24px;
+            width: 24px;
+            line-height: 24px;
+            margin: 0 4px -6px -4px;
+            position: relative;
+            top: 0px;
+            left: 0px;
+            background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABsklEQVRIibXVvWpUQRQH8F80xGUJQYRFIkFRQyLbaREkT2DjC6TwRaztfAUrCwuRPIBYWdqIhW4CfhJsNCLB3WRJFIs5406u3P2I6x+Ge86c/5wz55yZuTMSmo7jAL9MCU18xJdiPJmW8zJIHgt4i+VpOJ6Nb68y/wo38PmEfv+UeLaG0MGDIEKjkMt1R8VcyXmN29ir28EdPDIo23usFfq9GFlfC07Wn+MWnBqSwbJUuh62sVToR+gX+lJwsn5OlHdUgLnQt7FS2H9W+CvByT4v4NOwAHv4EUTYwmoNV9i2Qr4Y678P4YNnUhm62I9dd2P0C1s3bPuF7Wl2UpcBqUx30cJ1fMVi6PdjtHAe34LTijW5XEMDvMFVqWkfpH40Qs8Z9DAf87nJlw3KNTKDdsgH2DG43acL3pXYQH67ro2bQUc6HQvS2X4XAZvSRTsTcjtsTel4tmPtSMxh16CRhwaN7Vfkw4L3cBznGS+wPsmCKureoowObuLlBD6PPZwzI8jreIyzEzi/VA0yDhpT4vyFeWxKf7nN0CfiDDumsBGc1fhuTMoZFeC/459LNC5O3OTfmvd7Bl92lsYAAAAASUVORK5CYII=") no-repeat left center transparent;
+            background-size: 100% 100%;
+        }
+</style>
+
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-lg-10 order-md-last">
+                <div class="row">
+
+                    @foreach (var item in Model.Products)
+                    {
+                        string path = "../Images/ToolImages/" + item.ProductID + ".jpg";
+                        <div class="col-sm-12 col-md-12 col-lg-4 ftco-animate d-flex">
+                            @*圖片尺寸大小要統一 寬800 高1200 png*@
+                            <div class="product d-flex flex-column">
+                                <a href="@Url.Action("ProductDetail", "Tool", new { ProductID = @item.ProductID })" class="img-prod">
+                                    <img class="img-fluid" src="@item.ProductImage" alt="Colorlib Template">
+                                    <div class="overlay"></div>
+                                </a>
+                                <div class="text py-3 pb-4 px-3">
+                                    <div class="d-flex">
+                                        <div class="cat">
+                                            @*評價星星*@
+                                            <span>商品評價</span>
+                                        </div>
+                                        <div class="rating">
+                                            <p class="text-right mb-0">
+                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <h3><a href="#">@item.ProductName</a></h3>  @*商品名稱*@
+                                    <div class="pricing">
+                                        <p class="price"><span>$@item.ProductPrice</span></p> @*商品價格*@
+                                    </div>
+                                    <p class="bottom-area d-flex px-3">
+                                        @*button 購買和加入購物車*@
+                                        @{
+                                            if (@User.Identity.Name != String.Empty)
+                                            {
+                                                <input type="button" class="AdCar" value="加入購物車" />
+                                            }
+                                            else
+                                            {
+                                                @*<input type="button" class="toMember " value="加入購物車" onclick="location.href='https://localhost:44332/MemberLogin/Login'" />*@
+                                                <a class="buy-button" href="https://localhost:44332/MemberLogin/Login">加入購物車</a>
+
+                                            }
+
+                                        }
+                                        <input type="hidden" class="ID" value=@item.ProductID />
+                                        <input type="hidden" class="Name" value="@item.ProductName" />
+                                        <input type="hidden" class="Price" value=@item.ProductPrice />
+
+
+                                        @*<a href="@Url.Action("AddShoppingcar",new { ProductID=@item.ProductID,ProductName=@item.ProductName,ProductPrice=@item.ProductPrice})" class="buy-now text-center py-2">加入購物車</a>*@
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+
+                <div class="row mt-5">
+                    <div class="col text-center">
+                        <div class="block-27">
+                            @{
+                                @Html.PagedListPager(Model.Products, page => Url.Action("Product", new
+                           {
+                               page,
+                               ProductCategoryID = @Session["nowCategoryID"],
+                               Maxprice = @Session["Maxprice"] != null ? @Session["Maxprice"] : null,
+                               Minprice = @Session["Minprice"] != null ? @Session["Minprice"] : null,
+                               keyword = @Session["keyword"] != null ? @Session["keyword"] : null
+                           }
+));
+
+                                @*if (@Session["OP"] == null)
+                                    {
+                                        @Html.PagedListPager(Model.Products, page => Url.Action("Product", new { page, ProductCategoryID = @Session["nowCategoryID"] }))
+
+                                    }
+
+                                    else
+                                    {
+
+                                        @Html.PagedListPager(Model.Products, page => Url.Action("Product", new { page, ProductCategoryID = Session["nowCategoryID"], Maxprice = @Session["Maxprice"], Minprice = @Session["Minprice"] }))
+                                    }*@
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-lg-2">
+                <form method="post" colorlib-form-2" action="@Url.Action("Product")">
+
+                    <div class="sidebar">
+                        <div class="sidebar-box-2">
+                            <h2 class="heading"> 搜尋</h2>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+
+
+                                        <input class="search-submit form-control" type="search" name="keyword" />
+                                        <input type="submit" class="" value="搜尋" />
+                                        <br />
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="sidebar-box-2">
+                            <h2 class="heading">產品類別</h2>
+
+                            @*-----------------------------------------------------------*@
+                            @*@foreach (var item in Model.Categories)
+                                {
+
+                                    <p> @Html.ActionLink(@item.ProductCategory, "Product", new { ProductCategoryID = item.ProductCategoryID })</p>
+                                }*@
+                            @*------------------------------------------------------------------*@
+
+
+                            <div class="fancy-collapse-panel">
+                                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="headingOne">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                    材料
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                            <div class="panel-body">
+                                                <ul>
+                                                    <li>@Html.ActionLink("浴室洗手台", "Product", new { ProductCategoryID = "Ct001" })</li>
+                                                    <li>@Html.ActionLink("馬桶水箱", "Product", new { ProductCategoryID = "Ct002" })</li>
+                                                    <li>@Html.ActionLink("淋浴水龍頭", "Product", new { ProductCategoryID = "Ct003" })</li>
+                                                    <li>@Html.ActionLink("玻璃平台架", "Product", new { ProductCategoryID = "Ct004" })</li>
+                                                    <li>@Html.ActionLink("浴室鏡子", "Product", new { ProductCategoryID = "Ct005" })</li>
+                                                    <li>@Html.ActionLink("餐椅底布", "Product", new { ProductCategoryID = "Ct006" })</li>
+                                                    <li>@Html.ActionLink("窗簾 ", "Product", new { ProductCategoryID = "Ct007" })</li>
+                                                    <li>@Html.ActionLink("插座", "Product", new { ProductCategoryID = "Ct013" })</li>
+                                                    <li>@Html.ActionLink("崁燈", "Product", new { ProductCategoryID = "Ct014" })</li>
+                                                    <li>@Html.ActionLink("洗手台P管", "Product", new { ProductCategoryID = "Ct015" })</li>
+                                                    <li>@Html.ActionLink("燈泡", "Product", new { ProductCategoryID = "Ct016" })</li>
+                                                    <li>@Html.ActionLink("三角凡而", "Product", new { ProductCategoryID = "Ct019" })</li>
+                                                    <li>@Html.ActionLink("高壓軟管", "Product", new { ProductCategoryID = "Ct022" })</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="headingTwo">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                    工具
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                            <div class="panel-body">
+                                                <ul>
+                                                    <li>@Html.ActionLink("板手", "Product", new { ProductCategoryID = "Ct008" })</li>
+                                                    <li>@Html.ActionLink("活動板手", "Product", new { ProductCategoryID = "Ct009" })</li>
+                                                    <li>@Html.ActionLink("十字螺絲起子", "Product", new { ProductCategoryID = "Ct010" })</li>
+                                                    <li>@Html.ActionLink("一字螺絲起子", "Product", new { ProductCategoryID = "Ct011" })</li>
+                                                    <li>@Html.ActionLink("水管鉗", "Product", new { ProductCategoryID = "Ct012" })</li>
+                                                    <li>@Html.ActionLink("水管鉗", "Product", new { ProductCategoryID = "Ct017" })</li>
+                                                    <li>@Html.ActionLink("梯子", "Product", new { ProductCategoryID = "Ct012" })</li>
+                                                    <li>@Html.ActionLink("老虎鉗", "Product", new { ProductCategoryID = "Ct018" })</li>
+                                                    <li>@Html.ActionLink("鋸子", "Product", new { ProductCategoryID = "Ct020" })</li>
+
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="headingTwo">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                    通用耗材
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                            <div class="panel-body">
+                                                <ul>
+                                                    <li>@Html.ActionLink("通用耗材", "Product", new { ProductCategoryID = "Ct021" })</li>
+
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="sidebar-box-2">
+                            <h2 class="heading">價格範圍</h2>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="guests">價錢從:</label>
+                                        <div class="form-field">
+                                            <input class="price form-control" type="text" name="Minprice" />
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="guests">至:</label>
+                                        <div class="form-field">
+                                            <input class="price form-control" type="text" name="Maxprice" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+
+                                        <div class="form-field">
+                                            <input type="hidden" value=@Session["nowCategoryID"] name="ProductCategoryID" />
+                                            <input type="submit" value="搜尋" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+
+<script>
+    var x = $('.carcount').text();
+
+
+
+
+    $(document).ready(function () {
+
+        $('.AdCar').click(function () {
+
+            var ProductID = $(this).parent().children(".ID").val();
+            var ProductName = $(this).parent().children(".Name").val();
+            var ProductPrice = parseInt($(this).parent().children(".Price").val());
+
+            $.ajax({
+                url: "https://localhost:44332/Tool/AddShoppingcar",
+                type: "get",
+                data: { "ProductID": ProductID, "ProductName": ProductName, "ProductPrice": ProductPrice },
+                success() {
+                    window.alert("已經加入購物車");
+                    x = (parseInt(x) + 1).toString();
+
+
+                    $('.carcount').text(x);
+                }
+
+            })
+        })
+    });
+
+
+
+
+
+</script>

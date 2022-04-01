@@ -8,23 +8,39 @@ namespace DIY_v2.Controllers
 {
     public class HomeController : Controller
     {
+        // GET: Home
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult MyDIY()
         {
-            ViewBag.Message = "Your application description page.";
-
+            return View();
+        }
+       
+        public ActionResult MyDIYChangeLight_2()
+        {
+            return View();
+        }
+        public ActionResult MyDIYChangFaucet()
+        {
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult MyDIYChangeLight_1()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
+
+        public ActionResult MyDIYChangePipe_1()
+        {
+            return View();
+        }
+        public  ActionResult test()
+        {
+            return View();
+        }
+      
     }
 }

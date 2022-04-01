@@ -1,0 +1,163 @@
+﻿
+
+<h2>tool</h2>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+    * {
+        box-sizing: border-box;
+    }
+
+    form.example input[type=text] {
+        padding: 10px;
+        font-size: 17px;
+        border: 1px solid grey;
+        float: left;
+        width: 80%;
+        height: 40px;
+        background: #f1f1f1;
+    }
+
+    form.example button {
+        float: left;
+        width: 20%;
+        height: 40px;
+        padding: 10px;
+        background: orange;
+        color: white;
+        font-size: 17px;
+        border: 1px solid grey;
+        border-left: none;
+        cursor: pointer;
+    }
+
+        form.example button:hover {
+            background: #0b7dda;
+        }
+
+    form.example::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .repair {
+        width: 180px;
+        border: 2px solid;
+        background-color: orange;
+        padding: 5px
+    }
+
+    .tools {
+        width: 180px;
+        border: 2px solid;
+        background-color: orange;
+        padding: 5px
+    }
+
+    label {
+        text-align: center;
+    }
+
+    #shopcar {
+        position: fixed;
+        right: 10px;
+        top: 10px;
+    }
+</style>
+
+
+
+<form class="example" action="/action_page.php" style="width:200px">
+    <input type="text" placeholder="Search.." name="search">
+    <button type="submit"><i class="fa fa-search"></i></button>
+</form>
+
+<div class="repair">
+    <label><b>修繕</b></label><br />
+    <a href="#">水龍頭配件</a><br />
+    <a href="#">濾水器配件</a><br />
+    <a href="#">馬桶相關配件</a><br />
+    <a href="#">電燈配件</a><br />
+
+</div>
+<div class="tools">
+    <label><b>工具</b></label><br />
+    <a href="#">十字螺絲起子</a><br />
+    <a href="#">量尺/捲尺</a><br />
+    <a href="#">斜口鉗</a><br />
+    <a href="#">尖嘴鉗</a><br />
+    <a href="#">美工刀</a><br />
+    <a href="#">剪刀</a><br />
+</div>
+
+
+
+<style>
+
+
+    .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+
+        .sidenav a {
+            padding: 4px 4px 4px 16px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+            .sidenav a:hover {
+                color: #f1f1f1;
+            }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+    #buy {
+        position: absolute;
+        right: 5px;
+        top: 58px;
+        width: 80px;
+        height: 45px;
+    }
+</style>
+
+
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#">購物清單</a>
+    <a href="#" id="buy">結帳</a>
+
+
+</div>
+
+<a href="#"><img id="shopcar" src="~/Images/PartialViewImages/2.png" onclick="openNav()" /></a>
+
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+</script>
+
+

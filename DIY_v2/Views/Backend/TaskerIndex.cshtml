@@ -1,0 +1,168 @@
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<DIY_v2.Models.Tasker>
+
+@{
+    ViewBag.Title = "TaskerIndex";
+}
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<style>
+    .TaskerImage {
+        width: 150px;
+        height: 100px;
+    }
+</style>
+<h2>BackendUI</h2>
+
+<section class="ftco-section ">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-lg-10 col-md-10 col-xs-12 order-lg-last ftco-animate">
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().TaskerImage)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().TaskerID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().TaskerName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().ServiceQuote)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().TaskerTel)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().TaskerPhone)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().ServiceTime_Start)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().ServiceTime_End)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().ServiceArea)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().License)
+                        </th>
+                        @*<th>
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().Feature)
+                            </th>*@
+                        @*<th>
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().TaskerDescription)
+                            </th>*@
+                        @*<th>
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().CaseImage)
+                            </th>*@
+                        @*<th>
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().Rate)
+                            </th>*@
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @*@Html.DisplayFor(modelItem => item.TaskerImage)*@
+                                @{
+                                    string path = "../Images/TaskerImages/" + item.TaskerImage;
+                                }
+                                <img src="@path" class="TaskerImage" alt="Alternate Text" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TaskerID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TaskerName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ServiceQuote)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TaskerTel)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TaskerPhone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ServiceTime_Start)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ServiceTime_End)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ServiceArea)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.License)
+                            </td>
+                            @*<td>
+                                    @Html.DisplayFor(modelItem => item.Feature)
+                                </td>*@
+                            @*<td>
+                                    @Html.DisplayFor(modelItem => item.TaskerDescription)
+                                </td>*@
+                            @*<td>
+                                    @Html.DisplayFor(modelItem => item.CaseImage)
+                                </td>*@
+                            @*<td>
+                                    @Html.DisplayFor(modelItem => item.Rate)
+                                </td>*@
+                            <td>
+                                @Html.ActionLink("Edit", "EditTasker", new { id = item.TaskerID }, new { @class = "btn btn-success" }) |
+                                @Html.ActionLink("Details", "TaskerDetail", "Tasker", new { TaskerID = item.TaskerID }, new { @class = "btn btn-info" }) |
+                                @Html.ActionLink("Delete", "DeleteTasker", new { id = item.TaskerID }, new { onclick = "return confirm('確定刪除嗎?')", @class = "btn btn-danger" })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div> <!-- .col-md-8 -->
+            <div class="col-lg-2 col-md-2 col-xs-12 sidebar ftco-animate ">
+                @*搜尋欄*@
+                <div class="sidebar-box">
+                    <form action="" class="search-form" method="get">
+                        <div class="form-group">
+                            <label>師傅名稱搜索: </label>
+                            <span class="icon ion-ios-search"></span>
+                            <input type="text" class="form-control" placeholder="請輸入要尋找的師傅名稱" name="pickTasker" value="" />
+                            <input type="submit" class="btn btn-primary btn-lg btn-block" name="name" value="確認" />
+                        </div>
+                    </form>
+                </div>
+                @*選取按鈕*@
+                <div class="sidebar-box ftco-animate">
+                    <h3 class="heading">項目</h3>
+                    <ul class="categories">
+                        <li><a href="@Url.Action("ManageProduct","Backend")">商品資料</a></li>
+                        <li><a href="@Url.Action("TaskerIndex","Tasker")">師傅資料</a></li>
+                        <li><a href="@Url.Action("ManageMember","Backend")">會員資料</a></li>
+                    </ul>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+</section> <!-- .section -->
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+
+
+
+
+
+@Html.PagedListPager(Model, page => Url.Action("TaskerIndex", new { page }))

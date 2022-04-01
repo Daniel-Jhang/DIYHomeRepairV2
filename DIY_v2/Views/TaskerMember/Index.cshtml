@@ -1,0 +1,116 @@
+﻿@model IEnumerable<DIY_v2.Models.Tasker>
+
+    @{
+    ViewBag.Title = "Index";
+    }
+
+    <style>
+        .taskerImage {
+            width: 200px;
+            height: 150px;
+        }
+    </style>
+    <h2>Index</h2>
+
+    <div class="form-horizontal">
+        @foreach (var item in Model)
+        {
+        string TaskerImagepath = "../Images/TaskerImages/" + item.TaskerImage;
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.TaskerName)
+            <div class="col-md-10">
+                @Html.DisplayFor(modelItem => item.TaskerName)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.ServiceQuote)
+            <div class="col-md-10">
+                @Html.DisplayFor(modelItem => item.ServiceQuote)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.TaskerTel)
+            <div class="col-md-10">
+                @Html.DisplayFor(modelItem => item.TaskerTel)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.TaskerPhone)
+            <div class="col-md-10">
+                @Html.DisplayFor(modelItem => item.TaskerPhone)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.ServiceTime_Start)
+            <div class="col-md-10">
+                @Html.DisplayFor(modelItem => item.ServiceTime_Start)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.ServiceTime_End)
+            <div class="col-md-10">
+                @Html.DisplayFor(modelItem => item.ServiceTime_End)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.ServiceArea)
+            <div class="col-md-10">
+                @Html.DisplayFor(modelItem => item.ServiceArea)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.TaskerImage)
+            <div class="col-md-10">
+                <div class="product d-flex flex-column">
+                    <img class="img-fluid taskerImage" src=@TaskerImagepath alt="Colorlib Template">
+                    <div class="overlay"></div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.License)
+            <div class="col-md-10">
+                @Html.DisplayFor(modelItem => item.License)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.Feature)
+            <div class="col-md-10">
+                @Html.DisplayFor(modelItem => item.Feature)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.TaskerDescription)
+            <div class="col-md-10">
+                @Html.DisplayFor(modelItem => item.TaskerDescription)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.CaseImage)
+            <div class="col-md-10">
+                @Html.DisplayFor(modelItem => item.CaseImage)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.Rate)
+            <div class="col-md-10">
+                @Html.DisplayFor(modelItem => item.Rate)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.MemberID)
+            <div class="col-md-10">
+                @Html.DisplayFor(modelItem => item.MemberID)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.ActionLink("修改資料", "TaskerMemberEdit", new { id = item.TaskerID })
+            </div>
+        </div>
+        }
+
+    </div>

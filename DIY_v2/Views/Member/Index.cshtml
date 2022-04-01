@@ -1,0 +1,22 @@
+﻿
+@model IEnumerable<DIY_v2.Models.Product>
+
+@{
+    ViewBag.Title = "產品列表";
+}
+
+<div class="row" style="margin-top:20px;">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <img src="~/images/@item.ProductImage" style="width:200px;height:270px;">
+                <div class="caption">
+                    <h4>@item.ProductName</h4>
+                    <p>單價：@item.ProductPrice</p>
+                    <p><a href="@Url.Action("AddCar", "MemberTest")?ProductID=@item.ProductID" class="btn btn-primary">加入購物車</a></p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

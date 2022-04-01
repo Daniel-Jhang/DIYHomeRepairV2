@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "TaskerOrder";
+}
+
+
+
+<style>
+    .total {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .titlebar {
+        float: left;
+        margin: 2px;
+        border-color: black;
+        border-style: solid;
+        border-radius: 3px;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    img {
+        height: 100px;
+        width: 100px;
+    }
+
+    table {
+        margin: 5px;
+    }
+</style>
+<div class="total">
+
+
+    <div class="title">
+        <div class="titlebar">@Html.ActionLink("基本資料", "BasicData", "Home")</div>
+        <div class="titlebar">@Html.ActionLink("商品訂單", "Myorder", "Home")</div>
+        <div class="titlebar">@Html.ActionLink("師傅預定", "Myseafood", "Home")</div>
+        <div class="titlebar">@Html.ActionLink("修改密碼", "passwordchange", "Home")</div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <p>@Html.ActionLink("現在預約", "About", "Home")</p>
+            <p>@Html.ActionLink("取消的預約", "About", "Home")</p>
+        </div>
+        <div class="col-md-10">
+            <table class="table">
+                <tr>
+                    <th>圖片</th>
+                    <th>訂單編號</th>
+                    <th>日期</th>
+                    <th>名稱</th>
+                    <th>總價</th>
+                    <th>預約狀態</th>
+                    <th>退貨</th>
+                </tr>
+                <tr>
+                    <td><img src="~/Images/MemberImages/師傅2.jpg" /></td>
+                    <td>20220116391182</td>
+                    <td>2022/01/16</td>
+                    <td>濃格裝修工程行</td>
+                    <td>$300 /趟</td>
+                    <td>訂單成立</td>
+                    <td><a href="#">取消預約</a></td>
+
+                </tr>
+            </table>
+            <table class="table">
+                <tr>
+                    <th>圖片</th>
+                    <th>訂單編號</th>
+                    <th>日期</th>
+                    <th>名稱</th>
+                    <th>總價</th>
+                    <th>預約狀態</th>
+                    <th>退貨</th>
+                </tr>
+                <tr>
+                    <td><img src="~/Images/MemberImages/師傅1.jpg" /></td>
+                    <td>20220117391367</td>
+                    <td>2022/01/17</td>
+                    <td>東穎工程行</td>
+                    <td>$600 /趟</td>
+                    <td>訂單成立</td>
+                    <td><a href="#">取消預約</a></td>
+
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>
+<hr />
+
+
+

@@ -1,0 +1,123 @@
+﻿@model IPagedList<DIY_v2.Models.Product>
+@using PagedList
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "商品管理系統";
+}
+<style>
+    .productImage {
+        width: 100px;
+        height: 100px;
+    }
+</style>
+<h2>商品管理系統</h2>
+<link href="~/Content/PagedList.css" rel="stylesheet">
+
+<section class="ftco-section ">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-lg-10 col-md-10 col-xs-12 order-lg-last ftco-animate">
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().ProductImage)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().ProductName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().ProductPrice)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().ProductCost)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().InStock)
+                        </th>
+                      
+                        
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <img class="productImage" src=@item.ProductImage>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProductName)
+                            </td>
+                            <td>
+                                $@Html.DisplayFor(modelItem => item.ProductPrice)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProductCost)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.InStock)
+                            </td>
+                           
+                           
+                            <td>
+                                @Html.ActionLink("修改", "EditProduct", new { ProductID = item.ProductID }) |
+                                @Html.ActionLink("商品詳細資料", "ProductDetail", "Tool", new { ProductID = item.ProductID }, new { htmlAttributes = new { @class = "form-control" } }) |
+                                @Html.ActionLink("刪除", "DeleteProduct", new { ProductID = item.ProductID }, new { onclick = "return  confirm('確定刪除嗎?');", @class = " btn btn-danger" })
+                                @Html.ActionLink("管理留言", "ManageReply", new { ProductID = item.ProductID }, new {  @class = " btn btn-danger" })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div> <!-- .col-md-8 -->
+            <div class="col-lg-2 col-md-2 col-xs-12 sidebar ftco-animate ">
+                <p>
+                    @Html.ActionLink("新增商品", "AddProduct")
+                </p>
+                @*搜尋欄*@
+                <div class="sidebar-box">
+                    <form action="@Url.Action("ManageProduct")" class="search-form" method="post">
+                        <div class="form-group">
+                            <span class="icon ion-ios-search"></span>
+                            <input type="text" class="form-control" placeholder="" name="keyword" />
+                            <input type="submit" value="搜尋" />
+                        </div>
+                    </form>
+
+                </div>
+                @*選取按鈕*@
+                <div class="sidebar-box ftco-animate">
+                    <h3 class="heading">項目</h3>
+                    <ul class="categories">
+                        <li><a href="@Url.Action("ManageProduct","Backend")">商品資料</a></li>
+                        <li><a href="@Url.Action("TaskerIndex","Backend")">師傅資料</a></li>
+                        <li><a href="@Url.Action("ManageMember","Backend")">會員資料</a></li>
+
+                    </ul>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+</section> <!-- .section -->
+
+@{ if (@Session["backkeyword"] != null)
+    {
+        @Html.PagedListPager(Model, page => Url.Action("ManageProduct", new { page, keyword = @Session["backkeyword"] }))
+    }
+    else
+    {
+        @Html.PagedListPager(Model, page => Url.Action("ManageProduct", new { page }))
+    }
+}
+
+
+
+

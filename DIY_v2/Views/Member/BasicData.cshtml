@@ -1,0 +1,67 @@
+﻿@model IEnumerable<DIY_v2.Models.Member>
+
+@{
+    ViewBag.Title = "BasicData";
+}
+
+<h2>BasicData</h2>
+<div class="form-horizontal">
+    @foreach (var item in Model)
+    {
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.MemberName)
+            <div class="col-md-10">
+                @Html.DisplayFor(modelItem => item.MemberName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.MemberGender)
+            <div class="col-md-10">
+                @Html.DisplayFor(modelItem => item.MemberGender)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.MemberBirthday)
+            <div class="col-md-10">
+                @Html.DisplayFor(modelItem => item.MemberBirthday)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.MemberNickname)
+            <div class="col-md-10">
+                @Html.DisplayFor(modelItem => item.MemberNickname)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.MemberEmail)
+            <div class="col-md-10">
+                @Html.DisplayFor(modelItem => item.MemberEmail)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.MemberAddress)
+            <div class="col-md-10">
+                @Html.DisplayFor(modelItem => item.MemberAddress)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.MemberPhone)
+            <div class="col-md-10">
+                @Html.DisplayFor(modelItem => item.MemberPhone)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.ActionLink("修改資料", "EditData")
+            </div>
+        </div>
+    }
+
+</div>

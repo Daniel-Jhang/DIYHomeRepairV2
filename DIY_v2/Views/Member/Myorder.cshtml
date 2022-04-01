@@ -1,0 +1,73 @@
+﻿@model IEnumerable<DIY_v2.Models.Orders>
+
+@{
+    ViewBag.Title = "會員訂單列表";
+}
+
+<h2>會員訂單列表</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecipientName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecipientEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecipientAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Paymethod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Member.MemberAccount)
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.OrderID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RecipientName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RecipientEmail)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RecipientAddress)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Paymethod)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OrderStatus)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Member.MemberAccount)
+    </td>
+    <td>
+        <a href="@Url.Action("OrderDetail")?OrderID=@item.OrderID"
+           class="btn btn-info">訂單明細</a>
+    </td>
+    <td>
+        <a href="@Url.Action("DeleteOrder")?OrderID=@item.OrderID"
+           class="btn btn-danger"
+           onclick="return confirm('確定放棄訂單編號: @item.OrderID 嗎？')">刪除訂單</a>
+    </td>
+</tr>
+    }
+
+</table>
+

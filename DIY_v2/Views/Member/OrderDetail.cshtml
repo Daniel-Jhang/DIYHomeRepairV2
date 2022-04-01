@@ -1,0 +1,66 @@
+﻿@model IEnumerable<DIY_v2.Models.Order_Detail>
+
+@{
+    ViewBag.Title = "OrderDetail";
+}
+
+<h2>訂單明細</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderQuantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Member.MemberAccount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Orders.RecipientName)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Member.MemberAccount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Orders.RecipientName)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Back to List", "Myorder")
+</div>
+</br>

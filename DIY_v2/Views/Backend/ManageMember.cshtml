@@ -1,0 +1,109 @@
+﻿@model DIY_v2.Models.CVMManageOrder
+
+@{
+    ViewBag.Title = "ManageMember";
+}
+
+<h2>會員管理系統</h2>
+
+<section class="ftco-section ">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-lg-10 col-md-10 col-xs-12 order-lg-last ftco-animate">
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.MemberAccount)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.MemberName)
+                        </th>
+
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.MemberNickname)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.MemberEmail)
+                        </th>
+
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Permission)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MemberAccount)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MemberName)
+                            </td>
+
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MemberNickname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MemberEmail)
+                            </td>
+
+
+                            <td>
+                                @{
+                                    if (@item.Permission == "1" || @item.Permission == "2")
+                                    {
+                                        <span>正常</span>
+                                    }
+                                    else
+                                    {
+                                        <span>停權</span>
+                                    }
+                                }
+                            </td>
+                            <td>
+                                @Html.ActionLink("詳細資訊", "MemberDetail", new { MemberID = item.MemberID }) 
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div> <!-- .col-md-8 -->
+            <div class="col-lg-2 col-md-2 col-xs-12 sidebar ftco-animate ">
+                @*搜尋欄*@
+                <div class="sidebar-box">
+                    <form action="" class="search-form" method="get">
+                        <div class="form-group">
+                            <label>會員名稱搜索: </label>
+                            <span class="icon ion-ios-search"></span>
+                            <input type="text" class="form-control" placeholder="請輸入要尋找的會員名稱" name="pickMember" value="" />
+                            <input type="submit" class="btn btn-primary btn-lg btn-block" name="name" value="確認" />
+                        </div>
+                    </form>
+                </div>
+                @*選取按鈕*@
+                <div class="sidebar-box ftco-animate">
+                    <h3 class="heading">項目</h3>
+                    <ul class="categories">
+                        <li><a href="@Url.Action("ManageProduct","Backend")">商品資料</a></li>
+                        <li><a href="@Url.Action("TaskerIndex","Backend")">師傅資料</a></li>
+                        <li><a href="@Url.Action("ManageMember","Backend")">會員資料</a></li>
+
+                    </ul>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+</section>
+<!-- .section -->

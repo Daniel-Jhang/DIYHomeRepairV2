@@ -1,0 +1,564 @@
+﻿@model DIY_v2.Models.CVMTaskerDetail
+
+@{
+    ViewBag.Title = "師傅介紹";
+}
+
+<!-- #region CSS -->
+<style>
+    body {
+        background-color: aliceblue;
+        color: black
+    }
+    /*按鈕*/
+    #sevbutton {
+        border: none;
+        background-color: transparent;
+        color: #cebc5d;
+        font-size: 25px;
+    }
+
+        #sevbutton:hover {
+            color: #808080;
+        }
+
+    #sevbutton1 {
+        border: none;
+        background-color: transparent;
+        color: #cebc5d;
+        font-size: 25px;
+    }
+
+        #sevbutton1:hover {
+            color: #808080;
+        }
+
+    #exp {
+        border: none;
+        background-color: transparent;
+    }
+
+    #chP {
+        border: none;
+        background-color: transparent;
+        color: #cebc5d;
+    }
+
+        #chP:hover {
+            color: #808080;
+        }
+    /*左邊欄位*/
+    .services1 {
+        background-color: white;
+    }
+
+    /*右邊上面欄位*/
+    .myTop {
+        background-color: white;
+    }
+
+    /*右邊下面欄位*/
+    .myDown {
+        background-color: white;
+    }
+    /*button {
+            border: none;
+            background-color: Transparent
+        }*/
+
+    a {
+        color: black
+    }
+    /*電話連結*/
+    #telN {
+        color: #cebc5d;
+    }
+
+        #telN:hover {
+            color: #808080;
+        }
+    /*LINE*/
+    #cLine {
+        color: #cebc5d;
+        border: none;
+        background-color: transparent;
+    }
+
+        #cLine:hover {
+            color: #808080;
+        }
+
+    /*滾軸*/
+    .services-2::-webkit-scrollbar-thumb {
+        -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    }
+
+
+    .services-2::-webkit-scrollbar {
+        display: block;
+        border-radius: 90px;
+    }
+    /*側邊欄固定*/
+
+    /* .sideA{
+            right:-250px;
+            top:-100px;
+        }
+
+
+
+        .sideB {
+            position: fixed;
+            width: 300px;
+           top:150px;
+           left: 290px;
+
+        }
+    */
+
+</style>
+<style type="text/css">
+    .box {
+        position: relative;
+        display: inline-block;
+    }
+
+        .box .clear {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 16px;
+            height: 16px;
+            border: 1px solid #999;
+        }
+</style>
+<style>
+    /*幻燈片*/
+    * {
+        box-sizing: border-box;
+    }
+
+    img:hover {
+        opacity: 0.8;
+    }
+
+    img {
+        vertical-align: middle;
+        max-width: 100%;
+        height: auto;
+        /*width:700px;
+        height:800px;*/
+    }
+
+    /* Hide the images by default */
+
+    .mySlides {
+        display: none;
+    }
+    /* Add a pointer when hovering over the thumbnail images */
+
+    .cursor {
+        cursor: pointer;
+    }
+    /* Next & previous buttons */
+
+    .prev,
+    .next {
+        cursor: pointer;
+        position: absolute;
+        top: 40%;
+        width: auto;
+        padding: 20px;
+        margin-top: -50px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+    /* Position the "next button" to the right */
+
+    .next {
+        right: 0px;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .prev {
+        left: 0px;
+        border-radius: 3px 0 0 3px;
+    }
+
+
+
+        /* On hover, add a black background color with a little bit see-through */
+
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0 0 0 0);
+        }
+    /* Number text (1/3 etc) */
+
+    .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+    }
+    /* Container for image text */
+
+    .caption-container {
+        text-align: center;
+        background-color: #222;
+        padding: 2px 16px;
+        color: white;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    /* Six columns side by side */
+
+    .column {
+        float: left;
+        width: 16.66%;
+    }
+    /* Add a transparency effect for thumnbail images */
+
+    .demo {
+        opacity: 0.6;
+    }
+
+        .active,
+        .demo:hover {
+            opacity: 1;
+        }
+
+
+    /*留言板*/
+    .reply-main {
+        height: 400px;
+        width: 900px;
+    }
+</style>
+</style>
+<!-- #endregion -->
+
+
+@{
+    string path = "../Images/TaskerImages/" + Model.taskers.Select(x => x.TaskerImage).FirstOrDefault();
+}
+
+<section class="ftco-section testimony-section">
+    <div class="container">
+        <div class="row">
+
+            @*左側導覽列*@
+            <div class="col-lg-3 col-md-4 col-xs-12 ftco-animate sideB">
+                <div class="services1 Larger shadow" style="border-radius: 15px;">
+
+                    @*左側導覽列 上半部*@
+                    <div class="services p-5 d-flex ftco-animate">
+                        <div class="infon">
+                            <a target="_blank" href="@path">
+                                <img src="@path" class="img-responsive " alt="Tasker" style="width:140px;height:140px;border-radius:90px">
+                            </a>
+                            <hr />
+                            <div class="col-md-12">
+                                <h4>@Model.taskers.Select(x => x.TaskerName).FirstOrDefault()</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*左側導覽列 下半部*@
+                    <div class="services p-4 d-flex ftco-animate" style=" overflow-y: scroll; height: 350px">
+                        <div>
+                            <p>店家評價 : @Model.taskers.Select(x => x.Rate).FirstOrDefault() ★★★★★ (65)</p>
+                            <label>服務分類: </label>
+                            @foreach (var item in Model.taskersService)
+                            {
+                                <p>#@item.ServiceCategory</p>
+                            }
+                            <label>專業證照: </label>
+                            <p>@Model.taskers.Select(x => x.License).FirstOrDefault()</p>
+                            <label>專長: </label>
+                            <p>水電工程</p>
+                            <label>特色: </label>
+                            <p>@Model.taskers.Select(x => x.Feature).FirstOrDefault()</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-9 col-md-8 col-xs-12 ftco-animate sideA">
+                <div class="myTop d-flex flex-row col-md-12 Larger shadow" style="border-radius: 15px;">
+                    <div class="col-md-6">
+                        <a target="_blank" href="@path">
+                            <img class="myAvatar " src="@path" alt="師傅照片" style="max-width: 100%; height:230px ;margin:20px;" />
+                        </a><br />
+                    </div>
+                    <div class="col-md-6">
+                        <h4>
+                            @foreach (var item in Model.taskersService)
+                            {
+                                <strong>@item.ServiceCategory</strong>
+                            }
+                        </h4>
+                        <p>服務報價 : $ @Model.taskers.Select(x => x.ServiceQuote).FirstOrDefault() NT / 趟</p>
+                        <p>服務時間 : @Model.taskers.Select(x => x.ServiceTime_Start.ToString("hh\\:mm")).FirstOrDefault() ~ @Model.taskers.Select(x => x.ServiceTime_End.ToString("hh\\:mm")).FirstOrDefault()</p>
+                        <p>服務地點 : @Model.taskers.Select(x => x.ServiceArea).FirstOrDefault()</p>
+                        <p>取得報價 : <a href="tel:@Model.taskers.Select(x => x.TaskerPhone).FirstOrDefault()" class="btn btn-danger">立即通話</a>&nbsp;&nbsp;&nbsp;</p>
+                    </div>
+                </div>
+                <br />
+
+                <div class="myDown col-md Larger shadow" style="border-radius: 15px;">
+                    <div>
+                        <div>
+                            <button id="sevbutton" onclick="javascript:onTopClick();">服務內容</button>
+                            <button id="sevbutton" onclick="javascript:onTopClick();">施作案例</button>
+                            @*<button id="sevbutton1" onclick="">服務評價</button>*@
+                        </div>
+
+                        @*跳轉按鈕*@
+                        <script>
+                            function onTopClick() {
+                                window.location.hash = "#exp";
+                            }
+                        </script>
+
+                        <hr />
+                        <div>
+                            <h4>服務內容</h4>
+                            <h4>@Model.taskers.Select(x => x.TaskerName).FirstOrDefault()</h4>
+
+                            @if (Model.taskers.Select(x => x.TaskerDescription).First() != null) // 如果資料庫裡有資料的話
+                            {
+                                @Html.Raw(Model.taskers.Select(x => x.TaskerDescription).First().Replace(Environment.NewLine, "<br/>"))
+                            }
+                            else // 沒有的話就用預設寫死的
+                            {
+                                <p>🚰關於水 ⚡️關於電 ⚡️欠電 🚰欠水 🛠欠修理 📱FB粉絲專頁搜尋：@Model.taskers.Select(x => x.TaskerName).FirstOrDefault()  ☎️歡迎來電洽談📞</p>
+                                <p>服務❗️ 品質❗️ 價格❗️ 免費可到府估價‼️ 🚦到府檢修免收車馬費🚦</p>
+                                <p>@Model.taskers.Select(x => x.TaskerName).FirstOrDefault()服務項目</p>
+                                <p>@Model.taskers.Select(x => x.ServiceArea).FirstOrDefault()地區水電工程 衛浴設備改修安裝 舊屋換線 裝潢水電 電錶申請 燈飾安裝 店面整修 居家水電維修 水電規劃設計 插座電燈開關迴路佈線配置 抽水加壓機安裝 冷熱水管路配置 水管抓漏</p>
+                                <p>一、需求洽談</p>
+                                <p>歡迎點選本服務頁上方【立即通話】致電聯絡。</p>
+                                <p>二、到府勘查</p>
+                                <p>確認現場實際狀況，安排後續處理方式。</p>
+                                <p>三、費用報價</p>
+                                <p>評估作業流程與難易度、使用的產品與耗材並提供報價。</p>
+                                <p>四、開始施工</p>
+                                <p>雙方安排施工期並簽訂施工合約。</p>
+                                <p>五、驗收完工</p>
+                                <p>驗收與款項交付無誤即結案。</p>
+                            }
+                        </div>
+
+                        <hr />
+
+                        <div class="col-md-9 ftco-animate">
+                            <h4 id="exp">
+                                施作案例&nbsp;&nbsp;<a class="prev" onclick="plusSlides(-1)">❮</a>
+                                <a class="next" onclick="plusSlides(1)">❯</a>
+                            </h4>
+
+                            <div class="container" style="top:10px;">
+
+                                @if (Model.taskers.Select(x => x.CaseImage).First() != null) // 如果資料庫裡有資料的話
+                                {
+                                    // 取得存放在資料庫裡的 CaseImage 字串 CaseImage01,CaseImage02,CaseImage03...
+                                    string CaseImageStr = Model.taskers.Select(x => x.CaseImage).First(); // 用 First()方法回傳第1個項目item[0] (用快速監看式看)
+                                    string[] CaseImageName = CaseImageStr.Split(','); // 用Split()方法將字串拆成一張一張圖 CaseImage01   CaseImage02   CaseImage03 ...
+
+                                    foreach (var item in CaseImageName) // 用foreach從字串array拿出圖片名稱
+                                    {
+                                        <div class="mySlides">
+                                            <a target="_blank" href="~/Images/TaskImages/@item">
+                                                <img src="~/Images/TaskerImages/CaseImage/@item">
+                                            </a>
+                                        </div>
+                                    }
+                                }
+                                else // 沒有的話就用預設寫死的
+                                {
+                                    <div class="mySlides">
+                                        <a target="_blank" href="~/Images/TaskImages/demo01.jpg">
+                                            <img src="~/Images/TaskerImages/CaseImage/CaseImage01.jpg">
+                                        </a>
+                                    </div>
+
+                                    <div class="mySlides">
+                                        <a target="_blank" href="~/Images/TaskImages/demo02.jpg">
+                                            <img src="~/Images/TaskerImages/CaseImage/CaseImage02.jpg">
+                                        </a>
+                                    </div>
+
+                                    <div class="mySlides">
+                                        <a target="_blank" href="~/Images/TaskImages/demo03.jpg">
+                                            <img src="~/Images/TaskerImages/CaseImage/CaseImage03.jpg">
+                                        </a>
+                                    </div>
+
+                                    <div class="mySlides">
+                                        <a target="_blank" href="~/Images/TaskImages/demo03.jpg">
+                                            <img src="~/Images/TaskerImages/CaseImage/CaseImage04.jpg">
+                                        </a>
+                                    </div>
+
+                                    <div class="mySlides">
+                                        <a target="_blank" href="~/Images/TaskImages/demo03.jpg">
+                                            <img src="~/Images/TaskerImages/CaseImage/CaseImage05.jpg">
+                                        </a>
+                                    </div>
+
+                                    <div class="mySlides">
+                                        <a target="_blank" href="~/Images/TaskImages/demo03.jpg">
+                                            <img src="~/Images/TaskerImages/CaseImage/CaseImage06.jpg">
+                                        </a>
+                                    </div>
+
+                                    <div class="mySlides">
+                                        <a target="_blank" href="~/Images/TaskImages/demo03.jpg">
+                                            <img src="~/Images/TaskerImages/CaseImage/CaseImage07.jpg">
+                                        </a>
+                                    </div>
+
+                                    <div class="mySlides">
+                                        <a target="_blank" href="~/Images/TaskImages/demo03.jpg">
+                                            <img src="~/Images/TaskerImages/CaseImage/CaseImage08.jpg">
+                                        </a>
+                                    </div>
+
+                                    <div class="mySlides">
+                                        <a target="_blank" href="~/Images/TaskImages/demo03.jpg">
+                                            <img src="~/Images/TaskerImages/CaseImage/CaseImage09.jpg">
+                                        </a>
+                                    </div>
+
+                                    <div class="mySlides">
+                                        <a target="_blank" href="~/Images/TaskImages/demo03.jpg">
+                                            <img src="~/Images/TaskerImages/CaseImage/CaseImage10.jpg">
+                                        </a>
+                                    </div>
+                                }
+                                <br />
+                                <br />
+                                <!-- #region 留言區 -->
+                                <div class="row">
+                                    @{
+                                        if (Model.taskerComment.Count > 0)
+                                        {
+                                            <table>
+                                                <tr>
+                                                    <th>帳號名稱</th>
+                                                    <th>留言內容</th>
+                                                    <th>留言時間</th>
+                                                    <th>評分</th>
+                                                </tr>
+                                                @foreach (var item in Model.taskerComment)
+                                                {
+                                                    <tr>
+                                                        <td>@item.MemberAccount</td>
+                                                        <td>@item.Comment</td>
+                                                        <td>@item.CreateDate</td>
+                                                        <td>@item.Star</td>
+                                                    </tr>
+                                                }
+                                            </table>
+                                        }
+                                    }
+
+                                    <div class="cpl-md-12">
+                                        <h3>師傅評論</h3>
+                                        <form method="post" action="@Url.Action("TaskerDetail")">
+                                            <input type="hidden" name="TaskerID" value="@Model.taskers[0].TaskerID" />
+                                            <textarea class="reply-main" name="comment" placeholder="請輸入你的評論"></textarea><br />
+                                            <input type="submit" value="送出" />
+                                        </form>
+                                    </div>
+
+                                    @*<h3>評價</h3><button>留下好評</button>
+
+                                        <h4>
+                                            <label>4.9</label>
+                                            <label>★★★★★</label>
+                                            <span>40</span>
+                                            <label>則評論</label>
+                                        </h4>
+
+                                        <div>
+                                            <span>有效率(18)</span>
+                                            <span>細心施工(13)</span>
+                                            <span>服務貼心(12)</span>
+                                            <span>價錢合理(11)</span>
+                                        </div>
+
+                                        <div>
+                                            <p><b>Lin**in</b></p>
+                                            <img src="~/Images/TaskerImages/user01.png" alt="Alternate Text" width="30" />
+                                            <span>案主評分</span><span>★★★★★</span>
+                                            <label>
+                                                評估時給予最適合的方案選擇
+                                                回覆迅速 價格合理
+                                                雖然施工的過程遇到一點小問題
+                                                但在不斷測試下找到解決方式
+                                                很有耐心！辛苦了
+                                            </label>
+                                            <div>
+                                                <butt>#服務貼心</butt>
+                                                <label>#價錢合理</label>
+                                                <label>#有效率</label>
+                                            </div>
+                                            <span>2022/01/26 21:39</span>
+                                        </div>*@
+                                </div>
+                                <!-- #endregion -->
+
+                            </div>
+
+                            <script>
+                                var slideIndex = 1;
+                                showSlides(slideIndex);
+
+                                function plusSlides(n) {
+                                    showSlides(slideIndex += n);
+                                }
+
+                                function currentSlide(n) {
+                                    showSlides(slideIndex = n);
+                                }
+
+                                function showSlides(n) {
+                                    var i;
+                                    var slides = document.getElementsByClassName("mySlides");
+                                    var dots = document.getElementsByClassName("demo");
+                                    var captionText = document.getElementById("caption");
+                                    if (n > slides.length) {
+                                        slideIndex = 1
+                                    }
+                                    if (n < 1) {
+                                        slideIndex = slides.length
+                                    }
+                                    for (i = 0; i < slides.length; i++) {
+                                        slides[i].style.display = "none";
+                                    }
+                                    for (i = 0; i < dots.length; i++) {
+                                        dots[i].className = dots[i].className.replace(" active", "");
+                                    }
+                                    slides[slideIndex - 1].style.display = "block";
+                                    dots[slideIndex - 1].className += " active";
+                                    captionText.innerHTML = dots[slideIndex - 1].alt;
+                                }
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,554 @@
+﻿@{
+    ViewBag.Title = "MyDIYChangeLight_1";
+}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /> @*for tooltip的特效*@
+<style>
+
+    /*#region 水平分割線 */
+    /*水平分割線Start*/
+    .divider {
+        position: relative;
+        margin-top: 90px;
+        height: 1px;
+    }
+
+    .div-transparent:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 5%;
+        right: 5%;
+        width: 90%;
+        height: 1px;
+        background-image: linear-gradient(to right, transparent, rgb(48,49,51), transparent);
+    }
+
+    .div-dot:after {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        top: -9px;
+        left: calc(50% - 9px);
+        width: 18px;
+        height: 18px;
+        background-color: goldenrod;
+        border: 1px solid rgb(48,49,51);
+        border-radius: 50%;
+        box-shadow: inset 0 0 0 2px white, 0 0 0 4px white;
+    }
+    /*水平分割線End*/
+    /*#endregion */
+
+    /*#region 設定tooltip */
+    /*設定tooltip的位置*/
+    .tooltipPositionA {
+        position: absolute;
+        top: 250px;
+        left: 380px;
+    }
+
+    .tooltipPositionB {
+        position: absolute;
+        top: 150px;
+        left: 500px;
+    }
+
+    .tooltipPositionC {
+        /*自行設定，如果有需要第3個*/
+    }
+
+    .tooltip-container {
+        cursor: default; /*箭頭或是手手*/
+        position: absolute;
+        display: inline-block;
+    }
+
+    .tooltip {
+        opacity: 0;
+        z-index: 99;
+        color: #bbb; /*提示文字顏色*/
+        width: 190px; /*提示文字框的寬度*/
+        display: block;
+        font-size: 20px; /*提示文字大小*/
+        padding: 5px 10px; /*提示文字內縮*/
+        border-radius: 3px; /*提示文字外框樣式*/
+        text-align: center; /*提示文字置中*/
+        text-shadow: 1px 1px 2px #111;
+        background: rgba(51,51,51,0.9);
+        border: 1px solid rgba(34,34,34,0.9);
+        box-shadow: 0 0 3px rgba(0,0,0,0.5);
+        -webkit-transition: all .2s ease-in-out;
+        -moz-transition: all .2s ease-in-out;
+        -o-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+        -webkit-transform: scale(0);
+        -moz-transform: scale(0);
+        -o-transform: scale(0);
+        -ms-transform: scale(0);
+        transform: scale(0);
+        position: absolute;
+        right: -70px; /*提示文字框跳出的位置*/
+        bottom: 40px; /*提示文字框跳出的位置*/
+    }
+
+        .tooltip:before, .tooltip:after {
+            content: '';
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid rgba(51,51,51,0.9);
+            position: absolute;
+            bottom: -10px;
+            left: 43%;
+        }
+
+    .tooltip-container:hover .tooltip, a:hover .tooltip {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -o-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+    }
+    /*#endregion */
+
+    /*#region for部分RWD */
+    @@media (max-width: 900) {
+        .tooltip-container {
+            display: none;
+            visibility: hidden;
+        }
+
+        #x1 {
+            display: none;
+            visibility: hidden;
+        }
+
+        #x2 {
+            display: none;
+            visibility: hidden;
+        }
+    }
+    /*#endregion */
+
+    /*#region TimeLine */
+
+    /* The actual timeline (the vertical ruler) */
+    .timeline {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: #474e5d;
+    }
+
+        /* The actual timeline (the vertical ruler) */
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: white;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -4px; /*調整中線位置*/
+        }
+
+    /* Container around content */
+    .timeLineContainer {
+        padding: 10px 40px;
+        position: relative;
+        background-color: inherit;
+        width: 50%;
+    }
+
+        /* The circles on the timeline */
+        .timeLineContainer::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -12.3px; /*調整球球位置*/
+            background-color: white;
+            border: 4px solid #FF9F55;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+    /* Place the container to the left */
+    .left {
+        left: 0;
+    }
+
+    /* Place the container to the right */
+    .right {
+        left: 50%;
+    }
+
+    /* Add arrows to the left container (pointing right) */
+    .left::before {
+        content: " ";
+        height: 0;
+        position: absolute;
+        top: 22px;
+        width: 0;
+        z-index: 1;
+        right: 30px;
+        border: medium solid white;
+        border-width: 10px 0 10px 10px;
+        border-color: transparent transparent transparent white;
+    }
+
+    /* Add arrows to the right container (pointing left) */
+    .right::before {
+        content: " ";
+        height: 0;
+        position: absolute;
+        top: 22px;
+        width: 0;
+        z-index: 1;
+        left: 30px;
+        border: medium solid white;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent white transparent transparent;
+    }
+
+    /* Fix the circle for containers on the right side */
+    .right::after {
+        left: -13.1px; /*調整球球位置*/
+    }
+
+    /* The actual content */
+    .content {
+        padding: 20px 30px;
+        background-color: white;
+        position: relative;
+        border-radius: 6px;
+    }
+
+    /* Media queries - Responsive timeline on screens less than 600px wide */
+    @@media screen and (max-width: 600px) {
+        /* Place the timelime to the left */
+        .timeline::after {
+            left: 31px;
+        }
+        /* Full-width containers */
+        .timeLineContainer {
+            width: 100%;
+            padding-left: 70px;
+            padding-right: 25px;
+        }
+            /* Make sure that all arrows are pointing leftwards */
+            .timeLineContainer::before {
+                left: 60px;
+                border: medium solid white;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent white transparent transparent;
+            }
+        /* Make sure all circles are at the same spot */
+        .left::after, .right::after {
+            left: 15px;
+        }
+        /* Make all right containers behave like the left ones */
+        .right {
+            left: 0%;
+        }
+    }
+    /*#endregion */
+
+    .btn-buy {
+        float: right;
+    }
+
+    hr.new1 {
+        border-top: 2px dashed black;
+    }
+</style>
+
+
+<div class="container">
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-md-9 embed-responsive">
+            <a href="@Url.Action("MyDIYChangeLight_2","Home")#chapter0" id="x1" class="btn btn-success tooltip-container tooltipPositionA animate__animated animate__backInLeft">
+                Here !
+                <span class="tooltip">燈泡不會亮嗎?</span>
+            </a>
+            <a href="@Url.Action("MyDIYChangeLight_1","Home")#chapter0" id="x2" class="btn btn-success tooltip-container tooltipPositionB animate__animated animate__backInLeft">
+                Here !
+                <span class="tooltip">要更換新的燈座嗎?</span>
+            </a>
+            @*注意: 圖片高度有用inline寫*@
+            <img src="~/Images/DIYImages/ChangeLight/ChangLight-1-Demo.png" class="img-responsive" style="max-width:100%; height:630px;" alt="Alternate Text" />
+        </div>
+
+        @*放零件、工具清單做超連結到商城*@
+        <div class="col-md-3">
+            <h3>工具</h3>
+            <ul class="list-group">
+                <li class="list-group-item">老虎鉗<a href="@Url.Action("Product","Tool")?ProductCategoryID=Ct018" class="btn btn-info btn-buy" , new { target="_blank" }>購買</a></li>
+                <li class="list-group-item">一字螺絲起子<a href="@Url.Action("Product","Tool")?ProductCategoryID=Ct011" class="btn btn-info btn-buy" , new { target="_blank" }>購買</a></li>
+            </ul>
+            <br />
+            <h3>零件</h3>
+            <ul class="list-group">
+                <li class="list-group-item">崁燈<a href="@Url.Action("Product","Tool")?ProductCategoryID=Ct014" class="btn btn-info btn-buy" , new { target="_blank" }>購買</a></li>
+                <li class="list-group-item">電火布<a href="@Url.Action("Product","Tool")?ProductCategoryID=Ct021" class="btn btn-info btn-buy" , new { target="_blank" }>購買</a></li>
+            </ul>
+            <br />
+            <h3 class="userInquire">問題</h3>
+            <div class="list-group userInquire">
+                <a href="@Url.Action("MyDIYChangeLight_2","Home")#chapter0" class="list-group-item userInquire">燈泡不會亮嗎?</a>
+                <a href="@Url.Action("MyDIYChangeLight_1","Home")#chapter0" class="list-group-item userInquire">要更換新的燈座嗎?</a>
+            </div>
+            <h3>不符合您的需求嗎?<a href="@Url.Action("Tasker","Tasker")" class="btn btn-danger" , new { target="_blank" }>找師傅</a></h3>
+        </div>
+    </div>
+
+    @*影片教學*@
+    <a name="chapter0"></a>
+    <div class="divider div-transparent div-dot"></div> @*水平分割線*@
+    <br />
+    <div class="row">
+        <div class="col-md-10">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tmFd6PQUZOY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="col-md-2 list-group">
+            <a href="#chapter1" class="list-group-item">無罩式嵌燈</a>
+            <a href="#chapter2" class="list-group-item">有罩式嵌燈A</a>
+            <a href="#chapter3" class="list-group-item">有罩式嵌燈B</a>
+            <a href="#chapter4" class="list-group-item">LED嵌燈</a>
+        </div>
+    </div>
+
+    <a name="chapter1"></a>@*影片章節*@
+    <div class="divider div-transparent div-dot"></div> @*水平分割線*@
+    @*步驟說明 >>> 開始*@
+    <br />
+    <h2 class="display-4">步驟教學<small>-LED嵌燈的安裝以及拆卸方法</small></h2>
+    <h4>因應現今的裝潢風格，家中許多照明設備皆以「嵌燈」為主，今天想跟大家分享3種舊式嵌燈以及1種新式LED嵌燈的安裝以及拆卸方法</h4>
+
+    <!-- #region TimeLine -->
+    <div class="timeline">
+
+        <div class="timeLineContainer left">
+            <div class="content">
+                <h2>【無罩式嵌燈】拆卸</h2>
+                <img src="~/Images/DIYImages/ChangeLight/ChangLight-1-02.jpg" class="img-responsive img-thumbnail" alt="【無罩式嵌燈】拆卸1." />
+                <h5>第一步-先將燈泡旋下來。</h5>
+            </div>
+        </div>
+        <div class="timeLineContainer right">
+            <div class="content">
+                <h2>【無罩式嵌燈】拆卸</h2>
+                <img src="~/Images/DIYImages/ChangeLight/ChangLight-1-03.jpg" class="img-responsive img-thumbnail" alt="【無罩式嵌燈】拆卸2." />
+                <h5>第二步-將燈罩拿下來。雙手手指向施力，同時向下拉。</h5>
+            </div>
+        </div>
+
+        <div class="timeLineContainer left">
+            <div class="content">
+                <h2>【無罩式嵌燈】拆卸</h2>
+                <img src="~/Images/DIYImages/ChangeLight/ChangLight-1-04.jpg" class="img-responsive img-thumbnail" alt="無罩式嵌燈】拆卸3." />
+                <h5>第三步-將燈座取下。此款燈座有三個鰭片，稍微將三邊的鰭片麒片向外扳，再將燈座取下即可。</h5>
+            </div>
+        </div>
+        <div class="timeLineContainer right">
+            <div class="content">
+                <h2>無罩式嵌燈】拆卸</h2>
+                <img src="~/Images/DIYImages/ChangeLight/ChangLight-1-05.jpg" class="img-responsive img-thumbnail" alt="無罩式嵌燈】拆卸4." />
+                <h5>拆下來長這樣子。</h5>
+            </div>
+        </div>
+
+
+        <div class="timeLineContainer left">
+            <div class="content">
+                <h2>【無罩式嵌燈】安裝</h2>
+                <img src="~/Images/DIYImages/ChangeLight/ChangLight-1-06.jpg" class="img-responsive img-thumbnail" alt="【無罩式嵌燈】安裝1." />
+                <h5>第一步-把將燈座裝回去。</h5>
+            </div>
+        </div>
+        <div class="timeLineContainer right">
+            <div class="content">
+                <h2>【無罩式嵌燈】安裝</h2>
+                <img src="~/Images/DIYImages/ChangeLight/ChangLight-1-07.jpg" class="img-responsive img-thumbnail" alt="無罩式嵌燈】安裝2." />
+                <h5>第二步-注意三邊的鰭片需要向內折。</h5>
+            </div>
+        </div>
+
+        <div class="timeLineContainer left">
+            <div class="content">
+                <h2>【無罩式嵌燈】安裝</h2>
+                <img src="~/Images/DIYImages/ChangeLight/ChangLight-1-08.jpg" class="img-responsive img-thumbnail" alt="【無罩式嵌燈】安裝3." />
+                <h5>第三步-把燈罩輕推上去。</h5>
+            </div>
+        </div>
+        <div class="timeLineContainer right">
+            <div class="content">
+                <h2>【無罩式嵌燈】安裝</h2>
+                <img src="~/Images/DIYImages/ChangeLight/ChangLight-1-09.jpg" class="img-responsive img-thumbnail" alt="【無罩式嵌燈】安裝4." />
+                <h5>第四步-把燈泡旋上去。</h5>
+            </div>
+        </div>
+
+
+        <div class="timeLineContainer left">
+            <div class="content">
+                <h2>【無罩式嵌燈】安裝</h2>
+                <img src="~/Images/DIYImages/ChangeLight/ChangLight-1-10.jpg" class="img-responsive img-thumbnail" alt="【無罩式嵌燈】安裝5." />
+                <h5>安裝完成!</h5>
+            </div>
+        </div>
+
+        <a name="chapter2"></a>@*影片章節*@
+        <hr class="new1" />
+        <br />
+
+        <div class="timeLineContainer right">
+            <div class="content">
+                <h2>【有罩式嵌燈A】拆卸</h2>
+                <img src="~/Images/DIYImages/ChangeLight/ChangLight-1-12.jpg" class="img-responsive img-thumbnail" alt="【有罩式嵌燈A】拆卸1." />
+                <h5>第一步-將反光罩取下。和取下燈罩的方式一樣，雙手向施力，再輕輕向下拉。</h5>
+            </div>
+        </div>
+
+        <div class="timeLineContainer left">
+            <div class="content">
+                <h2>【有罩式嵌燈A】拆卸</h2>
+                <img src="~/Images/DIYImages/ChangeLight/ChangLight-1-13.jpg" class="img-responsive img-thumbnail" alt="【有罩式嵌燈A】拆卸2." />
+                <h5>第二步-將燈泡旋下來。要注意燈泡在側邊，小心手不小心刮傷。</h5>
+            </div>
+        </div>
+        <div class="timeLineContainer right">
+            <div class="content">
+                <h2>【有罩式嵌燈A】拆卸</h2>
+                <img src="~/Images/DIYImages/ChangeLight/ChangLight-1-14.jpg" class="img-responsive img-thumbnail" alt="【有罩式嵌燈A】拆卸3." />
+                <h5>第三步-將燈座取下。此嵌燈為2片鰭片，一樣將片鰭片分別向外扳，再將燈組取下。</h5>
+            </div>
+        </div>
+
+        <div class="timeLineContainer left">
+            <div class="content">
+                <h2>【有罩式嵌燈A】拆卸</h2>
+                <img src="~/Images/DIYImages/ChangeLight/ChangLight-1-15.jpg" class="img-responsive img-thumbnail" alt="【有罩式嵌燈A】拆卸4." />
+                <h5>拆下來長這樣子。安裝步驟為拆除步驟倒敘回去，就不多做贅述。</h5>
+            </div>
+        </div>
+
+        <a name="chapter3"></a>@*影片章節*@
+        <hr class="new1" />
+        <br />
+
+        <div class="timeLineContainer right">
+            <div class="content">
+                <h2>【有罩式嵌燈B】拆卸</h2>
+                <img src="~/Images/DIYImages/ChangeLight/ChangLight-1-16.jpg" class="img-responsive img-thumbnail" alt="【有罩式嵌燈B】拆卸" />
+                <h5>第三種有罩式嵌燈，也是大部分比較不會換的長這樣子，如圖。</h5>
+            </div>
+        </div>
+
+        <div class="timeLineContainer left">
+            <div class="content">
+                <h2>【有罩式嵌燈B】拆卸</h2>
+                <img src="~/Images/DIYImages/ChangeLight/ChangLight-1-17.jpg" class="img-responsive img-thumbnail" alt="【有罩式嵌燈B】拆卸1." />
+                <h5>第一步-將燈罩剝下來。注意一下，一開始燈罩是貼再天花板上的，需要用手去摳一下燈罩周圍。</h5>
+            </div>
+        </div>
+        <div class="timeLineContainer right">
+            <div class="content">
+                <h2>【有罩式嵌燈B】拆卸</h2>
+                <img src="~/Images/DIYImages/ChangeLight/ChangLight-1-18.jpg" class="img-responsive img-thumbnail" alt="【有罩式嵌燈B】拆卸" />
+                <h5>再來就是把懸掛在兩邊的鉤角內壓取下。</h5>
+            </div>
+        </div>
+
+        <div class="timeLineContainer left">
+            <div class="content">
+                <h2>【有罩式嵌燈B】拆卸</h2>
+                <img src="~/Images/DIYImages/ChangeLight/ChangLight-1-19.jpg" class="img-responsive img-thumbnail" alt="【有罩式嵌燈B】拆卸2." />
+                <h5>第二步-將燈泡旋下來。</h5>
+            </div>
+        </div>
+        <div class="timeLineContainer right">
+            <div class="content">
+                <h2>【有罩式嵌燈B】拆卸</h2>
+                <img src="~/Images/DIYImages/ChangeLight/ChangLight-1-20.jpg" class="img-responsive img-thumbnail" alt="【有罩式嵌燈B】拆卸3." />
+                <h5>第三步-將燈組取下(這也是最多人不知道怎麼用的地方)，圖片中有鐵絲的地方，就是用來固定燈組，俗稱耳朵，此款嵌燈有三個耳朵。</h5>
+            </div>
+        </div>
+
+        <div class="timeLineContainer left">
+            <div class="content">
+                <h2>【有罩式嵌燈B】拆卸</h2>
+                <img src="~/Images/DIYImages/ChangeLight/ChangLight-1-21.jpg" class="img-responsive img-thumbnail" alt="【有罩式嵌燈B】拆卸" />
+                <h5>拉耳朵上方的鐵絲，順著向外拉，即可取出。</h5>
+            </div>
+        </div>
+        <div class="timeLineContainer right">
+            <div class="content">
+                <h2>【有罩式嵌燈B】拆卸</h2>
+                <img src="~/Images/DIYImages/ChangeLight/ChangLight-1-22.jpg" class="img-responsive img-thumbnail" alt="【有罩式嵌燈B】拆卸" />
+                <h5>拆下來長這樣子。安裝步驟為拆除步驟倒敘回去，就不多做贅述。</h5>
+            </div>
+        </div>
+
+        <a name="chapter4"></a>@*影片章節*@
+        <hr class="new1" />
+        <br />
+
+        <div class="timeLineContainer left">
+            <div class="content">
+                <h2>【LED嵌燈】安裝</h2>
+                <img src="~/Images/DIYImages/ChangeLight/ChangLight-1-23.jpg" class="img-responsive img-thumbnail" alt="【LED嵌燈】安裝" />
+                <h5>LED嵌燈長這樣子，如左圖。可能比較多人遇到舊式嵌燈換新式嵌燈的狀況，因此這邊已安裝敘述為主。</h5>
+            </div>
+        </div>
+        <div class="timeLineContainer right">
+            <div class="content">
+                <h2>【LED嵌燈】安裝</h2>
+                <img src="~/Images/DIYImages/ChangeLight/ChangLight-1-24.jpg" class="img-responsive img-thumbnail" alt="【LED嵌燈】安裝1." />
+                <h5>第一步-電線插入快接頭。</h5>
+            </div>
+        </div>
+
+        <div class="timeLineContainer left">
+            <div class="content">
+                <h2>【LED嵌燈】安裝</h2>
+                <img src="~/Images/DIYImages/ChangeLight/ChangLight-1-25.jpg" class="img-responsive img-thumbnail" alt="【LED嵌燈】安裝2." />
+                <h5>第二步-將燈組放上去。LED嵌燈就沒有鰭片，取而代之的是彈片    先將一邊彈片收至天花板上，再將另一邊(彈片)收上去。</h5>
+            </div>
+        </div>
+        <div class="timeLineContainer right">
+            <div class="content">
+                <h2>【LED嵌燈】安裝</h2>
+                <img src="~/Images/DIYImages/ChangeLight/ChangLight-1-26.jpg" class="img-responsive img-thumbnail" alt="【LED嵌燈】安裝" />
+                <h5>安裝完成。新式嵌燈最後還可以左右調整位置，比起舊式嵌燈，真的是快速又省時。以上就這次的內容，希望有幫助到各位。</h5>
+            </div>
+        </div>@*步驟說明 <<< 結束*@
+
+    </div>
+    <!-- #endregion -->
+    <br />
+    <br />
+</div>@*end of container*@
+
+<script>
+    var viewportWidth = $(window).width();
+    console.log(viewportWidth);
+    if (viewportWidth < 1000) {
+        // alert("OK");
+        // 當視窗寬度小於900px時執行
+        $(".tooltip-container").hide();
+        $(".userInquire").show()
+    } else {
+        $(".tooltip-container").show();
+        $(".userInquire").hide();
+    }
+</script>
+
+

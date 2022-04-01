@@ -62,6 +62,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -133,9 +135,65 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BackendController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MemberController.cs" />
+    <Compile Include="Controllers\MemberLoginController.cs" />
+    <Compile Include="Controllers\PartialViewController.cs" />
+    <Compile Include="Controllers\TaskerController.cs" />
+    <Compile Include="Controllers\TaskerMemberController.cs" />
+    <Compile Include="Controllers\ToolController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Check.cs" />
+    <Compile Include="Models\CVMEditTasker.cs" />
+    <Compile Include="Models\CVMManageOrder.cs" />
+    <Compile Include="Models\CVMQueryTasker.cs" />
+    <Compile Include="Models\CVMTaskerDetail.cs" />
+    <Compile Include="Models\dbDIYModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbDIYModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dbDIYModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbDIYModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dbDIYModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbDIYModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Member.cs">
+      <DependentUpon>dbDIYModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MyEncrypt.cs" />
+    <Compile Include="Models\Orders.cs">
+      <DependentUpon>dbDIYModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Order_Detail.cs">
+      <DependentUpon>dbDIYModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Product.cs">
+      <DependentUpon>dbDIYModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductReply.cs">
+      <DependentUpon>dbDIYModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Product_Category.cs">
+      <DependentUpon>dbDIYModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceAreaList.cs" />
+    <Compile Include="Models\Tasker.cs">
+      <DependentUpon>dbDIYModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TaskerComment.cs">
+      <DependentUpon>dbDIYModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TaskerService.cs">
+      <DependentUpon>dbDIYModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -149,8 +207,406 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\DIYImages\ChangeFaucet_demo.png" />
+    <Content Include="Images\DIYImages\changeLight2-1.jpg" />
+    <Content Include="Images\DIYImages\changeLight2-2.jpg" />
+    <Content Include="Images\DIYImages\changeLight2-3.jpg" />
+    <Content Include="Images\DIYImages\changeLight2-4.jpg" />
+    <Content Include="Images\DIYImages\changeLight2-first.jpg" />
+    <Content Include="Images\DIYImages\ChangeLight\ChangLight-1-01.jpg" />
+    <Content Include="Images\DIYImages\ChangeLight\ChangLight-1-02.jpg" />
+    <Content Include="Images\DIYImages\ChangeLight\ChangLight-1-03.jpg" />
+    <Content Include="Images\DIYImages\ChangeLight\ChangLight-1-04.jpg" />
+    <Content Include="Images\DIYImages\ChangeLight\ChangLight-1-05.jpg" />
+    <Content Include="Images\DIYImages\ChangeLight\ChangLight-1-06.jpg" />
+    <Content Include="Images\DIYImages\ChangeLight\ChangLight-1-07.jpg" />
+    <Content Include="Images\DIYImages\ChangeLight\ChangLight-1-08.jpg" />
+    <Content Include="Images\DIYImages\ChangeLight\ChangLight-1-09.jpg" />
+    <Content Include="Images\DIYImages\ChangeLight\ChangLight-1-10.jpg" />
+    <Content Include="Images\DIYImages\ChangeLight\ChangLight-1-11.jpg" />
+    <Content Include="Images\DIYImages\ChangeLight\ChangLight-1-12.jpg" />
+    <Content Include="Images\DIYImages\ChangeLight\ChangLight-1-13.jpg" />
+    <Content Include="Images\DIYImages\ChangeLight\ChangLight-1-14.jpg" />
+    <Content Include="Images\DIYImages\ChangeLight\ChangLight-1-15.jpg" />
+    <Content Include="Images\DIYImages\ChangeLight\ChangLight-1-16.jpg" />
+    <Content Include="Images\DIYImages\ChangeLight\ChangLight-1-17.jpg" />
+    <Content Include="Images\DIYImages\ChangeLight\ChangLight-1-18.jpg" />
+    <Content Include="Images\DIYImages\ChangeLight\ChangLight-1-19.jpg" />
+    <Content Include="Images\DIYImages\ChangeLight\ChangLight-1-20.jpg" />
+    <Content Include="Images\DIYImages\ChangeLight\ChangLight-1-21.jpg" />
+    <Content Include="Images\DIYImages\ChangeLight\ChangLight-1-22.jpg" />
+    <Content Include="Images\DIYImages\ChangeLight\ChangLight-1-23.jpg" />
+    <Content Include="Images\DIYImages\ChangeLight\ChangLight-1-24.jpg" />
+    <Content Include="Images\DIYImages\ChangeLight\ChangLight-1-25.jpg" />
+    <Content Include="Images\DIYImages\ChangeLight\ChangLight-1-26.jpg" />
+    <Content Include="Images\DIYImages\ChangeLight\ChangLight-1-Demo.png" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-01.jpg" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-02.jpg" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-03.jpg" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-04.jpg" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-05.jpg" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-06.jpg" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-07.jpg" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-08.jpg" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-09.jpg" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-10.jpg" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-11.jpg" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-12.jpg" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-13.jpg" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-14.jpg" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-15.jpg" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-16.jpg" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-17.jpg" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-18.jpg" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-19.jpg" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-20.jpg" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-21.jpg" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-22.jpg" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-23.jpg" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-24.jpg" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-25.jpg" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-26.jpg" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-27.jpg" />
+    <Content Include="Images\DIYImages\ChangePipe\ChangPipe-1-28.jpg" />
+    <Content Include="Images\DIYImages\ChangFaucet\ChangFaucet-1-01.jpg" />
+    <Content Include="Images\DIYImages\ChangFaucet\ChangFaucet-1-02.jpg" />
+    <Content Include="Images\DIYImages\ChangFaucet\ChangFaucet-1-03.jpg" />
+    <Content Include="Images\DIYImages\ChangFaucet\ChangFaucet-1-04.jpg" />
+    <Content Include="Images\DIYImages\ChangFaucet\ChangFaucet-1-05.jpg" />
+    <Content Include="Images\DIYImages\ChangFaucet\ChangFaucet-1-06.jpg" />
+    <Content Include="Images\DIYImages\ChangFaucet\ChangFaucet-1-07.jpg" />
+    <Content Include="Images\DIYImages\ChangFaucet\ChangFaucet-1-08.jpg" />
+    <Content Include="Images\DIYImages\ChangFaucet\ChangFaucet-1-09.jpg" />
+    <Content Include="Images\DIYImages\ChangFaucet\ChangFaucet-1-10.jpg" />
+    <Content Include="Images\DIYImages\ChangFaucet\ChangFaucet-1-11.jpg" />
+    <Content Include="Images\DIYImages\ChangFaucet\ChangFaucet-1-12.jpg" />
+    <Content Include="Images\DIYImages\ChangFaucet\ChangFaucet-1-13.jpg" />
+    <Content Include="Images\DIYImages\ChangFaucet\ChangFaucet-1-14.jpg" />
+    <Content Include="Images\DIYImages\ChangFaucet\ChangFaucet-1-15.jpg" />
+    <Content Include="Images\DIYImages\ChangFaucet\ChangFaucet-1-16.jpg" />
+    <Content Include="Images\DIYImages\ChangFaucet\ChangFaucet-1-17.jpg" />
+    <Content Include="Images\DIYImages\ChangFaucet\ChangFaucet-1-18.jpg" />
+    <Content Include="Images\DIYImages\ChangFaucet\ChangFaucet-1-19.jpg" />
+    <Content Include="Images\DIYImages\ChangFaucet\ChangFaucet-1-20.jpg" />
+    <Content Include="Images\DIYImages\DIY_1.JPG" />
+    <Content Include="Images\DIYImages\DIY_10.JPG" />
+    <Content Include="Images\DIYImages\DIY_11.JPG" />
+    <Content Include="Images\DIYImages\DIY_12.JPG" />
+    <Content Include="Images\DIYImages\DIY_13.JPG" />
+    <Content Include="Images\DIYImages\DIY_14.JPG" />
+    <Content Include="Images\DIYImages\DIY_15.JPG" />
+    <Content Include="Images\DIYImages\DIY_16.JPG" />
+    <Content Include="Images\DIYImages\DIY_17.JPG" />
+    <Content Include="Images\DIYImages\DIY_2.JPG" />
+    <Content Include="Images\DIYImages\DIY_3.JPG" />
+    <Content Include="Images\DIYImages\DIY_4.JPG" />
+    <Content Include="Images\DIYImages\DIY_5.JPG" />
+    <Content Include="Images\DIYImages\DIY_6.JPG" />
+    <Content Include="Images\DIYImages\DIY_7.JPG" />
+    <Content Include="Images\DIYImages\DIY_8.JPG" />
+    <Content Include="Images\DIYImages\DIY_9.JPG" />
+    <Content Include="Images\DIYImages\lightform1.jpg" />
+    <Content Include="Images\DIYImages\ligt.jpg" />
+    <Content Include="Images\DIYImages\SOP1.jpg" />
+    <Content Include="Images\DIYImages\SOP2.jpg" />
+    <Content Include="Images\DIYImages\SOP3.jpg" />
+    <Content Include="Images\DIYImages\SOP4.jpg" />
+    <Content Include="Images\DIYImages\SOP5.jpg" />
+    <Content Include="Images\DIYImages\SOP6.jpg" />
+    <Content Include="Images\DIYImages\SOP7.jpg" />
+    <Content Include="Images\DIYImages\SOP8.jpg" />
+    <Content Include="Images\DIYImages\test.png" />
+    <Content Include="Images\DIYImages\test2.png" />
+    <Content Include="Images\DIYImages\washhand.jpg" />
+    <Content Include="Images\DIYImages\嵌燈.png" />
+    <Content Include="Images\DIYImages\結構圖.jpg" />
+    <Content Include="Images\IndexImages\1589356215_2.jpg" />
+    <Content Include="Images\IndexImages\living room.jpg" />
+    <Content Include="Images\IndexImages\living room02.jpg" />
+    <Content Include="Images\MemberImages\工具1.jpg" />
+    <Content Include="Images\MemberImages\師傅1.jpg" />
+    <Content Include="Images\MemberImages\師傅2.jpg" />
+    <Content Include="Images\MemberImages\材料1.jpg" />
+    <Content Include="Images\PartialViewImages\2.png" />
+    <Content Include="Images\TaskerImages\CaseImage\CaseImage01.jpg" />
+    <Content Include="Images\TaskerImages\CaseImage\CaseImage02.jpg" />
+    <Content Include="Images\TaskerImages\CaseImage\CaseImage03.jpg" />
+    <Content Include="Images\TaskerImages\CaseImage\CaseImage04.jpg" />
+    <Content Include="Images\TaskerImages\CaseImage\CaseImage05.jpg" />
+    <Content Include="Images\TaskerImages\CaseImage\CaseImage06.jpg" />
+    <Content Include="Images\TaskerImages\CaseImage\CaseImage07.jpg" />
+    <Content Include="Images\TaskerImages\CaseImage\CaseImage08.jpg" />
+    <Content Include="Images\TaskerImages\CaseImage\CaseImage09.jpg" />
+    <Content Include="Images\TaskerImages\CaseImage\CaseImage10.jpg" />
+    <Content Include="Images\TaskerImages\demo01.jpg" />
+    <Content Include="Images\TaskerImages\demo02.jpg" />
+    <Content Include="Images\TaskerImages\demo03.jpg" />
+    <Content Include="Images\TaskerImages\demo04.jpg" />
+    <Content Include="Images\TaskerImages\demo05.jpg" />
+    <Content Include="Images\TaskerImages\favpng_air-filter-vacuum-cleaner-pump-sludge.png" />
+    <Content Include="Images\TaskerImages\living room.jpg" />
+    <Content Include="Images\TaskerImages\Pt046.jpg" />
+    <Content Include="Images\TaskerImages\Pt049.jpg" />
+    <Content Include="Images\TaskerImages\Tasker01.png" />
+    <Content Include="Images\TaskerImages\Tasker02.png" />
+    <Content Include="Images\TaskerImages\Tasker03.png" />
+    <Content Include="Images\TaskerImages\Tasker04.png" />
+    <Content Include="Images\TaskerImages\Tasker05.png" />
+    <Content Include="Images\TaskerImages\Tasker06.png" />
+    <Content Include="Images\TaskerImages\Tasker07.png" />
+    <Content Include="Images\TaskerImages\Tasker08.png" />
+    <Content Include="Images\TaskerImages\Tasker09.png" />
+    <Content Include="Images\TaskerImages\Tasker10.png" />
+    <Content Include="Images\TaskerImages\Tasker11.png" />
+    <Content Include="Images\TaskerImages\Tasker12.png" />
+    <Content Include="Images\TaskerImages\Tasker13.png" />
+    <Content Include="Images\TaskerImages\Tasker14.png" />
+    <Content Include="Images\TaskerImages\Tasker15.png" />
+    <Content Include="Images\TaskerImages\Tasker16.png" />
+    <Content Include="Images\TaskerImages\Tasker17.png" />
+    <Content Include="Images\TaskerImages\Tasker18.png" />
+    <Content Include="Images\TaskerImages\Tasker19.png" />
+    <Content Include="Images\TaskerImages\Tasker20.png" />
+    <Content Include="Images\TaskerImages\Tasker21.png" />
+    <Content Include="Images\TaskerImages\Tasker22.png" />
+    <Content Include="Images\TaskerImages\Tasker23.png" />
+    <Content Include="Images\TaskerImages\Tasker24.png" />
+    <Content Include="Images\TaskerImages\Tasker25.png" />
+    <Content Include="Images\TaskerImages\Tasker26.png" />
+    <Content Include="Images\TaskerImages\Tasker27.png" />
+    <Content Include="Images\TaskerImages\Tasker28.png" />
+    <Content Include="Images\TaskerImages\Tasker29.png" />
+    <Content Include="Images\TaskerImages\Tasker30.png" />
+    <Content Include="Images\TaskerImages\Tasker31.png" />
+    <Content Include="Images\TaskerImages\Tasker32.png" />
+    <Content Include="Images\TaskerImages\Tasker33.png" />
+    <Content Include="Images\TaskerImages\Tasker34.png" />
+    <Content Include="Images\TaskerImages\Tasker35.png" />
+    <Content Include="Images\TaskerImages\Tasker36.png" />
+    <Content Include="Images\TaskerImages\Tasker37.png" />
+    <Content Include="Images\TaskerImages\Tasker38.png" />
+    <Content Include="Images\TaskerImages\Tasker39.png" />
+    <Content Include="Images\TaskerImages\Tasker40.png" />
+    <Content Include="Images\TaskerImages\Tasker41.png" />
+    <Content Include="Images\TaskerImages\Tasker42.png" />
+    <Content Include="Images\TaskerImages\Tasker43.png" />
+    <Content Include="Images\TaskerImages\Tasker44.png" />
+    <Content Include="Images\TaskerImages\Tasker45.png" />
+    <Content Include="Images\TaskerImages\Tasker46.png" />
+    <Content Include="Images\TaskerImages\Tasker47.png" />
+    <Content Include="Images\TaskerImages\Tasker48.png" />
+    <Content Include="Images\TaskerImages\Tasker49.png" />
+    <Content Include="Images\TaskerImages\Tasker50.png" />
+    <Content Include="Images\TaskerImages\Tasker51.png" />
+    <Content Include="Images\TaskerImages\Tasker52.png" />
+    <Content Include="Images\TaskerImages\Tasker53.png" />
+    <Content Include="Images\TaskerImages\Tasker54.png" />
+    <Content Include="Images\TaskerImages\Tasker55.png" />
+    <Content Include="Images\TaskerImages\Tasker56.png" />
+    <Content Include="Images\TaskerImages\testPlumber2.jpg" />
+    <Content Include="Images\TaskerImages\testPlumber3.jpg" />
+    <Content Include="Images\TaskerImages\user01.png" />
+    <Content Include="Images\TaskerImages\未命名.png" />
+    <Content Include="Images\ToolImages\button.png" />
+    <Content Include="Images\ToolImages\DSCN2840.JPG" />
+    <Content Include="Images\ToolImages\favpng_air-filter-vacuum-cleaner-pump-sludge.png" />
+    <Content Include="Images\ToolImages\Pt001.jpg" />
+    <Content Include="Images\ToolImages\Pt002.jpg" />
+    <Content Include="Images\ToolImages\Pt003.jpg" />
+    <Content Include="Images\ToolImages\Pt004.jpg" />
+    <Content Include="Images\ToolImages\Pt005.jpg" />
+    <Content Include="Images\ToolImages\Pt006.jpg" />
+    <Content Include="Images\ToolImages\Pt007.jpg" />
+    <Content Include="Images\ToolImages\Pt008.jpg" />
+    <Content Include="Images\ToolImages\Pt009.jpg" />
+    <Content Include="Images\ToolImages\Pt010.jpg" />
+    <Content Include="Images\ToolImages\Pt011.jpg" />
+    <Content Include="Images\ToolImages\Pt012.jpg" />
+    <Content Include="Images\ToolImages\Pt013.jpg" />
+    <Content Include="Images\ToolImages\Pt014.jpg" />
+    <Content Include="Images\ToolImages\Pt015.jpg" />
+    <Content Include="Images\ToolImages\Pt016.jpg" />
+    <Content Include="Images\ToolImages\Pt017.jpg" />
+    <Content Include="Images\ToolImages\Pt018.jpg" />
+    <Content Include="Images\ToolImages\Pt019.jpg" />
+    <Content Include="Images\ToolImages\Pt020.jpg" />
+    <Content Include="Images\ToolImages\Pt021.jpg" />
+    <Content Include="Images\ToolImages\Pt022.jpg" />
+    <Content Include="Images\ToolImages\Pt023.jpg" />
+    <Content Include="Images\ToolImages\Pt024.jpg" />
+    <Content Include="Images\ToolImages\Pt025.jpg" />
+    <Content Include="Images\ToolImages\Pt026.jpg" />
+    <Content Include="Images\ToolImages\Pt027.jpg" />
+    <Content Include="Images\ToolImages\Pt028.jpg" />
+    <Content Include="Images\ToolImages\Pt029.jpg" />
+    <Content Include="Images\ToolImages\Pt030.jpg" />
+    <Content Include="Images\ToolImages\Pt031.jpg" />
+    <Content Include="Images\ToolImages\Pt032.jpg" />
+    <Content Include="Images\ToolImages\Pt033.jpg" />
+    <Content Include="Images\ToolImages\Pt034.jpg" />
+    <Content Include="Images\ToolImages\Pt035.jpg" />
+    <Content Include="Images\ToolImages\Pt036.jpg" />
+    <Content Include="Images\ToolImages\Pt037.jpg" />
+    <Content Include="Images\ToolImages\Pt038.jpg" />
+    <Content Include="Images\ToolImages\Pt039.jpg" />
+    <Content Include="Images\ToolImages\Pt040.jpg" />
+    <Content Include="Images\ToolImages\Pt041.jpg" />
+    <Content Include="Images\ToolImages\Pt042.jpg" />
+    <Content Include="Images\ToolImages\Pt043.jpg" />
+    <Content Include="Images\ToolImages\Pt044.jpg" />
+    <Content Include="Images\ToolImages\Pt045.jpg" />
+    <Content Include="Images\ToolImages\Pt046.jpg" />
+    <Content Include="Images\ToolImages\Pt047.jpg" />
+    <Content Include="Images\ToolImages\Pt048.jpg" />
+    <Content Include="Images\ToolImages\Pt049.jpg" />
+    <Content Include="Images\ToolImages\Pt050.jpg" />
+    <Content Include="Images\ToolImages\Pt051.jpg" />
+    <Content Include="Images\ToolImages\Pt052.jpg" />
+    <Content Include="Images\ToolImages\Pt053.jpg" />
+    <Content Include="Images\ToolImages\Pt054.jpg" />
+    <Content Include="Images\ToolImages\Pt055.jpg" />
+    <Content Include="Images\ToolImages\Pt056.jpg" />
+    <Content Include="Images\ToolImages\Pt057.jpg" />
+    <Content Include="Images\ToolImages\Pt058.jpg" />
+    <Content Include="Images\ToolImages\Pt059.jpg" />
+    <Content Include="Images\ToolImages\Pt060.jpg" />
+    <Content Include="Images\ToolImages\Pt061.jpg" />
+    <Content Include="Images\ToolImages\Pt064.jpg" />
+    <Content Include="Images\ToolImages\Pt065.jpg" />
+    <Content Include="Images\ToolImages\Pt066.jpg" />
+    <Content Include="Images\ToolImages\Pt067.jpg" />
+    <Content Include="Images\ToolImages\Pt068.jpg" />
+    <Content Include="Images\ToolImages\Pt069.jpg" />
+    <Content Include="Images\ToolImages\Pt070.jpg" />
+    <Content Include="Images\ToolImages\Pt071.jpg" />
+    <Content Include="Images\ToolImages\Pt072.jpg" />
+    <Content Include="Images\ToolImages\Pt073.jpg" />
+    <Content Include="Images\ToolImages\Pt074.jpg" />
+    <Content Include="Images\ToolImages\Pt075.jpg" />
+    <Content Include="Images\ToolImages\Pt076.jpg" />
+    <Content Include="Images\ToolImages\Pt077.jpg" />
+    <Content Include="Images\ToolImages\Pt078.jpg" />
+    <Content Include="Images\ToolImages\Tl001.jpg" />
+    <Content Include="Images\ToolImages\Tl002.jpg" />
+    <Content Include="Images\ToolImages\Tl003.jpg" />
+    <Content Include="Images\ToolImages\Tl004.jpg" />
+    <Content Include="Images\ToolImages\Tl005.jpg" />
+    <Content Include="Images\ToolImages\Tl006.jpg" />
+    <Content Include="Images\ToolImages\Tl007.jpg" />
+    <Content Include="Images\ToolImages\Tl008.jpg" />
+    <Content Include="Images\ToolImages\Tl009.jpg" />
+    <Content Include="Images\ToolImages\Tl010.jpg" />
+    <Content Include="Images\ToolImages\Tl011.jpg" />
+    <Content Include="Images\ToolImages\Tl012.jpg" />
+    <Content Include="Images\ToolImages\Tl013.jpg" />
+    <Content Include="Images\ToolImages\Tl014.jpg" />
+    <Content Include="Images\ToolImages\Tl015.jpg" />
+    <Content Include="Images\ToolImages\Tl016.jpg" />
+    <Content Include="Images\ToolImages\Tl017.jpg" />
+    <Content Include="Images\ToolImages\Tl018.jpg" />
+    <Content Include="Images\ToolImages\Tl019.jpg" />
+    <Content Include="Images\ToolImages\Tl020.jpg" />
+    <Content Include="Images\ToolImages\Tl021.jpg" />
+    <Content Include="Images\ToolImages\Tl022.jpg" />
+    <Content Include="Images\ToolImages\Tl023.jpg" />
+    <Content Include="Images\ToolImages\Tl024.jpg" />
+    <Content Include="Images\ToolImages\Tl025.jpg" />
+    <Content Include="Images\ToolImages\Tl026.jpg" />
+    <Content Include="Images\ToolImages\Tl027.jpg" />
+    <Content Include="Images\ToolImages\Tl028.jpg" />
+    <Content Include="Images\ToolImages\Tl029.jpg" />
+    <Content Include="Images\ToolImages\Tl030.jpg" />
+    <Content Include="Images\ToolImages\Tl031.jpg" />
+    <Content Include="Images\ToolImages\Tl032.jpg" />
+    <Content Include="Images\ToolImages\Tl033.jpg" />
+    <Content Include="Images\ToolImages\Tl034.jpg" />
+    <Content Include="Images\ToolImages\Tl035.jpg" />
+    <Content Include="Images\ToolImages\Tl036.jpg" />
+    <Content Include="Images\ToolImages\Tl037.jpg" />
+    <Content Include="Images\ToolImages\Tl038.jpg" />
+    <Content Include="Images\ToolImages\Tl039.jpg" />
+    <Content Include="Images\ToolImages\Tl040.jpg" />
+    <Content Include="Images\ToolImages\Tl041.jpg" />
+    <Content Include="Images\ToolImages\Tl042.jpg" />
+    <Content Include="Images\ToolImages\Tl043.jpg" />
+    <Content Include="Images\ToolImages\Tl044.jpg" />
+    <Content Include="Images\ToolImages\Tl045.jpg" />
+    <Content Include="Images\ToolImages\Tl046.jpg" />
+    <Content Include="Images\ToolImages\washhand.jpg" />
+    <Content Include="Images\ToolImages\不鏽鋼管束-10入 大.jpg" />
+    <Content Include="Images\ToolImages\不鏽鋼管束-10入 小.jpg" />
+    <Content Include="Images\ToolImages\兩段360度防濺增壓節水龍頭 大.jpg" />
+    <Content Include="Images\ToolImages\兩段360度防濺增壓節水龍頭小.jpg" />
+    <Content Include="Images\ToolImages\未命名.png" />
+    <Content Include="Images\ToolImages\止洩帶12PCS組大.jpg" />
+    <Content Include="Images\ToolImages\止洩帶12PCS組小.jpg" />
+    <Content Include="Images\ToolImages\水晶外牙%28紅%29 小.jpg" />
+    <Content Include="Images\ToolImages\水晶外牙%28紅%29大.jpg" />
+    <Content Include="Images\ToolImages\洗手台1.jpg" />
+    <Content Include="Images\ToolImages\洗手台2.jpg" />
+    <Content Include="Images\ToolImages\活動板手.png" />
+    <Content Include="Images\元件\logo.png" />
+    <Content Include="Images\元件\new四腳椅子.png" />
+    <Content Include="Images\元件\new浴缸.png" />
+    <Content Include="Images\元件\pexels-pixabay-220067.jpg" />
+    <Content Include="Images\元件\Userimg.png" />
+    <Content Include="Images\元件\VCG211232890114.jpg" />
+    <Content Include="Images\元件\VCG211258126145.jpg" />
+    <Content Include="Images\元件\VCG211258126170.jpg" />
+    <Content Include="Images\元件\VCG211275464204.jpg" />
+    <Content Include="Images\元件\VCG41N1200927568.jpg" />
+    <Content Include="Images\元件\VCG41N1247454989.jpg" />
+    <Content Include="Images\元件\—Pngtree—screw driver icon - watercolor_3644938.png" />
+    <Content Include="Images\元件\—Pngtree—wrench and screw driver icon_4998099.png" />
+    <Content Include="Images\元件\四腳椅子01.png" />
+    <Content Include="Images\元件\四腳椅子02.png" />
+    <Content Include="Images\元件\四腳椅子04.png" />
+    <Content Include="Images\元件\四腳椅子05.png" />
+    <Content Include="Images\元件\嵌燈.png" />
+    <Content Include="Images\元件\嵌燈01.png" />
+    <Content Include="Images\元件\桌子.png" />
+    <Content Include="Images\元件\桌子01.png" />
+    <Content Include="Images\元件\櫃子.png" />
+    <Content Include="Images\元件\櫃子01.png" />
+    <Content Include="Images\元件\櫃子02 .png" />
+    <Content Include="Images\元件\櫃子02.png" />
+    <Content Include="Images\元件\水龍頭04.png" />
+    <Content Include="Images\元件\水龍頭05.png" />
+    <Content Include="Images\元件\沙發椅01.png" />
+    <Content Include="Images\元件\沙發椅02.png" />
+    <Content Include="Images\元件\浴缸01.png" />
+    <Content Include="Images\元件\浴缸03.png" />
+    <Content Include="Images\元件\系統櫃01.png" />
+    <Content Include="Images\元件\系統櫃02.png" />
+    <Content Include="Images\元件\蓮蓬頭02.png" />
+    <Content Include="Images\元件\鏡子01.png" />
+    <Content Include="Images\元件\門把.png" />
+    <Content Include="Images\元件\門把01.png" />
+    <Content Include="Images\元件\電燈.png" />
+    <Content Include="Images\元件\電燈01.png" />
+    <Content Include="Images\元件\電燈02.png" />
+    <Content Include="Images\元件\電視.png" />
+    <Content Include="Images\元件\電視01.png" />
+    <Content Include="Images\元件\馬桶03.png" />
+    <Content Include="Models\dbDIYModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>dbDIYModel.Context.cs</LastGenOutput>
+      <DependentUpon>dbDIYModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\dbDIYModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>dbDIYModel.edmx</DependentUpon>
+      <LastGenOutput>dbDIYModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\dbDIYModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>dbDIYModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\dbDIYModel.edmx.diagram">
+      <DependentUpon>dbDIYModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -162,6 +618,71 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="static\css\animate.css" />
+    <Content Include="static\css\aos.css" />
+    <Content Include="static\css\bootstrap-datepicker.css" />
+    <Content Include="static\css\flaticon.css" />
+    <Content Include="static\css\icomoon.css" />
+    <Content Include="static\css\ionicons.min.css" />
+    <Content Include="static\css\jquery.timepicker.css" />
+    <Content Include="static\css\magnific-popup.css" />
+    <Content Include="static\css\open-iconic-bootstrap.min.css" />
+    <Content Include="static\css\owl.carousel.min.css" />
+    <Content Include="static\css\owl.theme.default.min.css" />
+    <Content Include="static\css\style.css" />
+    <Content Include="static\image\about.jpg" />
+    <Content Include="static\image\bg_6.jpg" />
+    <Content Include="static\image\choose-1.jpg" />
+    <Content Include="static\image\choose-2.jpg" />
+    <Content Include="static\image\choose-3.jpg" />
+    <Content Include="static\image\gallery-1.jpg" />
+    <Content Include="static\image\gallery-2.jpg" />
+    <Content Include="static\image\gallery-3.jpg" />
+    <Content Include="static\image\gallery-4.jpg" />
+    <Content Include="static\image\gallery-5.jpg" />
+    <Content Include="static\image\gallery-6.jpg" />
+    <Content Include="static\image\image_1.jpg" />
+    <Content Include="static\image\image_2.jpg" />
+    <Content Include="static\image\image_3.jpg" />
+    <Content Include="static\image\image_5.jpg" />
+    <Content Include="static\image\image_6.jpg" />
+    <Content Include="static\image\person_1.jpg" />
+    <Content Include="static\image\person_2.jpg" />
+    <Content Include="static\image\person_3.jpg" />
+    <Content Include="static\image\product-2.png" />
+    <Content Include="static\image\product-3.jpg" />
+    <Content Include="static\image\product-4.jpg" />
+    <Content Include="static\image\product-4.png" />
+    <Content Include="static\image\product-6.png" />
+    <Content Include="static\js\aos.js" />
+    <Content Include="static\js\bootstrap-datepicker.js" />
+    <Content Include="static\js\bootstrap.min.js" />
+    <Content Include="static\js\google-map.js" />
+    <Content Include="static\js\jquery-migrate-3.0.1.min.js" />
+    <Content Include="static\js\jquery.animateNumber.min.js" />
+    <Content Include="static\js\jquery.easing.1.3.js" />
+    <Content Include="static\js\jquery.magnific-popup.min.js" />
+    <Content Include="static\js\jquery.min.js" />
+    <Content Include="static\js\jquery.stellar.min.js" />
+    <Content Include="static\js\jquery.waypoints.min.js" />
+    <Content Include="static\js\main.js" />
+    <Content Include="static\js\owl.carousel.min.js" />
+    <Content Include="static\js\popper.min.js" />
+    <Content Include="static\js\scrollax.min.js" />
+    <Content Include="static\picture\bg_1.png" />
+    <Content Include="static\picture\bg_2.png" />
+    <Content Include="static\picture\image_1.jpg" />
+    <Content Include="static\picture\image_2.jpg" />
+    <Content Include="static\picture\person_1.jpg" />
+    <Content Include="static\picture\prod-1.png" />
+    <Content Include="static\picture\product-1.png" />
+    <Content Include="static\picture\product-2.png" />
+    <Content Include="static\picture\product-3.png" />
+    <Content Include="static\picture\product-4.png" />
+    <Content Include="static\picture\product-5.png" />
+    <Content Include="static\picture\product-6.png" />
+    <Content Include="static\picture\product-7.png" />
+    <Content Include="static\picture\product-8.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -176,10 +697,54 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="static\font\Flaticon.eot" />
+    <Content Include="static\font\Flaticon.ttf" />
+    <Content Include="static\font\Flaticon.woff" />
+    <Content Include="static\font\icomoon.eot" />
+    <Content Include="static\font\icomoon.ttf" />
+    <Content Include="static\font\icomoon.woff" />
+    <Content Include="static\font\ionicons.eot" />
+    <Content Include="static\font\ionicons.ttf" />
+    <Content Include="static\font\ionicons.woff" />
+    <Content Include="static\font\ionicons.woff2" />
+    <Content Include="static\font\open-iconic.eot" />
+    <Content Include="static\font\open-iconic.ttf" />
+    <Content Include="static\font\open-iconic.woff" />
+    <Content Include="Views\Backend\AddProduct.cshtml" />
+    <Content Include="Views\Backend\BackendUI.cshtml" />
+    <Content Include="Views\Backend\EditProduct.cshtml" />
+    <Content Include="Views\Backend\EditTasker.cshtml" />
+    <Content Include="Views\Backend\ManageMember.cshtml" />
+    <Content Include="Views\Backend\ManageOrder.cshtml" />
+    <Content Include="Views\Backend\ManageOrderDetail.cshtml" />
+    <Content Include="Views\Backend\ManageProduct.cshtml" />
+    <Content Include="Views\Backend\ManageReply.cshtml" />
+    <Content Include="Views\Backend\MemberDetail.cshtml" />
+    <Content Include="Views\Backend\TaskerIndex.cshtml" />
+    <Content Include="Views\MemberLogin\Index.cshtml" />
+    <Content Include="Views\MemberLogin\Login.cshtml" />
+    <Content Include="Views\MemberLogin\Register.cshtml" />
+    <Content Include="Views\Member\BasicData.cshtml" />
+    <Content Include="Views\Member\EditData.cshtml" />
+    <Content Include="Views\Member\Index.cshtml" />
+    <Content Include="Views\Member\Myorder.cshtml" />
+    <Content Include="Views\Member\OrderDetail.cshtml" />
+    <Content Include="Views\Member\PasswordChange.cshtml" />
+    <Content Include="Views\Member\ShoppingCar.cshtml" />
+    <Content Include="Views\Member\TaskerOrder.cshtml" />
+    <Content Include="Views\PartialView\TaskerPartial.cshtml" />
+    <Content Include="Views\PartialView\ToolPartial.cshtml" />
+    <Content Include="Views\TaskerMember\Index.cshtml" />
+    <Content Include="Views\TaskerMember\TaskerAccoumt.cshtml" />
+    <Content Include="Views\TaskerMember\TaskerMemberEdit.cshtml" />
+    <Content Include="Views\TaskerMember\TaskerRegister.cshtml" />
+    <Content Include="Views\Tasker\Tasker.cshtml" />
+    <Content Include="Views\Tasker\TaskerDetail.cshtml" />
+    <Content Include="Views\Tool\Product.cshtml" />
+    <Content Include="Views\Tool\ProductDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -193,6 +758,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

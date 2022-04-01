@@ -1,0 +1,49 @@
+﻿@model IEnumerable<DIY_v2.Models.ProductReply>
+
+@{
+    ViewBag.Title = "ManageReply";
+}
+
+<h2>管理商品留言</h2>
+
+
+<table class="table">
+    <tr>
+    
+        <th>
+            @Html.DisplayNameFor(model => model.MemberAccount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Replymain)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Initdate)
+        </th>
+
+       
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+   
+    <td>
+        @Html.DisplayFor(modelItem => item.MemberAccount)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Replymain)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Initdate)
+    </td>
+
+   
+
+    <td>
+        @Html.ActionLink("刪除留言", "deleteReply", new { ReplyID=item.ReplyID, ProductID = item.ProductID})
+    </td>
+</tr>
+}
+
+</table>

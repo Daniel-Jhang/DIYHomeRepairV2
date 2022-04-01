@@ -1,0 +1,76 @@
+﻿<h2>師傅預約</h2>
+
+<style>
+    .SC {
+        width: 180px;
+        border: 3px solid;
+        background-color: orange;
+        margin: 2px;
+        padding: 5px
+    }
+
+    .SM {
+        width: 180px;
+        border: 3px solid;
+        background-color: orange;
+        margin: 2px;
+        padding: 5px
+    }
+
+    .SP {
+        width: 180px;
+        border: 3px solid;
+        background-color: orange;
+        margin: 2px;
+        padding: 5px
+    }
+</style>
+
+<script src="~/Scripts/taiwan_address_auto_change.js"></script>
+
+<script type="text/javascript">
+    window.onload = function () {
+        //當頁面載完之後，用AddressSeleclList.Initialize()，
+        //傳入要綁定的縣市下拉選單ID及鄉鎮市區下拉選單ID
+        AddressSeleclList.Initialize('縣市1', '鄉鎮市區1');
+
+        //後面四個參數分別是兩個下拉選單的預設文字跟值
+        AddressSeleclList.Initialize('縣市2', '鄉鎮市區2', 'Please Select City', '0', 'Please Select Area', '0');
+    }
+
+
+    function show() {
+        //取出指定縣市及鄉鎮市區的下拉選單的值
+        alert(AddressSeleclList.ReturnSelectAddress('縣市1', '鄉鎮市區1'));
+    }
+</script>
+
+<div class="SP">
+    <label><b>服務地區</b></label><br />
+    <select id="縣市1"></select><br />
+    <br />
+    <select id="鄉鎮市區1"></select>
+</div>
+
+
+<div class="SC">
+    <label><b>服務類別</b></label><br />
+    <input type="checkbox" name="name" value="" />馬桶修繕<br />
+    <input type="checkbox" name="name" value="" />洗臉盆修繕<br />
+    <input type="checkbox" name="name" value="" />水龍頭修繕<br />
+    <input type="checkbox" name="name" value="" />熱水器修繕<br />
+    <input type="checkbox" name="name" value="" />蓮蓬頭修繕<br />
+    <input type="checkbox" name="name" value="" />衛浴修繕<br />
+
+</div>
+<div class="SM">
+    <label><b>服務價格</b></label><br />
+    <button><b>由低到高</b></button><br />
+    <br />
+    <button><b>由高到低</b></button><br />
+
+
+</div>
+
+
+

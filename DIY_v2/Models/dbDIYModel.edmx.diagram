@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="db07cd0d84b1441496e459323c86c846" Name="Diagram1">
+        <EntityTypeShape EntityType="DIY_DBModel.Member" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIY_DBModel.Order_Detail" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIY_DBModel.Orders" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIY_DBModel.Product" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIY_DBModel.Product_Category" Width="1.5" PointX="1.5" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIY_DBModel.ProductReply" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIY_DBModel.Tasker" Width="1.5" PointX="3.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIY_DBModel.TaskerComment" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIY_DBModel.TaskerService" Width="1.5" PointX="6" PointY="2.5" IsExpanded="true" />
+        <AssociationConnector Association="DIY_DBModel.FK__Order_Det__Membe__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="DIY_DBModel.FK__ProductRe__Membe__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="DIY_DBModel.FK__TaskerCom__Membe__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="DIY_DBModel.FK_Orders_Member" ManuallyRouted="false" />
+        <AssociationConnector Association="DIY_DBModel.FK__Order_Det__Order__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="DIY_DBModel.FK__Order_Det__Produ__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="DIY_DBModel.FK__Product__Product__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="DIY_DBModel.FK__ProductRe__Produ__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="DIY_DBModel.FK__TaskerCom__Taske__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="DIY_DBModel.FK__TaskerSer__Taske__4222D4EF" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

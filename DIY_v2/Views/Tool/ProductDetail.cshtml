@@ -1,0 +1,174 @@
+﻿@model DIY_v2.Models.Check
+@{
+    ViewBag.Title = "ProductDetail";
+}
+
+<style>
+    .reply-main {
+        height: 400px;
+        width: 900px;
+    }
+</style>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-5 ftco-animate">
+                @*會彈出圖片*@
+                <a href="@Model.Products_normal[0].ProductImage" class="image-popup prod-img-bg"><img src="@Model.Products_normal[0].ProductImage" class="img-fluid" alt="Colorlib Template"></a>
+            </div>
+            <div class="col-lg-6 product-details pl-md-5 ftco-animate">
+                <h3 class="name">@Model.Products_normal[0].ProductName</h3>
+                <div class="rating d-flex">
+                    <p class="text-left mr-4">
+                        @*評價星星*@
+                        <a href="#" class="mr-2">5.0</a>
+                        <a href="#"><span class="ion-ios-star-outline"></span></a>
+                        <a href="#"><span class="ion-ios-star-outline"></span></a>
+                        <a href="#"><span class="ion-ios-star-outline"></span></a>
+                        <a href="#"><span class="ion-ios-star-outline"></span></a>
+                        <a href="#"><span class="ion-ios-star-outline"></span></a>
+                    </p>
+                    <p class="text-left mr-4">
+                        <a href="#" class="mr-2" style="color: #000;">100 <span style="color: #bbb;">評價</span></a>
+                    </p>
+                    <p class="text-left">
+                        <a href="#" class="mr-2" style="color: #000;">500 <span style="color: #bbb;">已售出</span></a>
+                    </p>
+                </div>
+                <p class="price"><span>$@Model.Products_normal[0].ProductPrice</span></p>
+                <p>
+                    AWA歐瓦，法國設計技術，台灣精品製造。
+                    水龍頭產品榮獲德國紅點設計大獎肯定。
+
+                    環保節能：
+                    - 默認冷水供應模式，節省不必要的能源消耗
+                    - 省水40%的增氧節水器
+
+                </p>
+
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="form-group d-flex">
+                            <div class="select-wrap">
+                                @*<div class="icon"><span class="ion-ios-arrow-down"></span></div>*@
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="input-group col-md-6 d-flex mb-3">
+                        <span class="input-group-btn mr-2">
+                            <button type="button" class="quantity-left-minus btn" data-type="minus" data-field="" onclick="sub()">
+                                <i class="ion-ios-remove"></i>
+                            </button>
+                        </span>
+                        <input type="text" id="quantity" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
+                        <span class="input-group-btn ml-2">
+                            <button type="button" class="quantity-right-plus btn" data-type="plus" data-field="" onclick="add()">
+                                <i class="ion-ios-add"></i>
+                            </button>
+                        </span>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-md-12">
+                        <p style="color: #000;">還剩 @Model.Products_normal[0].InStock 件</p>
+                    </div>
+                </div>
+                <input type="hidden" class="Id" value=@Model.Products_normal[0].ProductID>
+                <input type="hidden" class="ProductPrice" value=@Model.Products_normal[0].ProductPrice>
+                @{
+                    if (@Session["Perssion"]?.ToString() != null)
+                    {
+                        <input type="button" class="AdCar" value="加入購物車" />
+                    }
+                    else
+                    {
+                      <input type="button" class="toMember " value="加入購物車" onclick="location.href='https://localhost:44332/MemberLogin/Login'" />
+                       
+
+                    }
+
+                }
+            </div>
+        </div>
+        <div class="row">
+            @{
+                if (Model.replies.Count > 0)
+                {
+                    <div class="col-md-12">
+                        <table>
+                            <tr>
+                                <th>帳號名稱</th>
+                                <th>留言內容</th>
+                                <th>時間</th>
+                                <th>評分</th>
+                            </tr>
+                            <tr>
+                                <td>@Model.replies[0].MemberAccount</td>
+                                <td>@Model.replies[0].Replymain</td>
+                                <td>@Model.replies[0].Initdate</td>
+                                <td>@Model.replies[0].Star</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                }
+            }
+            <div class="cpl-md-12">
+                <h3>商品評論</h3>
+                <form method="post" action="@Url.Action("ProductDetail")">
+                    <input type="hidden" name="ProductID" value="@Model.Products_normal[0].ProductID" />
+                    <textarea class="reply-main" name="replymain" placeholder="請輸入你的評論"></textarea><br />
+                    <input type="submit" value="送出" />
+                </form>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+</section>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+
+<script>
+
+    $('.AdCar').click(function () {
+        var ProductID = $('.Id').val();
+        var ProductName = $('.name').text();
+        var ProductPrice = parseInt($('.ProductPrice').val());
+        var Quantity = parseInt($('.quantity').val());
+
+        $.ajax({
+            url: "https://localhost:44332/Tool/AddShoppingcar",
+            type: "post",
+            data: { "ProductID": ProductID, "ProductName": ProductName, "ProductPrice": ProductPrice, "Quantity": Quantity },
+            success() {
+                window.alert("已經加入購物車")
+            }
+
+        })
+    })
+    function add() {
+
+        var num = parseInt($('.quantity').val());
+
+        num = num + 1;
+
+        $('.quantity').val(num.toString());
+    }
+    function sub() {
+
+        var num = parseInt($('.quantity').val());
+        num = num == 1 ? 1 : num - 1
+
+        $('.quantity').val(num.toString());
+    }
+
+
+
+</script>
