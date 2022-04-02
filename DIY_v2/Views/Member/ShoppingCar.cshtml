@@ -48,7 +48,7 @@
                 var countnumber = "count" + obj[i].value
                 total += Number(document.getElementById(countnumber).value)
 
-            } document.getElementById("countTotal").textContent = total;
+            } document.getElementById("countTotal").textContent = `總計：$${total}`;
         }
     }
 
@@ -168,9 +168,6 @@
             </td>
             <td>
                 <p class="text-justify">選擇全部</p>
-            </td>
-            <td>
-                總計
             </td>
             <td>
                 <label id="countTotal"></label>
