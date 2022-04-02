@@ -135,6 +135,7 @@ namespace DIY_v2.Controllers
         {
             FormsAuthentication.SignOut();   // 登出
             Session["Permission"] = null;
+            Session["shoppingcarcoumt"] = 0;
             return RedirectToAction("Index", "Home");
         }
 
@@ -175,7 +176,7 @@ namespace DIY_v2.Controllers
             string MemberAccount = User.Identity.Name;//抓出使用者的帳號
             var Id = db.Member.Where(x => x.MemberAccount == MemberAccount).Select(x => x.MemberID).FirstOrDefault();
 
-            int odcount = db.Order_Detail.Where(x=>x.MemberID==Id).Where(x => x.OrderStatus=="購物車").Count();
+            int odcount = db.Order_Detail.Where(x => x.MemberID == Id).Where(x => x.OrderStatus == "購物車").Count();
             Session["shoppingcarcoumt"] = odcount.ToString();
 
             #endregion
@@ -216,7 +217,7 @@ namespace DIY_v2.Controllers
 
         //Post:Member/ShoppingCar
         [HttpPost]
-        public ActionResult ShoppingCar(string RecipientName, string RecipientEmail, string RecipientAddress, string RecipientPhone,string paymethod)
+        public ActionResult ShoppingCar(string RecipientName, string RecipientEmail, string RecipientAddress, string RecipientPhone, string paymethod)
         {
             //找出會員帳號並指定給fUserId
             string MemberAccount = User.Identity.Name;
@@ -242,7 +243,7 @@ namespace DIY_v2.Controllers
                 item.RecipientPhone = RecipientPhone;
                 item.Paymethod = paymethod;
                 item.OrderStatus = "是";
-                
+
             }
             foreach (var item in carList)
             {
@@ -253,7 +254,7 @@ namespace DIY_v2.Controllers
             db.SaveChanges();
             #region 更新購物車產品數量
 
-          
+
             var Id = db.Member.Where(x => x.MemberAccount == MemberAccount).Select(x => x.MemberID).FirstOrDefault();
 
             int odcount = db.Order_Detail.Where(x => x.MemberID == Id).Where(x => x.OrderStatus == "購物車").Count();

@@ -55,6 +55,9 @@ namespace DIY_v2.Controllers
         {
             if (ModelState.IsValid)
             {
+                int count=db.Product.Count();
+                string AdProductID = "Pt" + String.Format("{0:000}", Convert.ToInt32(count+1));
+              
                 if (photo != null)
                 {
                     if (photo.ContentLength > 0)
@@ -67,6 +70,8 @@ namespace DIY_v2.Controllers
                         db.SaveChanges();
                     }
                 }
+                pt.ProductID = AdProductID;
+                pt.ProductDescription = pt.ProductDescription.Replace("\r\n", "<br>");
                 db.Product.Add(pt);
                 db.SaveChanges();
                 return RedirectToAction("ManageProduct");
@@ -109,6 +114,7 @@ namespace DIY_v2.Controllers
                 result.ProductImage = result3;
                 db.SaveChanges();
             }
+           pt.ProductDescription= pt.ProductDescription.Replace("\r\n", "<br>");
             result.ProductID = pt.ProductID;
             result.ProductName = pt.ProductName;
             result.ProductPrice = pt.ProductPrice;
@@ -399,6 +405,15 @@ namespace DIY_v2.Controllers
             var result = db.ProductReply.Where(x => x.ProductID == ProductID).ToList();
             return View(result);
         }
+        public ActionResult deleteReply(int ReplyID, string ProductID)
+
+        {
+
+           var result= db.ProductReply.Where(x=>x.ReplyID==ReplyID).FirstOrDefault();
+            db.ProductReply.Remove(result);
+            db.SaveChanges();
+            return RedirectToAction("ManageReply");
+        }
         #endregion
         #region 會員權限管理
         public ActionResult MemberDetail(int MemberID)
@@ -427,19 +442,34 @@ namespace DIY_v2.Controllers
         #region 訂單狀態管理
         public ActionResult ManageOrder()
         {
-            var result = db.Orders.ToList();
+            var result = db.Orders.Where(x=>x.OrderStatus!="購物車").ToList();
             return View(result);
         }
         public ActionResult ManageOrderDetail(string OrderID)
         {
-
+            Session["ordercount"] = 0;
             var result = db.Order_Detail.Where(x => x.OrderID == OrderID).ToList();
             CVMManageOrder Mo = new CVMManageOrder()
             {
                 od = result
             };
-            int i = 0;
-            return View(result);
+            return View(Mo);
+        }
+        [HttpPost]
+        public ActionResult ChangeOrder(string OrderID,string OrderStatus)
+        {
+
+            var result = db.Order_Detail.Where(x => x.OrderID == OrderID).ToList();
+         foreach(var item in result)
+            {
+                item.OrderStatus = OrderStatus;
+            }
+            db.SaveChanges();
+            var result2=db.Orders.Where(x=>x.OrderID == OrderID).FirstOrDefault();
+            result2.OrderStatus = OrderStatus;
+            db.SaveChanges();
+            
+            return RedirectToAction("ManageOrder");
         }
         #endregion
 

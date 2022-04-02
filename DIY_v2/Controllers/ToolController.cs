@@ -155,6 +155,15 @@ namespace DIY_v2.Controllers
             {
                 fnum = String.Format("{0:0000}", Convert.ToInt32(count == 1 ? 1 : count - 1));//把後面訂單編號的格式設定  4位數  不足補0
                 OrderID = NowTime + fnum;//把日期跟編號結合  變成訂單編號
+
+                var checkday = db.Orders.Where(x => x.MemberID == Id).Select(x => x.OrderID).FirstOrDefault();
+                if(checkday != OrderID)//這邊把前一天如果沒結帳的購物車清單ID改成今天的
+                {
+                    var result=db.Orders.Where(x=>x.MemberID==Id).FirstOrDefault();
+                    result.OrderID=checkday;
+                    db.SaveChanges();
+                }
+
                 if (Quantity == 0)
                 {//如果沒有數量參數  就是直接在外面案購物車  增加商品訂單  數量為1
                     Order_Detail ods = new Order_Detail() { OrderID = OrderID, OrderDate = System.DateTime.Now, MemberID = Id, ProductID = ProductID, ProductName = ProductName, ProductPrice = Convert.ToInt16(ProductPrice), OrderQuantity = 1, OrderStatus = "購物車" };

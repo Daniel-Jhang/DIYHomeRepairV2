@@ -11,7 +11,8 @@ namespace DIY_v2.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     public partial class Member
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,17 +23,27 @@ namespace DIY_v2.Models
             this.TaskerComment = new HashSet<TaskerComment>();
             this.Orders = new HashSet<Orders>();
         }
-    
+        [DisplayName("會員ID")]
         public int MemberID { get; set; }
+        [DisplayName("會員帳號")]
         public string MemberAccount { get; set; }
+        [DisplayName("會員密碼")]
         public string MemberPwd { get; set; }
+        [DisplayName("會員姓名")]
         public string MemberName { get; set; }
+        [DisplayName("會員性別")]
         public string MemberGender { get; set; }
+        [DisplayName("會員生日")]
         public System.DateTime MemberBirthday { get; set; }
+        [DisplayName("會員暱稱")]
         public string MemberNickname { get; set; }
+        [DisplayName("會員信箱")]
         public string MemberEmail { get; set; }
+        [DisplayName("會員地址")]
         public string MemberAddress { get; set; }
+        [DisplayName("會員手機")]
         public string MemberPhone { get; set; }
+        [DisplayName("會員權限")]
         public string Permission { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
