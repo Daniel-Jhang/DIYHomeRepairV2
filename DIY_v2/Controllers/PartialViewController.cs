@@ -19,6 +19,16 @@ namespace DIY_v2.Controllers
             return PartialView("TaskerPartial");
         }
 
-     
+        public ActionResult MemberRegister()
+        {
+            return View();
+        }
+
+        public ActionResult TaskerRegister()
+        {
+            return View();
+        }
+
+
     }
 }

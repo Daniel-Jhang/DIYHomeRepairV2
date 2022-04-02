@@ -754,6 +754,8 @@
     <Content Include="Views\Backend\ManageOrderDetail.cshtml" />
     <Content Include="Views\Backend\ManageReply.cshtml" />
     <Content Include="Views\Backend\MemberDetail.cshtml" />
+    <Content Include="Views\PartialView\MemberRegister.cshtml" />
+    <Content Include="Views\PartialView\TaskerRegister.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
