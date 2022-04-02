@@ -30,352 +30,324 @@
     </div>
 </form>
 
-<!-- #region CSS -->
+@*------新登入頁面----------*@
+<!-- #region 登入頁面css -->
 <style>
-    @@font-face {
-        font-family: "Poppins-Regular";
-        src: url("../fonts/poppins/Poppins-Regular.ttf");
-    }
+    @@import url('https://fonts.googleapis.com/css?family=Poppins');
 
-    @@font-face {
-        font-family: "Poppins-SemiBold";
-        src: url("../fonts/poppins/Poppins-SemiBold.ttf");
-    }
+    /* BASIC */
 
-    * {
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-    }
 
-    body {
-        font-family: "Poppins-Regular";
-        color: #333;
-        font-size: 13px;
-        margin: 0;
-    }
-
-    input, textarea, select, button {
-        font-family: "Poppins-Regular";
-        color: #333;
-        font-size: 13px;
-    }
-
-    p, h1, h2, h3, h4, h5, h6, ul {
-        margin: 0;
-    }
-
-    img {
-        max-width: 100%;
-    }
-
-    ul {
-        padding-left: 0;
-        margin-bottom: 0;
-    }
-
-    a:hover {
-        text-decoration: none;
-    }
-
-    :focus {
-        outline: none;
-    }
-
-    .wrapper {
-        min-height: 100vh;
+    .demo {
+        min-height: 90vh;
         background-size: cover;
         background-repeat: no-repeat;
         display: flex;
         align-items: center;
     }
 
-    .inner {
-        padding: 20px;
-        background: #fff;
-        max-width: 850px;
-        margin: auto;
-        display: flex;
+
+    .linkA {
+        color: #92badd;
+        display: inline-block;
+        text-decoration: none;
+        font-weight: 400;
     }
 
-        .inner .image-holder {
-            width: 50%;
-            margin-top: 105px;
-        }
-
-        .inner form {
-            width: 50%;
-            padding-top: 36px;
-            padding-left: 45px;
-            padding-right: 45px;
-        }
-
-        .inner h3 {
-            text-transform: uppercase;
-            font-size: 25px;
-            font-family: "Poppins-SemiBold";
-            text-align: center;
-            margin-bottom: 28px;
-        }
-
-    .form-group {
-        display: flex;
+    .textTitle {
+        text-align: center;
+        font-size: 25px;
+        font-weight: 600;
+        text-transform: uppercase;
+        display: inline-block;
+        margin: 40px 8px 10px 8px;
+        color: #cccccc;
     }
 
-        .form-group input {
-            width: 50%;
-        }
 
-            .form-group input:first-child {
-                margin-right: 25px;
-            }
 
-    .form-wrapper {
-        position: relative;
-    }
+    /* STRUCTURE */
 
-        .form-wrapper i {
-            position: absolute;
-            bottom: 9px;
-            right: 0;
-        }
-
-    .form-control {
-        border: 1px solid #333;
-        border-top: none;
-        border-right: none;
-        border-left: none;
-        display: block;
-        width: 100%;
-        height: 30px;
-        padding: 0;
-        margin-bottom: 25px;
-    }
-
-        .form-control::-webkit-input-placeholder {
-            font-size: 13px;
-            color: #333;
-            font-family: "Poppins-Regular";
-        }
-
-        .form-control::-moz-placeholder {
-            font-size: 13px;
-            color: #333;
-            font-family: "Poppins-Regular";
-        }
-
-        .form-control:-ms-input-placeholder {
-            font-size: 13px;
-            color: #333;
-            font-family: "Poppins-Regular";
-        }
-
-        .form-control:-moz-placeholder {
-            font-size: 13px;
-            color: #333;
-            font-family: "Poppins-Regular";
-        }
-
-    select {
-        -moz-appearance: none;
-        -webkit-appearance: none;
-        cursor: pointer;
-        padding-left: 20px;
-    }
-
-        select option[value=""][disabled] {
-            display: none;
-        }
-
-    button {
-        border: none;
-        width: 164px;
-        height: 51px;
-        margin: auto;
-        margin-top: 40px;
-        cursor: pointer;
+    .wrapper {
         display: flex;
         align-items: center;
+        flex-direction: column;
         justify-content: center;
-        padding: 0;
-        background: #333;
-        font-size: 15px;
-        color: #fff;
-        vertical-align: middle;
-        -webkit-transform: perspective(1px) translateZ(0);
-        transform: perspective(1px) translateZ(0);
-        -webkit-transition-duration: 0.3s;
-        transition-duration: 0.3s;
+        width: 100%;
+        min-height: 100%;
+        padding: 20px;
+        margin-bottom: 50px;
     }
 
-        button i {
-            margin-left: 10px;
-            -webkit-transform: translateZ(0);
-            transform: translateZ(0);
+    #formContent {
+        -webkit-border-radius: 10px 10px 10px 10px;
+        border-radius: 10px 10px 10px 10px;
+        background: #fff;
+        padding: 30px;
+        width: 90%;
+        max-width: 450px;
+        position: relative;
+        padding: 0px;
+        -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+        box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+        text-align: center;
+    }
+
+    #formFooter {
+        background-color: #f6f6f6;
+        border-top: 1px solid #dce8f1;
+        padding: 25px;
+        text-align: center;
+        -webkit-border-radius: 0 0 10px 10px;
+        border-radius: 0 0 10px 10px;
+    }
+
+
+
+    /* TABS */
+
+    .inactive {
+        color: #cccccc;
+    }
+
+    .active {
+        color: #0d0d0d;
+        border-bottom: 2px solid #5fbae9;
+    }
+
+
+
+    /* FORM TYPOGRAPHY*/
+
+    input[type=button], input[type=submit], input[type=reset] {
+        background-color: #56baed;
+        border: none;
+        color: white;
+        padding: 15px 80px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        text-transform: uppercase;
+        font-size: 13px;
+        -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+        box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+        -webkit-border-radius: 5px 5px 5px 5px;
+        border-radius: 5px 5px 5px 5px;
+        margin: 5px 20px 40px 20px;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        --ms-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+
+        input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
+            background-color: #39ace7;
         }
 
-        button:hover i, button:focus i, button:active i {
-            -webkit-animation-name: hvr-icon-wobble-horizontal;
-            animation-name: hvr-icon-wobble-horizontal;
-            -webkit-animation-duration: 1s;
-            animation-duration: 1s;
-            -webkit-animation-timing-function: ease-in-out;
-            animation-timing-function: ease-in-out;
-            -webkit-animation-iteration-count: 1;
-            animation-iteration-count: 1;
+        input[type=button]:active, input[type=submit]:active, input[type=reset]:active {
+            -moz-transform: scale(0.95);
+            -webkit-transform: scale(0.95);
+            -o-transform: scale(0.95);
+            -ms-transform: scale(0.95);
+            transform: scale(0.95);
         }
 
-    @@-webkit-keyframes hvr-icon-wobble-horizontal {
-        16.65% {
-            -webkit-transform: translateX(6px);
-            transform: translateX(6px);
+    input[type=text] {
+        background-color: #f6f6f6;
+        border: none;
+        color: #0d0d0d;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 5px;
+        width: 85%;
+        border: 2px solid #f6f6f6;
+        -webkit-transition: all 0.5s ease-in-out;
+        -moz-transition: all 0.5s ease-in-out;
+        --ms-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+        -webkit-border-radius: 5px 5px 5px 5px;
+        border-radius: 5px 5px 5px 5px;
+    }
+
+        input[type=text]:focus {
+            background-color: #fff;
+            border-bottom: 2px solid #5fbae9;
         }
 
-        33.3% {
-            -webkit-transform: translateX(-5px);
-            transform: translateX(-5px);
-        }
 
-        49.95% {
-            -webkit-transform: translateX(4px);
-            transform: translateX(4px);
-        }
 
-        66.6% {
-            -webkit-transform: translateX(-2px);
-            transform: translateX(-2px);
-        }
 
-        83.25% {
-            -webkit-transform: translateX(1px);
-            transform: translateX(1px);
+
+    /* ANIMATIONS */
+
+    /* Simple CSS3 Fade-in-down Animation */
+    .fadeInDown {
+        -webkit-animation-name: fadeInDown;
+        animation-name: fadeInDown;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+
+    @@-webkit-keyframes fadeInDown {
+        0% {
+            opacity: 0;
+            -webkit-transform: translate3d(0, -100%, 0);
+            transform: translate3d(0, -100%, 0);
         }
 
         100% {
-            -webkit-transform: translateX(0);
-            transform: translateX(0);
+            opacity: 1;
+            -webkit-transform: none;
+            transform: none;
         }
     }
 
-    @@keyframes hvr-icon-wobble-horizontal {
-        16.65% {
-            -webkit-transform: translateX(6px);
-            transform: translateX(6px);
-        }
-
-        33.3% {
-            -webkit-transform: translateX(-5px);
-            transform: translateX(-5px);
-        }
-
-        49.95% {
-            -webkit-transform: translateX(4px);
-            transform: translateX(4px);
-        }
-
-        66.6% {
-            -webkit-transform: translateX(-2px);
-            transform: translateX(-2px);
-        }
-
-        83.25% {
-            -webkit-transform: translateX(1px);
-            transform: translateX(1px);
+    @@keyframes fadeInDown {
+        0% {
+            opacity: 0;
+            -webkit-transform: translate3d(0, -100%, 0);
+            transform: translate3d(0, -100%, 0);
         }
 
         100% {
-            -webkit-transform: translateX(0);
-            transform: translateX(0);
+            opacity: 1;
+            -webkit-transform: none;
+            transform: none;
         }
     }
 
-    @@media (max-width: 1199px) {
-        .wrapper {
-            background-position: right center;
+    /* Simple CSS3 Fade-in Animation */
+    @@-webkit-keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
         }
     }
 
-    @@media (max-width: 991px) {
-        .inner form {
-            padding-top: 10px;
-            padding-left: 30px;
-            padding-right: 30px;
+    @@-moz-keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
         }
     }
 
-    @@media (max-width: 767px) {
-        .inner {
-            display: block;
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
         }
 
-            .inner .image-holder {
-                width: 100%;
-            }
-
-            .inner form {
-                width: 100%;
-                padding: 40px 0 30px;
-            }
+        to {
+            opacity: 1;
+        }
     }
 
-    .buttonA {
-        margin-top: -10px;
+    .fadeIn {
+        opacity: 0;
+        -webkit-animation: fadeIn ease-in 1;
+        -moz-animation: fadeIn ease-in 1;
+        animation: fadeIn ease-in 1;
+        -webkit-animation-fill-mode: forwards;
+        -moz-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-duration: 1s;
+        -moz-animation-duration: 1s;
+        animation-duration: 1s;
     }
-    /*# sourceMappingURL=style.css.map */
 
+        .fadeIn.first {
+            -webkit-animation-delay: 0.4s;
+            -moz-animation-delay: 0.4s;
+            animation-delay: 0.4s;
+        }
+
+        .fadeIn.second {
+            -webkit-animation-delay: 0.6s;
+            -moz-animation-delay: 0.6s;
+            animation-delay: 0.6s;
+        }
+
+        .fadeIn.third {
+            -webkit-animation-delay: 0.8s;
+            -moz-animation-delay: 0.8s;
+            animation-delay: 0.8s;
+        }
+
+        .fadeIn.fourth {
+            -webkit-animation-delay: 1s;
+            -moz-animation-delay: 1s;
+            animation-delay: 1s;
+        }
+
+    /* Simple CSS3 Fade-in Animation */
+    .underlineHover:after {
+        display: block;
+        left: 0;
+        bottom: -10px;
+        width: 0;
+        height: 2px;
+        background-color: #56baed;
+        content: "";
+        transition: width 0.2s;
+    }
+
+    .underlineHover:hover {
+        color: #0d0d0d;
+    }
+
+        .underlineHover:hover:after {
+            width: 100%;
+        }
 </style>
 <!-- #endregion -->
-<!-- STYLE CSS -->
-@*-----------------新的登入頁面---------------*@
-<div class="wrapper" style="background-image: url('/Images/元件/登入背景11.jpg'); ">
-    <div class="inner">
-        <div class="image-holder">
-            <img src="~/Images/元件/登入背景14.jpg" alt="">
-        </div>
-        <form action="">
-            <h3>會員註冊</h3>
-            <div class="form-group">
-                <input type="text" placeholder="MemberAccount" class="form-control">
-                <input type="text" placeholder="MemberPwd" class="form-control">
-            </div>
+@*------新登入頁面----------*@
+<div class="demo form-bg" style="background-image: url('/Images/元件/登入背景11.jpg'); ">
+    <div class="container">
 
-            <div class="form-wrapper">
-                <input type="text" placeholder="MemberName" class="form-control">
-                <i class="zmdi zmdi-account"></i>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 .col-md-6">
+                <div class="wrapper fadeInDown ">
+                    <div id="formContent">
+                        <!-- Tabs Titles -->
+                        <h2 class="active textTitle">登入</h2>
+
+
+
+
+
+                        <!-- Login Form -->
+                        <form>
+
+
+                            <input type="text" id="login" class="fadeIn second " name="login" placeholder="帳號">
+
+
+                            <input type="text" id="password" class="fadeIn third icon-user" name="login" placeholder="密碼">
+                            <input type="submit" class="fadeIn fourth" value="登入">
+                        </form>
+
+                        <!-- Remind Passowrd -->
+                        <div id="formFooter">
+                            <a class="underlineHover linkA" href="#">忘記密碼?</a>
+                        </div>
+
+                    </div>
+                </div>
             </div>
-            <div class="form-wrapper">
-                <select name="" id="" class="form-control">
-                    <option value="" disabled selected>Gender</option>
-                    <option value="male">男</option>
-                    <option value="femal">女</option>
-                </select>
-                <i class="zmdi zmdi-caret-down" style="font-size: 17px"></i>
-            </div>
-            <div class="form-wrapper">
-                <input type="password" placeholder="MemberBirthday" class="form-control">
-                <i class="zmdi zmdi-lock"></i>
-            </div>
-            <div class="form-wrapper">
-                <input type="password" placeholder="MemberNickname" class="form-control">
-                <i class="zmdi zmdi-lock"></i>
-            </div>
-            <div class="form-wrapper">
-                <input type="text" placeholder="MemberEmail" class="form-control">
-                <i class="zmdi zmdi-email"></i>
-            </div>
-            <div class="form-wrapper">
-                <input type="text" placeholder="MemberAddress" class="form-control">
-                <i class="zmdi zmdi-email"></i>
-            </div>
-            <div class="form-wrapper">
-                <input type="text" placeholder="MemberPhone" class="form-control">
-                <i class="zmdi zmdi-email"></i>
-            </div>
-            <button class="buttonA">
-                註冊
-                <i class="zmdi zmdi-arrow-right"></i>
-            </button>
-        </form>
+        </div>
     </div>
 </div>
 
