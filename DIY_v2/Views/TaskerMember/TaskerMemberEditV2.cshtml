@@ -1,0 +1,263 @@
+﻿@model DIY_v2.Models.CVMTaskerMemberEditV2
+
+@{
+    ViewBag.Title = "TaskerMemberEditV2";
+}
+
+<h2>TaskerMemberEditV2</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Tasker</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.taskerTable.TaskerID)
+    @Html.HiddenFor(model => model.memberTable.MemberID)
+
+
+    <div class="form-group">
+        @Html.DisplayNameFor(model => model.memberTable.MemberAccount)
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.memberTable.MemberAccount)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.memberTable.MemberName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.memberTable.MemberName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.memberTable.MemberName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.memberTable.MemberGender, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.RadioButtonFor(m => m.memberTable.MemberGender, "M")<label>男性</label>
+            @Html.RadioButtonFor(m => m.memberTable.MemberGender, "F")<label>女性</label>
+            @Html.ValidationMessageFor(model => model.memberTable.MemberGender, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.memberTable.MemberBirthday, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.memberTable.MemberBirthday, "{0:yyyy/MM/dd}", new { htmlAttributes = new { @class = "form-control", @id = "datefield" } })
+            @*@Html.EditorFor(model => model.MemberBirthday.ToShortDateString(), new { htmlAttributes = new { @class = "form-control" } })*@
+            @Html.ValidationMessageFor(model => model.memberTable.MemberBirthday, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.memberTable.MemberNickname, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.memberTable.MemberNickname, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.memberTable.MemberNickname, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.memberTable.MemberEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.memberTable.MemberEmail, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.memberTable.MemberEmail, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.memberTable.MemberAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.memberTable.MemberAddress, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.memberTable.MemberAddress, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.memberTable.MemberPhone, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.memberTable.MemberPhone, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.memberTable.MemberPhone, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.taskerTable.TaskerName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.taskerTable.TaskerName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.taskerTable.TaskerName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.taskerTable.ServiceQuote, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.taskerTable.ServiceQuote, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.taskerTable.ServiceQuote, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.taskerTable.TaskerTel, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.taskerTable.TaskerTel, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.taskerTable.TaskerTel, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.taskerTable.TaskerPhone, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.taskerTable.TaskerPhone, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.taskerTable.TaskerPhone, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.taskerTable.ServiceTime_Start, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.taskerTable.ServiceTime_Start, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.taskerTable.ServiceTime_Start, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.taskerTable.ServiceTime_End, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.taskerTable.ServiceTime_End, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.taskerTable.ServiceTime_End, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.taskerTable.ServiceArea, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @*@Html.EditorFor(model => model.ServiceArea, new { htmlAttributes = new { @class = "form-control" } })*@
+            @Html.DropDownListFor(model => model.taskerTable.ServiceArea, (IEnumerable<SelectListItem>)Session["cityList"], new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.taskerTable.ServiceArea, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @*上傳師傅頭像*@
+    <div class="form-group">
+        @Html.LabelFor(model => model.taskerTable.TaskerImage, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <p><input type="file" name="taskerPhoto" value="" /></p>
+            @*<input type="submit" value="檔案上傳" />*@
+            @*@Html.EditorFor(model => model.TaskerImage, new { htmlAttributes = new { @class = "form-control" } })*@
+            @Html.ValidationMessageFor(model => model.taskerTable.TaskerImage, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.taskerTable.License, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.taskerTable.License, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.taskerTable.License, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.taskerTable.Feature, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.taskerTable.Feature, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.taskerTable.Feature, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.taskerTable.TaskerDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.taskerTable.TaskerDescription, 10, 80, new { htmlAttributes = new { @class = "form-control" } })
+            @*@Html.EditorFor(model => model.TaskerDescription, new { htmlAttributes = new { @class = "form-control" } })*@
+            @Html.ValidationMessageFor(model => model.taskerTable.TaskerDescription, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @*上傳施工案例照片*@
+    <div class="form-group">
+        @Html.LabelFor(model => model.taskerTable.CaseImage, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <p><input type="file" name="casePhotos" value="" /></p>
+            <p><input type="file" name="casePhotos" value="" /></p>
+            <p><input type="file" name="casePhotos" value="" /></p>
+            @*<input type="submit" value="檔案上傳" />*@
+            @*@Html.EditorFor(model => model.CaseImage, new { htmlAttributes = new { @class = "form-control" } })*@
+            @Html.ValidationMessageFor(model => model.taskerTable.CaseImage, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.taskerTable.Rate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.taskerTable.Rate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.taskerTable.Rate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("服務類別", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @{
+                if (Session["server1"].ToString() == "T")
+                {
+                    @Html.CheckBox("serviceCategoryChk1", true, htmlAttributes: new { @class = "test", id = "serviceCategoryChk1" })
+                }
+                else
+                {
+                    @Html.CheckBox("serviceCategoryChk1", false, htmlAttributes: new { @class = "test", id = "serviceCategoryChk1" })
+                }
+                @Html.Label("衛浴裝修", htmlAttributes: new { @class = "test", @for = "serviceCategoryChk1" })
+                <br />
+                if (Session["server2"].ToString() == "T")
+                {
+                    @Html.CheckBox("serviceCategoryChk2", true, htmlAttributes: new { @class = "test", id = "serviceCategoryChk2" })
+                }
+                else
+                {
+                    @Html.CheckBox("serviceCategoryChk2", false, htmlAttributes: new { @class = "test", id = "serviceCategoryChk2" })
+                }
+                @Html.Label("抓漏/堵塞", htmlAttributes: new { @class = "test", @for = "serviceCategoryChk2" })
+                <br />
+                if (Session["server3"].ToString() == "T")
+                {
+                    @Html.CheckBox("serviceCategoryChk3", true, htmlAttributes: new { @class = "test", id = "serviceCategoryChk3" })
+                }
+                else
+                {
+                    @Html.CheckBox("serviceCategoryChk3", false, htmlAttributes: new { @class = "test", id = "serviceCategoryChk3" })
+                }
+                @Html.Label("水電安裝/修繕", htmlAttributes: new { @class = "test", @for = "serviceCategoryChk3" })
+                <br />
+            }
+        </div>
+    </div>
+
+    @*20220402 師傅新增一個欄位Permission，當師傅會員要修改自己的資料時，會自動把Permission的值維持在 "2"*@
+    <input type="hidden" name="Permission" value="2" />
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

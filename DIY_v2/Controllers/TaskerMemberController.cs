@@ -105,6 +105,7 @@ namespace DIY_v2.Controllers
 
             if (Alreadydata != null)
             {
+                Session["AlreadyData"] = "Y";
                 return RedirectToAction("Index", "TaskerMember");/////////////////////這邊要放編輯網頁
             }
             var result = db.Tasker.Select(x => x).FirstOrDefault();
@@ -181,6 +182,8 @@ namespace DIY_v2.Controllers
             }
 
             #endregion
+
+            tasker.TaskerDescription = tasker.TaskerDescription.Replace(Environment.NewLine, "<br/>");
             db.Tasker.Add(tasker);
             db.SaveChanges();
 
@@ -385,6 +388,189 @@ namespace DIY_v2.Controllers
 
                 db.SaveChanges();
             }
+            return RedirectToAction("Index");
+        }
+        #endregion
+
+        #region 師傅身分的會員，合併會員基本資料和水電行資料  的修改
+        public ActionResult TaskerMemberEditV2(int id = 24)
+        {
+            ServiceAreaList cityList = new ServiceAreaList();
+            Session["cityList"] = cityList.serviceAreaList;
+            //下面三個Session 是為了進入編輯頁面時  因為action吃不到 ServerID 參數  所以用他存資料帶進View裡面  為了讓checkbox 能在編輯時依照他原本的服務 打勾起來
+            Session["server1"] = db.TaskerService.Where(x => x.TaskerID == id).Where(x => x.ServiceCategoryID == "1").Count() > 0 ? "T" : "F";
+            Session["server2"] = db.TaskerService.Where(x => x.TaskerID == id).Where(x => x.ServiceCategoryID == "2").Count() > 0 ? "T" : "F";
+            Session["server3"] = db.TaskerService.Where(x => x.TaskerID == id).Where(x => x.ServiceCategoryID == "3").Count() > 0 ? "T" : "F";
+            var taskerToEdit = db.Tasker.Where(x => x.MemberID == id).FirstOrDefault();
+            var memberToEdit = db.Member.Where(x => x.MemberID == id).FirstOrDefault();
+
+            CVMTaskerMemberEditV2 viewModel = new CVMTaskerMemberEditV2();
+            viewModel.taskerTable = taskerToEdit;
+            viewModel.memberTable = memberToEdit;
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult TaskerMemberEditV2(CVMTaskerMemberEditV2 viewModel, HttpPostedFileBase taskerPhoto, HttpPostedFileBase[] casePhotos, bool? serviceCategoryChk1, bool? serviceCategoryChk2, bool? serviceCategoryChk3)
+        {
+            if (ModelState.IsValid)
+            {
+                string MemberAccount = User.Identity.Name;
+                var MemberItem = db.Member.Where(x => x.MemberAccount == MemberAccount).FirstOrDefault();
+                MemberItem.MemberName = viewModel.memberTable.MemberName;
+                MemberItem.MemberGender = viewModel.memberTable.MemberGender;
+                MemberItem.MemberBirthday = viewModel.memberTable.MemberBirthday;
+                MemberItem.MemberNickname = viewModel.memberTable.MemberNickname;
+                MemberItem.MemberEmail = viewModel.memberTable.MemberEmail;
+                MemberItem.MemberAddress = viewModel.memberTable.MemberAddress;
+                MemberItem.MemberPhone = viewModel.memberTable.MemberPhone;
+
+
+                #region 上傳圖片
+                string taskerFileName = "";// 圖檔名稱
+                if (taskerPhoto != null)
+                {
+                    if (taskerPhoto.ContentLength > 0)
+                    {
+                        // 取得圖檔名稱
+                        taskerFileName = Path.GetFileName(taskerPhoto.FileName);
+                        var path = Path.Combine(Server.MapPath("~/Images/TaskerImages"), taskerFileName);
+                        taskerPhoto.SaveAs(path);
+                        viewModel.taskerTable.TaskerImage = taskerFileName;
+                    }
+                }
+                else
+                {
+                    viewModel.taskerTable.TaskerImage = db.Tasker.Where(x => x.TaskerID == viewModel.taskerTable.TaskerID).Select(x => x.TaskerImage).FirstOrDefault();
+                }
+
+                string caseFileName = ""; // 圖檔名稱
+                string strCaseImage = "";
+                if (casePhotos != null)
+                {
+                    // 使用 for 迴圈取得所有上傳的檔案
+                    for (int i = 0; i < casePhotos.Length; i++)
+                    {
+                        // 取得目前檔案上傳的 HttpPostedFileBase 物件
+                        // 即須引數的 photos[i] 可以取得第 i 個所上傳的檔案
+                        HttpPostedFileBase f = (HttpPostedFileBase)casePhotos[i];
+                        // 若目前檔案上傳的 HttpPostedFileBase 物件的檔案名稱不為空白
+                        // 即表示第 i 個 f 物件有指定上傳檔案
+                        if (f != null)// 判斷檔案是否不為null
+                        {
+                            // 取得圖檔名稱
+                            caseFileName = Path.GetFileName(f.FileName);
+                            strCaseImage += caseFileName + ",";
+                            // 將檔案儲存道專案的 Images 資料夾下
+                            var path = Path.Combine(Server.MapPath("~/Images/TaskerImages"), caseFileName);
+                            f.SaveAs(path);
+                        }
+                        else
+                        {
+                            if (i == casePhotos.Length - 1)
+                            {
+                                viewModel.taskerTable.CaseImage = db.Tasker.Where(x => x.TaskerID == viewModel.taskerTable.TaskerID).Select(x => x.CaseImage).FirstOrDefault();
+                            }
+                        }
+
+                    }
+                    //如果三個casephoto都沒傳資料  把之前的值傳到caseImage裡面  不然會是空白
+                    if (casePhotos[0] == null && casePhotos[1] == null && casePhotos[2] == null)
+                    {
+                        viewModel.taskerTable.CaseImage = db.Tasker.Where(x => x.TaskerID == viewModel.taskerTable.TaskerID).Select(x => x.CaseImage).FirstOrDefault();
+                    }
+                    else
+                    {
+                        //把結尾逗號去掉  因為之前都是存   檔名,檔名,  最後會多一個,
+                        strCaseImage = strCaseImage.TrimEnd(',');
+                        viewModel.taskerTable.CaseImage = strCaseImage;
+                    }
+                }
+
+                #endregion
+                var temp = db.Tasker.Where(x => x.TaskerID == viewModel.taskerTable.TaskerID).FirstOrDefault();
+                temp.TaskerName = viewModel.taskerTable.TaskerName;
+                temp.ServiceQuote = viewModel.taskerTable.ServiceQuote;
+                temp.TaskerTel = viewModel.taskerTable.TaskerTel;
+                temp.TaskerPhone = viewModel.taskerTable.TaskerPhone;
+                temp.ServiceTime_Start = viewModel.taskerTable.ServiceTime_Start;
+                temp.ServiceTime_End = viewModel.taskerTable.ServiceTime_End;
+                temp.ServiceArea = viewModel.taskerTable.ServiceArea;
+                temp.TaskerImage = viewModel.taskerTable.TaskerImage;
+                temp.License = viewModel.taskerTable.License;
+                temp.Feature = viewModel.taskerTable.Feature;
+                temp.TaskerDescription = viewModel.taskerTable.TaskerDescription;
+                temp.CaseImage = viewModel.taskerTable.CaseImage;
+                temp.Rate = viewModel.taskerTable.Rate;
+
+                var temp1 = db.TaskerService.Where(x => x.TaskerID == viewModel.taskerTable.TaskerID).Where(x => x.ServiceCategoryID == "1").FirstOrDefault();
+                var temp2 = db.TaskerService.Where(x => x.TaskerID == viewModel.taskerTable.TaskerID).Where(x => x.ServiceCategoryID == "2").FirstOrDefault();
+                var temp3 = db.TaskerService.Where(x => x.TaskerID == viewModel.taskerTable.TaskerID).Where(x => x.ServiceCategoryID == "3").FirstOrDefault();
+                //把三個服務先弄出來  如果有 要加服務時能用
+                TaskerService ts1 = new TaskerService() { TaskerID = viewModel.taskerTable.TaskerID, ServiceCategoryID = "1", ServiceCategory = "衛浴裝修" };
+                TaskerService ts2 = new TaskerService() { TaskerID = viewModel.taskerTable.TaskerID, ServiceCategoryID = "2", ServiceCategory = "抓漏/堵塞" };
+                TaskerService ts3 = new TaskerService() { TaskerID = viewModel.taskerTable.TaskerID, ServiceCategoryID = "3", ServiceCategory = "水電安裝/修繕" };
+
+                #region 服務一判斷
+                if (temp1 != null)
+                {
+                    if (serviceCategoryChk1 != true)
+                    {
+                        db.TaskerService.Remove(temp1);
+                        db.SaveChanges();
+                    }
+                }
+                else
+                {
+                    if (serviceCategoryChk1 == true)
+                    {
+                        db.TaskerService.Add(ts1);
+                        db.SaveChanges();
+                    }
+                }
+                #endregion
+                #region 服務二判斷
+                if (temp2 != null)
+                {
+                    if (serviceCategoryChk2 != true)
+                    {
+                        db.TaskerService.Remove(temp2);
+                        db.SaveChanges();
+                    }
+                }
+                else
+                {
+                    if (serviceCategoryChk2 == true)
+                    {
+                        db.TaskerService.Add(ts2);
+                        db.SaveChanges();
+                    }
+                }
+                #endregion
+                #region 服務三判斷
+                if (temp3 != null)
+                {
+                    if (serviceCategoryChk3 != true)
+                    {
+                        db.TaskerService.Remove(temp3);
+                        db.SaveChanges();
+                    }
+                }
+                else
+                {
+                    if (serviceCategoryChk3 == true)
+                    {
+                        db.TaskerService.Add(ts3);
+                        db.SaveChanges();
+                    }
+                }
+                #endregion
+
+                db.SaveChanges();
+            }
+            Session["memberEdit"] = "資料修改完成";
             return RedirectToAction("Index");
         }
         #endregion
