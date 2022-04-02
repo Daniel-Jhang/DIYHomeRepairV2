@@ -71,6 +71,7 @@ namespace DIY_v2.Controllers
                     }
                 }
                 pt.ProductID = AdProductID;
+                pt.ProductDescription = pt.ProductDescription.Replace("\r\n", "<br>");
                 db.Product.Add(pt);
                 db.SaveChanges();
                 return RedirectToAction("ManageProduct");

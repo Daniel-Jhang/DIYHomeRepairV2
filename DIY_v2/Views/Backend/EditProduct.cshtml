@@ -58,7 +58,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.ProductDescription, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-           <textarea class="form-control" name="ProductDescription" ></textarea>
+            <textarea class="form-control" name="ProductDescription">@Model.ProductDescription.Replace( "<br>","\r\n")</textarea>
             @Html.ValidationMessageFor(model => model.ProductDescription, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -82,7 +82,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
+            <input type="submit" value="修改" class="btn btn-default" />
         </div>
     </div>
 </div>
