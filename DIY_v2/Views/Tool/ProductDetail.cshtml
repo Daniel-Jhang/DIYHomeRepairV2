@@ -37,15 +37,11 @@
                     </p>
                 </div>
                 <p class="price"><span>$@Model.Products_normal[0].ProductPrice</span></p>
-                <p>
-                    AWA歐瓦，法國設計技術，台灣精品製造。
-                    水龍頭產品榮獲德國紅點設計大獎肯定。
 
-                    環保節能：
-                    - 默認冷水供應模式，節省不必要的能源消耗
-                    - 省水40%的增氧節水器
+        
+                <p>@Html.Raw(@Model.Products_normal[0].ProductDescription)</p> 
+          
 
-                </p>
 
                 <div class="row mt-4">
                     <div class="col-md-6">
@@ -84,8 +80,8 @@
                     }
                     else
                     {
-                      <input type="button" class="toMember " value="加入購物車" onclick="location.href='https://localhost:44332/MemberLogin/Login'" />
-                       
+                        <input type="button" class="toMember " value="加入購物車" onclick="location.href='https://localhost:44332/MemberLogin/Login'" />
+
 
                     }
 

@@ -55,6 +55,9 @@ namespace DIY_v2.Controllers
         {
             if (ModelState.IsValid)
             {
+                int count=db.Product.Count();
+                string AdProductID = "Pt" + String.Format("{0:000}", Convert.ToInt32(count+1));
+              
                 if (photo != null)
                 {
                     if (photo.ContentLength > 0)
@@ -67,6 +70,7 @@ namespace DIY_v2.Controllers
                         db.SaveChanges();
                     }
                 }
+                pt.ProductID = AdProductID;
                 db.Product.Add(pt);
                 db.SaveChanges();
                 return RedirectToAction("ManageProduct");
@@ -109,6 +113,7 @@ namespace DIY_v2.Controllers
                 result.ProductImage = result3;
                 db.SaveChanges();
             }
+           pt.ProductDescription= pt.ProductDescription.Replace("\r\n", "<br>");
             result.ProductID = pt.ProductID;
             result.ProductName = pt.ProductName;
             result.ProductPrice = pt.ProductPrice;
