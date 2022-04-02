@@ -135,6 +135,7 @@ namespace DIY_v2.Controllers
         {
             FormsAuthentication.SignOut();   // 登出
             Session["Permission"] = null;
+            Session["shoppingcarcoumt"] = 0;
             return RedirectToAction("Index", "Home");
         }
 
