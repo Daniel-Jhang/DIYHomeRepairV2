@@ -207,7 +207,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\09.jpg" />
     <Content Include="Images\DIY.jpg" />
     <Content Include="Images\DIYImages\ChangeFaucet_demo.png" />
     <Content Include="Images\DIYImages\changeLight2-1.jpg" />
@@ -322,7 +321,6 @@
     <Content Include="Images\DIYImages\washhand.jpg" />
     <Content Include="Images\DIYImages\嵌燈.png" />
     <Content Include="Images\DIYImages\結構圖.jpg" />
-    <Content Include="Images\dK.jpg" />
     <Content Include="Images\IndexImages\1589356215_2.jpg" />
     <Content Include="Images\IndexImages\living room.jpg" />
     <Content Include="Images\IndexImages\living room02.jpg" />
