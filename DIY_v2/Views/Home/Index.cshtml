@@ -228,12 +228,10 @@
    /* ----------------- 切換頁面----------------------------*/
 
     #tab-demo {
-
-
         background-image: url(/Images/元件/VCG211258126145.jpg);
-
         text-align: left;
         position: relative;
+
     }
 
      #tab-demo > ul {
@@ -370,158 +368,254 @@
 
 </style>
 <!-- #endregion -->
-
+<style>
+</style>
 
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.1.1/jquery.js"></script>
 
 
-<div class="container ">
 
-    <div class="row .col-12">
+<div class="parallax">
+    <div id="anj">
 
+        <h2 class="animate__animated  animate__bounce  animate__delay-0.5s" style="color: #fff;">DIY 居家修繕</h2>
+    </div>
+    @*<img src="~/Images/DIY.jpg" style="width:100%;height:600px;" />*@
+</div>
+<style>
 
+    #anj {
+        font-size: 30px;
+        text-align: center;
+        background: rgba(0,0,0,0.5);
+        padding: 50px;
+    }
 
-        <div class="page" id="tab-demo">
-
-            <ul class="tab-title container" style="">
-                <li class="li01"><a href="#tab01">客廳</a></li>
-                <li class="li02"><a href="#tab02">浴室</a></li>
-
-            </ul>
-
-            <!-- #region 浴室 -->
-            @*--------------------------------------------浴室---------------------------------------------*@
-            <div id="tab02" class="tab-inner">
-
-                <div class=" ">
-
-                    <img class="" src="~/Images/IndexImages/1589356215_2.jpg" alt="">
-
-                </div>
-
-                @*馬桶*@
-                <div class="toolA" id="div1">
-
-                    <a href=""><img class="idex01 toolA" src="~/Images/元件/馬桶03.png" alt="" style="width:190px;"></a>
-
-                </div>
-
-                @*水龍頭*@
-                <div class="toolA" id="div1">
-
-                    <a href=""><img class="idex02 toolA" src="~/Images/元件/水龍頭05.png" alt="" style="width:404px;"></a>
-
-                </div>
-
-                @*鏡子*@
-                <div class="toolA" id="div1">
-
-                    <a href=""><img class="idex03 toolA" src="~/Images/元件/鏡子01.png" alt="" style="width:310px;"></a>
-
-                </div>
-
-
-                @*櫃子*@
-                @*<div class="toolA" id="div2">
-
-                        <a href=""><img class="idex04 toolA" src="~/Images/元件/櫃子02 .png" alt="" style="width:175px;"></a>
-
-                    </div>*@
-
-                @*蓮蓬頭*@
-                <div class="toolA" id="div1">
-
-                    <a href=""><img class="idex05 toolA" src="~/Images/元件/蓮蓬頭02.png" alt="" style="width:165px;"></a>
-
-                </div>
-
-                @*浴缸*@
-
-                <div class="toolA" id="div1">
-
-                    <a href=""><img class="idex06 toolA" src="~/Images/元件/new浴缸.png" alt="" style="width:190px;"></a>
-
-                </div>
+    .parallax {
+        /* 設定背景圖片/居中/不重覆 */
+        background: url(../../Images/DIY.jpg) center center no-repeat;
+        /* 設定區塊高度 */
+        min-height: 600px;
+        /* 背景自動縮放/固定 */
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
 
 
 
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 ">
+            @* 1 *@
+            <div class="d-flex flex-row  " data-aos="fade-right"
+                 data-aos-offset="300"
+                 data-aos-easing="ease-in-sine">
+                <img src="~/Images/wordfile.png" style="width: 500px; height: 300px;" />
+                <b style="position:relative;bottom:-120px;">我們有提供零件的販售</b>
             </div>
-            <!-- #endregion -->
-            <!-- #region 客廳 -->
-            @*--------------------------------------------客廳--------------------------------------*@
-            <div id="tab01" class="tab-inner">
+            @* 2 *@
+            <div class=" d-flex flex-row @*animate__animated animate__fadeInRight*@" data-aos="fade-left"
+                 data-aos-offset="300"
+                 data-aos-easing="ease-in-sine">
 
-                <div class="">
-
-                    <img class="" src="~/Images/IndexImages/living room02.jpg" alt="">
-
-                </div>
-
-                @*嵌燈*@
-                <div class="toolA" id="div4">
-
-                    <a href=""><img class="idex07 toolA" src="~/Images/元件/嵌燈.png" alt="" style="width:170px;"></a>
-
-                </div>
-
-
-
-
-                @*系統櫃*@
-                <div class="toolA" id="div3">
-
-                    <a href=""><img class="idex09 toolA" src="~/Images/元件/系統櫃02.png" alt="" style="width:400px;"></a>
-
-                </div>
-
-
-                @*門把*@
-                <div class="toolA" id="div4">
-
-                    <a href=""><img class="idex10 toolA" src="~/Images/元件/門把01.png" alt="" style="width:50px;"></a>
-
-                </div>
-
-
-
-                @*桌子*@
-                <div class="toolA" id="div1">
-
-                    <a href=""><img class="idex11 toolA" src="~/Images/元件/桌子01.png" alt="" style="width:280px;"></a>
-
-                </div>
-
-                @*椅子01*@
-
-                <div class="toolA" id="div1">
-
-                    <a href=""><img class="idex12 toolA" src="~/Images/元件/沙發椅02.png" alt="" style="width:172px;"></a>
-
-                </div>
-
-                @*椅子02*@
-
-
-                <div class="toolA" id="div1">
-
-                    <a href=""><img class="idex13 toolA" src="~/Images/元件/四腳椅子02.png" alt="" style="width:248px;"></a>
-
-                </div>
-
-                @*電視*@
-                <div class="toolA" id="div1">
-
-                    <a href=""><img class="idex14 toolA" src="~/Images/元件/電視01.png" alt="" style="width:125px;"></a>
-
-                </div>
-
-
-
+                <img src="~/Images/tool.png" style="width: 500px; height: 300px; " />
+                <b style="position:relative;bottom:-120px;">我們有提供修繕文件</b>
             </div>
-            <!-- #endregion -->
+            @* 3 *@
+            <div class=" d-flex flex-row " data-aos="fade-right"
+                 data-aos-offset="300"
+                 data-aos-easing="ease-in-sine">
+
+                <img src="~/Images/tk.png" style="width: 500px; height: 300px; " />
+                <b style="position: relative; bottom: -120px;">我們有提供找師傅的服務</b>
+            </div>
+        </div>
+
+
+        <div class="container" style="padding: 100px 50px 10px;">
+
+
+            <button type="button" class="btn btn-warning"
+                    data-container="body" data-toggle="popover" data-placement="right"
+                    data-content="您可以在下方的圖片做切換，並按下所要找尋的物件，即可以連到該網頁">
+                讓我們開始！
+            </button>
 
         </div>
+
+        <script>
+            $(function () {
+                $("[data-toggle='popover']").popover();
+            });
+        </script>
+
     </div>
+
+
+</div>
+
+
+<br />
+<style>
+    .li01 a h3:before{
+        content:'';
+        display:block;
+        margin-top:-50px;
+        height:50px;
+        visibility:hidden;
+    }
+</style>
+
+<div class="container " data-aos="zoom-in">
+    <div class="page " id="tab-demo">
+
+        <ul class="tab-title container " style="">
+            <li>
+                <a href="#tab01"><h3>客廳</h3></a>
+            </li>
+            <li>
+                <a href="#tab02"><h3>浴室</h3></a>
+            </li>
+
+        </ul>
+        @*<li class="li01"><a href="#tab01">客廳</a></li>
+        <li class="li02"><a href="#tab02">浴室</a></li>*@
+
+        <!-- #region 浴室 -->
+        @*--------------------------------------------浴室---------------------------------------------*@
+        <div id="tab02" class="tab-inner">
+
+            <div class="">
+
+                <img class="" src="~/Images/IndexImages/1589356215_2.jpg">
+
+            </div>
+
+            @*馬桶*@
+            <div class="toolA" id="div1">
+
+                <a href=""><img class="idex01 toolA" src="~/Images/元件/馬桶03.png" alt="" style="width:190px;"></a>
+
+            </div>
+
+            @*水龍頭*@
+            <div class="toolA" id="div1">
+
+                <a href=""><img class="idex02 toolA" src="~/Images/元件/水龍頭05.png" alt="" style="width:404px;"></a>
+
+            </div>
+
+            @*鏡子*@
+            <div class="toolA" id="div1">
+
+                <a href=""><img class="idex03 toolA" src="~/Images/元件/鏡子01.png" alt="" style="width:310px;"></a>
+
+            </div>
+
+
+            @*櫃子*@
+            @*<div class="toolA" id="div2">
+
+                <a href=""><img class="idex04 toolA" src="~/Images/元件/櫃子02 .png" alt="" style="width:175px;"></a>
+
+            </div>*@
+
+            @*蓮蓬頭*@
+            <div class="toolA" id="div1">
+
+                <a href=""><img class="idex05 toolA" src="~/Images/元件/蓮蓬頭02.png" alt="" style="width:165px;"></a>
+
+            </div>
+
+            @*浴缸*@
+
+            <div class="toolA" id="div1">
+
+                <a href=""><img class="idex06 toolA" src="~/Images/元件/new浴缸.png" alt="" style="width:190px;"></a>
+
+            </div>
+
+
+
+        </div>
+        <!-- #endregion -->
+        <!-- #region 客廳 -->
+        @*--------------------------------------------客廳--------------------------------------*@
+        <div id="tab01" class="tab-inner">
+
+            <div class="">
+
+                <img id="bath" class="" src="~/Images/IndexImages/living room02.jpg" alt="">
+
+            </div>
+
+            @*嵌燈*@
+            <div class="toolA" id="div4">
+
+                <a href=""><img class="idex07 toolA" src="~/Images/元件/嵌燈.png" alt="" style="width:170px;"></a>
+
+            </div>
+
+
+
+
+            @*系統櫃*@
+            <div class="toolA" id="div3">
+
+                <a href=""><img class="idex09 toolA" src="~/Images/元件/系統櫃02.png" alt="" style="width:400px;"></a>
+
+            </div>
+
+
+            @*門把*@
+            <div class="toolA" id="div4">
+
+                <a href=""><img class="idex10 toolA" src="~/Images/元件/門把01.png" alt="" style="width:50px;"></a>
+
+            </div>
+
+
+
+            @*桌子*@
+            <div class="toolA" id="div1">
+
+                <a href=""><img class="idex11 toolA" src="~/Images/元件/桌子01.png" alt="" style="width:280px;"></a>
+
+            </div>
+
+            @*椅子01*@
+
+            <div class="toolA" id="div1">
+
+                <a href=""><img class="idex12 toolA" src="~/Images/元件/沙發椅02.png" alt="" style="width:172px;"></a>
+
+            </div>
+
+            @*椅子02*@
+
+
+            <div class="toolA" id="div1">
+
+                <a href=""><img class="idex13 toolA" src="~/Images/元件/四腳椅子02.png" alt="" style="width:248px;"></a>
+
+            </div>
+
+            @*電視*@
+            <div class="toolA" id="div1">
+
+                <a href=""><img class="idex14 toolA" src="~/Images/元件/電視01.png" alt="" style="width:125px;"></a>
+
+            </div>
+
+
+
+        </div>
+        <!-- #endregion -->
+
+    </div>
+
 </div>
 
 
@@ -622,8 +716,15 @@
 
 </script>
 
-
-
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 
 
 
