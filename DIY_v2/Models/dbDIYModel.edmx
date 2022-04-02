@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DIY_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DIY_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Member">
           <Key>
             <PropertyRef Name="MemberID" />
@@ -100,6 +100,7 @@
           <Property Name="CaseImage" Type="nvarchar" MaxLength="50" />
           <Property Name="Rate" Type="decimal" Precision="2" Scale="1" />
           <Property Name="MemberID" Type="int" Nullable="false" />
+          <Property Name="Permission" Type="char" MaxLength="1" Nullable="false" />
         </EntityType>
         <EntityType Name="TaskerComment">
           <Key>
@@ -110,7 +111,7 @@
           <Property Name="MemberID" Type="int" />
           <Property Name="MemberAccount" Type="nvarchar" MaxLength="15" />
           <Property Name="Comment" Type="nvarchar" MaxLength="500" />
-          <Property Name="CreateDate" Type="date" />
+          <Property Name="CreateDate" Type="datetime" />
           <Property Name="Star" Type="smallint" />
         </EntityType>
         <EntityType Name="TaskerService">
@@ -293,8 +294,7 @@
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DIY_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -410,6 +410,7 @@
           <Property Name="MemberID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TaskerComment" Relationship="Self.FK__TaskerCom__Taske__48CFD27E" FromRole="Tasker" ToRole="TaskerComment" />
           <NavigationProperty Name="TaskerService" Relationship="Self.FK__TaskerSer__Taske__4222D4EF" FromRole="Tasker" ToRole="TaskerService" />
+          <Property Name="Permission" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
         </EntityType>
         <EntityType Name="TaskerComment">
           <Key>
@@ -420,7 +421,7 @@
           <Property Name="MemberID" Type="Int32" />
           <Property Name="MemberAccount" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="CreateDate" Type="DateTime" Precision="0" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="Star" Type="Int16" />
           <NavigationProperty Name="Member" Relationship="Self.FK__TaskerCom__Membe__49C3F6B7" FromRole="TaskerComment" ToRole="Member" />
           <NavigationProperty Name="Tasker" Relationship="Self.FK__TaskerCom__Taske__48CFD27E" FromRole="TaskerComment" ToRole="Tasker" />
@@ -696,6 +697,7 @@
           <EntitySetMapping Name="Tasker">
             <EntityTypeMapping TypeName="DIY_DBModel.Tasker">
               <MappingFragment StoreEntitySet="Tasker">
+                <ScalarProperty Name="Permission" ColumnName="Permission" />
                 <ScalarProperty Name="TaskerID" ColumnName="TaskerID" />
                 <ScalarProperty Name="TaskerName" ColumnName="TaskerName" />
                 <ScalarProperty Name="ServiceQuote" ColumnName="ServiceQuote" />

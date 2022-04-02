@@ -1,0 +1,153 @@
+﻿@model DIY_v2.Models.Tasker
+
+@{
+    ViewBag.Title = "TaskerDetail";
+}
+
+<h2>師傅狀態管理</h2>
+
+<div>
+    <h4>師傅資料</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TaskerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaskerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceQuote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceQuote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaskerTel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaskerTel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaskerPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaskerPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceTime_Start)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceTime_Start)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceTime_End)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceTime_End)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceArea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceArea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaskerImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaskerImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.License)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.License)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Feature)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Feature)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaskerDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaskerDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CaseImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CaseImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MemberID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemberID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Permission)
+        </dt>
+
+        <dd>
+            @{
+                if (@Model.Permission == "1" || @Model.Permission == "2")
+                {
+                    <span>正常</span>
+                }
+                else
+                {
+                    <span>停權</span>
+                }
+            }
+        </dd>
+
+
+        @Html.ActionLink("停權", "StopTasker", new { TaskerID = Model.TaskerID }, new { @class = "btn btn-primary" })
+
+
+        @Html.ActionLink("啟用", "StartTasker", new { TaskerID = Model.TaskerID }, new { @class = "btn btn-primary" })
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.TaskerID }) |*@
+    @Html.ActionLink("回上一頁", "TaskerIndex")
+</p>

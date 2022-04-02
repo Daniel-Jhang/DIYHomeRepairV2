@@ -36,6 +36,7 @@ namespace DIY_v2.Models
         public string CaseImage { get; set; }
         public Nullable<decimal> Rate { get; set; }
         public int MemberID { get; set; }
+        public string Permission { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TaskerComment> TaskerComment { get; set; }
