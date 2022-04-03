@@ -119,7 +119,7 @@ namespace DIY_v2.Controllers
         {
             string MemberAccoumt = User.Identity.Name;
             int mid = db.Member.Where(x => x.MemberAccount == MemberAccoumt).Select(x => x.MemberID).FirstOrDefault();
-
+            
             #region 上傳圖片
             string taskerFileName = "";// 圖檔名稱
             if (taskerPhoto != null)

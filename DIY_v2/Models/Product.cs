@@ -11,8 +11,7 @@ namespace DIY_v2.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
+    
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,25 +22,12 @@ namespace DIY_v2.Models
         }
     
         public string ProductID { get; set; }
-        
-        [DisplayName("產品名稱")]
-        [StringLength(50,ErrorMessage ="最多只能50個字")]
         public string ProductName { get; set; }
-
-        [DisplayName("產品價格")]
-        [Range(1,32000,ErrorMessage ="起輸入1~32000之間的數字")]
         public Nullable<short> ProductPrice { get; set; }
         public string ProductImage { get; set; }
-        [DisplayName("產品成本")]
-        [Range(1, 32000, ErrorMessage = "起輸入1~32000之間的數字")]
         public Nullable<short> ProductCost { get; set; }
-        [DisplayName("產品庫存")]
-        [Range(1, 32000, ErrorMessage = "起輸入1~32000之間的數字")]
         public short InStock { get; set; }
-        [DisplayName("產品描述")]
-        [StringLength(500,ErrorMessage ="最多輸入500個字")]
         public string ProductDescription { get; set; }
-        [DisplayName("產品類別")]
         public string ProductCategoryID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

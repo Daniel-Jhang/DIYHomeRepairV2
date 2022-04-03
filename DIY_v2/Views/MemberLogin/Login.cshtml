@@ -2,33 +2,8 @@
     ViewBag.Title = "會員登入";
 }
 
-<h2>會員登入</h2>
 
-<form action="@Url.Action("Login")" method="post">
-    <div class="form-horizontal">
-        <hr />
-        <div class="form-group">
-            <span class="control-label col-md-2">帳號</span>
-            <div class="col-md-10">
-                <input type="text" id="MemberAccount" name="MemberAccount" required="required" class="form-control" />
-            </div>
-        </div>
 
-        <div class="form-group">
-            <span class="control-label col-md-2">密碼</span>
-            <div class="col-md-10">
-                <input type="password" id="MemberPwd" name="MemberPwd" required="required" class="form-control" />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="登入" class="btn btn-default" />
-                @ViewBag.Message
-            </div>
-        </div>
-    </div>
-</form>
 
 @*------新登入頁面----------*@
 <!-- #region 登入頁面css -->
@@ -153,7 +128,7 @@
             transform: scale(0.95);
         }
 
-    input[type=text] {
+    input[type=text], input[type=password] {
         background-color: #f6f6f6;
         border: none;
         color: #0d0d0d;
@@ -174,7 +149,7 @@
         border-radius: 5px 5px 5px 5px;
     }
 
-        input[type=text]:focus {
+        input[type=text], input[type=password]:focus {
             background-color: #fff;
             border-bottom: 2px solid #5fbae9;
         }
@@ -329,14 +304,14 @@
 
 
                         <!-- Login Form -->
-                        <form>
 
+                        <form action="@Url.Action("Login")" method="post">
 
-                            <input type="text" id="login" class="fadeIn second " name="login" placeholder="帳號">
+                            <input type="text" id="MemberAccount" name="MemberAccount" required="required" class="fadeIn second " placeholder="帳號" />
+                            <input type="password" id="MemberPwd" name="MemberPwd" required="required" class="fadeIn third icon-user" placeholder="密碼" />
+                            <input type="submit" value="登入" class="fadeIn fourth" />
+                            @ViewBag.Message
 
-
-                            <input type="text" id="password" class="fadeIn third icon-user" name="login" placeholder="密碼">
-                            <input type="submit" class="fadeIn fourth" value="登入">
                         </form>
 
                         <!-- Remind Passowrd -->
