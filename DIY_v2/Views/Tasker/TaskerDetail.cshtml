@@ -338,7 +338,8 @@
 
                             @if (Model.taskers.Select(x => x.TaskerDescription).First() != null) // 如果資料庫裡有資料的話
                             {
-                                @Html.Raw(Model.taskers.Select(x => x.TaskerDescription).First().Replace(Environment.NewLine, "<br/>"))
+                                @*@Html.Raw(Model.taskers.Select(x => x.TaskerDescription).FirstOrDefault().Replace(Environment.NewLine, "<br/>"))*@
+                                @Html.Raw(Model.taskers.Select(x => x.TaskerDescription).First())
                             }
                             else // 沒有的話就用預設寫死的
                             {
@@ -378,7 +379,7 @@
                                     foreach (var item in CaseImageName) // 用foreach從字串array拿出圖片名稱
                                     {
                                         <div class="mySlides">
-                                            <a target="_blank" href="~/Images/TaskImages/@item">
+                                            <a target="_blank" href="~/Images/TaskerImages/CaseImage/@item">
                                                 <img src="~/Images/TaskerImages/CaseImage/@item">
                                             </a>
                                         </div>
@@ -387,61 +388,61 @@
                                 else // 沒有的話就用預設寫死的
                                 {
                                     <div class="mySlides">
-                                        <a target="_blank" href="~/Images/TaskImages/demo01.jpg">
+                                        <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage01.jpg">
                                             <img src="~/Images/TaskerImages/CaseImage/CaseImage01.jpg">
                                         </a>
                                     </div>
 
                                     <div class="mySlides">
-                                        <a target="_blank" href="~/Images/TaskImages/demo02.jpg">
+                                        <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage02.jpg">
                                             <img src="~/Images/TaskerImages/CaseImage/CaseImage02.jpg">
                                         </a>
                                     </div>
 
                                     <div class="mySlides">
-                                        <a target="_blank" href="~/Images/TaskImages/demo03.jpg">
+                                        <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage03.jpg">
                                             <img src="~/Images/TaskerImages/CaseImage/CaseImage03.jpg">
                                         </a>
                                     </div>
 
                                     <div class="mySlides">
-                                        <a target="_blank" href="~/Images/TaskImages/demo03.jpg">
+                                        <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage04.jpg">
                                             <img src="~/Images/TaskerImages/CaseImage/CaseImage04.jpg">
                                         </a>
                                     </div>
 
                                     <div class="mySlides">
-                                        <a target="_blank" href="~/Images/TaskImages/demo03.jpg">
+                                        <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage05.jpg">
                                             <img src="~/Images/TaskerImages/CaseImage/CaseImage05.jpg">
                                         </a>
                                     </div>
 
                                     <div class="mySlides">
-                                        <a target="_blank" href="~/Images/TaskImages/demo03.jpg">
+                                        <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage06.jpg">
                                             <img src="~/Images/TaskerImages/CaseImage/CaseImage06.jpg">
                                         </a>
                                     </div>
 
                                     <div class="mySlides">
-                                        <a target="_blank" href="~/Images/TaskImages/demo03.jpg">
+                                        <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage07.jpg">
                                             <img src="~/Images/TaskerImages/CaseImage/CaseImage07.jpg">
                                         </a>
                                     </div>
 
                                     <div class="mySlides">
-                                        <a target="_blank" href="~/Images/TaskImages/demo03.jpg">
+                                        <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage08.jpg">
                                             <img src="~/Images/TaskerImages/CaseImage/CaseImage08.jpg">
                                         </a>
                                     </div>
 
                                     <div class="mySlides">
-                                        <a target="_blank" href="~/Images/TaskImages/demo03.jpg">
+                                        <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage09.jpg">
                                             <img src="~/Images/TaskerImages/CaseImage/CaseImage09.jpg">
                                         </a>
                                     </div>
 
                                     <div class="mySlides">
-                                        <a target="_blank" href="~/Images/TaskImages/demo03.jpg">
+                                        <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage10.jpg">
                                             <img src="~/Images/TaskerImages/CaseImage/CaseImage10.jpg">
                                         </a>
                                     </div>

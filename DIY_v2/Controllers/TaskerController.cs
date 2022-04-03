@@ -21,7 +21,7 @@ namespace DIY_v2.Controllers
         public ActionResult Tasker(CVMQueryTasker viewModel)
         {
             int currentPage = viewModel.page < 1 ? 1 : viewModel.page; // 避免頁數跑到負數
-            var finalTasker = db.Tasker.ToList(); // 預設抓全部的師傅
+            var finalTasker = db.Tasker.Where(x=>x.Permission=="2").ToList(); // 預設抓全部(Permission為正常)的師傅
             var finalCategories = db.TaskerService.ToList(); // 預設抓全部的類別
 
             #region 處理 服務地區

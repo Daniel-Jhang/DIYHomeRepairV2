@@ -72,7 +72,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.MemberBirthday, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MemberBirthday, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.MemberBirthday, new { @class = "form-control", type = "date" }) @*修改input的格式*@
+                @*@Html.EditorFor(model => model.MemberBirthday, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.MemberBirthday, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -109,7 +110,7 @@
                 @Html.ValidationMessageFor(model => model.MemberPhone, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="會員註冊" class="btn btn-default" onclick="btclick()" />

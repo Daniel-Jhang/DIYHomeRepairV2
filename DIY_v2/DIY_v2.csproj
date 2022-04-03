@@ -155,6 +155,7 @@
     <Compile Include="Models\CVMManageOrder.cs" />
     <Compile Include="Models\CVMQueryTasker.cs" />
     <Compile Include="Models\CVMTaskerDetail.cs" />
+    <Compile Include="Models\CVMTaskerMemberEditV2.cs" />
     <Compile Include="Models\dbDIYModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
