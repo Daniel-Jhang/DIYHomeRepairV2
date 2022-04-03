@@ -593,6 +593,7 @@
     <Content Include="Images\元件\電視.png" />
     <Content Include="Images\元件\電視01.png" />
     <Content Include="Images\元件\馬桶03.png" />
+    <Content Include="Images\元件\馬桶04.png" />
     <Content Include="Models\dbDIYModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>dbDIYModel.edmx</DependentUpon>
