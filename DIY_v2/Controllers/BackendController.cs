@@ -409,7 +409,7 @@ namespace DIY_v2.Controllers
 
         {
 
-           var result= db.ProductReply.Where(x=>x.ReplyID==ReplyID).FirstOrDefault();
+            var result = db.ProductReply.Where(x => x.ReplyID == ReplyID).FirstOrDefault();
             db.ProductReply.Remove(result);
             db.SaveChanges();
             return RedirectToAction("ManageReply");
@@ -442,7 +442,7 @@ namespace DIY_v2.Controllers
         #region 訂單狀態管理
         public ActionResult ManageOrder()
         {
-            var result = db.Orders.Where(x=>x.OrderStatus!="購物車").ToList();
+            var result = db.Orders.Where(x => x.OrderStatus != "購物車").ToList();
             return View(result);
         }
         public ActionResult ManageOrderDetail(string OrderID)
@@ -456,22 +456,61 @@ namespace DIY_v2.Controllers
             return View(Mo);
         }
         [HttpPost]
-        public ActionResult ChangeOrder(string OrderID,string OrderStatus)
+        public ActionResult ChangeOrder(string OrderID, string OrderStatus)
         {
 
             var result = db.Order_Detail.Where(x => x.OrderID == OrderID).ToList();
-         foreach(var item in result)
+            foreach (var item in result)
             {
                 item.OrderStatus = OrderStatus;
             }
             db.SaveChanges();
-            var result2=db.Orders.Where(x=>x.OrderID == OrderID).FirstOrDefault();
+            var result2 = db.Orders.Where(x => x.OrderID == OrderID).FirstOrDefault();
             result2.OrderStatus = OrderStatus;
             db.SaveChanges();
-            
+
             return RedirectToAction("ManageOrder");
         }
         #endregion
 
+        #region 師傅留言管理
+        public ActionResult ManageTaskerComment(int TaskerID = 1)
+        {
+            var comments = db.TaskerComment.Where(x => x.TaskerID == TaskerID).ToList(); // 找出那個師傅的全部評論
+            return View(comments);
+        }
+
+        public ActionResult DeleteTaskerComment(int ReplyID)
+        {
+            var commentToDelete = db.TaskerComment.Where(x=>x.ReplyID == ReplyID).FirstOrDefault();
+            db.TaskerComment.Remove(commentToDelete);
+            db.SaveChanges();
+            return RedirectToAction("ManageTaskerComment");
+        }
+        #endregion
+
+        #region 師傅權限管理
+        public ActionResult TaskerDetail(int TaskerID=1)
+        {
+            var taskerDetail = db.Tasker.Where(x => x.TaskerID == TaskerID).FirstOrDefault();
+            return View(taskerDetail);
+        }
+
+        public ActionResult StopTasker(int TaskerID = 1)
+        {
+            var result = db.Tasker.Where(x => x.TaskerID == TaskerID).FirstOrDefault();
+            result.Permission = "N";
+            db.SaveChanges();
+            return RedirectToAction("TaskerDetail");
+        }
+
+        public ActionResult StartTasker(int TaskerID = 1)
+        {
+            var result = db.Tasker.Where(x => x.TaskerID == TaskerID).FirstOrDefault();
+            result.Permission = "2";
+            db.SaveChanges();
+            return RedirectToAction("TaskerDetail");
+        }
+        #endregion
     }
 }

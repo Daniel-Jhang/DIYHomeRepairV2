@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - 我的 ASP.NET 應用程式</title>
+    <title>@ViewBag.Title - DIY居家修繕</title>
     @*@Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")*@
 
@@ -29,10 +29,10 @@
     <link rel="stylesheet" href="~/static/css/icomoon.css">
     <link rel="stylesheet" href="~/static/css/style.css">
     <link rel="stylesheet" href="~/Content/mydiy.css">
-    <link rel="stylesheet"
+    @*<link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>*@
     <style>
 
         .dropdown-toggle {
@@ -340,7 +340,7 @@
 
                                     <li class="nav-item"><a href="@Url.Action("Tasker","Tasker")" class="nav-link">找師傅</a></li>
 
-                                    @if (@Session["Permission"]?.ToString() == "2")
+                                    @if (@Session["Permission"]?.ToString() == "2") //改成師傅會員是師傅專區
                                     {
                                         <li class="nav-item dropdown">
                                             <a href="@Url.Action("Index","TaskerMember")" class="dropdown-toggle nav-link" data-toggle="dropdown">師傅專區</a>
@@ -348,17 +348,23 @@
 
                                                 <div class="col-sm-12" style="padding:10px">
                                                     <ul class="multi-column-dropdown">
-                                                        <li><a href="@Url.Action("Index","TaskerMember")" class="dropdown-item">師傅基本資料</a></li>
-                                                        <li><a href="@Url.Action("TaskerRegister","TaskerMember")" class="dropdown-item">師傅資料登入</a></li>
 
-
+                                                        @if (Session["AlreadyData"]?.ToString() != "Y")
+                                                        {
+                                                            <li><a href="@Url.Action("TaskerRegister","TaskerMember")" class="dropdown-item">師傅資料登入</a></li>
+                                                        }
+                                                        <li><a href="@Url.Action("TaskerMemberEditV2","TaskerMember")?id=@Session["MemberID"]" class="dropdown-item">我的帳戶</a></li>
+                                                        @*<li><a href="@Url.Action("Index","TaskerMember")" class="dropdown-item">基本資料</a></li>*@
+                                                        <li><a href="@Url.Action("TaskerDetail","Tasker")?TaskerID=@Session["TaskerID"]" class="dropdown-item">查看主頁</a></li>
+                                                        <li><a href="@Url.Action("Myorder","Member")" class="dropdown-item">訂單查詢</a></li>
+                                                        <li><a href="@Url.Action("PasswordChange","Member")" class="dropdown-item">修改密碼</a></li>
                                                     </ul>
                                                 </div>
 
                                             </div>
                                         </li>
                                     }
-                                    @if (@Session["Permission"]?.ToString() != null)
+                                    @if (@Session["Permission"]?.ToString() == "1") //改成一般會員是會員專區
                                     {
                                         <li class="nav-item dropdown">
                                             <a href="@Url.Action("BasicData","Member")" class="dropdown-toggle nav-link" data-toggle="dropdown">會員專區</a>
@@ -376,7 +382,8 @@
                                             </div>
                                         </li>
                                     }
-                                    else
+
+                                    @if (@Session["Permission"]?.ToString() == null)
                                     {
                                         <li class="nav-item dropdown">
                                             <a href="@Url.Action("BasicData","Member")" class="dropdown-toggle nav-link" data-toggle="dropdown">註冊</a>
