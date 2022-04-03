@@ -159,7 +159,7 @@
             display: none;
         }
 
-    button {
+    button, .buttonA {
         border: none;
         width: 164px;
         height: 51px;
@@ -180,22 +180,22 @@
         transition-duration: 0.3s;
     }
 
-        button i {
-            margin-left: 10px;
-            -webkit-transform: translateZ(0);
-            transform: translateZ(0);
-        }
+    button, buttonA i {
+        margin-left: 10px;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
 
-        button:hover i, button:focus i, button:active i {
-            -webkit-animation-name: hvr-icon-wobble-horizontal;
-            animation-name: hvr-icon-wobble-horizontal;
-            -webkit-animation-duration: 1s;
-            animation-duration: 1s;
-            -webkit-animation-timing-function: ease-in-out;
-            animation-timing-function: ease-in-out;
-            -webkit-animation-iteration-count: 1;
-            animation-iteration-count: 1;
-        }
+    button, buttonA:hover i, button, buttonA:focus i, button, buttonA:active i {
+        -webkit-animation-name: hvr-icon-wobble-horizontal;
+        animation-name: hvr-icon-wobble-horizontal;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-timing-function: ease-in-out;
+        animation-timing-function: ease-in-out;
+        -webkit-animation-iteration-count: 1;
+        animation-iteration-count: 1;
+    }
 
     @@-webkit-keyframes hvr-icon-wobble-horizontal {
         16.65% {
@@ -317,102 +317,102 @@
 
 
 
-<h2>會員註冊</h2>
+
 
 <div class="wrapper" style="background-image: url('/Images/元件/登入背景11.jpg'); ">
     <div class="inner">
         <div class="image-holder">
             <img src="~/Images/元件/登入背景14.jpg" alt="">
         </div>
+
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
 
 
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <h3>會員註冊</h3>
             <div class="form-group">
-             
 
-                @Html.EditorFor(model => model.MemberAccount, new { htmlAttributes = new { @class = "form-control" , placeholder = "會員帳號" } })
+
+                @Html.EditorFor(model => model.MemberAccount, new { htmlAttributes = new { @class = "form-control", placeholder = "會員帳號" } })
                 @Html.ValidationMessageFor(model => model.MemberAccount, "", new { @class = "text-danger" })
-
-            </div>
-
-            <div class="form-group">
-              
-
-                <input type="text" id="MemberPwd" name="MemberPwd" class="form-control  " placeholder = "會員密碼" />
+                <input type="text" id="MemberPwd" name="MemberPwd" class="form-control  " placeholder="會員密碼" />
                 <span id="MemberPwdError" class="field-validation-error text-danger" data-valmsg-for="MemberPwd" data-valmsg-replace="true" style=@ViewData["MemberPwdError"]>密碼不得空白，最少八個最多十二個字符，至少一個大寫字母，一個小寫字母，一個數字和一個特殊字符</span>
 
             </div>
 
-            <div class="form-group">
-          
+            <div class="form-wrapper">
+
 
                 @Html.EditorFor(model => model.MemberName, new { htmlAttributes = new { @class = "form-control", placeholder = "姓名" } })
                 @Html.ValidationMessageFor(model => model.MemberName, "", new { @class = "text-danger" })
 
             </div>
 
-            <div class="form-group">
-               
+            <div class="form-wrapper">
+                <select name="MemberGender" id="" class="form-control">
+                    <option value="" disabled selected>性別</option>
+                    <option value="M">男</option>
+                    <option value="F">女</option>
+                </select>
 
-                @Html.RadioButtonFor(m => m.MemberGender, "M")<label>男性</label>
+                @*@Html.RadioButtonFor(m => m.MemberGender, "M")<label>男性</label>
                 @Html.RadioButtonFor(m => m.MemberGender, "F")<label>女性</label>
-                @Html.ValidationMessageFor(model => model.MemberGender, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.MemberGender, "", new { @class = "text-danger" })*@
 
             </div>
 
-            <div class="form-group">
-               
+            <div class="form-wrapper">
 
-                @Html.EditorFor(model => model.MemberBirthday, new { htmlAttributes = new { @class = "form-control", placeholder = "生日" } })
+
+                @Html.EditorFor(model => model.MemberBirthday, new { htmlAttributes = new { @class = "form-control", placeholder = "生日" ,type="date"} })
                 @Html.ValidationMessageFor(model => model.MemberBirthday, "", new { @class = "text-danger" })
 
             </div>
 
-            <div class="form-group">
-                
+            <div class="form-wrapper">
+
 
                 @Html.EditorFor(model => model.MemberNickname, new { htmlAttributes = new { @class = "form-control", placeholder = "暱稱" } })
                 @Html.ValidationMessageFor(model => model.MemberNickname, "", new { @class = "text-danger" })
 
             </div>
 
-            <div class="form-group">
-              
+            <div class="form-wrapper">
 
-                @Html.EditorFor(model => model.MemberEmail, new { htmlAttributes = new { @class = "form-control" , placeholder = "信箱" } })
+
+                @Html.EditorFor(model => model.MemberEmail, new { htmlAttributes = new { @class = "form-control", placeholder = "信箱" } })
                 @Html.ValidationMessageFor(model => model.MemberEmail, "", new { @class = "text-danger" })
 
             </div>
 
-            <div class="form-group">
-             
+            <div class="form-wrapper">
+
 
                 @Html.EditorFor(model => model.MemberAddress, new { htmlAttributes = new { @class = "form-control", placeholder = "地址" } })
                 @Html.ValidationMessageFor(model => model.MemberAddress, "", new { @class = "text-danger" })
 
             </div>
 
-            <div class="form-group">
-     
+            <div class="form-wrapper">
 
-                @Html.EditorFor(model => model.MemberPhone, new { htmlAttributes = new { @class = "form-control" , placeholder = "手機" } })
+
+                @Html.EditorFor(model => model.MemberPhone, new { htmlAttributes = new { @class = "form-control", placeholder = "手機" } })
                 @Html.ValidationMessageFor(model => model.MemberPhone, "", new { @class = "text-danger" })
 
             </div>
 
-            <div class="form-group">
+           
 
-                <input type="submit" value="會員註冊" class="btn btn-default" onclick="btclick()" />
+                <input type="submit" value="會員註冊" class="buttonA"  onclick="btclick()" />
                 @ViewBag.Message
 
-            </div>
+          
 
         }
 
- 
+
 
 
 
