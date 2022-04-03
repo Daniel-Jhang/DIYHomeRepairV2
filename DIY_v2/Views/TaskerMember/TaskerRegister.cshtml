@@ -1,161 +1,419 @@
 ﻿@model DIY_v2.Models.Tasker
 
 @{
-    ViewBag.Title = "TaskerRegister";
+    ViewBag.Title = "師傅資料登入";
 }
 
-<h2>師傅基本資料填寫</h2>
+<!-- #region CSS -->
+<style>
+    @@font-face {
+        font-family: "Poppins-Regular";
+        src: url("../fonts/poppins/Poppins-Regular.ttf");
+    }
 
-@using (Html.BeginForm("TaskerRegister", "TaskerMember", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
+    @@font-face {
+        font-family: "Poppins-SemiBold";
+        src: url("../fonts/poppins/Poppins-SemiBold.ttf");
+    }
 
-<div class="form-horizontal">
-    <h4>Tasker</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.TaskerName, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.TaskerName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.TaskerName, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.ServiceQuote, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ServiceQuote, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ServiceQuote, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    body {
+        font-family: "Poppins-Regular";
+        color: #333;
+        font-size: 13px;
+        margin: 0;
+    }
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.TaskerTel, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.TaskerTel, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.TaskerTel, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    input, textarea, select, button {
+        font-family: "Poppins-Regular";
+        color: #333;
+        font-size: 13px;
+    }
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.TaskerPhone, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.TaskerPhone, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.TaskerPhone, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    p, h1, h2, h3, h4, h5, h6, ul {
+        margin: 0;
+    }
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.ServiceTime_Start, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ServiceTime_Start, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ServiceTime_Start, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    img {
+        max-width: 100%;
+    }
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.ServiceTime_End, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ServiceTime_End, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ServiceTime_End, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    ul {
+        padding-left: 0;
+        margin-bottom: 0;
+    }
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.ServiceArea, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @*@Html.EditorFor(model => model.ServiceArea, new { htmlAttributes = new { @class = "form-control" } })*@
-            @Html.DropDownListFor(model => model.ServiceArea, (IEnumerable<SelectListItem>)Session["cityList"], new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.ServiceArea, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    a:hover {
+        text-decoration: none;
+    }
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.TaskerImage, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <p><input type="file" name="taskerPhoto" value="" /></p>
-            @*<input type="submit" value="檔案上傳" />*@
-            @*@Html.EditorFor(model => model.TaskerImage, new { htmlAttributes = new { @class = "form-control" } })*@
-            @Html.ValidationMessageFor(model => model.TaskerImage, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    :focus {
+        outline: none;
+    }
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.License, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.License, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.License, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    .wrapper {
+        min-height: 100vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: center;
+    }
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Feature, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Feature, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Feature, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    .inner {
+        padding: 20px;
+        background: #fff;
+        max-width: 850px;
+        margin: auto;
+        display: flex;
+    }
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.TaskerDescription, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextAreaFor(model => model.TaskerDescription, 10, 80, new { htmlAttributes = new { @class = "form-control" } })
-            @*@Html.EditorFor(model => model.TaskerDescription, new { htmlAttributes = new { @class = "form-control" } })*@
-            @Html.ValidationMessageFor(model => model.TaskerDescription, "", new { @class = "text-danger" })
-        </div>
-    </div>
+        .inner .image-holder {
+            width: 50%;
+            margin-top: 105px;
+        }
 
-    @*上傳施工案例照片*@
-    <div class="form-group">
-        @Html.LabelFor(model => model.CaseImage, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <p><input type="file" name="casePhotos" value="" /></p>
-            <p><input type="file" name="casePhotos" value="" /></p>
-            <p><input type="file" name="casePhotos" value="" /></p>
-            @*<input type="submit" value="檔案上傳" />*@
-            @*@Html.EditorFor(model => model.CaseImage, new { htmlAttributes = new { @class = "form-control" } })*@
-            @Html.ValidationMessageFor(model => model.CaseImage, "", new { @class = "text-danger" })
-        </div>
-    </div>
+        .inner form {
+            width: 50%;
+            padding-top: 36px;
+            padding-left: 45px;
+            padding-right: 45px;
+        }
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Rate, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Rate, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Rate, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.Label("服務類別", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @{
+        .inner h3 {
+            text-transform: uppercase;
+            font-size: 25px;
+            font-family: "Poppins-SemiBold";
+            text-align: center;
+            margin-bottom: 28px;
+        }
 
-                @Html.CheckBox("serviceCategoryChk1", false, htmlAttributes: new { @class = "test", id = "serviceCategoryChk1" })
-                @Html.Label("衛浴裝修", htmlAttributes: new { @class = "test", @for = "serviceCategoryChk1" })
-                <br />
+    .form-group {
+        display: flex;
+    }
 
-                @Html.CheckBox("serviceCategoryChk2", false, htmlAttributes: new { @class = "test", id = "serviceCategoryChk2" })
-                @Html.Label("抓漏/堵塞", htmlAttributes: new { @class = "test", @for = "serviceCategoryChk2" })
-                <br />
-                @Html.CheckBox("serviceCategoryChk3", false, htmlAttributes: new { @class = "test", id = "serviceCategoryChk3" })
-                @Html.Label("水電安裝/修繕", htmlAttributes: new { @class = "test", @for = "serviceCategoryChk3" })
-                <br />
+        .form-group input {
+            width: 50%;
+        }
+
+            .form-group input:first-child {
+                margin-right: 25px;
             }
+
+    .form-wrapper {
+        position: relative;
+    }
+
+        .form-wrapper i {
+            position: absolute;
+            bottom: 9px;
+            right: 0;
+        }
+
+    .form-control {
+        border: 1px solid #333;
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        display: block;
+        width: 100%;
+        height: 30px;
+        padding: 0;
+        margin-bottom: 25px;
+    }
+
+        .form-control::-webkit-input-placeholder {
+            font-size: 13px;
+            color: #333;
+            font-family: "Poppins-Regular";
+        }
+
+        .form-control::-moz-placeholder {
+            font-size: 13px;
+            color: #333;
+            font-family: "Poppins-Regular";
+        }
+
+        .form-control:-ms-input-placeholder {
+            font-size: 13px;
+            color: #333;
+            font-family: "Poppins-Regular";
+        }
+
+        .form-control:-moz-placeholder {
+            font-size: 13px;
+            color: #333;
+            font-family: "Poppins-Regular";
+        }
+
+    select {
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        cursor: pointer;
+        padding-left: 20px;
+    }
+
+        select option[value=""][disabled] {
+            display: none;
+        }
+
+    button {
+        border: none;
+        width: 164px;
+        height: 51px;
+        margin: auto;
+        margin-top: 40px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        background: #333;
+        font-size: 15px;
+        color: #fff;
+        vertical-align: middle;
+        -webkit-transform: perspective(1px) translateZ(0);
+        transform: perspective(1px) translateZ(0);
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+    }
+
+        button i {
+            margin-left: 10px;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+        }
+
+        button:hover i, button:focus i, button:active i {
+            -webkit-animation-name: hvr-icon-wobble-horizontal;
+            animation-name: hvr-icon-wobble-horizontal;
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-timing-function: ease-in-out;
+            animation-timing-function: ease-in-out;
+            -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;
+        }
+
+    @@-webkit-keyframes hvr-icon-wobble-horizontal {
+        16.65% {
+            -webkit-transform: translateX(6px);
+            transform: translateX(6px);
+        }
+
+        33.3% {
+            -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+        }
+
+        49.95% {
+            -webkit-transform: translateX(4px);
+            transform: translateX(4px);
+        }
+
+        66.6% {
+            -webkit-transform: translateX(-2px);
+            transform: translateX(-2px);
+        }
+
+        83.25% {
+            -webkit-transform: translateX(1px);
+            transform: translateX(1px);
+        }
+
+        100% {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+        }
+    }
+
+    @@keyframes hvr-icon-wobble-horizontal {
+        16.65% {
+            -webkit-transform: translateX(6px);
+            transform: translateX(6px);
+        }
+
+        33.3% {
+            -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+        }
+
+        49.95% {
+            -webkit-transform: translateX(4px);
+            transform: translateX(4px);
+        }
+
+        66.6% {
+            -webkit-transform: translateX(-2px);
+            transform: translateX(-2px);
+        }
+
+        83.25% {
+            -webkit-transform: translateX(1px);
+            transform: translateX(1px);
+        }
+
+        100% {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+        }
+    }
+
+    @@media (max-width: 1199px) {
+        .wrapper {
+            background-position: right center;
+        }
+    }
+
+    @@media (max-width: 991px) {
+        .inner form {
+            padding-top: 10px;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+    }
+
+    @@media (max-width: 767px) {
+        .inner {
+            display: block;
+        }
+
+            .inner .image-holder {
+                width: 100%;
+            }
+
+            .inner form {
+                width: 100%;
+                padding: 40px 0 30px;
+            }
+
+
+    }
+
+    .buttonA {
+        margin-top:-10px;
+
+    }
+
+    @*-----------------新的師傅註冊頁面---------------*@
+</style>
+<!-- #endregion -->
+
+<div class="wrapper" style="background-image: url('/Images/元件/登入背景11.jpg'); ">
+    <div class="inner">
+        <div class="image-holder">
+            <img src="~/Images/元件/登入背景12.jpg" alt="">
+        </div>
+        @using (Html.BeginForm("TaskerRegister", "TaskerMember", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <h3>師傅資料登入</h3>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.EditorFor(model => model.TaskerName, new { htmlAttributes = new { @class = "form-control", placeholder = "水電行名稱" } })
+                @Html.ValidationMessageFor(model => model.TaskerName, "", new { @class = "text-danger" })
+
+                @Html.EditorFor(model => model.ServiceQuote, new { htmlAttributes = new { @class = "form-control", placeholder = "服務報價/趟" } })
+                @Html.ValidationMessageFor(model => model.ServiceQuote, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+                @Html.EditorFor(model => model.TaskerTel, new { htmlAttributes = new { @class = "form-control", placeholder = "水電行電話" } })
+                @Html.ValidationMessageFor(model => model.TaskerTel, "", new { @class = "text-danger" })
+
+                @Html.EditorFor(model => model.TaskerPhone, new { htmlAttributes = new { @class = "form-control", placeholder = "手機" } })
+                @Html.ValidationMessageFor(model => model.TaskerPhone, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.EditorFor(model => model.ServiceTime_Start, new { htmlAttributes = new { @class = "form-control", placeholder = "營業時間" } })
+                @Html.ValidationMessageFor(model => model.ServiceTime_Start, "", new { @class = "text-danger" })
+
+                @Html.EditorFor(model => model.ServiceTime_End, new { htmlAttributes = new { @class = "form-control", placeholder = "結束營業時間" } })
+                @Html.ValidationMessageFor(model => model.ServiceTime_End, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.DropDownListFor(model => model.ServiceArea, (IEnumerable<SelectListItem>)Session["cityList"], "請選擇服務地區", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ServiceArea, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-wrapper">
+                <h5>服務類別</h5>
+                @{
+                    @Html.CheckBox("serviceCategoryChk1", false, htmlAttributes: new { @class = "test", id = "serviceCategoryChk1" })
+                    @Html.Label("衛浴裝修", htmlAttributes: new { @class = "test", @for = "serviceCategoryChk1", style = "font-size: 17px" })
+                    <br />
+                    @Html.CheckBox("serviceCategoryChk2", false, htmlAttributes: new { @class = "test", id = "serviceCategoryChk2" })
+                    @Html.Label("抓漏/堵塞", htmlAttributes: new { @class = "test", @for = "serviceCategoryChk2", style = "font-size: 17px" })
+                    <br />
+                    @Html.CheckBox("serviceCategoryChk3", false, htmlAttributes: new { @class = "test", id = "serviceCategoryChk3" })
+                    @Html.Label("水電安裝/修繕", htmlAttributes: new { @class = "test", @for = "serviceCategoryChk3", style = "font-size: 17px" })
+                    <br />
+                }
+            </div>
+
+            <div class="form-wrapper">
+                @Html.EditorFor(model => model.License, new { htmlAttributes = new { @class = "form-control", placeholder = "專業證照" } })
+                @Html.ValidationMessageFor(model => model.License, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-wrapper">
+                @Html.EditorFor(model => model.Feature, new { htmlAttributes = new { @class = "form-control", placeholder = "特色" } })
+                @Html.ValidationMessageFor(model => model.Feature, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-wrapper">
+                <h5>服務詳情</h5>
+                @Html.TextAreaFor(model => model.TaskerDescription, 10, 40, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TaskerDescription, "", new { @class = "text-danger" })
+            </div>
+
+            @*上傳師傅頭像*@
+            <div class="form-wrapper">
+                <h5>主頁頭像</h5>
+                <p><input type="file" name="taskerPhoto" value="" /></p>
+                @*<input type="submit" value="檔案上傳" />*@
+                @Html.ValidationMessageFor(model => model.TaskerImage, "", new { @class = "text-danger" })
+            </div>
+            <br />
+
+            @*上傳施工案例照片*@
+            <div class="form-wrapper">
+                <h5>施工案例照片</h5>
+                <p><input type="file" name="casePhotos" value="" /></p>
+                <p><input type="file" name="casePhotos" value="" /></p>
+                <p><input type="file" name="casePhotos" value="" /></p>
+                @*<input type="submit" value="檔案上傳" />*@
+                @Html.ValidationMessageFor(model => model.CaseImage, "", new { @class = "text-danger" })
+            </div>
+
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.Rate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Rate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Rate, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+            <br />
+
+            <input type="hidden" name="Rate" value=5 />
             <input type="hidden" name="MemberID" value="@Session["MemberID"]" />
             @*20220402 師傅新增一個欄位Permission，當師傅會員要修改自己的資料時，會自動把Permission的值維持在 "2"*@
             <input type="hidden" name="Permission" value="2" />
-        </div>
-    </div>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
+            <input type="submit" value="送出" class="btn btn-success" />
+            <br />
+            <br />
+        }
     </div>
-</div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    <div>
+        @Html.ActionLink("Back to List", "Index") @*不確定要不要留*@
+    </div>
 </div>
