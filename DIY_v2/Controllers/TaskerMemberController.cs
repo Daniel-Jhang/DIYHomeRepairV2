@@ -410,6 +410,7 @@ namespace DIY_v2.Controllers
 
             CVMTaskerMemberEditV2 viewModel = new CVMTaskerMemberEditV2();
             viewModel.taskerTable = taskerToEdit;
+            viewModel.taskerTable.TaskerDescription = taskerToEdit.TaskerDescription.Replace("<br/>", Environment.NewLine);
             viewModel.memberTable = memberToEdit;
 
             return View(viewModel);
@@ -431,6 +432,7 @@ namespace DIY_v2.Controllers
                 MemberItem.MemberAddress = viewModel.memberTable.MemberAddress;
                 MemberItem.MemberPhone = viewModel.memberTable.MemberPhone;
 
+                db.SaveChanges();
 
                 #region 上傳圖片
                 string taskerFileName = "";// 圖檔名稱
@@ -505,9 +507,11 @@ namespace DIY_v2.Controllers
                 temp.TaskerImage = viewModel.taskerTable.TaskerImage;
                 temp.License = viewModel.taskerTable.License;
                 temp.Feature = viewModel.taskerTable.Feature;
-                temp.TaskerDescription = viewModel.taskerTable.TaskerDescription;
+                temp.TaskerDescription = viewModel.taskerTable.TaskerDescription.Replace(Environment.NewLine, "<br/>");
                 temp.CaseImage = viewModel.taskerTable.CaseImage;
                 temp.Rate = viewModel.taskerTable.Rate;
+
+                db.SaveChanges();
 
                 var temp1 = db.TaskerService.Where(x => x.TaskerID == viewModel.taskerTable.TaskerID).Where(x => x.ServiceCategoryID == "1").FirstOrDefault();
                 var temp2 = db.TaskerService.Where(x => x.TaskerID == viewModel.taskerTable.TaskerID).Where(x => x.ServiceCategoryID == "2").FirstOrDefault();
@@ -575,7 +579,7 @@ namespace DIY_v2.Controllers
                 db.SaveChanges();
             }
             Session["memberEdit"] = "資料修改完成";
-            return RedirectToAction("Index");
+            return RedirectToAction("TaskerDetail", "Tasker", new {TaskerID = viewModel.taskerTable.TaskerID});
         }
         #endregion
     }
