@@ -211,6 +211,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\DIY.jpg" />
     <Content Include="Images\DIYImages\ChangeFaucet_demo.png" />
     <Content Include="Images\DIYImages\changeLight2-1.jpg" />
     <Content Include="Images\DIYImages\changeLight2-2.jpg" />
@@ -544,6 +545,7 @@
     <Content Include="Images\ToolImages\洗手台1.jpg" />
     <Content Include="Images\ToolImages\洗手台2.jpg" />
     <Content Include="Images\ToolImages\活動板手.png" />
+    <Content Include="Images\wordfile.png" />
     <Content Include="Images\元件\logo.png" />
     <Content Include="Images\元件\new四腳椅子.png" />
     <Content Include="Images\元件\new浴缸.png" />
@@ -752,6 +754,8 @@
     <Content Include="Views\Backend\ManageOrderDetail.cshtml" />
     <Content Include="Views\Backend\ManageReply.cshtml" />
     <Content Include="Views\Backend\MemberDetail.cshtml" />
+    <Content Include="Views\PartialView\MemberRegister.cshtml" />
+    <Content Include="Views\PartialView\TaskerRegister.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
