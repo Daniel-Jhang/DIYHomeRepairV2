@@ -57,9 +57,11 @@ namespace DIY_v2.Controllers
                 Session["Permission"] = member.Permission;
                 Session["MemberName"] = member.MemberName;
 
-                // 傳資料給師父專區 > 查看主頁的師傅專區
+                // 傳資料給師父專區 > 查看主頁(TaskerID)和我的帳戶(MemberID)
                 var TaskerID = db.Tasker.Where(x => x.MemberID == member.MemberID).Select(x => x.TaskerID).FirstOrDefault();
                 Session["TaskerID"] = TaskerID;
+                var MemberID = member.MemberID;
+                Session["MemberID"] = MemberID;
             }
             //使用Session變數記錄歡迎詞
             Session["WelCome"] = member.MemberName + "歡迎光臨";
