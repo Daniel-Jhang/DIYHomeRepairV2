@@ -3,123 +3,419 @@
 @{
     ViewBag.Title = "會員註冊";
 }
-
-@*<script>
-    function btclick() {
-             if (!((document.getElementById("MemberPwd").value).match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8, 12}$/)))  {
-                alert("密碼不得空白，最少八個最多十二個字符，至少一個大寫字母，一個小寫字母，一個數字和一個特殊字符");
-                //document.getElementById("MemberPwdError").style.display = "block";
+<style>
+    @@font-face {
+        font-family: "Poppins-Regular";
+        src: url("../fonts/poppins/Poppins-Regular.ttf");
     }
-</script>*@
 
-@*<script type="text/javascript">
-    function btclick() {
-        if (!((document.getElementById("MemberPwd").value).match("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$!%*?&])[A-Za-z\\d$!%*?&]{8,12}$"))) {
-            alert("密碼不得空白，最少八個最多十二個字符，至少一個大寫字母，一個小寫字母，一個數字和一個特殊字符");
-            document.getElementById("PwdErrorTemp").value = "block";
-        } else {
-            document.getElementById("PwdErrorTemp").value = "none";
+    @@font-face {
+        font-family: "Poppins-SemiBold";
+        src: url("../fonts/poppins/Poppins-SemiBold.ttf");
+    }
+
+    * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: "Poppins-Regular";
+        color: #333;
+        font-size: 13px;
+        margin: 0;
+    }
+
+    input, textarea, select, button {
+        font-family: "Poppins-Regular";
+        color: #333;
+        font-size: 13px;
+    }
+
+    p, h1, h2, h3, h4, h5, h6, ul {
+        margin: 0;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    ul {
+        padding-left: 0;
+        margin-bottom: 0;
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+
+    :focus {
+        outline: none;
+    }
+
+    .wrapper {
+        min-height: 100vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: center;
+    }
+
+    .inner {
+        padding: 20px;
+        background: #fff;
+        max-width: 850px;
+        margin: auto;
+        display: flex;
+    }
+
+        .inner .image-holder {
+            width: 50%;
+            margin-top: 105px;
+        }
+
+        .inner form {
+            width: 50%;
+            padding-top: 36px;
+            padding-left: 45px;
+            padding-right: 45px;
+        }
+
+        .inner h3 {
+            text-transform: uppercase;
+            font-size: 25px;
+            font-family: "Poppins-SemiBold";
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+    .form-group {
+        display: flex;
+    }
+
+        .form-group input {
+            width: 50%;
+        }
+
+            .form-group input:first-child {
+                margin-right: 25px;
+            }
+
+    .form-wrapper {
+        position: relative;
+    }
+
+        .form-wrapper i {
+            position: absolute;
+            bottom: 9px;
+            right: 0;
+        }
+
+    .form-control {
+        border: 1px solid #333;
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        display: block;
+        width: 100%;
+        height: 30px;
+        padding: 0;
+        margin-bottom: 25px;
+    }
+
+        .form-control::-webkit-input-placeholder {
+            font-size: 13px;
+            color: #333;
+            font-family: "Poppins-Regular";
+        }
+
+        .form-control::-moz-placeholder {
+            font-size: 13px;
+            color: #333;
+            font-family: "Poppins-Regular";
+        }
+
+        .form-control:-ms-input-placeholder {
+            font-size: 13px;
+            color: #333;
+            font-family: "Poppins-Regular";
+        }
+
+        .form-control:-moz-placeholder {
+            font-size: 13px;
+            color: #333;
+            font-family: "Poppins-Regular";
+        }
+
+    select {
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        cursor: pointer;
+        padding-left: 20px;
+    }
+
+        select option[value=""][disabled] {
+            display: none;
+        }
+
+    button {
+        border: none;
+        width: 164px;
+        height: 51px;
+        margin: auto;
+        margin-top: 40px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        background: #333;
+        font-size: 15px;
+        color: #fff;
+        vertical-align: middle;
+        -webkit-transform: perspective(1px) translateZ(0);
+        transform: perspective(1px) translateZ(0);
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+    }
+
+        button i {
+            margin-left: 10px;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+        }
+
+        button:hover i, button:focus i, button:active i {
+            -webkit-animation-name: hvr-icon-wobble-horizontal;
+            animation-name: hvr-icon-wobble-horizontal;
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-timing-function: ease-in-out;
+            animation-timing-function: ease-in-out;
+            -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;
+        }
+
+    @@-webkit-keyframes hvr-icon-wobble-horizontal {
+        16.65% {
+            -webkit-transform: translateX(6px);
+            transform: translateX(6px);
+        }
+
+        33.3% {
+            -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+        }
+
+        49.95% {
+            -webkit-transform: translateX(4px);
+            transform: translateX(4px);
+        }
+
+        66.6% {
+            -webkit-transform: translateX(-2px);
+            transform: translateX(-2px);
+        }
+
+        83.25% {
+            -webkit-transform: translateX(1px);
+            transform: translateX(1px);
+        }
+
+        100% {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
         }
     }
-</script>*@
+
+    @@keyframes hvr-icon-wobble-horizontal {
+        16.65% {
+            -webkit-transform: translateX(6px);
+            transform: translateX(6px);
+        }
+
+        33.3% {
+            -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+        }
+
+        49.95% {
+            -webkit-transform: translateX(4px);
+            transform: translateX(4px);
+        }
+
+        66.6% {
+            -webkit-transform: translateX(-2px);
+            transform: translateX(-2px);
+        }
+
+        83.25% {
+            -webkit-transform: translateX(1px);
+            transform: translateX(1px);
+        }
+
+        100% {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+        }
+    }
+
+    @@media (max-width: 1199px) {
+        .wrapper {
+            background-position: right center;
+        }
+    }
+
+    @@media (max-width: 991px) {
+        .inner form {
+            padding-top: 10px;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+    }
+
+    @@media (max-width: 767px) {
+        .inner {
+            display: block;
+        }
+
+            .inner .image-holder {
+                width: 100%;
+            }
+
+            .inner form {
+                width: 100%;
+                padding: 40px 0 30px;
+            }
+    }
+
+    .buttonA {
+        margin-top: -10px;
+    }
+    /*# sourceMappingURL=style.css.map */
+
+</style>
+@*<script>
+        function btclick() {
+                 if (!((document.getElementById("MemberPwd").value).match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8, 12}$/)))  {
+                    alert("密碼不得空白，最少八個最多十二個字符，至少一個大寫字母，一個小寫字母，一個數字和一個特殊字符");
+                    //document.getElementById("MemberPwdError").style.display = "block";
+        }
+    </script>*@
+
+@*<script type="text/javascript">
+        function btclick() {
+            if (!((document.getElementById("MemberPwd").value).match("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$!%*?&])[A-Za-z\\d$!%*?&]{8,12}$"))) {
+                alert("密碼不得空白，最少八個最多十二個字符，至少一個大寫字母，一個小寫字母，一個數字和一個特殊字符");
+                document.getElementById("PwdErrorTemp").value = "block";
+            } else {
+                document.getElementById("PwdErrorTemp").value = "none";
+            }
+        }
+    </script>*@
 
 
 
 <h2>會員註冊</h2>
 
+<div class="wrapper" style="background-image: url('/Images/元件/登入背景11.jpg'); ">
+    <div class="inner">
+        <div class="image-holder">
+            <img src="~/Images/元件/登入背景14.jpg" alt="">
+        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>Member</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.MemberAccount, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MemberAccount, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+             
+
+                @Html.EditorFor(model => model.MemberAccount, new { htmlAttributes = new { @class = "form-control" , placeholder = "會員帳號" } })
                 @Html.ValidationMessageFor(model => model.MemberAccount, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MemberPwd, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="text" id="MemberPwd" name="MemberPwd" class="control-label col-md-2" />
-                <span id="MemberPwdError" class="field-validation-error text-danger" data-valmsg-for="MemberPwd" data-valmsg-replace="true"  style=@ViewData["MemberPwdError"]>密碼不得空白，最少八個最多十二個字符，至少一個大寫字母，一個小寫字母，一個數字和一個特殊字符</span>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MemberName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MemberName, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="form-group">
+              
+
+                <input type="text" id="MemberPwd" name="MemberPwd" class="form-control  " placeholder = "會員密碼" />
+                <span id="MemberPwdError" class="field-validation-error text-danger" data-valmsg-for="MemberPwd" data-valmsg-replace="true" style=@ViewData["MemberPwdError"]>密碼不得空白，最少八個最多十二個字符，至少一個大寫字母，一個小寫字母，一個數字和一個特殊字符</span>
+
+            </div>
+
+            <div class="form-group">
+          
+
+                @Html.EditorFor(model => model.MemberName, new { htmlAttributes = new { @class = "form-control", placeholder = "姓名" } })
                 @Html.ValidationMessageFor(model => model.MemberName, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MemberGender, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            </div>
+
+            <div class="form-group">
+               
+
                 @Html.RadioButtonFor(m => m.MemberGender, "M")<label>男性</label>
                 @Html.RadioButtonFor(m => m.MemberGender, "F")<label>女性</label>
                 @Html.ValidationMessageFor(model => model.MemberGender, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MemberBirthday, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MemberBirthday, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+            <div class="form-group">
+               
+
+                @Html.EditorFor(model => model.MemberBirthday, new { htmlAttributes = new { @class = "form-control", placeholder = "生日" } })
                 @Html.ValidationMessageFor(model => model.MemberBirthday, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MemberNickname, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MemberNickname, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+            <div class="form-group">
+                
+
+                @Html.EditorFor(model => model.MemberNickname, new { htmlAttributes = new { @class = "form-control", placeholder = "暱稱" } })
                 @Html.ValidationMessageFor(model => model.MemberNickname, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MemberEmail, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MemberEmail, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+            <div class="form-group">
+              
+
+                @Html.EditorFor(model => model.MemberEmail, new { htmlAttributes = new { @class = "form-control" , placeholder = "信箱" } })
                 @Html.ValidationMessageFor(model => model.MemberEmail, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MemberAddress, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MemberAddress, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+            <div class="form-group">
+             
+
+                @Html.EditorFor(model => model.MemberAddress, new { htmlAttributes = new { @class = "form-control", placeholder = "地址" } })
                 @Html.ValidationMessageFor(model => model.MemberAddress, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MemberPhone, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MemberPhone, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+            <div class="form-group">
+     
+
+                @Html.EditorFor(model => model.MemberPhone, new { htmlAttributes = new { @class = "form-control" , placeholder = "手機" } })
                 @Html.ValidationMessageFor(model => model.MemberPhone, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            </div>
+
+            <div class="form-group">
+
                 <input type="submit" value="會員註冊" class="btn btn-default" onclick="btclick()" />
                 @ViewBag.Message
+
             </div>
-        </div>
+
+        }
+
+ 
+
+
+
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
-
 
