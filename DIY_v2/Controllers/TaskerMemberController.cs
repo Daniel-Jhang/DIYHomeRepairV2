@@ -223,6 +223,10 @@ namespace DIY_v2.Controllers
             db.SaveChanges();
 
 
+            // 傳資料給師父專區 > 查看主頁的師傅專區
+            var TaskerID = db.Tasker.Where(x => x.MemberID == tasker.MemberID).Select(x => x.TaskerID).FirstOrDefault();
+            Session["TaskerID"] = TaskerID;
+
             return RedirectToAction("Index", "Home");
         }
 
