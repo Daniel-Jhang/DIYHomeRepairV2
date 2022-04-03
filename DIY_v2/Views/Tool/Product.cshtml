@@ -145,16 +145,16 @@
 ));
 
                                 @*if (@Session["OP"] == null)
-                                    {
-                                        @Html.PagedListPager(Model.Products, page => Url.Action("Product", new { page, ProductCategoryID = @Session["nowCategoryID"] }))
+                            {
+                                @Html.PagedListPager(Model.Products, page => Url.Action("Product", new { page, ProductCategoryID = @Session["nowCategoryID"] }))
 
-                                    }
+                            }
 
-                                    else
-                                    {
+                            else
+                            {
 
-                                        @Html.PagedListPager(Model.Products, page => Url.Action("Product", new { page, ProductCategoryID = Session["nowCategoryID"], Maxprice = @Session["Maxprice"], Minprice = @Session["Minprice"] }))
-                                    }*@
+                                @Html.PagedListPager(Model.Products, page => Url.Action("Product", new { page, ProductCategoryID = Session["nowCategoryID"], Maxprice = @Session["Maxprice"], Minprice = @Session["Minprice"] }))
+                            }*@
                             }
 
                         </div>
@@ -162,156 +162,155 @@
                 </div>
             </div>
 
+            @*側邊欄*@
             <div class="col-md-4 col-lg-2">
-                <form method="post" colorlib-form-2" action="@Url.Action("Product")">
-
-                    <div class="sidebar">
-                        <div class="sidebar-box-2">
-                            <h2 class="heading"> 搜尋</h2>
-
+                <div class="sidebar">
+                    @*搜索欄*@
+                    <div class="sidebar-box-2">
+                        <form method="post" colorlib-form-2" action="@Url.Action("Product")" class="example">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group">
+                                    <!-- Load icon library -->
+                                    <!-- The form -->
 
+                                    <input type="text" placeholder="Search.." name="search">
+                                    <button type="submit"><i class="fa fa-search"></i></button>
 
-                                        <input class="search-submit form-control" type="search" name="keyword" />
-                                        <input type="submit" class="" value="搜尋" />
-                                        <br />
-
-                                    </div>
                                 </div>
 
                             </div>
 
-
-                        </div>
-
-                        <div class="sidebar-box-2">
-                            <h2 class="heading">產品類別</h2>
-
-                            @*-----------------------------------------------------------*@
-                            @*@foreach (var item in Model.Categories)
-                                {
-
-                                    <p> @Html.ActionLink(@item.ProductCategory, "Product", new { ProductCategoryID = item.ProductCategoryID })</p>
-                                }*@
-                            @*------------------------------------------------------------------*@
-
-
-                            <div class="fancy-collapse-panel">
-                                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingOne">
-                                            <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                    材料
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                                            <div class="panel-body">
-                                                <ul>
-                                                    <li>@Html.ActionLink("浴室洗手台", "Product", new { ProductCategoryID = "Ct001" })</li>
-                                                    <li>@Html.ActionLink("馬桶水箱", "Product", new { ProductCategoryID = "Ct002" })</li>
-                                                    <li>@Html.ActionLink("淋浴水龍頭", "Product", new { ProductCategoryID = "Ct003" })</li>
-                                                    <li>@Html.ActionLink("玻璃平台架", "Product", new { ProductCategoryID = "Ct004" })</li>
-                                                    <li>@Html.ActionLink("浴室鏡子", "Product", new { ProductCategoryID = "Ct005" })</li>
-                                                    <li>@Html.ActionLink("餐椅底布", "Product", new { ProductCategoryID = "Ct006" })</li>
-                                                    <li>@Html.ActionLink("窗簾 ", "Product", new { ProductCategoryID = "Ct007" })</li>
-                                                    <li>@Html.ActionLink("插座", "Product", new { ProductCategoryID = "Ct013" })</li>
-                                                    <li>@Html.ActionLink("崁燈", "Product", new { ProductCategoryID = "Ct014" })</li>
-                                                    <li>@Html.ActionLink("洗手台P管", "Product", new { ProductCategoryID = "Ct015" })</li>
-                                                    <li>@Html.ActionLink("燈泡", "Product", new { ProductCategoryID = "Ct016" })</li>
-                                                    <li>@Html.ActionLink("三角凡而", "Product", new { ProductCategoryID = "Ct019" })</li>
-                                                    <li>@Html.ActionLink("高壓軟管", "Product", new { ProductCategoryID = "Ct022" })</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingTwo">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                    工具
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                            <div class="panel-body">
-                                                <ul>
-                                                    <li>@Html.ActionLink("板手", "Product", new { ProductCategoryID = "Ct008" })</li>
-                                                    <li>@Html.ActionLink("活動板手", "Product", new { ProductCategoryID = "Ct009" })</li>
-                                                    <li>@Html.ActionLink("十字螺絲起子", "Product", new { ProductCategoryID = "Ct010" })</li>
-                                                    <li>@Html.ActionLink("一字螺絲起子", "Product", new { ProductCategoryID = "Ct011" })</li>
-                                                    <li>@Html.ActionLink("水管鉗", "Product", new { ProductCategoryID = "Ct012" })</li>
-                                                    <li>@Html.ActionLink("梯子", "Product", new { ProductCategoryID = "Ct017" })</li>
-                                                    <li>@Html.ActionLink("梯子", "Product", new { ProductCategoryID = "Ct012" })</li>
-                                                    <li>@Html.ActionLink("老虎鉗", "Product", new { ProductCategoryID = "Ct018" })</li>
-                                                    <li>@Html.ActionLink("鋸子", "Product", new { ProductCategoryID = "Ct020" })</li>
-
-
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingTwo">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                    通用耗材
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                            <div class="panel-body">
-                                                <ul>
-                                                    <li>@Html.ActionLink("通用耗材", "Product", new { ProductCategoryID = "Ct021" })</li>
-
-
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="sidebar-box-2">
-                            <h2 class="heading">價格範圍</h2>
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="guests">價錢從:</label>
-                                        <div class="form-field">
-                                            <input class="price form-control" type="text" name="Minprice" />
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="guests">至:</label>
-                                        <div class="form-field">
-                                            <input class="price form-control" type="text" name="Maxprice" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-
-                                        <div class="form-field">
-                                            <input type="hidden" value=@Session["nowCategoryID"] name="ProductCategoryID" />
-                                            <input type="submit" value="搜尋" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
+                        </form>
                     </div>
-                </form>
 
+                    <div class="sidebar-box-2">
+                        <h2 class="heading hc">產品類別</h2>
+
+                        @*-----------------------------------------------------------*@
+                        @*@foreach (var item in Model.Categories)
+                    {
+
+                        <p> @Html.ActionLink(@item.ProductCategory, "Product", new { ProductCategoryID = item.ProductCategoryID })</p>
+                    }*@
+                        @*------------------------------------------------------------------*@
+
+
+                        <div class="fancy-collapse-panel">
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingOne">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style=" font-size: 16px;">
+                                                材料
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                        <div class="panel-body">
+                                            <ul>
+                                                <li>@Html.ActionLink("浴室洗手台", "Product", new { ProductCategoryID = "Ct001" })</li>
+                                                <li>@Html.ActionLink("馬桶水箱", "Product", new { ProductCategoryID = "Ct002" })</li>
+                                                <li>@Html.ActionLink("淋浴水龍頭", "Product", new { ProductCategoryID = "Ct003" })</li>
+                                                <li>@Html.ActionLink("玻璃平台架", "Product", new { ProductCategoryID = "Ct004" })</li>
+                                                <li>@Html.ActionLink("浴室鏡子", "Product", new { ProductCategoryID = "Ct005" })</li>
+                                                <li>@Html.ActionLink("餐椅底布", "Product", new { ProductCategoryID = "Ct006" })</li>
+                                                <li>@Html.ActionLink("窗簾 ", "Product", new { ProductCategoryID = "Ct007" })</li>
+                                                <li>@Html.ActionLink("插座", "Product", new { ProductCategoryID = "Ct013" })</li>
+                                                <li>@Html.ActionLink("崁燈", "Product", new { ProductCategoryID = "Ct014" })</li>
+                                                <li>@Html.ActionLink("洗手台P管", "Product", new { ProductCategoryID = "Ct015" })</li>
+                                                <li>@Html.ActionLink("燈泡", "Product", new { ProductCategoryID = "Ct016" })</li>
+                                                <li>@Html.ActionLink("三角凡而", "Product", new { ProductCategoryID = "Ct019" })</li>
+                                                <li>@Html.ActionLink("高壓軟管", "Product", new { ProductCategoryID = "Ct022" })</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingTwo">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style=" font-size: 16px;">
+                                                工具
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                        <div class="panel-body">
+                                            <ul>
+                                                <li>@Html.ActionLink("板手", "Product", new { ProductCategoryID = "Ct008" })</li>
+                                                <li>@Html.ActionLink("活動板手", "Product", new { ProductCategoryID = "Ct009" })</li>
+                                                <li>@Html.ActionLink("十字螺絲起子", "Product", new { ProductCategoryID = "Ct010" })</li>
+                                                <li>@Html.ActionLink("一字螺絲起子", "Product", new { ProductCategoryID = "Ct011" })</li>
+                                                <li>@Html.ActionLink("水管鉗", "Product", new { ProductCategoryID = "Ct012" })</li>
+                                                <li>@Html.ActionLink("水管鉗", "Product", new { ProductCategoryID = "Ct017" })</li>
+                                                <li>@Html.ActionLink("梯子", "Product", new { ProductCategoryID = "Ct012" })</li>
+                                                <li>@Html.ActionLink("老虎鉗", "Product", new { ProductCategoryID = "Ct018" })</li>
+                                                <li>@Html.ActionLink("鋸子", "Product", new { ProductCategoryID = "Ct020" })</li>
+
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingTwo">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style=" font-size: 16px;">
+                                                通用耗材
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                        <div class="panel-body">
+                                            <ul>
+                                                <li>@Html.ActionLink("通用耗材", "Product", new { ProductCategoryID = "Ct021" })</li>
+
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="sidebar-box-2">
+                        <h2 class="heading hc">價格範圍</h2>
+                        <form method="post" colorlib-form-2" action="@Url.Action("Product")">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+
+                                        <div class="form d-flex  flex-row">
+                                            <input class="price form-control" type="text" name="Minprice" />
+                                            <label for="guests" style="padding:10px 0 0 5px;">至</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+
+                                        <div class="form d-flex  flex-row">
+
+                                            <input class="price form-control" type="text" name="Maxprice" />
+                                            <label for="guests" style="padding:10px 0 0 5px;">元</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+
+                                        <div class="form d-flex flex-row">
+                                            <input type="hidden" value=@Session["nowCategoryID"] name="ProductCategoryID" />
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input type="submit" class="btn btn-lg btn-block " value="搜尋" id="btne" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

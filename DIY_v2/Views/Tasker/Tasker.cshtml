@@ -7,6 +7,24 @@
     ViewBag.Title = "找師傅";
 }
 
+<style>
+    .hs {
+        background-color: #d0b522;
+        border: none;
+        padding: 5px;
+        color: white;
+    }
+
+    #btns {
+        background: #d0b522;
+        color: white;
+        font-size: 15px;
+    }
+
+        #btns:hover {
+            background: #a8921d;
+        }
+</style>
 
 @*裝飾用背景圖*@
 @*<div><img src="~/Images/TaskerImages/living room.jpg" alt="Alternate Text" /></div>*@
@@ -22,46 +40,46 @@
                         @*右側主畫面*@
                         @foreach (var item in Model.taskers)
                         {
-                            @*頭像*@
+                        @*頭像*@
                             string path = "../Images/TaskerImages/" + item.TaskerImage;
-                            <div class="col-sm-12 col-md-12 col-lg-4 ftco-animate d-flex">
-                                @*圖片尺寸大小要統一 寬800 高1200 png*@
-                                <div class="product d-flex flex-column">
-                                    @*<a href="@Url.Action("TaskerDetail")?TaskerID=@item.TaskerID" class="img-prod">*@
-                                    <div class="img-prod">
-                                        <img class="img-fluid" src="@path" alt="Alternate Text" />
-                                        <div class="overlay"></div>
-                                    </div>
-                                    @*</a>*@
+                        <div class="col-sm-12 col-md-12 col-lg-4 ftco-animate d-flex">
+                            @*圖片尺寸大小要統一 寬800 高1200 png*@
+                            <div class="product d-flex flex-column">
+                                @*<a href="@Url.Action("TaskerDetail")?TaskerID=@item.TaskerID" class="img-prod">*@
+                                <div class="img-prod">
+                                    <img class="img-fluid" src="@path" alt="Alternate Text" />
+                                    <div class="overlay"></div>
+                                </div>
+                                @*</a>*@
 
-                                    @*文字描述*@
-                                    <div class="text py-3 pb-4 px-3">
-                                        <div class="d-flex">
-                                            <div class="cat">
-                                                @*評價星星*@
-                                                <span>商品評價</span>
-                                            </div>
-                                            <div class="rating">
-                                                <p class="text-right mb-0">
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                </p>
-                                            </div>
+                                @*文字描述*@
+                                <div class="text py-3 pb-4 px-3">
+                                    <div class="d-flex">
+                                        <div class="cat">
+                                            @*評價星星*@
+                                            <span>商品評價</span>
                                         </div>
-                                        @foreach (var x in Model.taskersService.Where(x => x.TaskerID == item.TaskerID).Select(x => x.ServiceCategory))
+                                        <div class="rating">
+                                            <p class="text-right mb-0">
+                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    @foreach (var x in Model.taskersService.Where(x => x.TaskerID == item.TaskerID).Select(x => x.ServiceCategory))
                                         {
-                                            <span><strong>@x</strong>|</span> @*服務分類*@
+                                    <span><strong>@x</strong>|</span>  @*服務分類*@
                                         }
-                                        <div class="pricing">
-                                            <p class="price"><span>$ @item.ServiceQuote NT / 趟</span></p> @*服務報價*@
-                                        </div>
-                                        <p>@item.ServiceArea</p> @*服務地區*@
-                                        <hr />
-                                        <h3>@item.TaskerName</h3> @*師傅名稱*@
-                                        @{ @*判斷營業時間*@
+                                    <div class="pricing">
+                                        <p class="price"><span>$ @item.ServiceQuote NT / 趟</span></p> @*服務報價*@
+                                    </div>
+                                    <p>@item.ServiceArea</p> @*服務地區*@
+                                    <hr />
+                                    <h3>@item.TaskerName</h3> @*師傅名稱*@
+                                    @{  @*判斷營業時間*@
                                         string openOrClose = "";
                                         double currentTime = DateTime.Now.TimeOfDay.TotalHours;
                                         double open = item.ServiceTime_Start.TotalHours;
@@ -74,17 +92,17 @@
                                         {
                                             openOrClose = "非營業時段";
                                         }
-                                        }
-                                        <p>@openOrClose</p>
-                                        <p>@item.Rate ★(24)</p> @*師傅評價*@
+                                    }
+                                    <p>@openOrClose</p>
+                                    <p>@item.Rate ★(24)</p> @*師傅評價*@
 
-                                        <p class="bottom-area d-flex px-3">
-                                            @*服務詳情 >>> 連結到師父介紹按鈕*@
-                                            <a href="@Url.Action("TaskerDetail")?TaskerID=@item.TaskerID" class="btn btn-info" , new { target="_blank" }>服務詳情</a>
-                                        </p>
-                                    </div>
+                                    <p class="bottom-area d-flex px-3">
+                                        @*服務詳情 >>> 連結到師父介紹按鈕*@
+                                        <a href="@Url.Action("TaskerDetail")?TaskerID=@item.TaskerID" class="btn btn-info" , new { target="_blank" }>服務詳情</a>
+                                    </p>
                                 </div>
                             </div>
+                        </div>
                         }
                     </div>
 
@@ -103,44 +121,48 @@
                 <div class="col-md-4 col-lg-2">
                     <div class="sidebar">
 
+
+
                         @*服務地區*@
                         <div class="sidebar-box-2">
-                            <h2 class="heading">服務地區</h2>
+                            <h2 class="heading  hs">服務地區</h2>
                             <select class="form-control" name="serviceArea">
-                                <option>請選擇縣市</option>
-                                <option>基隆市</option>
-                                <option>台北市</option>
-                                <option>新北市</option>
-                                <option>桃園市</option>
-                                <option>新竹縣</option>
-                                <option>新竹市</option>
-                                <option>苗栗縣</option>
-                                <option>台中市</option>
-                                <option>彰化縣</option>
-                                <option>南投縣</option>
-                                <option>雲林縣</option>
-                                <option>嘉義縣</option>
-                                <option>嘉義市</option>
-                                <option>台南市</option>
-                                <option>高雄市</option>
-                                <option>屏東縣</option>
-                                <option>宜蘭縣</option>
-                                <option>花蓮縣</option>
-                                <option>台東縣</option>
-                                <option>澎湖縣</option>
+                                <optgroup label="  請選擇縣市">
+
+                                    <option>基隆市</option>
+                                    <option>台北市</option>
+                                    <option>新北市</option>
+                                    <option>桃園市</option>
+                                    <option>新竹縣</option>
+                                    <option>新竹市</option>
+                                    <option>苗栗縣</option>
+                                    <option selected>台中市</option>
+                                    <option>彰化縣</option>
+                                    <option>南投縣</option>
+                                    <option>雲林縣</option>
+                                    <option>嘉義縣</option>
+                                    <option>嘉義市</option>
+                                    <option>台南市</option>
+                                    <option>高雄市</option>
+                                    <option>屏東縣</option>
+                                    <option>宜蘭縣</option>
+                                    <option>花蓮縣</option>
+                                    <option>台東縣</option>
+                                    <option>澎湖縣</option>
+                                </optgroup>
                             </select>
                         </div>
 
                         @*服務類別*@
                         <div class="sidebar-box-2">
-                            <h2 class="heading">服務類別</h2>
+                            <h2 class="heading hs">服務類別</h2>
                             <div class="has-success">
                                 <div class="checkbox">
                                     @foreach (var item in Model.taskersService.Select(x => x.ServiceCategory).Distinct())
                                     {
-                                        <input type="checkbox" id="serviceCategories @item" name="serviceCategories" value="@item" />
-                                        <label for="serviceCategories @item">@item</label>
-                                        <br />
+                                    <input type="checkbox" id="serviceCategories @item" name="serviceCategories" value="@item" />
+                                    <label for="serviceCategories @item" style="color:black;font-size:16px;">@item</label>
+                                    <br />
                                     }
                                 </div>
                             </div>
@@ -148,33 +170,35 @@
 
                         @*服務價錢*@
                         <div class="sidebar-box-2">
-                            <h2 class="heading">服務價錢</h2>
+                            <h2 class="heading hs">服務價錢</h2>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="guests">最小金額</label>
+
                                         <div class="form-field">
-                                            <input class="rangeBox form-control" type="text" placeholder="請輸入金額" name="minPrice" value="@Session["min"]" />
+                                            <input class="rangeBox form-control" type="text" placeholder="請輸入最低金額" name="minPrice" value="@Session["min"]" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="guests">最大金額</label>
+
                                         <div class="form-field">
-                                            <input class="rangeBox form-control" type="text" placeholder="請輸入金額" name="maxPrice" value="@Session["max"]" />
+                                            <input class="rangeBox form-control" type="text" placeholder="請輸入最高金額" name="maxPrice" value="@Session["max"]" />
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <div class="form-field">
-                                            <input type="submit" class="btn btn-primary btn-lg btn-block" name="name" value="確認" />
+                                        <div class="form-field d-flex">
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input type="submit" class="btn btn-lg btn-block " name="name" value="確認" id="btns" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
