@@ -489,7 +489,7 @@
                             string gender = Model.memberTable.MemberGender;
                         }
                         <h6>性別</h6>
-                        <select name="MemberGender" id="" class="form-control">
+                        <select name="memberTable.MemberGender" id="" class="form-control">
                             <option @((gender == "M") ? "selected" : "") value="M">男</option>
                             <option @((gender == "F") ? "selected" : "") value="F">女</option>
                         </select>
@@ -581,49 +581,64 @@
                 <br />
                 <br />
                 <br />
-                <div class="form-group form-detail">
-
-                    @{
-                        <div class="form-checkbox">
+                @{
+                    <div class="form-checkbox">
+                        <label class="container">
                             @if (Session["server1"].ToString() == "T")
                             {
-                                @Html.CheckBox("serviceCategoryChk1", true, htmlAttributes: new { @class = "checkmark", id = "serviceCategoryChk1" })
+                                @Html.CheckBox("serviceCategoryChk1", true, htmlAttributes: new { @class = "checkbox", id = "serviceCategoryChk1" })
                             }
                             else
                             {
-                                @Html.CheckBox("serviceCategoryChk1", false, htmlAttributes: new { @class = "checkmark", id = "serviceCategoryChk1" })
+                                @Html.CheckBox("serviceCategoryChk1", false, htmlAttributes: new { @class = "checkbox", id = "serviceCategoryChk1" })
                             }
                             @Html.Label("衛浴裝修", htmlAttributes: new { @class = "test", @for = "serviceCategoryChk1" })
-
-                            <br />
-
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <br />
+                    <div class="form-checkbox">
+                        <label class="container">
                             @if (Session["server2"].ToString() == "T")
                             {
-                                @Html.CheckBox("serviceCategoryChk2", true, htmlAttributes: new { @class = "checkmark", id = "serviceCategoryChk2" })
+                                @Html.CheckBox("serviceCategoryChk2", true, htmlAttributes: new { @class = "checkbox", id = "serviceCategoryChk2" })
                             }
                             else
                             {
-                                @Html.CheckBox("serviceCategoryChk2", false, htmlAttributes: new { @class = "checkmark", id = "serviceCategoryChk2" })
+                                @Html.CheckBox("serviceCategoryChk2", false, htmlAttributes: new { @class = "checkbox", id = "serviceCategoryChk2" })
                             }
                             @Html.Label("抓漏/堵塞", htmlAttributes: new { @class = "test", @for = "serviceCategoryChk2" })
-
-                            <br />
-
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <br />
+                    <div class="form-checkbox">
+                        <label class="container">
                             @if (Session["server3"].ToString() == "T")
                             {
-                                @Html.CheckBox("serviceCategoryChk3", true, htmlAttributes: new { @class = "checkmark", id = "serviceCategoryChk3" })
+                                @Html.CheckBox("serviceCategoryChk3", true, htmlAttributes: new { @class = "checkbox", id = "serviceCategoryChk3" })
                             }
                             else
                             {
-                                @Html.CheckBox("serviceCategoryChk3", false, htmlAttributes: new { @class = "checkmark", id = "serviceCategoryChk3" })
+                                @Html.CheckBox("serviceCategoryChk3", false, htmlAttributes: new { @class = "checkbox", id = "serviceCategoryChk3" })
                             }
                             @Html.Label("水電安裝/修繕", htmlAttributes: new { @class = "test", @for = "serviceCategoryChk3" })
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <br />
+                }
 
-                            <br />
-                        </div>
-                    }
 
+                <div class="form-checkbox">
+                    <label class="container">
+                        <p>I do accept the <a href="#" class="text">Terms and Conditions</a> of your site.</p>
+                        <input type="checkbox" name="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
                 </div>
+
+
 
                 <div class="form-row">
                     <h6>專業證照</h6>
