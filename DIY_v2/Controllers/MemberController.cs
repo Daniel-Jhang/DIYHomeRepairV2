@@ -157,6 +157,13 @@ namespace DIY_v2.Controllers
             var orderDetails = db.Order_Detail.Where(x => x.MemberID == MemberID && x.OrderStatus == "購物車");
             //View使用orderDetails模型
 
+            // for 同會員資料按鈕(只有4個資料索性用Session)
+            var MemberInfomation = db.Member.Where(x => x.MemberAccount == MemberAccount);
+            Session["RecipientName"] = MemberInfomation.Select(x=>x.MemberName).FirstOrDefault();
+            Session["RecipientEmail"] = MemberInfomation.Select(x => x.MemberEmail).FirstOrDefault();
+            Session["RecipientAddress"] = MemberInfomation.Select(x => x.MemberAddress).FirstOrDefault();
+            Session["RecipientPhone"] = MemberInfomation.Select(x => x.MemberPhone).FirstOrDefault();
+
             return View(orderDetails);
         }
 

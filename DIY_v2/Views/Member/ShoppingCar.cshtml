@@ -52,7 +52,7 @@
         }
     }
 
-
+    })
 
 
     $(document).ready(function () {
@@ -79,6 +79,17 @@
         }
         return;
     }
+
+
+    /*Here<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+            @*$(document).ready(function () {
+             /* 同會員資料*/
+        $("#sameMemberInformation").click(function () {
+            $("#RecipientName").val(@Session["RecipientName"])
+            $("#RecipientEmail").val(@Session["RecipientEmail"])
+            $("#RecipientAddress").val(@Session["RecipientAddress"])
+            $("#RecipientPhone").val(@Session["RecipientPhone"])
+        })*@
 
 </script>
 
@@ -185,6 +196,8 @@
         <div class="form-horizontal">
             <h4>填寫訂單收件人資料</h4>
             <hr />
+
+            <button id="sameMemberInformation" class="btn btn-success">同會員資料</button> @*同會員資料*@
 
             <div class="form-group">
                 <span class="control-label col-md-2">收件人姓名</span>
