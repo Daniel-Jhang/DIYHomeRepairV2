@@ -52,7 +52,7 @@
         }
     }
 
-    })
+
 
 
     $(document).ready(function () {
@@ -70,6 +70,19 @@
         $('.pay-card').click(function () {
             $('.paymethod').val("信用卡付款")
         })
+
+        /* 同會員資料按鈕*/
+        var autoRecipientName = '@Session["RecipientName"]';
+        var autoRecipientEmail = '@Session["RecipientEmail"]';
+        var autoRecipientAddress = '@Session["RecipientAddress"]';
+        var autoRecipientPhone = '@Session["RecipientPhone"]';
+        $('#sameMemberInformation').click(function () {
+            $("#RecipientName").val(autoRecipientName)
+            $("#RecipientEmail").val(autoRecipientEmail)
+            $("#RecipientAddress").val(autoRecipientAddress)
+            $("#RecipientPhone").val(autoRecipientPhone)
+        })
+
     })
     /*    信用卡帳號自動換下一格*/
     function setBlur(obj, target2) {
@@ -79,17 +92,6 @@
         }
         return;
     }
-
-
-    /*Here<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-            @*$(document).ready(function () {
-             /* 同會員資料*/
-        $("#sameMemberInformation").click(function () {
-            $("#RecipientName").val(@Session["RecipientName"])
-            $("#RecipientEmail").val(@Session["RecipientEmail"])
-            $("#RecipientAddress").val(@Session["RecipientAddress"])
-            $("#RecipientPhone").val(@Session["RecipientPhone"])
-        })*@
 
 </script>
 
@@ -197,7 +199,7 @@
             <h4>填寫訂單收件人資料</h4>
             <hr />
 
-            <button id="sameMemberInformation" class="btn btn-success">同會員資料</button> @*同會員資料*@
+            <button id="sameMemberInformation" class="btn btn-success" type="button">同會員資料</button> @*同會員資料*@
 
             <div class="form-group">
                 <span class="control-label col-md-2">收件人姓名</span>
