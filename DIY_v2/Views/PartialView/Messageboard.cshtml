@@ -1,0 +1,108 @@
+﻿
+@{
+    ViewBag.Title = "Messageboard";
+}
+
+<!-- #region CSS -->
+<style>
+
+
+    /* Style inputs */
+    input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        resize: vertical;
+    }
+
+    input[type=submit] {
+        background-color: #92badd;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        cursor: pointer;
+    }
+
+        input[type=submit]:hover {
+            background-color: #A6CAF0;
+        }
+
+    /* Style the container/contact section */
+
+
+    /* Create two columns that float next to eachother */
+    .column {
+        float: left;
+        width: 50%;
+        margin-top: 6px;
+        padding: 20px;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+    @@media screen and (max-width: 600px) {
+        .column, input[type=submit] {
+            width: 100%;
+            margin-top: 0;
+        }
+    }
+
+    .messageboard {
+        display: inline-block;
+        letter-spacing: 0.3ch;
+        border: 3px solid #333333;
+        border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+        background-color: #EEE;
+    }
+
+    .fromA {
+        margin-bottom: 30px;
+    }
+
+    .border-image {
+        border-radius: 10px;
+        border-image-source: linear-gradient(45deg, gold, deeppink);
+        border-image-slice: 1;
+        border-image-repeat: stretch;
+    }
+
+    .messageboardA {
+        display: inline-block;
+        letter-spacing: 0.3ch;
+        border: 3px solid #333333;
+        border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+        background-color: white;
+    }
+</style>
+<!-- #endregion -->
+
+<div class="container fromA">
+    <div class="col-md-12 messageboardA" style="text-align: center;margin:10px;">
+        <h2>留言板</h2>
+
+    </div>
+    <div class="row messageboard">
+        <div class="column col-md-6 border-image">
+            <img class="" src="~/Images/元件/登入背景16.jpg" style="width:100%">
+        </div>
+        <div class="column col-md-6">
+            <form action="/action_page.php">
+
+
+                <textarea id="subject" name="subject" placeholder="寫一些東西吧.." style="height:268px"></textarea>
+                <input type="submit" value="送出">
+            </form>
+        </div>
+
+    </div>
+</div>
+
+

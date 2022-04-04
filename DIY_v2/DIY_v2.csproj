@@ -577,6 +577,7 @@
     <Content Include="Images\元件\浴缸01.png" />
     <Content Include="Images\元件\浴缸03.png" />
     <Content Include="Images\元件\登入背景15.jpg" />
+    <Content Include="Images\元件\登入背景16.jpg" />
     <Content Include="Images\元件\系統櫃01.png" />
     <Content Include="Images\元件\系統櫃02.png" />
     <Content Include="Images\元件\背景圖片18.jpg" />
@@ -759,6 +760,7 @@
     <Content Include="Views\PartialView\TaskerRegister.cshtml" />
     <Content Include="Views\PartialView\EditTasker.cshtml" />
     <Content Include="Views\Tool\SetClickshopcar.cshtml" />
+    <Content Include="Views\PartialView\Messageboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
