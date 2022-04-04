@@ -79,13 +79,13 @@
                                     </span>
                                     &emsp;
                                     @{
-                                        if (User.Identity.Name != null)
+                                        if (@User.Identity.Name != String.Empty)
                                         {
                                             <input type="button" class="AdCar" value="加入購物車" />
                                         }
                                         else
                                         {
-                                            <input type="button" class="toMember " value="加入購物車" onclick="location.href='https://localhost:44332/MemberLogin/Login'" />
+                                            <input type="button" class="toMember " value="加入購物車" onclick="location.href='https://localhost:44332/Tool/SetClickshopcar'" />
 
 
                                         }

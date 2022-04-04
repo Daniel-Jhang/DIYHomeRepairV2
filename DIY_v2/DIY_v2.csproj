@@ -758,6 +758,7 @@
     <Content Include="Views\PartialView\MemberRegister.cshtml" />
     <Content Include="Views\PartialView\TaskerRegister.cshtml" />
     <Content Include="Views\PartialView\EditTasker.cshtml" />
+    <Content Include="Views\Tool\SetClickshopcar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
