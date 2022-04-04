@@ -24,7 +24,7 @@ namespace DIY_v2.Controllers
         //Get: Home/Login
         public ActionResult Login()
         {
-            Session["ReUrl"]=Request.UrlReferrer.ToString();
+            Session["ReUrl"]=Request.UrlReferrer?.ToString();
             return View();
         }
         //Post: Home/Login
@@ -73,12 +73,19 @@ namespace DIY_v2.Controllers
             {
                 return RedirectToAction("BackendUI", "Backend");
             }
+            if (Session["Clickshoppingcar"] != null)
+            {
+                string ReUrl = Session["Clickshoppingcar"].ToString();
+                Session["Clickshoppingcar"] = null;
+                return Redirect(ReUrl);
 
-            if( Session["isRegister"]?.ToString() == "Y"){//如果是在註冊頁面時  不會回上一夜只會回首頁
+            }
+            if ( Session["isRegister"]?.ToString() == "Y"){//如果是在註冊頁面時  不會回上一夜只會回首頁
                 Session["isRegister"] = null;//把有經過註冊頁面給的值清空  否則後面登入也只會回首頁
                 return RedirectToAction("Index", "Home");
               
             }
+          
 
             return Redirect(Session["ReUrl"].ToString());
         }

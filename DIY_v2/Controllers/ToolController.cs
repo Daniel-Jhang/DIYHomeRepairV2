@@ -180,11 +180,15 @@ namespace DIY_v2.Controllers
             //購物車商品數量更新
             int odcount = db.Order_Detail.Where(x => x.MemberID == Id).Where(x=>x.OrderStatus=="購物車").Count();
             Session["shoppingcarcoumt"] = odcount.ToString();
-
+            
             return RedirectToAction("Product", new { ProductCategoryID = ViewBag.nowCategoryID });
         }
         #endregion
-
-
+        //為了把每個點購物車進入到登入頁面的人  登入後都能回到案購物車的那一頁
+        public ActionResult SetClickshopcar()
+        {
+            Session["Clickshoppingcar"] = Request.UrlReferrer?.ToString();
+           return  RedirectToAction("Login", "MemberLogin");
+        }
     }
 }
