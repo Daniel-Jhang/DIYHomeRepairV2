@@ -12,7 +12,7 @@ namespace DIY_v2.Controllers
     {
         DIY_DBEntities db = new DIY_DBEntities();
         int pageSize = 6;
-        int shoppingcarcoumt = 0;
+      
         #region 商品購買系統  
         public ActionResult Product(int? Maxprice, int? Minprice, string ProductCategoryID = "", string keyword = "", int page = 1)
         {

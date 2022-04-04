@@ -24,6 +24,7 @@ namespace DIY_v2.Controllers
         //Get: Home/Login
         public ActionResult Login()
         {
+            Session["ReUrl"]=Request.UrlReferrer.ToString();
             return View();
         }
         //Post: Home/Login
@@ -64,6 +65,7 @@ namespace DIY_v2.Controllers
                 Session["MemberID"] = MemberID;
             }
             //使用Session變數記錄歡迎詞
+            
             Session["WelCome"] = member.MemberName + "歡迎光臨";
             FormsAuthentication.RedirectFromLoginPage(MemberAccount, true);
 
@@ -72,8 +74,13 @@ namespace DIY_v2.Controllers
                 return RedirectToAction("BackendUI", "Backend");
             }
 
+            if( Session["isRegister"]?.ToString() == "Y"){//如果是在註冊頁面時  不會回上一夜只會回首頁
+                Session["isRegister"] = null;//把有經過註冊頁面給的值清空  否則後面登入也只會回首頁
+                return RedirectToAction("Index", "Home");
+              
+            }
 
-            return RedirectToAction("Index", "Home");
+            return Redirect(Session["ReUrl"].ToString());
         }
         //Get:Home/Register
         public ActionResult Register()
@@ -121,6 +128,7 @@ namespace DIY_v2.Controllers
                     newMember.Permission = "1";
                     db.Member.Add(newMember);
                     db.SaveChanges();
+                    Session["isRegister"] = "Y";//防止註冊後還會回上一頁
                     //執行Home控制器的Login動作方法
                     return RedirectToAction("Login");
                 }

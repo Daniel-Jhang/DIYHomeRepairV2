@@ -75,6 +75,7 @@ namespace DIY_v2.Controllers
                     newMember.Permission = "2";
                     db.Member.Add(newMember);
                     db.SaveChanges();
+                    Session["isRegister"] = "Y";//防止註冊後還會回上一頁
                     //執行Home控制器的Login動作方法
                     return RedirectToAction("Login", "MemberLogin");
                 }
