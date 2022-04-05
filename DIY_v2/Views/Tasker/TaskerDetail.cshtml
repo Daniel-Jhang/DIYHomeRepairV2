@@ -333,6 +333,7 @@
     }
 </style>
 <!-- #endregion -->
+
 <!-- #endregion -->
 
 
@@ -364,7 +365,7 @@
                     @*左側導覽列 下半部*@
                     <div class="services p-4 d-flex ftco-animate" style=" overflow-y: scroll; height: 350px">
                         <div>
-                            <p>店家評價 : @Model.taskers.Select(x => x.Rate).FirstOrDefault() ★★★★★ (65)</p>
+                            @*<p>店家評價 : @Model.taskers.Select(x => x.Rate).FirstOrDefault() ★★★★★ (65)</p>*@
                             <label>服務分類: </label>
                             @foreach (var item in Model.taskersService)
                             {
@@ -390,6 +391,7 @@
                         </a><br />
                     </div>
                     <div class="col-md-6">
+                        <br />
                         <h4>
                             @foreach (var item in Model.taskersService)
                             {
@@ -407,22 +409,30 @@
                 <div class="myDown col-md Larger shadow" style="border-radius: 15px;">
                     <div>
                         <div>
-                            <button id="sevbutton" onclick="javascript:onTopClick();">服務內容</button>
-                            <button id="sevbutton" onclick="javascript:onTopClick();">施作案例</button>
-                            @*<button id="sevbutton1" onclick="">服務評價</button>*@
+                            <button id="sevbutton" onclick="javascript:onTopClick1();"><small>服務內容</small></button>
+                            <button id="sevbutton" onclick="javascript:onTopClick2();"><small>施作案例</small></button>
+                            <button id="sevbutton" onclick="javascript:onTopClick3();"><small>服務評價</small></button>
                         </div>
 
                         @*跳轉按鈕*@
                         <script>
-                            function onTopClick() {
-                                window.location.hash = "#exp";
+                            function onTopClick1() {
+                                window.location.hash = "#content";
+                            }
+
+                            function onTopClick2() {
+                                window.location.hash = "#cases";
+                            }
+
+                            function onTopClick3() {
+                                window.location.hash = "#comment";
                             }
                         </script>
 
                         <hr />
                         <div>
-                            <h4>服務內容</h4>
-                            <h4>@Model.taskers.Select(x => x.TaskerName).FirstOrDefault()</h4>
+                            <h4 id="content">服務內容</h4>
+                            <h5>@Model.taskers.Select(x => x.TaskerName).FirstOrDefault()</h5>
 
                             @if (Model.taskers.Select(x => x.TaskerDescription).First() != null) // 如果資料庫裡有資料的話
                             {
@@ -451,7 +461,7 @@
                         <hr />
 
                         <div class="col-md-9 ftco-animate">
-                            <h4 id="exp">
+                            <h4 id="cases">
                                 施作案例&nbsp;&nbsp;<a class="prev" onclick="plusSlides(-1)">❮</a>
                                 <a class="next" onclick="plusSlides(1)">❯</a>
                             </h4>
@@ -543,7 +553,7 @@
                         <hr />
                         <!-- #region 留言區 -->
                         <div class="col-md-12">
-                            <h4>評價</h4>
+                            <h4 id="comment">服務評價</h4>
                             @{
                                 if (Model.taskerComment.Count > 0)
                                 {

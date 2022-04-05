@@ -40,46 +40,37 @@
                         @*右側主畫面*@
                         @foreach (var item in Model.taskers)
                         {
-                        @*頭像*@
+                            @*頭像*@
                             string path = "../Images/TaskerImages/" + item.TaskerImage;
-                        <div class="col-sm-12 col-md-12 col-lg-4 ftco-animate d-flex">
-                            @*圖片尺寸大小要統一 寬800 高1200 png*@
-                            <div class="product d-flex flex-column">
-                                @*<a href="@Url.Action("TaskerDetail")?TaskerID=@item.TaskerID" class="img-prod">*@
-                                <div class="img-prod">
-                                    <img class="img-fluid" src="@path" alt="Alternate Text" />
-                                    <div class="overlay"></div>
-                                </div>
-                                @*</a>*@
+                            <div class="col-sm-12 col-md-12 col-lg-4 ftco-animate d-flex">
+                                @*圖片尺寸大小要統一 寬800 高1200 png*@
+                                <div class="product d-flex flex-column">
+                                    @*<a href="@Url.Action("TaskerDetail")?TaskerID=@item.TaskerID" class="img-prod">*@
+                                    <div class="img-prod">
+                                        <img class="img-fluid" src="@path" alt="Alternate Text" />
+                                        <div class="overlay"></div>
+                                    </div>
+                                    @*</a>*@
 
-                                @*文字描述*@
-                                <div class="text py-3 pb-4 px-3">
-                                    <div class="d-flex">
-                                        <div class="cat">
-                                            @*評價星星*@
-                                            <span>商品評價</span>
-                                        </div>
-                                        <div class="rating">
-                                            <p class="text-right mb-0">
-                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    @foreach (var x in Model.taskersService.Where(x => x.TaskerID == item.TaskerID).Select(x => x.ServiceCategory))
-                                        {
-                                    <span><strong>@x</strong>|</span>  @*服務分類*@
-                                        }
-                                    <div class="pricing">
-                                        <p class="price"><span>$ @item.ServiceQuote NT / 趟</span></p> @*服務報價*@
-                                    </div>
-                                    <p>@item.ServiceArea</p> @*服務地區*@
-                                    <hr />
-                                    <h3>@item.TaskerName</h3> @*師傅名稱*@
-                                    @{  @*判斷營業時間*@
+                                    @*文字描述*@
+                                    <div class="text py-3 pb-4 px-3">
+                                        <!--<div class="d-flex">
+                                        <div class="cat">-->
+                                        @*評價星星*@
+                                        <!--<span>商品評價</span>
+                                            </div>
+                                            <div class="rating">
+                                                <p class="text-right mb-0">
+                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                </p>
+                                            </div>
+                                        </div>-->
+                                        <h3>@item.TaskerName</h3> @*師傅名稱*@
+                                        @{ @*判斷營業時間*@
                                         string openOrClose = "";
                                         double currentTime = DateTime.Now.TimeOfDay.TotalHours;
                                         double open = item.ServiceTime_Start.TotalHours;
@@ -92,17 +83,27 @@
                                         {
                                             openOrClose = "非營業時段";
                                         }
-                                    }
-                                    <p>@openOrClose</p>
-                                    <p>@item.Rate ★(24)</p> @*師傅評價*@
-
-                                    <p class="bottom-area d-flex px-3">
-                                        @*服務詳情 >>> 連結到師父介紹按鈕*@
-                                        <a href="@Url.Action("TaskerDetail")?TaskerID=@item.TaskerID" class="btn btn-info" , new { target="_blank" }>服務詳情</a>
-                                    </p>
+                                        }
+                                        <p>@openOrClose</p>
+                                        @*<p>@item.Rate ★(24)</p> 師傅評價*@
+                                        <hr />
+                                        <div class="pricing">
+                                            <p class="price"><span>服務報價 : $ @item.ServiceQuote NT / 趟</span></p> @*服務報價*@
+                                        </div>
+                                        <p>服務地區 : @item.ServiceArea</p> @*服務地區*@
+                                        <hr />
+                                        <p>服務分類 :</p>
+                                        @foreach (var x in Model.taskersService.Where(x => x.TaskerID == item.TaskerID).Select(x => x.ServiceCategory))
+                                        {
+                                            <p>＃@x</p> @*服務分類*@
+                                        }
+                                        <p class="bottom-area d-flex px-3">
+                                            @*服務詳情 >>> 連結到師父介紹按鈕*@
+                                            <a href="@Url.Action("TaskerDetail")?TaskerID=@item.TaskerID" class="btn btn-info" , new { target="_blank" }>服務詳情</a>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         }
                     </div>
 
@@ -160,9 +161,9 @@
                                 <div class="checkbox">
                                     @foreach (var item in Model.taskersService.Select(x => x.ServiceCategory).Distinct())
                                     {
-                                    <input type="checkbox" id="serviceCategories @item" name="serviceCategories" value="@item" />
-                                    <label for="serviceCategories @item" style="color:black;font-size:16px;">@item</label>
-                                    <br />
+                                        <input type="checkbox" id="serviceCategories @item" name="serviceCategories" value="@item" />
+                                        <label for="serviceCategories @item" style="color:black;font-size:16px;">@item</label>
+                                        <br />
                                     }
                                 </div>
                             </div>
