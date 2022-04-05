@@ -5,6 +5,7 @@
 }
 
 <!-- #region CSS -->
+
 <style>
     body {
         background-color: aliceblue;
@@ -117,6 +118,7 @@
     */
 
 </style>
+
 <style type="text/css">
     .box {
         position: relative;
@@ -132,6 +134,7 @@
             border: 1px solid #999;
         }
 </style>
+
 <style>
     /*幻燈片*/
     * {
@@ -153,7 +156,7 @@
     /* Hide the images by default */
 
     .mySlides {
-        display: none;
+        /*    display: none;*/
     }
     /* Add a pointer when hovering over the thumbnail images */
 
@@ -236,15 +239,100 @@
         .demo:hover {
             opacity: 1;
         }
-
-
-    /*留言板*/
-    .reply-main {
-        height: 400px;
-        width: 900px;
-    }
 </style>
 
+<!-- #region 留言板 -->
+<style>
+    /* Style inputs */
+    input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        resize: vertical;
+    }
+
+    input[type=submit] {
+        background-color: #92badd;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        cursor: pointer;
+    }
+
+        input[type=submit]:hover {
+            background-color: #A6CAF0;
+        }
+
+    /* Style the container/contact section */
+
+
+    /* Create two columns that float next to eachother */
+    .column {
+        float: left;
+        width: 50%;
+        margin-top: 6px;
+        padding: 20px;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+    @@media screen and (max-width: 600px) {
+        .column, input[type=submit] {
+            width: 100%;
+            margin-top: 0;
+        }
+    }
+
+    .messageboard {
+        display: inline-block;
+        letter-spacing: 0.3ch;
+        border: 3px solid #333333;
+        border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+        background-color: #EEE;
+    }
+
+    .fromA {
+        margin-bottom: 30px;
+    }
+
+    .border-image {
+        border-radius: 10px;
+        border-image-source: linear-gradient(45deg, gold, deeppink);
+        border-image-slice: 1;
+        border-image-repeat: stretch;
+    }
+
+    .messageboardA {
+        display: inline-block;
+        letter-spacing: 0.3ch;
+        border: 3px solid #333333;
+        border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+        background-color: white;
+        margin: auto
+    }
+
+    /*留言板*/
+/*    .reply-main {
+        height: 80px;
+        width: 600px;
+    }*/
+
+    .commentContent {
+        background-color: rgba(211,230,246,.3);
+        border-radius: 5px;
+        /*margin-left: -15px;*/
+        min-height: 50px;
+    }
+</style>
+<!-- #endregion -->
 <!-- #endregion -->
 
 
@@ -368,8 +456,7 @@
                                 <a class="next" onclick="plusSlides(1)">❯</a>
                             </h4>
 
-                            <div class="container" style="top:10px;">
-
+                            <div class="container" style="top: 10px;">
                                 @if (Model.taskers.Select(x => x.CaseImage).First() != null) // 如果資料庫裡有資料的話
                                 {
                                     // 取得存放在資料庫裡的 CaseImage 字串 CaseImage01,CaseImage02,CaseImage03...
@@ -387,176 +474,155 @@
                                 }
                                 else // 沒有的話就用預設寫死的
                                 {
-                                    <div class="mySlides">
-                                        <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage01.jpg">
-                                            <img src="~/Images/TaskerImages/CaseImage/CaseImage01.jpg">
-                                        </a>
-                                    </div>
+                                    <div style="margin: auto">
+                                        <div class="mySlides">
+                                            <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage01.jpg">
+                                                <img src="~/Images/TaskerImages/CaseImage/CaseImage01.jpg">
+                                            </a>
+                                        </div>
 
-                                    <div class="mySlides">
-                                        <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage02.jpg">
-                                            <img src="~/Images/TaskerImages/CaseImage/CaseImage02.jpg">
-                                        </a>
-                                    </div>
+                                        <div class="mySlides">
+                                            <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage02.jpg">
+                                                <img src="~/Images/TaskerImages/CaseImage/CaseImage02.jpg">
+                                            </a>
+                                        </div>
 
-                                    <div class="mySlides">
-                                        <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage03.jpg">
-                                            <img src="~/Images/TaskerImages/CaseImage/CaseImage03.jpg">
-                                        </a>
-                                    </div>
+                                        <div class="mySlides">
+                                            <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage03.jpg">
+                                                <img src="~/Images/TaskerImages/CaseImage/CaseImage03.jpg">
+                                            </a>
+                                        </div>
 
-                                    <div class="mySlides">
-                                        <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage04.jpg">
-                                            <img src="~/Images/TaskerImages/CaseImage/CaseImage04.jpg">
-                                        </a>
-                                    </div>
+                                        <div class="mySlides">
+                                            <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage04.jpg">
+                                                <img src="~/Images/TaskerImages/CaseImage/CaseImage04.jpg">
+                                            </a>
+                                        </div>
 
-                                    <div class="mySlides">
-                                        <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage05.jpg">
-                                            <img src="~/Images/TaskerImages/CaseImage/CaseImage05.jpg">
-                                        </a>
-                                    </div>
+                                        <div class="mySlides">
+                                            <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage05.jpg">
+                                                <img src="~/Images/TaskerImages/CaseImage/CaseImage05.jpg">
+                                            </a>
+                                        </div>
 
-                                    <div class="mySlides">
-                                        <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage06.jpg">
-                                            <img src="~/Images/TaskerImages/CaseImage/CaseImage06.jpg">
-                                        </a>
-                                    </div>
+                                        <div class="mySlides">
+                                            <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage06.jpg">
+                                                <img src="~/Images/TaskerImages/CaseImage/CaseImage06.jpg">
+                                            </a>
+                                        </div>
 
-                                    <div class="mySlides">
-                                        <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage07.jpg">
-                                            <img src="~/Images/TaskerImages/CaseImage/CaseImage07.jpg">
-                                        </a>
-                                    </div>
+                                        <div class="mySlides">
+                                            <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage07.jpg">
+                                                <img src="~/Images/TaskerImages/CaseImage/CaseImage07.jpg">
+                                            </a>
+                                        </div>
 
-                                    <div class="mySlides">
-                                        <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage08.jpg">
-                                            <img src="~/Images/TaskerImages/CaseImage/CaseImage08.jpg">
-                                        </a>
-                                    </div>
+                                        <div class="mySlides">
+                                            <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage08.jpg">
+                                                <img src="~/Images/TaskerImages/CaseImage/CaseImage08.jpg">
+                                            </a>
+                                        </div>
 
-                                    <div class="mySlides">
-                                        <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage09.jpg">
-                                            <img src="~/Images/TaskerImages/CaseImage/CaseImage09.jpg">
-                                        </a>
-                                    </div>
+                                        <div class="mySlides">
+                                            <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage09.jpg">
+                                                <img src="~/Images/TaskerImages/CaseImage/CaseImage09.jpg">
+                                            </a>
+                                        </div>
 
-                                    <div class="mySlides">
-                                        <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage10.jpg">
-                                            <img src="~/Images/TaskerImages/CaseImage/CaseImage10.jpg">
-                                        </a>
+                                        <div class="mySlides">
+                                            <a target="_blank" href="~/Images/TaskerImages/CaseImage/CaseImage10.jpg">
+                                                <img src="~/Images/TaskerImages/CaseImage/CaseImage10.jpg">
+                                            </a>
+                                        </div>
                                     </div>
                                 }
                                 <br />
-                                <br />
-                                <!-- #region 留言區 -->
-                                <div class="row">
-                                    @{
-                                        if (Model.taskerComment.Count > 0)
-                                        {
-                                            <table>
-                                                <tr>
-                                                    <th>帳號名稱</th>
-                                                    <th>留言內容</th>
-                                                    <th>留言時間</th>
-                                                    <th>評分</th>
-                                                </tr>
-                                                @foreach (var item in Model.taskerComment)
-                                                {
-                                                    <tr>
-                                                        <td>@item.MemberAccount</td>
-                                                        <td>@item.Comment</td>
-                                                        <td>@item.CreateDate</td>
-                                                        <td>@item.Star</td>
-                                                    </tr>
-                                                }
-                                            </table>
-                                        }
-                                    }
+                            </div>
+                        </div>
 
-                                    <div class="cpl-md-12">
-                                        <h3>師傅評論</h3>
+                        <hr />
+                        <!-- #region 留言區 -->
+                        <div class="col-md-12">
+                            <h4>評價</h4>
+                            @{
+                                if (Model.taskerComment.Count > 0)
+                                {
+                                    foreach (var item in Model.taskerComment)
+                                    {
+                                        <h5>@item.MemberAccount</h5>
+                                        <div class="row">
+                                            <div class="col-md-1"><img class="img-responsive" src="~/Images/TaskerImages/avatar_04.svg" alt="Alternate Text" style="width:35px;" /></div>
+                                            <div class="col-md-11 embed-responsive">
+                                                <div class="commentContent">@item.Comment</div>
+                                                <span><small>@item.CreateDate</small></span>
+                                            </div>
+                                        </div>
+                                        @*注意: 有使用Inline margin*@
+                                        @*<span style="margin-left: 37px;"><small>@item.CreateDate</small></span>*@
+                                        <br />
+                                        <br />
+                                    }
+                                }
+                            }
+                            <div style=" display: flex;">
+                                <div class="messageboardA column col-md-12">
+                                    @*<div class="column col-md-6 border-image">
+                                            <img class="" src="~/Images/元件/登入背景16.jpg" style="width:100%">
+                                        </div>*@
+                                    @*<div class="column col-md-12">*@
                                         <form method="post" action="@Url.Action("TaskerDetail")">
                                             <input type="hidden" name="TaskerID" value="@Model.taskers[0].TaskerID" />
                                             <textarea class="reply-main" name="comment" placeholder="請輸入你的評論"></textarea><br />
                                             <input type="submit" value="送出" />
                                         </form>
-                                    </div>
-
-                                    @*<h3>評價</h3><button>留下好評</button>
-
-                                        <h4>
-                                            <label>4.9</label>
-                                            <label>★★★★★</label>
-                                            <span>40</span>
-                                            <label>則評論</label>
-                                        </h4>
-
-                                        <div>
-                                            <span>有效率(18)</span>
-                                            <span>細心施工(13)</span>
-                                            <span>服務貼心(12)</span>
-                                            <span>價錢合理(11)</span>
-                                        </div>
-
-                                        <div>
-                                            <p><b>Lin**in</b></p>
-                                            <img src="~/Images/TaskerImages/user01.png" alt="Alternate Text" width="30" />
-                                            <span>案主評分</span><span>★★★★★</span>
-                                            <label>
-                                                評估時給予最適合的方案選擇
-                                                回覆迅速 價格合理
-                                                雖然施工的過程遇到一點小問題
-                                                但在不斷測試下找到解決方式
-                                                很有耐心！辛苦了
-                                            </label>
-                                            <div>
-                                                <butt>#服務貼心</butt>
-                                                <label>#價錢合理</label>
-                                                <label>#有效率</label>
-                                            </div>
-                                            <span>2022/01/26 21:39</span>
-                                        </div>*@
+                                    @*</div>*@
                                 </div>
-                                <!-- #endregion -->
-
                             </div>
-
-                            <script>
-                                var slideIndex = 1;
-                                showSlides(slideIndex);
-
-                                function plusSlides(n) {
-                                    showSlides(slideIndex += n);
-                                }
-
-                                function currentSlide(n) {
-                                    showSlides(slideIndex = n);
-                                }
-
-                                function showSlides(n) {
-                                    var i;
-                                    var slides = document.getElementsByClassName("mySlides");
-                                    var dots = document.getElementsByClassName("demo");
-                                    var captionText = document.getElementById("caption");
-                                    if (n > slides.length) {
-                                        slideIndex = 1
-                                    }
-                                    if (n < 1) {
-                                        slideIndex = slides.length
-                                    }
-                                    for (i = 0; i < slides.length; i++) {
-                                        slides[i].style.display = "none";
-                                    }
-                                    for (i = 0; i < dots.length; i++) {
-                                        dots[i].className = dots[i].className.replace(" active", "");
-                                    }
-                                    slides[slideIndex - 1].style.display = "block";
-                                    dots[slideIndex - 1].className += " active";
-                                    captionText.innerHTML = dots[slideIndex - 1].alt;
-                                }
-                            </script>
+                            <br />
+                            <br />
                         </div>
+
+
+
+                        <!-- #endregion -->
+
+
+
+                        <script>
+                            var slideIndex = 1;
+                            showSlides(slideIndex);
+
+                            function plusSlides(n) {
+                                showSlides(slideIndex += n);
+                            }
+
+                            function currentSlide(n) {
+                                showSlides(slideIndex = n);
+                            }
+
+                            function showSlides(n) {
+                                var i;
+                                var slides = document.getElementsByClassName("mySlides");
+                                var dots = document.getElementsByClassName("demo");
+                                var captionText = document.getElementById("caption");
+                                if (n > slides.length) {
+                                    slideIndex = 1
+                                }
+                                if (n < 1) {
+                                    slideIndex = slides.length
+                                }
+                                for (i = 0; i < slides.length; i++) {
+                                    slides[i].style.display = "none";
+                                }
+                                for (i = 0; i < dots.length; i++) {
+                                    dots[i].className = dots[i].className.replace(" active", "");
+                                }
+                                slides[slideIndex - 1].style.display = "block";
+                                dots[slideIndex - 1].className += " active";
+                                captionText.innerHTML = dots[slideIndex - 1].alt;
+                            }
+                        </script>
+
                     </div>
                 </div>
             </div>
