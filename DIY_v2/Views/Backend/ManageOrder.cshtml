@@ -6,66 +6,107 @@
 
 <h2>ManageOrder</h2>
 
+<section class="ftco-section ">
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Member.MemberAccount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RecipientName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RecipientEmail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RecipientPhone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RecipientAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Paymethod)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OrderStatus)
-        </th>
+    <div class="container-fluid">
 
-        <th></th>
-    </tr>
+        <div class="row">
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Member.MemberAccount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RecipientName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RecipientEmail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RecipientPhone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RecipientAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Paymethod)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderStatus)
-            </td>
 
-            <td>
+            <div class="col-lg-10 col-md-10 col-xs-12 order-lg-last ftco-animate">
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Member.MemberAccount)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.RecipientName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.RecipientEmail)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.RecipientPhone)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.RecipientAddress)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Paymethod)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.OrderStatus)
+                        </th>
 
-                @Html.ActionLink("訂單詳細", "ManageOrderDetail", new { OrderID = item.OrderID }, new { @class = "btn btn-primary" }) 
+                        <th></th>
+                    </tr>
 
-            </td>
-        </tr>
-    }
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Member.MemberAccount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RecipientName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RecipientEmail)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RecipientPhone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RecipientAddress)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Paymethod)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OrderStatus)
+                            </td>
 
-</table>
+                            <td>
+
+                                @Html.ActionLink("訂單詳細", "ManageOrderDetail", new { OrderID = item.OrderID }, new { @class = "btn btn-primary" })
+
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div> <!-- .col-md-8 -->
+            <div class="col-lg-2 col-md-2 col-xs-12 sidebar ftco-animate ">
+
+                @*搜尋欄*@
+                <div class="sidebar-box">
+                    <form action="@Url.Action("ManageProduct")" class="search-form" method="post">
+                        <div class="form-group">
+                            <span class="icon ion-ios-search"></span>
+                            <input type="text" class="form-control" placeholder="" name="keyword" />
+                            <input type="submit" value="搜尋" />
+                        </div>
+                    </form>
+
+                </div>
+                @*選取按鈕*@
+                <div class="sidebar-box ftco-animate">
+                    <h3 class="heading">項目</h3>
+                    <ul class="categories">
+                        <li><a href="@Url.Action("ManageProduct","Backend")">商品資料</a></li>
+                        <li><a href="@Url.Action("TaskerIndex","Backend")">師傅資料</a></li>
+                        <li><a href="@Url.Action("ManageMember","Backend")">會員資料</a></li>
+                        <li><a href="@Url.Action("ManageOrder","Backend")">訂單資料</a></li>
+                    </ul>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+</section> <!-- .section -->
+
+
 

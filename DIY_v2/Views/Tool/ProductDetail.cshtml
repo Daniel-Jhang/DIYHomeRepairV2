@@ -8,7 +8,7 @@
         height: 400px;
         width: 900px;
     }
-/*    背景顏色*/
+    /*    背景顏色*/
     body {
         background-color: aliceblue;
         color: black
@@ -18,7 +18,7 @@
         background-color: white;
         border-radius: 15px;
         padding: 10px;
-        margin:10px;
+        margin: 10px;
     }
 </style>
 
@@ -97,7 +97,7 @@
                             </div>
                             <input type="hidden" class="Id" value=@Model.Products_normal[0].ProductID>
                             <input type="hidden" class="ProductPrice" value=@Model.Products_normal[0].ProductPrice>
-                          
+
                         </div>
                     </div>
                 </div>
@@ -110,22 +110,26 @@
                 @{
                     if (Model.replies.Count > 0)
                     {
-                        <div class="col-md-12">
-                            <table>
-                                <tr>
-                                    <th>帳號名稱</th>
-                                    <th>留言內容</th>
-                                    <th>時間</th>
-                                    <th>評分</th>
-                                </tr>
-                                <tr>
-                                    <td>@Model.replies[0].MemberAccount</td>
-                                    <td>@Model.replies[0].Replymain</td>
-                                    <td>@Model.replies[0].Initdate</td>
-                                    <td>@Model.replies[0].Star</td>
-                                </tr>
-                            </table>
-                        </div>
+                        for (int i = 0; i < Model.replies.Count; i++)
+                        {
+                            <div class="col-md-12">
+                                <table>
+                                    <tr>
+                                        <th>帳號名稱</th>
+                                        <th>留言內容</th>
+                                        <th>時間</th>
+                                        <th>評分</th>
+                                    </tr>
+                                    <tr>
+                                        <td>@Model.replies[i].MemberAccount</td>
+                                        <td>@Model.replies[i].Replymain</td>
+                                        <td>@Model.replies[i].Initdate</td>
+                                        <td>@Model.replies[i].Star</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        }
+
 
                     }
                 }
@@ -141,10 +145,10 @@
                 </div>
 
             </div>
-            
-            </div>
 
         </div>
+
+    </div>
 
 
 

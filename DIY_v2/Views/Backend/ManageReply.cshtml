@@ -42,7 +42,7 @@
 
 
             <td>
-                @Html.ActionLink("刪除留言", "deleteReply", new { ReplyID = item.ReplyID, ProductID = item.ProductID })
+                @Html.ActionLink("刪除留言", "deleteReply", new { ReplyID = item.ReplyID, ProductID = item.ProductID }, htmlAttributes: new { onclick = "return  confirm('確定刪除嗎?');",@class="btn btn-danger"})
             </td>
         </tr>
     }
