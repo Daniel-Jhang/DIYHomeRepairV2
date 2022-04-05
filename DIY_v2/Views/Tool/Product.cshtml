@@ -65,6 +65,65 @@
         }
 </style>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+@*搜尋紐*@
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Style the search field */
+    form.example input[type=text] {
+        padding: 5px;
+        font-size: 17px;
+        border: 1px solid grey;
+        float: left;
+        width: 80%;
+        background: #f1f1f1;
+    }
+
+    /* Style the submit button */
+    form.example button {
+        float: left;
+        width: 20%;
+        padding: 5px;
+        background:#bba95d /*#599274     */;
+        color: white;
+        font-size: 17px;
+        border: 1px solid grey;
+        border-left: none; /* Prevent double borders */
+        cursor: pointer;
+    }
+
+        form.example button:hover {
+            background: #a8921d /*#3b5d4b*/;
+        }
+
+    /* Clear floats */
+    form.example::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+</style>
+
+
+<style>
+    .hc {
+        background-color: #bba95d;
+        border: none;
+        padding: 5px;
+        color: black;
+    }
+
+    #btne {
+        background: #bba95d;
+        color: black;
+        border: none;
+        float: right;
+    }
+</style>
+
 <section class="ftco-section bg-light">
     <div class="container">
         <div class="row">
@@ -145,16 +204,16 @@
 ));
 
                                 @*if (@Session["OP"] == null)
-                            {
-                                @Html.PagedListPager(Model.Products, page => Url.Action("Product", new { page, ProductCategoryID = @Session["nowCategoryID"] }))
+                                    {
+                                        @Html.PagedListPager(Model.Products, page => Url.Action("Product", new { page, ProductCategoryID = @Session["nowCategoryID"] }))
 
-                            }
+                                    }
 
-                            else
-                            {
+                                    else
+                                    {
 
-                                @Html.PagedListPager(Model.Products, page => Url.Action("Product", new { page, ProductCategoryID = Session["nowCategoryID"], Maxprice = @Session["Maxprice"], Minprice = @Session["Minprice"] }))
-                            }*@
+                                        @Html.PagedListPager(Model.Products, page => Url.Action("Product", new { page, ProductCategoryID = Session["nowCategoryID"], Maxprice = @Session["Maxprice"], Minprice = @Session["Minprice"] }))
+                                    }*@
                             }
 
                         </div>
@@ -184,14 +243,14 @@
                     </div>
 
                     <div class="sidebar-box-2">
-                        <h2 class="heading hc">產品類別</h2>
+                        <h2 class="heading hc" >產品類別</h2>
 
                         @*-----------------------------------------------------------*@
                         @*@foreach (var item in Model.Categories)
-                    {
+                            {
 
-                        <p> @Html.ActionLink(@item.ProductCategory, "Product", new { ProductCategoryID = item.ProductCategoryID })</p>
-                    }*@
+                                <p> @Html.ActionLink(@item.ProductCategory, "Product", new { ProductCategoryID = item.ProductCategoryID })</p>
+                            }*@
                         @*------------------------------------------------------------------*@
 
 
@@ -282,7 +341,7 @@
 
                                         <div class="form d-flex  flex-row">
                                             <input class="price form-control" type="text" name="Minprice" />
-                                            <label for="guests" style="padding:10px 0 0 5px;">至</label>
+                                            <label for="guests" style="padding: 10px 0 0 5px; color: black;">至</label>
                                         </div>
                                     </div>
                                 </div>
@@ -292,7 +351,7 @@
                                         <div class="form d-flex  flex-row">
 
                                             <input class="price form-control" type="text" name="Maxprice" />
-                                            <label for="guests" style="padding:10px 0 0 5px;">元</label>
+                                            <label for="guests" style="padding:10px 0 0 5px;color:black;">元</label>
                                         </div>
 
                                     </div>
