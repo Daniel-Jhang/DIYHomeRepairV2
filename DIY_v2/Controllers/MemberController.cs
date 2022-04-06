@@ -100,10 +100,18 @@ namespace DIY_v2.Controllers
                         newPwd = MyEncrypt.HMACSHA256(newPwd, "PutMyScretIn");
                         member.MemberPwd = newPwd;
                         db.SaveChanges();
+
                         ViewData["newPwdError"] = "display:none";
                         ViewData["pwdCheckError"] = "display:none";
                         ViewBag.Message = "密碼已修改";
-                        return View();
+
+                        //改完密碼後登出  跳登入畫面
+                        FormsAuthentication.SignOut();   // 登出
+                        Session["Permission"] = null;
+                        Session["shoppingcarcoumt"] = 0;
+                        Session["isRegister"] = "Y";
+
+                        return RedirectToAction("Login","MemberLogin");
                     }
                     else
                     {
