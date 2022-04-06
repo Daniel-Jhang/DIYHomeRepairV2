@@ -73,7 +73,7 @@
     }
 
     /* Style the search field */
-    form.example input[type=text] {
+    form.exampleA input[type=text] {
         padding: 5px;
         font-size: 17px;
         border: 1px solid grey;
@@ -84,7 +84,7 @@
     }
 
     /* Style the submit button */
-    form.example button {
+    form.exampleA button {
         float: left;
         width: 20%;
         padding: 5px;
@@ -96,12 +96,12 @@
         cursor: pointer;
     }
 
-        form.example button:hover {
+        form.exampleA button:hover {
             background: #a8921d /*#3b5d4b*/;
         }
 
     /* Clear floats */
-    form.example::after {
+    form.exampleA::after {
         content: "";
         clear: both;
         display: table;
@@ -165,21 +165,7 @@
                                     <div class="overlay"></div>
                                 </a>
                                 <div class="text py-3 pb-4 px-3">
-                                    <div class="d-flex">
-                                        <div class="cat">
-                                            @*評價星星*@
-                                            <span>商品評價</span>
-                                        </div>
-                                        <div class="rating">
-                                            <p class="text-right mb-0">
-                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                            </p>
-                                        </div>
-                                    </div>
+                                  
                                     <h3><a href="#">@item.ProductName</a></h3>  @*商品名稱*@
                                     <div class="pricing">
                                         <p class="price"><span>$@item.ProductPrice</span></p> @*商品價格*@
@@ -247,7 +233,7 @@
 
             @*側邊欄*@
             <div class="col-md-4 col-lg-2">
-                <form method="post" colorlib-form-2" action="@Url.Action("Product")" class="example">
+                <form method="post" colorlib-form-2" action="@Url.Action("Product")" class="exampleA">
                     <div class="sidebar">
                         @*搜索欄*@
                         <div class="sidebar-box-2">
@@ -257,7 +243,7 @@
                                     <!-- Load icon library -->
                                     <!-- The form -->
 
-                                    <input type="text" placeholder="Search.." name="search">
+                                    <input type="text" placeholder="請輸入商品" name="search">
                                     <button type="submit"><i class="fa fa-search"></i></button>
 
                                 </div>
@@ -268,7 +254,7 @@
                         </div>
 
                         <div class="sidebar-box-2">
-                            <h2 class="heading hc">產品類別</h2>
+                            <h2  style="color:black;"class="heading hc">產品類別</h2>
 
                             @*-----------------------------------------------------------*@
                             @*@foreach (var item in Model.Categories)
@@ -284,7 +270,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading" role="tab" id="headingOne">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style=" font-size: 16px;">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style=" font-size: 16px; color:black;">
                                                 材料
                                             </a>
                                         </h4>
@@ -312,7 +298,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading" role="tab" id="headingTwo">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style=" font-size: 16px;">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style=" font-size: 16px; color: black;">
                                                 工具
                                             </a>
                                         </h4>
@@ -338,7 +324,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading" role="tab" id="headingTwo">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style=" font-size: 16px;">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style=" font-size: 16px; color: black;">
                                                 通用耗材
                                             </a>
                                         </h4>
@@ -358,29 +344,29 @@
 
                         </div>
                         <div class="sidebar-box-2">
-                            <h2 class="heading hc">價格範圍</h2>
-
+                            <h2 style="color:black;" class="heading hc">價格範圍</h2>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-
                                         <div class="form d-flex  flex-row">
-                                            <input class="price form-control" type="text" placeholder="請輸入最低金額" name="Minprice" />
+                                            <input  style="width: 100%; text-align: center;" class="price form-control" type="text" placeholder="請輸入最低金額" name="Minprice" />
                                             <label for="guests" style="padding: 10px 0 0 5px; color: black;"></label>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col-md-12">
                                     <div class="form-group">
 
-                                        <div class="form d-flex  flex-row">
+                                        <div class="form d-flex flex-row">
 
-                                            <input class="price form-control" type="text" placeholder="請輸入最高金額" name="Maxprice" />
-                                            <label for="guests" style="padding:10px 0 0 5px;color:black;"></label>
+                                            <input style="width: 100%; text-align: center;" class="rangeBox form-control" type="text" placeholder="請輸入最高金額" name="Maxprice" />
+                                            <label for="guests" style="padding: 10px 0 0 5px; color: black;"></label>
                                         </div>
 
                                     </div>
                                 </div>
+
                                 <div class="col-md-10">
                                     <div class="form-group">
 
