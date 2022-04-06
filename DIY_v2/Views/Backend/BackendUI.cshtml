@@ -7,57 +7,6 @@
     Layout = "~/Views/Shared/_LayoutForbackendUI.cshtml";
 }
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
 
-<section class="ftco-section ">
-    <div class="container-fluid">
-        <div class="row">
-
-            <div class="col-lg-10 col-md-10 col-xs-12 order-lg-last ftco-animate">
-
-            </div> <!-- .col-md-10 -->
-
-            <div class="col-lg-2 col-md-2 col-xs-12 sidebar ftco-animate ">
-                @*搜尋欄*@
-                <div class="sidebar-box">
-                    <form action="#" class="search-form">
-                        <div class="form-group">
-                            <span class="icon ion-ios-search" style="color: #4fb7ca;border:5px;"></span>
-                            <input type="text" class="form-control" placeholder=""  style="border-color: #4fb7ca;">
-                        </div>
-                    </form>
-                </div>
-                @*選取按鈕*@
-                <div class="sidebar-box ftco-animate">
-                    <h3 class="heading"><span class="btn btn-info btn-lg glyphicon glyphicon-list">項目  </span></h3>
-                    <ul class="categories " >
-
-                        <li>
-                            <a href="@Url.Action("ManageProduct","Backend")" class="btn btn-info btn-lg glyphicon glyphicon-pencil" style="color:white;">商品資料</a>
-                        </li>
-
-
-                        <li>
-                            <a href="@Url.Action("TaskerIndex","Backend")" class= "btn btn-info btn-lg glyphicon glyphicon glyphicon-pencil" style="color:white;">師傅資料</a>
-                        </li>
-
-
-                        <li>
-                            <a href="@Url.Action("ManageMember","Backend")" class="btn btn-info btn-lg glyphicon glyphicon glyphicon-pencil" style="color:white;">會員資料</a>
-                        </li>
-
-
-                        <li>
-                            <a href="@Url.Action("ManageOrder","Backend")" class="btn btn-info btn-lg glyphicon glyphicon glyphicon-pencil" style="color:white;">訂單資料</a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> <!-- .section -->
