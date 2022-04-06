@@ -43,7 +43,7 @@
         total = 0;
 
         for (i in obj) {
-
+           
             if (obj[i].checked == true) {
                 var countnumber = "count" + obj[i].value
                 total += Number(document.getElementById(countnumber).value)
@@ -51,7 +51,23 @@
             } document.getElementById("countTotal").textContent = `總計：$${total}`;
         }
     }
+    //這版沒理解她在幹嘛  暴力硬解
+    function totalcountclick() {
+        obj = document.getElementsByName("selectGroups");
+        check_value = [];
+        Count_value = [];
+        countnumber
+        total = 0;
 
+        for (i in obj) {
+            
+            if (obj[i].checked == false) {
+                var countnumber = "count" + obj[i].value
+                total += Number(document.getElementById(countnumber).value)
+
+            } document.getElementById("countTotal").textContent = `總計：$${total}`;
+        }
+    }
 
 
 
@@ -177,7 +193,7 @@
         }
         <tr>
             <td>
-                <input type="checkbox" id="CheckAll" value="" name="CheckALL" onclick="countclick()" />
+                <input type="checkbox" id="CheckAll" value="" name="CheckALL" onclick="totalcountclick() " />
             </td>
             <td>
                 <p class="text-justify">選擇全部</p>
