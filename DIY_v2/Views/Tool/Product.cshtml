@@ -247,35 +247,36 @@
 
             @*側邊欄*@
             <div class="col-md-4 col-lg-2">
-                <div class="sidebar">
-                    @*搜索欄*@
-                    <div class="sidebar-box-2">
-                        <form method="post" colorlib-form-2" action="@Url.Action("Product")" class="example">
+                <form method="post" colorlib-form-2" action="@Url.Action("Product")" class="example">
+                    <div class="sidebar">
+                        @*搜索欄*@
+                        <div class="sidebar-box-2">
+
                             <div class="row">
                                 <div class="col-md-12">
                                     <!-- Load icon library -->
                                     <!-- The form -->
 
-                                    <input type="text" placeholder="搜尋你的商品" name="search">
+                                    <input type="text" placeholder="Search.." name="search">
                                     <button type="submit"><i class="fa fa-search"></i></button>
 
                                 </div>
 
                             </div>
 
-                        </form>
-                    </div>
 
-                    <div class="sidebar-box-2">
-                        <h2 class="heading hc" >產品類別</h2>
+                        </div>
 
-                        @*-----------------------------------------------------------*@
-                        @*@foreach (var item in Model.Categories)
-                            {
+                        <div class="sidebar-box-2">
+                            <h2 class="heading hc">產品類別</h2>
 
-                                <p> @Html.ActionLink(@item.ProductCategory, "Product", new { ProductCategoryID = item.ProductCategoryID })</p>
-                            }*@
-                        @*------------------------------------------------------------------*@
+                            @*-----------------------------------------------------------*@
+                            @*@foreach (var item in Model.Categories)
+                {
+
+                    <p> @Html.ActionLink(@item.ProductCategory, "Product", new { ProductCategoryID = item.ProductCategoryID })</p>
+                }*@
+                            @*------------------------------------------------------------------*@
 
 
                         <div class="fancy-collapse-panel">
@@ -283,7 +284,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading" role="tab" id="headingOne">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style=" font-size: 16px; color:black;">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style=" font-size: 16px;">
                                                 材料
                                             </a>
                                         </h4>
@@ -311,7 +312,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading" role="tab" id="headingTwo">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style=" font-size: 16px; color: black;">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style=" font-size: 16px;">
                                                 工具
                                             </a>
                                         </h4>
@@ -337,7 +338,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading" role="tab" id="headingTwo">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style=" font-size: 16px;color:black;">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style=" font-size: 16px;">
                                                 通用耗材
                                             </a>
                                         </h4>
@@ -348,17 +349,17 @@
                                                 <li>@Html.ActionLink("通用耗材", "Product", new { ProductCategoryID = "Ct021" })</li>
 
 
-                                            </ul>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                    </div>
-                    <div class="sidebar-box-2">
-                        <h2 class="heading hc">價格範圍</h2>
-                        <form method="post" colorlib-form-2" action="@Url.Action("Product")">
+                        </div>
+                        <div class="sidebar-box-2">
+                            <h2 class="heading hc">價格範圍</h2>
+
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -389,10 +390,13 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
-                        </form>
+
+
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

@@ -18,7 +18,93 @@
         background-color: white;
         border-radius: 15px;
         padding: 10px;
-        margin:10px;
+        margin: 10px;
+    }
+
+    /*    以下為留言板CSS*/
+
+    /* Style inputs */
+    input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        resize: vertical;
+    }
+
+    input[type=submit] {
+        background-color: #92badd;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        cursor: pointer;
+    }
+
+        input[type=submit]:hover {
+            background-color: #A6CAF0;
+        }
+
+    /* Style the container/contact section */
+
+
+    /* Create two columns that float next to eachother */
+    .column {
+        float: left;
+        width: 50%;
+        margin-top: 6px;
+        padding: 20px;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+    @@media screen and (max-width: 600px) {
+        .column, input[type=submit] {
+            width: 100%;
+            margin-top: 0;
+        }
+    }
+
+    .messageboard {
+        display: inline-block;
+        letter-spacing: 0.3ch;
+        border: 3px solid #333333;
+        border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+        background-color: #EEE;
+    }
+
+    .fromA {
+        margin-bottom: 30px;
+    }
+
+    .border-image {
+        border-radius: 10px;
+        border-image-source: linear-gradient(45deg, gold, deeppink);
+        border-image-slice: 1;
+        border-image-repeat: stretch;
+    }
+
+    .messageboardA {
+        display: inline-block;
+        letter-spacing: 0.3ch;
+        border: 3px solid #333333;
+        border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+        background-color: white;
+        margin: auto
+    }
+
+    .replyContent {
+        background-color: rgba(211,230,246,.3);
+        border-radius: 5px;
+        margin-left: -40px;
+        min-height: 50px;
+        padding-left: 40px;
     }
 </style>
 
@@ -111,25 +197,47 @@
         <!-- #region 留言區 -->
         <div class="row">
             <div class="Reply-area shadow col-md-12">
-                @{
-                    if (Model.replies.Count > 0)
-                    {
-                        <div class="col-md-12">
-                            <table>
-                                <tr>
-                                    <th>帳號名稱</th>
-                                    <th>留言內容</th>
-                                    <th>時間</th>
-                                    <th>評分</th>
-                                </tr>
-                                <tr>
-                                    <td>@Model.replies[0].MemberAccount</td>
-                                    <td>@Model.replies[0].Replymain</td>
-                                    <td>@Model.replies[0].Initdate</td>
-                                    <td>@Model.replies[0].Star</td>
-                                </tr>
-                            </table>
-                        </div>
+
+                <h4>商品評價</h4>
+                @*注意: 有使用Inline margin*@
+                <div style="margin-left: 30px;">
+                    @{
+                        if (Model.replies.Count > 0)
+                        {
+                            foreach (var item in Model.replies)
+                            {
+                                <h5>@item.MemberAccount</h5>
+                                <div class="row">
+                                    <div class="col-md-1"><img class="img-responsive" src="~/Images/TaskerImages/avatar_04.svg" alt="Alternate Text" style="width:35px;" /></div>
+                                    <div class="col-md-11 embed-responsive">
+                                        <div class="replyContent embed-responsive">@item.Replymain</div>
+                                        <span><small>@item.Initdate</small></span>
+                                    </div>
+                                </div>
+                                @*注意: 有使用Inline margin*@
+                                @*<span style="margin-left: 60px;"><small>@item.Initdate</small></span>*@
+                                <br />
+                                <br />
+                            }
+
+                            #region 原本的
+                            @*<div class="col-md-12">
+                                    <table>
+                                        <tr>
+                                            <th>帳號名稱</th>
+                                            <th>留言內容</th>
+                                            <th>時間</th>
+                                            <th>評分</th>
+                                        </tr>
+                                        <tr>
+                                            <td>@Model.replies[0].MemberAccount</td>
+                                            <td>@Model.replies[0].Replymain</td>
+                                            <td>@Model.replies[0].Initdate</td>
+                                            <td>@Model.replies[0].Star</td>
+                                        </tr>
+                                    </table>
+                                </div>*@
+                            #endregion
 
                         }
                     }
@@ -148,10 +256,9 @@
                 <br />
                 <br />
             </div>
-            
-            </div>
-
+            <!-- #endregion -->
         </div>
+    </div>
 
 
 

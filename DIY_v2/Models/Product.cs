@@ -11,7 +11,8 @@ namespace DIY_v2.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,16 +21,29 @@ namespace DIY_v2.Models
             this.Order_Detail = new HashSet<Order_Detail>();
             this.ProductReply = new HashSet<ProductReply>();
         }
-    
+
+        [DisplayName("產品ID")]
+        [StringLength(5, ErrorMessage = "請輸入5個字元 不能有中文", MinimumLength = 5)]
         public string ProductID { get; set; }
+        [DisplayName("產品名稱")]
         public string ProductName { get; set; }
+        [DisplayName("產品價格")]
+        [Range(1, 30000, ErrorMessage = "價錢必須介於1~30000")]
         public Nullable<short> ProductPrice { get; set; }
+        [DisplayName("產品圖片")]
         public string ProductImage { get; set; }
+        [DisplayName("產品成本")]
+        [Range(1, 30000, ErrorMessage = "成本必須介於1~30000")]
         public Nullable<short> ProductCost { get; set; }
+        [Range(1, 30000, ErrorMessage = "庫存必須介於1~30000")]
+        [DisplayName("產品庫存")]
         public short InStock { get; set; }
+        [StringLength(500, ErrorMessage = "不能超過500個字")]
+        [DisplayName("產品詳細")]
         public string ProductDescription { get; set; }
+        [DisplayName("產品類別")]
         public string ProductCategoryID { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order_Detail> Order_Detail { get; set; }
         public virtual Product_Category Product_Category { get; set; }
