@@ -213,6 +213,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\bg_6.jpg" />
+    <Content Include="Images\DIY.jpg" />
     <Content Include="Images\DIYImages\ChangeFaucet_demo.png" />
     <Content Include="Images\DIYImages\changeLight2-1.jpg" />
     <Content Include="Images\DIYImages\changeLight2-2.jpg" />
@@ -410,6 +412,8 @@
     <Content Include="Images\TaskerImages\testPlumber3.jpg" />
     <Content Include="Images\TaskerImages\user01.png" />
     <Content Include="Images\TaskerImages\未命名.png" />
+    <Content Include="Images\tk.png" />
+    <Content Include="Images\tool.png" />
     <Content Include="Images\ToolImages\DSCN2840.JPG" />
     <Content Include="Images\ToolImages\favpng_air-filter-vacuum-cleaner-pump-sludge.png" />
     <Content Include="Images\ToolImages\Pt001.jpg" />
@@ -546,6 +550,7 @@
     <Content Include="Images\ToolImages\洗手台1.jpg" />
     <Content Include="Images\ToolImages\洗手台2.jpg" />
     <Content Include="Images\ToolImages\活動板手.png" />
+    <Content Include="Images\wordfile.png" />
     <Content Include="Images\元件\gotop05.png" />
     <Content Include="Images\元件\logo.png" />
     <Content Include="Images\元件\new四腳椅子.png" />
@@ -764,8 +769,8 @@
     <Content Include="Views\Tool\SetClickshopcar.cshtml" />
     <Content Include="Views\PartialView\Messageboard.cshtml" />
     <Content Include="Views\Shared\_LayoutForbackendUI.cshtml" />
-	  <Content Include="Views\PartialView\ShoppingCart.cshtml" />
-	  <Content Include="Views\GoogleAPI\Index.cshtml" />
+    <Content Include="Views\PartialView\ShoppingCart.cshtml" />
+    <Content Include="Views\GoogleAPI\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

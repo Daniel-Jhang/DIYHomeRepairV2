@@ -8,6 +8,10 @@
         width: 100px;
         height: 100px;
     }
+
+    .cntwidth {
+        max-width: 2140px;
+    }
 </style>
 <script src="~/static/js/jquery.min.js"></script>
 <script>
@@ -43,7 +47,7 @@
         total = 0;
 
         for (i in obj) {
-           
+
             if (obj[i].checked == true) {
                 var countnumber = "count" + obj[i].value
                 total += Number(document.getElementById(countnumber).value)
@@ -60,7 +64,7 @@
         total = 0;
 
         for (i in obj) {
-            
+
             if (obj[i].checked == false) {
                 var countnumber = "count" + obj[i].value
                 total += Number(document.getElementById(countnumber).value)
@@ -112,214 +116,285 @@
 </script>
 
 
-<h2>會員購物車清單</h2>
-<div id="shoppingCarList">
-    <table class="table">
-        <tr>
-            <th></th>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product.ProductImage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product.ProductName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductPrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderQuantity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderStatus)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Member.MemberAccount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Orders.RecipientName)
-            </th>
-            <th>小計</th>
-            <th></th>
-        </tr>
+<div class="hero-wrap mt-5">
+    <div class="container-fluid contwidth">
+        <div class="row no-gutters slider-text  justify-content-center">
+            <div class="col-md-3 ftco-animate text-center">
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    <input type="checkbox" value="@item.SerialNumber" name="selectGroups" onclick="countclick(count@(@item.SerialNumber))" />
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OrderID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OrderDate)
-                </td>
-                <td>
-                    <img class="shoppingCarImage" src="@item.Product.ProductImage" alt="Colorlib Template">
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Product.ProductName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProductPrice)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OrderQuantity)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OrderStatus)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Member.MemberAccount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Orders.RecipientName)
-                </td>
-                <td>
-                    <label>@(item.ProductPrice * item.OrderQuantity)</label><input type="hidden" id="count@(@item.SerialNumber)" value="@(item.ProductPrice*item.OrderQuantity)" />
-                </td>
-                <td>
-                    <a href="@Url.Action("DeleteCar")?SerialNumber=@item.SerialNumber"
-                       class="btn btn-danger"
-                       onclick="return confirm('確定放棄購買 @item.ProductName 嗎？')">刪除購物車</a>
-                </td>
-            </tr>
-        }
-        <tr>
-            <td>
-                <input type="checkbox" id="CheckAll" value="" name="CheckALL" onclick="totalcountclick() " />
-            </td>
-            <td>
-                <p class="text-justify">選擇全部</p>
-            </td>
-            <td>
-                <label id="countTotal"></label>
-            </td>
-        </tr>
-    </table>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input value="確認訂購" class="btn btn-default" onclick="btclick()" />
+                <h1 class="mb-2 bread">購物車</h1>
+            </div>
         </div>
     </div>
 </div>
-<div id="shoppingCarOrder" style="display:none">
-    <form action="@Url.Action("ShoppingCar")" method="post">
-        <div class="form-horizontal">
-            <h4>填寫訂單收件人資料</h4>
-            <hr />
 
-            <button id="sameMemberInformation" class="btn btn-success" type="button">同會員資料</button> @*同會員資料*@
 
-            <div class="form-group">
-                <span class="control-label col-md-2">收件人姓名</span>
-                <div class="col-md-10">
-                    <input type="text" id="RecipientName" name="RecipientName" required="required" class="form-control" />
+<section class="ftco-section ftco-cart">
+    <div class="container  cntwidth">
+        <div id="shoppingCarList">
+            <div class="row">
+                <div class="col-md-12 ftco-animate">
+                    <table class="table">
+                        <thead class="thead-primary">
+                            <tr class="text-center">
+                                <th></th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.OrderID)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.OrderDate)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Product.ProductImage)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Product.ProductName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ProductPrice)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.OrderQuantity)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.OrderStatus)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Member.MemberAccount)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Orders.RecipientName)
+                                </th>
+                                <th>小計</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr class="text-center">
+                                    <td>
+                                        <input type="checkbox" value="@item.SerialNumber" name="selectGroups" onclick="countclick(count@(@item.SerialNumber))" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.OrderID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.OrderDate)
+                                    </td>
+                                    <td>
+                                        <img class="shoppingCarImage" src="@item.Product.ProductImage" alt="Colorlib Template">
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Product.ProductName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ProductPrice)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.OrderQuantity)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.OrderStatus)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Member.MemberAccount)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Orders.RecipientName)
+                                    </td>
+                                    <td>
+                                        <label>@(item.ProductPrice * item.OrderQuantity)</label><input type="hidden" id="count@(@item.SerialNumber)" value="@(item.ProductPrice*item.OrderQuantity)" />
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("DeleteCar")?SerialNumber=@item.SerialNumber"
+                                           class="btn btn-danger"
+                                           onclick="return confirm('確定放棄購買 @item.ProductName 嗎？')">刪除購物車</a>
+                                    </td>
+                                </tr>
+                            }
+
+
+                            <tr>
+                                <td>
+                                    <input type="checkbox" id="CheckAll" value="" name="CheckALL" onclick="totalcountclick() " />
+                                </td>
+                                <td>
+                                    <p class="text-justify">選擇全部</p>
+                                </td>
+                                <td>
+                                    @*<label id="countTotal"></label>*@
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="form-group">
-                <span class="control-label col-md-2">收件人信箱</span>
-                <div class="col-md-10">
-                    <input type="email" id="RecipientEmail" name="RecipientEmail" required="required" class="form-control" />
+
+    <div class="container cntwidth">
+        <div class="row justify-content-start">
+
+            <div class="col-md-3   mt-3 cart-wrap ftco-animate">
+                <div class="cart-total mb-3">
+                    <h3>購物車總價</h3>
+                    <hr>
+                    <p class="d-flex total-price">
+                        <span>總計</span>
+                        <span id="countTotal"></span>
+                    </p>
+
+                    <input value="確認訂購" class="btn btn-primary py-3 px-4" onclick="btclick()" />
+
                 </div>
             </div>
+        </div>
+    </div>
+</section>
 
-            <div class="form-group">
-                <span class="control-label col-md-2">收件人地址</span>
-                <div class="col-md-10">
-                    <input type="text" id="RecipientAddress" name="RecipientAddress" required="required" class="form-control" />
-                </div>
-            </div>
 
-            <div class="form-group">
-                <span class="control-label col-md-2">收件人電話</span>
-                <div class="col-md-10">
-                    <input type="text" id="RecipientPhone" name="RecipientPhone" required="required" class="form-control" />
-                </div>
-            </div>
-            <div class="form-group">
-                <span class="control-label col-md-2">繳費方式</span>
-                <div class="col-md-10">
-                    <input type="hidden" class="paymethod" name="paymethod" value="" />
-                    <ul class="nav" role="tablist">
-                        <li role="presentation" class="active"><a href="#work" role="tab" class="btn btn-block blue-btn active-btn pay-now" data-toggle="tab">貨到付款</a></li>
-                        <li role="presentation"><a href="#hire" class="btn btn-primary btn-block blue-btn pay-card" role="tab" data-toggle="tab">信用卡付款</a></li>
-                    </ul>
 
-                    <!-- 付款方式 切換內容 -->
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" id="work"></div>
-                        <div role="tabpanel" class="tab-pane" id="hire">
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-10">
 
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                新增信用卡
-                            </button>
 
-                        </div>
-                    </div>
+                <div id="shoppingCarOrder" style="display:none">
+                    <form action="@Url.Action("ShoppingCar")" method="post">
+                        <div class="form-horizontal">
+                            <h4>填寫訂單收件人資料</h4>
+                            <hr />
+                            <div class="row">
+                                <div class="col-md-5">
 
-                    <!-- 信用卡資訊 Modal-->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">新增信用卡</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                                    <div class="col-md-12">
+                                        <button id="sameMemberInformation" class="btn btn-success" type="button">同會員資料</button> @*同會員資料*@
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <span class="control-label">收件人姓名</span>
+                                            <input type="text" id="RecipientName" name="RecipientName" required="required" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <span class="control-label">收件人信箱</span>
+                                            <input type="email" id="RecipientEmail" name="RecipientEmail" required="required" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <span class="control-label">收件人地址</span>
+
+                                            <input type="text" id="RecipientAddress" name="RecipientAddress" required="required" class="form-control" />
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <span class="control-label">收件人電話</span>
+
+                                            <input type="text" id="RecipientPhone" name="RecipientPhone" required="required" class="form-control" />
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <span class="control-label col-md-2">繳費方式</span>
+                                            <div class="col-md-10">
+                                                <input type="hidden" class="paymethod" name="paymethod" value="" />
+                                                <ul class="nav" role="tablist">
+                                                    <li role="presentation" class="active"><a href="#work" role="tab" class="btn btn-block blue-btn active-btn pay-now" data-toggle="tab">貨到付款</a></li>
+                                                    <li role="presentation"><a href="#hire" class="btn btn-primary btn-block blue-btn pay-card" role="tab" data-toggle="tab">信用卡付款</a></li>
+                                                </ul>
+
+                                                <!-- 付款方式 切換內容 -->
+                                                <div class="tab-content">
+                                                    <div role="tabpanel" class="tab-pane active" id="work"></div>
+                                                    <div role="tabpanel" class="tab-pane" id="hire">
+
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                                            新增信用卡
+                                                        </button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 信用卡資訊 Modal-->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">新增信用卡</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="form-group">
+                                                            <label for="recipient-name" class="col-form-label">持卡人姓名</label>
+                                                            <input type="text" class="form-control" id="recipient-name" placeholder="持卡人姓名">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="recipient-name" class="col-form-label">信用卡號碼</label>
+                                                            <br />
+
+                                                            <input type=text id=pan_no1 size=4 value="" maxlength=4 onKeyUp="setBlur(this,'pan_no2');">-
+                                                            <input type=text id=pan_no2 size=4 value="" maxlength=4 onKeyUp="setBlur(this,'pan_no3');">-
+                                                            <input type=text id=pan_no3 size=4 value="" maxlength=4 onKeyUp="setBlur(this,'pan_no4');">-
+                                                            <input type=text id=pan_no4 size=4 value="" maxlength=4>
+                                                            @*<input type="text" class="form-control" id="recipient-name" placeholder="信用卡號碼">*@
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="recipient-name" class="col-form-label">到期</label>
+                                                            <input type="text" class="form-control" id="recipient-name" placeholder="MM/YY">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="message-text" class="col-form-label">信用卡背面末三碼</label>
+                                                            <input type="text" class="form-control" id="message-text" placeholder="信用卡背面末三碼">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="message-text" class="col-form-label">手機號碼</label>
+                                                            <input type="text" class="form-control" placeholder="手機號碼">
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">完成</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label for="recipient-name" class="col-form-label">持卡人姓名</label>
-                                        <input type="text" class="form-control" id="recipient-name" placeholder="持卡人姓名">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="recipient-name" class="col-form-label">信用卡號碼</label>
-                                        <br />
-
-                                        <input type=text id=pan_no1 size=4 value="" maxlength=4 onKeyUp="setBlur(this,'pan_no2');">-
-                                        <input type=text id=pan_no2 size=4 value="" maxlength=4 onKeyUp="setBlur(this,'pan_no3');">-
-                                        <input type=text id=pan_no3 size=4 value="" maxlength=4 onKeyUp="setBlur(this,'pan_no4');">-
-                                        <input type=text id=pan_no4 size=4 value="" maxlength=4>
-                                        @*<input type="text" class="form-control" id="recipient-name" placeholder="信用卡號碼">*@
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="recipient-name" class="col-form-label">到期</label>
-                                        <input type="text" class="form-control" id="recipient-name" placeholder="MM/YY">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="message-text" class="col-form-label">信用卡背面末三碼</label>
-                                        <input type="text" class="form-control" id="message-text" placeholder="信用卡背面末三碼">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="message-text" class="col-form-label">手機號碼</label>
-                                        <input type="text" class="form-control" placeholder="手機號碼">
-                                    </div>
+                                <div class="col-md-7">
+                                    <br /><br /><br />
+                                    <img class="img-responsive text-center" style="object-fit: fill; max-width:550px;" src="~/Images/bg_6.jpg" alt="Alternate Text" />
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal">完成</button>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="送出資料" class="btn btn-black px-4" />
                                 </div>
                             </div>
+
+
                         </div>
-                    </div>
+                    </form>
                 </div>
+
+
+
             </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="送出資料" class="btn btn-default" />
-                </div>
-            </div>
-
-
         </div>
-    </form>
-</div>
+    </div>
+</section>
