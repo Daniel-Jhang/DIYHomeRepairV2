@@ -412,7 +412,7 @@ namespace DIY_v2.Controllers
             var result = db.ProductReply.Where(x => x.ReplyID == ReplyID).FirstOrDefault();
             db.ProductReply.Remove(result);
             db.SaveChanges();
-            return RedirectToAction("ManageReply");
+            return RedirectToAction("ManageReply", new { ProductID = ProductID });
         }
         #endregion
         #region 會員權限管理

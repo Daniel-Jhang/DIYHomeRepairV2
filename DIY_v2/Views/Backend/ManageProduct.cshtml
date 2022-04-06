@@ -14,10 +14,16 @@
 <link href="~/Content/PagedList.css" rel="stylesheet">
 
 <section class="ftco-section ">
+
     <div class="container-fluid">
+
         <div class="row">
 
+          
             <div class="col-lg-10 col-md-10 col-xs-12 order-lg-last ftco-animate">
+                <p>
+                    @Html.ActionLink("新增商品", "AddProduct", new {} ,htmlAttributes: new { @class = "btn btn-primary" })
+                </p>
                 <table class="table">
                     <tr>
                         <th>
@@ -37,8 +43,8 @@
                         <th>
                             @Html.DisplayNameFor(model => model.FirstOrDefault().InStock)
                         </th>
-                      
-                        
+
+
                         <th></th>
                     </tr>
 
@@ -61,13 +67,13 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.InStock)
                             </td>
-                           
-                           
+
+
                             <td>
                                 @Html.ActionLink("修改", "EditProduct", new { ProductID = item.ProductID }) |
                                 @Html.ActionLink("商品詳細資料", "ProductDetail", "Tool", new { ProductID = item.ProductID }, new { htmlAttributes = new { @class = "form-control" } }) |
                                 @Html.ActionLink("刪除", "DeleteProduct", new { ProductID = item.ProductID }, new { onclick = "return  confirm('確定刪除嗎?');", @class = " btn btn-danger" })
-                                @Html.ActionLink("管理留言", "ManageReply", new { ProductID = item.ProductID }, new {  @class = " btn btn-danger" })
+                                @Html.ActionLink("管理留言", "ManageReply", new { ProductID = item.ProductID }, new { @class = " btn btn-danger" })
                             </td>
                         </tr>
                     }
@@ -75,9 +81,7 @@
                 </table>
             </div> <!-- .col-md-8 -->
             <div class="col-lg-2 col-md-2 col-xs-12 sidebar ftco-animate ">
-                <p>
-                    @Html.ActionLink("新增商品", "AddProduct")
-                </p>
+
                 @*搜尋欄*@
                 <div class="sidebar-box">
                     <form action="@Url.Action("ManageProduct")" class="search-form" method="post">
