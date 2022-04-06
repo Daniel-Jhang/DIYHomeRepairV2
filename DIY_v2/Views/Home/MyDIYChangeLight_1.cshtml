@@ -264,6 +264,24 @@
     hr.new1 {
         border-top: 2px dashed black;
     }
+/*
+    GO TOP*/
+    #myBtn {
+        display: none; /* Hidden by default */
+        position: sticky; /* Fixed/sticky position */
+        bottom: 550px; /* Place the button at the bottom of the page */
+        left: 2530px; /* Place the button 30px from the right */
+        z-index: 99; /* Make sure it does not overlap */
+        border: none; /**/ /* Remove borders */
+        outline: none; /**/ /* Remove outline */
+        width: 90px;
+        background-color: transparent;
+        cursor: pointer; /**/ /* Add a mouse pointer on hover */
+
+        filter: drop-shadow(0 0 0.60rem #ee82ee);
+    }
+
+       
 </style>
 
 
@@ -535,6 +553,8 @@
     <!-- #endregion -->
     <br />
     <br />
+    @*GOTOP*@
+    <img src="~/Images/元件/gotop05.png" onclick="topFunction()" id="myBtn" title="Go to top" />
 </div>@*end of container*@
 
 <script>
@@ -548,6 +568,27 @@
     } else {
         $(".tooltip-container").show();
         $(".userInquire").hide();
+    }
+
+
+    //GO TOP:
+    mybutton = document.getElementById("myBtn");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     }
 </script>
 

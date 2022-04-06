@@ -37,7 +37,10 @@ namespace DIY_v2.Controllers
         {
             return View();
         }
-
+        public ActionResult ShoppingCart()
+        {
+            return View();
+        }
 
     }
 }

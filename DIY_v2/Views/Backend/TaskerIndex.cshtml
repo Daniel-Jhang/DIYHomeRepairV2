@@ -134,8 +134,8 @@
                             <td>
                                 @*@Html.ActionLink("Edit", "EditTasker", new { id = item.TaskerID }, new { @class = "btn btn-success" }) |*@
                                 @Html.ActionLink("詳細資料", "TaskerDetail", "Backend", new { TaskerID = item.TaskerID }, new { @class = "btn btn-info" }) |
-                                @Html.ActionLink("管理留言", "ManageTaskerComment", new { TaskerID = item.TaskerID }, new { @class = "btn btn-info" }) |
-                                @Html.ActionLink("刪除師傅", "DeleteTasker", new { id = item.TaskerID }, new { onclick = "return confirm('確定刪除嗎?')", @class = "btn btn-danger" })
+                                @Html.ActionLink("管理留言", "ManageTaskerComment", new { TaskerID = item.TaskerID }, new { @class = "btn btn-info" }) 
+                                @*@Html.ActionLink("刪除師傅", "DeleteTasker", new { id = item.TaskerID }, new { onclick = "return confirm('確定刪除嗎?')", @class = "btn btn-danger" })*@
                             </td>
                         </tr>
                     }

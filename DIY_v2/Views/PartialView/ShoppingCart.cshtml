@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "ShoppingCart";
+}
+
+
+<style>
+
+
+    .cntwidth {
+        max-width: 2140px;
+    }
+</style>
+<div class="hero-wrap mt-5">
+    <div class="container-fluid contwidth">
+        <div class="row no-gutters slider-text  justify-content-center">
+            <div class="col-md-3 ftco-animate text-center">
+            
+                <h1 class="mb-2 bread">購物車</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="ftco-section ftco-cart">
+    <div class="container  cntwidth">
+        <div class="row">
+            <div class="col-md-12 ftco-animate">
+                <div class="cart-list">
+                    <table class="table">
+                        <thead class="thead-primary">
+                            <tr class="text-center">
+                                <th>訂單編號</th>
+                                <th>訂單日期</th>
+                                <th>產品圖片</th>
+                                <th>產品名稱</th>
+                                <th>產品單價</th>
+                                <th>訂購數量</th>
+                                <th>訂單狀態</th>
+                                <th>帳號</th>
+                                <th>收件人姓名</th>
+                                <th>小計</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-center">
+                                <td class="price">202204060001</td>
+                                <td class="price">2022/4/6 上午 12:00:00</td>
+                                <td class="image-prod"><div class="img" style="background-image:url(static/image/product-3.jpg);"></div></td>
+                                <td class="price">特力屋 二代 9.5公分 10W LED崁燈 晝光色s</td>
+                                <td class="price">249</td>
+                                <td class="price">1</td>
+                                <td class="price">購物車</td>
+                                <td class="price">testtest</td>
+                                <td class="price">郝湳仁</td>
+                                <td class="price">249</td>
+                                <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+                            </tr><!-- END TR-->
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+ 
+    <div class="container cntwidth">
+        <div class="row justify-content-start">
+          
+            <div class="col-md-3   mt-3 cart-wrap ftco-animate">
+                <div class="cart-total mb-3">
+                    <h3>購物車總價</h3>
+                    <p class="d-flex">
+                        <span>小計</span>
+                        <span>$20.60</span>
+                    </p>
+
+
+                    <hr>
+                    <p class="d-flex total-price">
+                        <span>總計</span>
+                        <span>$17.60</span>
+                    </p>
+                </div>
+                <p class="text-center"><a href="checkout.html" class="btn btn-primary py-3 px-4">結帳</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+

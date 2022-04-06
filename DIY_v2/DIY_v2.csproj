@@ -19,7 +19,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44303</IISExpressSSLPort>
+    <IISExpressSSLPort>44332</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -140,6 +140,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BackendController.cs" />
+    <Compile Include="Controllers\GoogleAPIController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\MemberLoginController.cs" />
@@ -545,6 +546,7 @@
     <Content Include="Images\ToolImages\洗手台1.jpg" />
     <Content Include="Images\ToolImages\洗手台2.jpg" />
     <Content Include="Images\ToolImages\活動板手.png" />
+    <Content Include="Images\元件\gotop05.png" />
     <Content Include="Images\元件\logo.png" />
     <Content Include="Images\元件\new四腳椅子.png" />
     <Content Include="Images\元件\new浴缸.png" />
@@ -762,6 +764,8 @@
     <Content Include="Views\Tool\SetClickshopcar.cshtml" />
     <Content Include="Views\PartialView\Messageboard.cshtml" />
     <Content Include="Views\Shared\_LayoutForbackendUI.cshtml" />
+	  <Content Include="Views\PartialView\ShoppingCart.cshtml" />
+	  <Content Include="Views\GoogleAPI\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -13,16 +13,13 @@
         border: none;
         padding: 5px;
         color: white;
-     
     }
 
     #btns {
         background: #dbcc8f;
         color: white;
         font-size: 15px;
-        margin-left:10px;
-      
-        
+        margin-left: 10px;
     }
 
         #btns:hover {
@@ -38,95 +35,14 @@
     <section class="ftco-section bg-light">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 col-lg-9 order-md-last">
-                    <div class="row">
-
-                        @*右側主畫面*@
-                        @foreach (var item in Model.taskers)
-                        {
-                            @*頭像*@
-                            string path = "../Images/TaskerImages/" + item.TaskerImage;
-                            <div class="col-sm-12 col-md-12 col-lg-4 ftco-animate d-flex">
-                                @*圖片尺寸大小要統一 寬800 高1200 png*@
-                                <div class="product d-flex flex-column">
-                                    @*<a href="@Url.Action("TaskerDetail")?TaskerID=@item.TaskerID" class="img-prod">*@
-                                    <div class="img-prod">
-                                        <img class="img-fluid" src="@path" alt="Alternate Text" />
-                                        <div class="overlay"></div>
-                                    </div>
-                                    @*</a>*@
-
-                                    @*文字描述*@
-                                    <div class="text py-3 pb-4 px-3">
-                                        <!--<div class="d-flex">
-                                        <div class="cat">-->
-                                        @*評價星星*@
-                                        <!--<span>商品評價</span>
-                                            </div>
-                                            <div class="rating">
-                                                <p class="text-right mb-0">
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                </p>
-                                            </div>
-                                        </div>-->
-                                        <h3>@item.TaskerName</h3> @*師傅名稱*@
-                                        @{ @*判斷營業時間*@
-                                        string openOrClose = "";
-                                        double currentTime = DateTime.Now.TimeOfDay.TotalHours;
-                                        double open = item.ServiceTime_Start.TotalHours;
-                                        double close = item.ServiceTime_End.TotalHours;
-                                        if (currentTime >= open && currentTime <= close)
-                                        {
-                                            openOrClose = "營業中";
-                                        }
-                                        else
-                                        {
-                                            openOrClose = "非營業時段";
-                                        }
-                                        }
-                                        <p>@openOrClose</p>
-                                        @*<p>@item.Rate ★(24)</p> 師傅評價*@
-                                        <hr />
-                                        <div class="pricing">
-                                            <p class="price"><span>服務報價 : $ @item.ServiceQuote NT / 趟</span></p> @*服務報價*@
-                                        </div>
-                                        <p>服務地區 : @item.ServiceArea</p> @*服務地區*@
-                                        <hr />
-                                        <p>服務分類 :</p>
-                                        @foreach (var x in Model.taskersService.Where(x => x.TaskerID == item.TaskerID).Select(x => x.ServiceCategory))
-                                        {
-                                            <p>＃@x</p> @*服務分類*@
-                                        }
-                                        <p class="bottom-area d-flex px-3">
-                                            @*服務詳情 >>> 連結到師父介紹按鈕*@
-                                            <a href="@Url.Action("TaskerDetail")?TaskerID=@item.TaskerID" class="btn btn-info" , new { target="_blank" }>服務詳情</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        }
-                    </div>
-
-
-                    @*分頁*@
-                    <div class="row mt-5">
-                        <div class="col text-center">
-                            <div class="block-27">
-                                @Html.PagedListPager(Model.taskers, page => Url.Action("Tasker", new { page, serviceArea = @Session["serviceArea"], serviceCategories = @Session["serviceCategories"], minPrice = @Session["min"], maxPrice = @Session["max"] }))
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 @*左側導覽列*@
                 <div class="col-md-4 col-lg-2">
                     <div class="sidebar">
 
-
+                        <div class="sidebar-box-2">
+                            <a href="@Url.Action("Index","GoogleAPI")" class="btn btn-lg btn-danger btn-block">地圖搜尋</a>
+                        </div>
 
                         @*服務地區*@
                         <div class="sidebar-box-2">
@@ -205,6 +121,89 @@
 
                     </div>
                 </div>
+
+                <div class="col-md-8 col-lg-9 order-md-last">
+                    <div class="row">
+                        @*右側主畫面*@
+                        @foreach (var item in Model.taskers)
+                        {
+                            @*頭像*@
+                            string path = "../Images/TaskerImages/" + item.TaskerImage;
+                            <div class="col-sm-12 col-md-12 col-lg-4 ftco-animate d-flex">
+                                @*圖片尺寸大小要統一 寬800 高1200 png*@
+                                <div class="product d-flex flex-column">
+                                    @*<a href="@Url.Action("TaskerDetail")?TaskerID=@item.TaskerID" class="img-prod">*@
+                                    <div class="img-prod">
+                                        <img class="img-fluid" src="@path" alt="Alternate Text" />
+                                        <div class="overlay"></div>
+                                    </div>
+                                    @*</a>*@
+
+                                    @*文字描述*@
+                                    <div class="text py-3 pb-4 px-3">
+                                        <!--<div class="d-flex">
+                                        <div class="cat">-->
+                                        @*評價星星*@
+                                        <!--<span>商品評價</span>
+                                            </div>
+                                            <div class="rating">
+                                                <p class="text-right mb-0">
+                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                </p>
+                                            </div>
+                                        </div>-->
+                                        <h3>@item.TaskerName</h3> @*師傅名稱*@
+                                        @{ @*判斷營業時間*@
+                                        string openOrClose = "";
+                                        double currentTime = DateTime.Now.TimeOfDay.TotalHours;
+                                        double open = item.ServiceTime_Start.TotalHours;
+                                        double close = item.ServiceTime_End.TotalHours;
+                                        if (currentTime >= open && currentTime <= close)
+                                        {
+                                            openOrClose = "營業中";
+                                        }
+                                        else
+                                        {
+                                            openOrClose = "非營業時段";
+                                        }
+                                        }
+                                        <p>@openOrClose</p>
+                                        @*<p>@item.Rate ★(24)</p> 師傅評價*@
+                                        <hr />
+                                        <div class="pricing">
+                                            <p class="price"><span>服務報價 : $ @item.ServiceQuote NT / 趟</span></p> @*服務報價*@
+                                        </div>
+                                        <p>服務地區 : @item.ServiceArea</p> @*服務地區*@
+                                        <hr />
+                                        <p>服務分類 :</p>
+                                        @foreach (var x in Model.taskersService.Where(x => x.TaskerID == item.TaskerID).Select(x => x.ServiceCategory))
+                                        {
+                                            <p>＃@x</p> @*服務分類*@
+                                        }
+                                        <p class="bottom-area d-flex px-3">
+                                            @*服務詳情 >>> 連結到師父介紹按鈕*@
+                                            <a href="@Url.Action("TaskerDetail")?TaskerID=@item.TaskerID" class="btn btn-info" , new { target="_blank" }>服務詳情</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    @*分頁*@
+                    <div class="row mt-5">
+                        <div class="col text-center">
+                            <div class="block-27">
+                                @Html.PagedListPager(Model.taskers, page => Url.Action("Tasker", new { page, serviceArea = @Session["serviceArea"], serviceCategories = @Session["serviceCategories"], minPrice = @Session["min"], maxPrice = @Session["max"] }))
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>

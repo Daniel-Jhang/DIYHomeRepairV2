@@ -161,7 +161,7 @@
             display: none;
         }
 
-    button {
+    button, .buttonA {
         border: none;
         width: 164px;
         height: 51px;
@@ -182,22 +182,22 @@
         transition-duration: 0.3s;
     }
 
-        button i {
-            margin-left: 10px;
-            -webkit-transform: translateZ(0);
-            transform: translateZ(0);
-        }
+    button, buttonA i {
+        margin-left: 10px;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
 
-        button:hover i, button:focus i, button:active i {
-            -webkit-animation-name: hvr-icon-wobble-horizontal;
-            animation-name: hvr-icon-wobble-horizontal;
-            -webkit-animation-duration: 1s;
-            animation-duration: 1s;
-            -webkit-animation-timing-function: ease-in-out;
-            animation-timing-function: ease-in-out;
-            -webkit-animation-iteration-count: 1;
-            animation-iteration-count: 1;
-        }
+    button, buttonA:hover i, button, buttonA:focus i, button, buttonA:active i {
+        -webkit-animation-name: hvr-icon-wobble-horizontal;
+        animation-name: hvr-icon-wobble-horizontal;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-timing-function: ease-in-out;
+        animation-timing-function: ease-in-out;
+        -webkit-animation-iteration-count: 1;
+        animation-iteration-count: 1;
+    }
 
     @@-webkit-keyframes hvr-icon-wobble-horizontal {
         16.65% {
@@ -290,57 +290,60 @@
                 width: 100%;
                 padding: 40px 0 30px;
             }
-
-
     }
 
     .buttonA {
-        margin-top:-10px;
-
+        margin-top: -10px;
     }
+    /*# sourceMappingURL=style.css.map */
 
-    @*-----------------新的師傅註冊頁面---------------*@
 </style>
 <!-- #endregion -->
+
+<script src="~/static/js/jquery.min.js"></script>
 
 <div class="wrapper" style="background-image: url('/Images/元件/登入背景11.jpg'); ">
     <div class="inner">
         <div class="image-holder">
             <img src="~/Images/元件/登入背景12.jpg" alt="">
         </div>
+
         @using (Html.BeginForm("TaskerRegister", "TaskerMember", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
 
             <h3>師傅資料登入</h3>
+
+            <div id="autoFill" onclick="autoFill()">+</div>@*自動帶入註冊資料*@
+
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
             <div class="form-group">
-                @Html.EditorFor(model => model.TaskerName, new { htmlAttributes = new { @class = "form-control", placeholder = "水電行名稱" } })
+                @Html.EditorFor(model => model.TaskerName, new { htmlAttributes = new { id = "TaskerName", @class = "form-control", placeholder = "水電行名稱" } })
                 @Html.ValidationMessageFor(model => model.TaskerName, "", new { @class = "text-danger" })
 
-                @Html.EditorFor(model => model.ServiceQuote, new { htmlAttributes = new { @class = "form-control", placeholder = "服務報價/趟" } })
+                @Html.EditorFor(model => model.ServiceQuote, new { htmlAttributes = new { id = "ServiceQuote", @class = "form-control", placeholder = "服務報價/趟" } })
                 @Html.ValidationMessageFor(model => model.ServiceQuote, "", new { @class = "text-danger" })
-
             </div>
 
             <div class="form-group">
-                @Html.EditorFor(model => model.TaskerTel, new { htmlAttributes = new { @class = "form-control", placeholder = "水電行電話" } })
+                @Html.EditorFor(model => model.TaskerTel, new { htmlAttributes = new { id = "TaskerTel", @class = "form-control", placeholder = "水電行電話" } })
                 @Html.ValidationMessageFor(model => model.TaskerTel, "", new { @class = "text-danger" })
 
-                @Html.EditorFor(model => model.TaskerPhone, new { htmlAttributes = new { @class = "form-control", placeholder = "手機" } })
+                @Html.EditorFor(model => model.TaskerPhone, new { htmlAttributes = new { id = "TaskerPhone", @class = "form-control", placeholder = "手機" } })
                 @Html.ValidationMessageFor(model => model.TaskerPhone, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">
-                @Html.EditorFor(model => model.ServiceTime_Start, new { htmlAttributes = new { @class = "form-control", placeholder = "營業時間" } })
+                @Html.EditorFor(model => model.ServiceTime_Start, new { htmlAttributes = new { id = "ServiceTime_Start", @class = "form-control", placeholder = "營業時間" } })
                 @Html.ValidationMessageFor(model => model.ServiceTime_Start, "", new { @class = "text-danger" })
 
-                @Html.EditorFor(model => model.ServiceTime_End, new { htmlAttributes = new { @class = "form-control", placeholder = "結束營業時間" } })
+                @Html.EditorFor(model => model.ServiceTime_End, new { htmlAttributes = new { id = "ServiceTime_End", @class = "form-control", placeholder = "打烊時間" } })
                 @Html.ValidationMessageFor(model => model.ServiceTime_End, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">
-                @Html.DropDownListFor(model => model.ServiceArea, (IEnumerable<SelectListItem>)Session["cityList"], "請選擇服務地區", new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.ServiceArea, (IEnumerable<SelectListItem>)Session["cityList"], "請選擇服務地區", new { id = "ServiceArea", @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ServiceArea, "", new { @class = "text-danger" })
             </div>
 
@@ -360,18 +363,18 @@
             </div>
 
             <div class="form-wrapper">
-                @Html.EditorFor(model => model.License, new { htmlAttributes = new { @class = "form-control", placeholder = "專業證照" } })
+                @Html.EditorFor(model => model.License, new { htmlAttributes = new { id = "License", @class = "form-control", placeholder = "專業證照" } })
                 @Html.ValidationMessageFor(model => model.License, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-wrapper">
-                @Html.EditorFor(model => model.Feature, new { htmlAttributes = new { @class = "form-control", placeholder = "特色" } })
+                @Html.EditorFor(model => model.Feature, new { htmlAttributes = new { id = "Feature", @class = "form-control", placeholder = "特色" } })
                 @Html.ValidationMessageFor(model => model.Feature, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-wrapper">
                 <h5>服務詳情</h5>
-                @Html.TextAreaFor(model => model.TaskerDescription, 10, 40, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.TaskerDescription, 10, 40, new { id = "TaskerDescription", htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TaskerDescription, "", new { @class = "text-danger" })
             </div>
 
@@ -408,12 +411,36 @@
             @*20220402 師傅新增一個欄位Permission，當師傅會員要修改自己的資料時，會自動把Permission的值維持在 "2"*@
             <input type="hidden" name="Permission" value="2" />
 
-            <input type="submit" value="送出" class="btn btn-success" />
+            <input type="submit" value="送出" class="buttonA" />
             <br />
             <br />
         }
-    </div>
-    <div>
-        @Html.ActionLink("Back to List", "Index") @*不確定要不要留*@
+
+        @*@Html.ActionLink("Back to List", "Index")*@
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        // 自動帶入註冊資料
+        $("#autoFill").click(function () {
+            $("#TaskerName").val("熊厲害水電行")
+            $("#ServiceQuote").val("600")
+            $("#TaskerTel").val("04-2433-9768")
+            $("#TaskerPhone").val("0970-052-182")
+            $("#ServiceTime_Start").val("09:00")
+            $("#ServiceTime_End").val("21:00")
+            $("#ServiceArea").val("台中市")
+            $("#serviceCategoryChk1").prop("checked", true )
+            $("#serviceCategoryChk2").prop("checked", true )
+            $("#serviceCategoryChk3").prop("checked", true )
+            $("#License").val("乙級自來水管配管技術士")
+            $("#Feature").val("親切和善、價錢公道、拒絕亂開價")
+            var strDescription = "🚰關於水 ⚡️關於電 🛠修理 ☎️歡迎來電洽談📞\n服務❗️ 品質❗️ 價格❗️ 免費可到府估價‼️ 🚦到府檢修免收車馬費🚦\n" +
+                "一、需求洽談\n歡迎點選本服務頁上方【立即通話】致電聯絡。二、到府勘查\n確認現場實際狀況，安排後續處理方式。\n" +
+                "三、費用報價\n評估作業流程與難易度、使用的產品與耗材並提供報價。\n四、開始施工\n雙方安排施工期並簽訂施工合約。\n" +
+                "五、驗收完工\n驗收與款項交付無誤即結案。"
+            $("#TaskerDescription").val(strDescription)
+        })
+    })
+</script>
