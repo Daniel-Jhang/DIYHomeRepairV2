@@ -248,10 +248,10 @@
 
                             @*-----------------------------------------------------------*@
                             @*@foreach (var item in Model.Categories)
-                                {
+                {
 
-                                    <p> @Html.ActionLink(@item.ProductCategory, "Product", new { ProductCategoryID = item.ProductCategoryID })</p>
-                                }*@
+                    <p> @Html.ActionLink(@item.ProductCategory, "Product", new { ProductCategoryID = item.ProductCategoryID })</p>
+                }*@
                             @*------------------------------------------------------------------*@
 
 
@@ -335,44 +335,45 @@
                         </div>
                         <div class="sidebar-box-2">
                             <h2 class="heading hc">價格範圍</h2>
-                            
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
 
-                                            <div class="form d-flex  flex-row">
-                                                <input class="price form-control" type="text" name="Minprice" />
-                                                <label for="guests" style="padding: 10px 0 0 5px; color: black;">至</label>
-                                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+
+                                        <div class="form d-flex  flex-row">
+                                            <input class="price form-control" type="text" name="Minprice" />
+                                            <label for="guests" style="padding: 10px 0 0 5px; color: black;">至</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
 
-                                            <div class="form d-flex  flex-row">
+                                        <div class="form d-flex  flex-row">
 
-                                                <input class="price form-control" type="text" name="Maxprice" />
-                                                <label for="guests" style="padding:10px 0 0 5px;color:black;">元</label>
-                                            </div>
+                                            <input class="price form-control" type="text" name="Maxprice" />
+                                            <label for="guests" style="padding:10px 0 0 5px;color:black;">元</label>
+                                        </div>
 
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+
+                                        <div class="form d-flex flex-row">
+                                            <input type="hidden" value=@Session["nowCategoryID"] name="ProductCategoryID" />
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input type="submit" class="btn btn-lg btn-block " value="搜尋" id="btne" />
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-
-                                            <div class="form d-flex flex-row">
-                                                <input type="hidden" value=@Session["nowCategoryID"] name="ProductCategoryID" />
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                <input type="submit" class="btn btn-lg btn-block " value="搜尋" id="btne" />
-                                            </div>
-                                        </div>
-                                    </div>
-
                                 </div>
 
-                            </form>
+                            </div>
+
+
                         </div>
                     </div>
+                </form>
             </div>
         </div>
     </div>
