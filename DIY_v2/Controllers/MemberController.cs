@@ -38,19 +38,27 @@ namespace DIY_v2.Controllers
         [HttpPost]
         public ActionResult EditData(Member member)
         {
-            string MemberAccount = User.Identity.Name;
-            var MemberItem = db.Member.Where(x => x.MemberAccount == MemberAccount).FirstOrDefault();
-            MemberItem.MemberName = member.MemberName;
-            MemberItem.MemberGender = member.MemberGender;
-            MemberItem.MemberBirthday = member.MemberBirthday;
-            MemberItem.MemberNickname = member.MemberNickname;
-            MemberItem.MemberEmail = member.MemberEmail;
-            MemberItem.MemberAddress = member.MemberAddress;
-            MemberItem.MemberPhone = member.MemberPhone;
-            db.SaveChanges();
-
-            Session["memberEdit"] = "資料修改完成";
-            return RedirectToAction("BasicData");
+            if (ModelState.IsValid)
+            {
+                string MemberAccount = User.Identity.Name;
+                var MemberItem = db.Member.Where(x => x.MemberAccount == MemberAccount).FirstOrDefault();
+                MemberItem.MemberName = member.MemberName;
+                MemberItem.MemberGender = member.MemberGender;
+                MemberItem.MemberBirthday = member.MemberBirthday;
+                MemberItem.MemberNickname = member.MemberNickname;
+                MemberItem.MemberEmail = member.MemberEmail;
+                MemberItem.MemberAddress = member.MemberAddress;
+                MemberItem.MemberPhone = member.MemberPhone;
+                db.SaveChanges();
+               
+                Session["memberEdit"] = "資料修改完成";
+                return View(MemberItem);
+            }
+            else
+            {
+                return View(member);
+            }
+          
         }
 
         public ActionResult PasswordChange()
