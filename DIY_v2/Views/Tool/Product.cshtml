@@ -365,8 +365,8 @@
                                     <div class="form-group">
 
                                         <div class="form d-flex  flex-row">
-                                            <input class="price form-control" type="text" placeholder="請輸入最低金額" name="Minprice" />
-                                            <label for="guests" style="padding: 10px 0 0 5px; color: black;"></label>
+                                            <input class="price form-control" type="text" name="Minprice" />
+                                            <label for="guests" style="padding: 10px 0 0 5px; color: black;">至</label>
                                         </div>
                                     </div>
                                 </div>
@@ -375,21 +375,22 @@
 
                                         <div class="form d-flex  flex-row">
 
-                                            <input class="price form-control" type="text" placeholder="請輸入最高金額" name="Maxprice" />
-                                            <label for="guests" style="padding:10px 0 0 5px;color:black;"></label>
-                                        </div>
+                                                <input class="price form-control" type="text" name="Maxprice" />
+                                                <label for="guests" style="padding:10px 0 0 5px;color:black;">元</label>
+                                            </div>
 
-                                    </div>
-                                </div>
-                                <div class="col-md-10">
-                                    <div class="form-group">
-
-                                        <div class="form d-flex flex-row">
-                                            <input type="hidden" value=@Session["nowCategoryID"] name="ProductCategoryID" />
-                                            <input type="submit" class="btn btn-lg btn-block " value="搜尋" id="btne" />
                                         </div>
                                     </div>
-                                </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+
+                                            <div class="form d-flex flex-row">
+                                                <input type="hidden" value=@Session["nowCategoryID"] name="ProductCategoryID" />
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input type="submit" class="btn btn-lg btn-block " value="搜尋" id="btne" />
+                                            </div>
+                                        </div>
+                                    </div>
 
                             </div>
 
