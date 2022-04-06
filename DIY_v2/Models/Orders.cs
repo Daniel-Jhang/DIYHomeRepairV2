@@ -11,7 +11,8 @@ namespace DIY_v2.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class Orders
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,14 +20,29 @@ namespace DIY_v2.Models
         {
             this.Order_Detail = new HashSet<Order_Detail>();
         }
-    
+
+        [DisplayName("訂單編號")]
         public string OrderID { get; set; }
+
+        [DisplayName("會員編號")]
         public int MemberID { get; set; }
+
+        [DisplayName("收件人姓名")]
         public string RecipientName { get; set; }
+
+        [DisplayName("收件人電子郵件")]
         public string RecipientEmail { get; set; }
+
+        [DisplayName("收件人電話")]
         public string RecipientPhone { get; set; }
+
+        [DisplayName("收件人地址")]
         public string RecipientAddress { get; set; }
+
+        [DisplayName("付款方式")]
         public string Paymethod { get; set; }
+
+        [DisplayName("訂單狀態")]
         public string OrderStatus { get; set; }
     
         public virtual Member Member { get; set; }
