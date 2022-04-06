@@ -570,6 +570,7 @@
     <Content Include="Images\ToolImages\洗手台2.jpg" />
     <Content Include="Images\ToolImages\活動板手.png" />
     <Content Include="Images\wordfile.png" />
+    <Content Include="Images\元件\BOSS.png" />
     <Content Include="Images\元件\logo.png" />
     <Content Include="Images\元件\new四腳椅子.png" />
     <Content Include="Images\元件\new浴缸.png" />
@@ -589,6 +590,7 @@
     <Content Include="Images\元件\四腳椅子05.png" />
     <Content Include="Images\元件\嵌燈.png" />
     <Content Include="Images\元件\嵌燈01.png" />
+    <Content Include="Images\元件\師傅.png" />
     <Content Include="Images\元件\桌子.png" />
     <Content Include="Images\元件\桌子01.png" />
     <Content Include="Images\元件\櫃子.png" />
