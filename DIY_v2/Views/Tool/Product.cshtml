@@ -80,7 +80,6 @@
         float: left;
         width: 80%;
         background: #f1f1f1;
-        
     }
 
     /* Style the submit button */
@@ -120,31 +119,9 @@
     #btne {
         background: #dbcc8f;
         color: white;
-        font-size: 15px;
-        margin-left: 15px;
-       
-    }
-        #btne:hover {
-            background: #FF8282;
-        }
-
-    .btnA {
-        /* background: #dbcc8f;
-        color: white;
-        font-size: 15px;
-        margin-left: 15px;
-        width:300px;*/
         border: none;
-        background-color: #dbcc8f;
-        width:300px;
-        height:45px;
-    
-        font-size: 16px;
-        cursor: pointer;
-        display: inline-block;
-        color: white;
-        margin-left:0px;
-        border-radius:14px;
+       /* float: right;*/
+
     }
 </style>
 
@@ -175,12 +152,12 @@
                                         @{
                                             if (@User.Identity.Name != String.Empty)
                                             {
-                                                <input type="button" class="AdCar btnA" value="加入購物車" />
+                                                <input type="button" class="AdCar" value="加入購物車" />
                                             }
                                             else
                                             {
                                                 @*<input type="button" class="toMember " value="加入購物車" onclick="location.href='https://localhost:44332/MemberLogin/Login'" />*@
-                                                <a class="buy-button " href="https://localhost:44332/Tool/SetClickshopcar">加入購物車</a>
+                                                <a class="buy-button" href="https://localhost:44332/Tool/SetClickshopcar">加入購物車</a>
 
                                             }
 
@@ -250,19 +227,19 @@
 
                             </div>
 
-
-                        </div>
+                        </form>
+                    </div>
 
                         <div class="sidebar-box-2">
                             <h2  style="color:black;"class="heading hc">產品類別</h2>
 
-                            @*-----------------------------------------------------------*@
-                            @*@foreach (var item in Model.Categories)
-                {
+                        @*-----------------------------------------------------------*@
+                        @*@foreach (var item in Model.Categories)
+                            {
 
-                    <p> @Html.ActionLink(@item.ProductCategory, "Product", new { ProductCategoryID = item.ProductCategoryID })</p>
-                }*@
-                            @*------------------------------------------------------------------*@
+                                <p> @Html.ActionLink(@item.ProductCategory, "Product", new { ProductCategoryID = item.ProductCategoryID })</p>
+                            }*@
+                        @*------------------------------------------------------------------*@
 
 
                         <div class="fancy-collapse-panel">
@@ -335,12 +312,12 @@
                                                 <li>@Html.ActionLink("通用耗材", "Product", new { ProductCategoryID = "Ct021" })</li>
 
 
-                                                </ul>
-                                            </div>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
                         </div>
                         <div class="sidebar-box-2">
@@ -370,20 +347,17 @@
                                 <div class="col-md-10">
                                     <div class="form-group">
 
-                                            <div class="form d-flex flex-row">
-                                                <input type="hidden" value=@Session["nowCategoryID"] name="ProductCategoryID" />
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                <input type="submit" class="btn btn-lg btn-block " value="搜尋" id="btne" />
-                                            </div>
+                                        <div class="form-field  d-flex flex-row">
+                                            <input type="hidden" value=@Session["nowCategoryID"] name="ProductCategoryID" />
+                                            @*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*@
+                                            <input type="submit" class="btn btn-lg btn-block " value="搜尋" id="btne" />
                                         </div>
                                     </div>
-
+                                </div>
                             </div>
-
-
-                        </div>
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
