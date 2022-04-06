@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "師傅註冊";
 }
+
+<!-- #region CSS -->
 <style>
     @@font-face {
         font-family: "Poppins-Regular";
@@ -296,6 +298,7 @@
     /*# sourceMappingURL=style.css.map */
 
 </style>
+<!-- #endregion -->
 @*<script>
         function btclick() {
                  if (!((document.getElementById("MemberPwd").value).match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8, 12}$/)))  {
@@ -316,8 +319,6 @@
     </script>*@
 <script src="~/static/js/jquery.min.js"></script>
 
-@*<h2>會員註冊</h2>*@
-
 <div class="wrapper" style="background-image: url('/Images/元件/登入背景11.jpg'); ">
     <div class="inner">
         <div class="image-holder">
@@ -328,10 +329,11 @@
         {
             @Html.AntiForgeryToken()
 
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
             <h3>師傅註冊</h3>
-            <button id="autoFill" type="button" class="btn-default">+</button> @*自動帶入註冊資料*@
+
+            <div id="autoFill" onclick="autoFill()">+</div>@*自動帶入註冊資料*@
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
             <div class="form-group">
                 @Html.EditorFor(model => model.MemberAccount, new { htmlAttributes = new { id = "MemberAccount", @class = "form-control", placeholder = "會員帳號" } })
