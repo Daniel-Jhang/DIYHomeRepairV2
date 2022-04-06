@@ -34,7 +34,7 @@
 
         .buy-button:hover,
         .buy-button:focus {
-            border: 1px solid ##f1dfda;
+            border: 1px solid #f1dfda;
             background: #ffffff;
             background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#cbbbb8));
             background: -moz-linear-gradient(top, #ffffff, #cbbbb8);
@@ -80,6 +80,7 @@
         float: left;
         width: 80%;
         background: #f1f1f1;
+        
     }
 
     /* Style the submit button */
@@ -87,7 +88,7 @@
         float: left;
         width: 20%;
         padding: 5px;
-        background:#bba95d /*#599274     */;
+        background: #dbcc8f /*#599274     */;
         color: white;
         font-size: 17px;
         border: 1px solid grey;
@@ -110,17 +111,40 @@
 
 <style>
     .hc {
-        background-color: #bba95d;
+        background-color: #dbcc8f;
         border: none;
         padding: 5px;
-        color: black;
+        color: white;
     }
 
     #btne {
-        background: #bba95d;
-        color: black;
+        background: #dbcc8f;
+        color: white;
+        font-size: 15px;
+        margin-left: 15px;
+       
+    }
+        #btne:hover {
+            background: #FF8282;
+        }
+
+    .btnA {
+        /* background: #dbcc8f;
+        color: white;
+        font-size: 15px;
+        margin-left: 15px;
+        width:300px;*/
         border: none;
-        float: right;
+        background-color: #dbcc8f;
+        width:300px;
+        height:45px;
+    
+        font-size: 16px;
+        cursor: pointer;
+        display: inline-block;
+        color: white;
+        margin-left:0px;
+        border-radius:14px;
     }
 </style>
 
@@ -165,12 +189,12 @@
                                         @{
                                             if (@User.Identity.Name != String.Empty)
                                             {
-                                                <input type="button" class="AdCar" value="加入購物車" />
+                                                <input type="button" class="AdCar btnA" value="加入購物車" />
                                             }
                                             else
                                             {
                                                 @*<input type="button" class="toMember " value="加入購物車" onclick="location.href='https://localhost:44332/MemberLogin/Login'" />*@
-                                                <a class="buy-button" href="https://localhost:44332/Tool/SetClickshopcar">加入購物車</a>
+                                                <a class="buy-button " href="https://localhost:44332/Tool/SetClickshopcar">加入購物車</a>
 
                                             }
 
@@ -232,7 +256,7 @@
                                     <!-- Load icon library -->
                                     <!-- The form -->
 
-                                    <input type="text" placeholder="Search.." name="search">
+                                    <input type="text" placeholder="搜尋你的商品" name="search">
                                     <button type="submit"><i class="fa fa-search"></i></button>
 
                                 </div>
@@ -259,7 +283,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading" role="tab" id="headingOne">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style=" font-size: 16px;">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style=" font-size: 16px; color:black;">
                                                 材料
                                             </a>
                                         </h4>
@@ -287,7 +311,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading" role="tab" id="headingTwo">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style=" font-size: 16px;">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style=" font-size: 16px; color: black;">
                                                 工具
                                             </a>
                                         </h4>
@@ -313,7 +337,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading" role="tab" id="headingTwo">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style=" font-size: 16px;">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style=" font-size: 16px;color:black;">
                                                 通用耗材
                                             </a>
                                         </h4>
@@ -340,8 +364,8 @@
                                     <div class="form-group">
 
                                         <div class="form d-flex  flex-row">
-                                            <input class="price form-control" type="text" name="Minprice" />
-                                            <label for="guests" style="padding: 10px 0 0 5px; color: black;">至</label>
+                                            <input class="price form-control" type="text" placeholder="請輸入最低金額" name="Minprice" />
+                                            <label for="guests" style="padding: 10px 0 0 5px; color: black;"></label>
                                         </div>
                                     </div>
                                 </div>
@@ -350,18 +374,17 @@
 
                                         <div class="form d-flex  flex-row">
 
-                                            <input class="price form-control" type="text" name="Maxprice" />
-                                            <label for="guests" style="padding:10px 0 0 5px;color:black;">元</label>
+                                            <input class="price form-control" type="text" placeholder="請輸入最高金額" name="Maxprice" />
+                                            <label for="guests" style="padding:10px 0 0 5px;color:black;"></label>
                                         </div>
 
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-10">
                                     <div class="form-group">
 
                                         <div class="form d-flex flex-row">
                                             <input type="hidden" value=@Session["nowCategoryID"] name="ProductCategoryID" />
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             <input type="submit" class="btn btn-lg btn-block " value="搜尋" id="btne" />
                                         </div>
                                     </div>

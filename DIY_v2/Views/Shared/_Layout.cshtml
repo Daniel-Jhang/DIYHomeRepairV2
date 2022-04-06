@@ -278,7 +278,7 @@
                                 <ul class="navbar-nav ml-auto">
 
                                     <li class="nav-item dropdown">
-                                        <a href="" class="dropdown-toggle nav-link" data-toggle="dropdown">DIY</a>
+                                        <a href="" class="dropdown-toggle nav-link" style="font-size:16px;" data-toggle="dropdown">DIY</a>
                                         <div class="dropdown-menu multi-column columns-2">
                                             <div class="row">
                                                 <div class="col-sm-6">
@@ -307,7 +307,7 @@
                                     </li>
 
                                     <li class="nav-item dropdown" style="position:relative;z-index:9;">
-                                        <a href="@Url.Action("Product","Tool")" class="dropdown-toggle nav-link" data-toggle="dropdown" onclick="location.href='https://localhost:44332/Tool/Product'" >找工具、零件</a>
+                                        <a href="@Url.Action("Product","Tool")" class="dropdown-toggle nav-link"  style="font-size:16px;" data-toggle="dropdown" onclick="location.href='https://localhost:44332/Tool/Product'" >找工具、零件</a>
                                         <div class="dropdown-menu multi-column columns-2" style="padding:10px">
                                             <div class="row">
                                                 <div class="col-sm-6">
@@ -338,12 +338,12 @@
                                         </div>
                                     </li>
 
-                                    <li class="nav-item"><a href="@Url.Action("Tasker","Tasker")" class="nav-link">找師傅</a></li>
+                                    <li class="nav-item"><a href="@Url.Action("Tasker","Tasker")"  style="font-size:16px;" class="nav-link">找師傅</a></li>
 
                                     @if (@Session["Permission"]?.ToString() == "2") //改成師傅會員是師傅專區
                                     {
                                         <li class="nav-item dropdown">
-                                            <a href="@Url.Action("Index","TaskerMember")" class="dropdown-toggle nav-link" data-toggle="dropdown">師傅專區</a>
+                                            <a href="@Url.Action("Index","TaskerMember")" class="dropdown-toggle nav-link"  style="font-size:16px;" data-toggle="dropdown">師傅專區</a>
                                             <div class="dropdown-menu">
 
                                                 <div class="col-sm-12" style="padding:10px">
@@ -367,7 +367,7 @@
                                     @if (@Session["Permission"]?.ToString() == "1") //改成一般會員是會員專區
                                     {
                                         <li class="nav-item dropdown">
-                                            <a href="@Url.Action("BasicData","Member")" class="dropdown-toggle nav-link" data-toggle="dropdown">會員專區</a>
+                                            <a href="@Url.Action("BasicData","Member")"  style="font-size:16px;" class="dropdown-toggle nav-link" data-toggle="dropdown">會員專區</a>
                                             <div class="dropdown-menu">
 
                                                 <div class="col-sm-12" style="padding:10px">
@@ -386,7 +386,7 @@
                                     @if (@Session["Permission"]?.ToString() == null)
                                     {
                                         <li class="nav-item dropdown">
-                                            <a href="@Url.Action("BasicData","Member")" class="dropdown-toggle nav-link" data-toggle="dropdown">註冊</a>
+                                            <a href="@Url.Action("BasicData","Member")"   style="font-size:16px;"class="dropdown-toggle nav-link" data-toggle="dropdown">註冊</a>
                                             <div class="dropdown-menu">
 
                                                 <div class="col-sm-12" style="padding:10px">
@@ -404,11 +404,11 @@
 
                                     @if (@Session["shoppingcarcoumt"]?.ToString() != null)
                                     {
-                                        <li class="nav-item cta cta-colored"><a href="~/Member/ShoppingCar" class="nav-link"><span class="icon-shopping_cart"></span>[<span class="carcount">@Session["shoppingcarcoumt"]</span>]</a></li>
+                                        <li class="nav-item cta cta-colored"><a href="~/Member/ShoppingCar" class="nav-link"><span  style="font-size:16px;" class="icon-shopping_cart"></span>[<span style="font-size:16px;" class="carcount">@Session["shoppingcarcoumt"]</span>]</a></li>
                                     }
                                     else
                                     {
-                                        <li class="nav-item cta cta-colored"><a href="~/Member/ShoppingCar" class="nav-link"><span class="icon-shopping_cart">[</span><span class="carcount">0</span>]</a></li>
+                                        <li class="nav-item cta cta-colored"><a  href="~/Member/ShoppingCar" class="nav-link"><span  style="font-size:16px;" class="icon-shopping_cart">[</span><span style="font-size:16px;"  class="carcount">0</span>] </a></li>
                                     }
 
 
