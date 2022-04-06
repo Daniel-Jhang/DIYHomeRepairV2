@@ -45,6 +45,11 @@ namespace DIY_v2.Controllers
             }
             else
             {
+                if (member.Permission == "N")
+                {
+                    ViewBag.Message = "此帳號已被停權";
+                    return View();
+                }
                 #region 更新購物車產品數量
 
 
@@ -85,9 +90,12 @@ namespace DIY_v2.Controllers
                 return RedirectToAction("Index", "Home");
               
             }
-          
 
-            return Redirect(Session["ReUrl"].ToString());
+            if (Session["ReUrl"]?.ToString() != null)
+            {
+                return Redirect(Session["ReUrl"].ToString());
+            }
+            return RedirectToAction("Index", "Home");
         }
         //Get:Home/Register
         public ActionResult Register()
