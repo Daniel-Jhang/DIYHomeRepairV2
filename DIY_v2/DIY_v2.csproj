@@ -19,7 +19,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44332</IISExpressSSLPort>
+    <IISExpressSSLPort>44303</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -761,6 +761,7 @@
     <Content Include="Views\PartialView\EditTasker.cshtml" />
     <Content Include="Views\Tool\SetClickshopcar.cshtml" />
     <Content Include="Views\PartialView\Messageboard.cshtml" />
+    <Content Include="Views\Shared\_LayoutForbackendUI.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

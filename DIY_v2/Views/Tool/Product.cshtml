@@ -34,7 +34,7 @@
 
         .buy-button:hover,
         .buy-button:focus {
-            border: 1px solid ##f1dfda;
+            border: 1px solid #f1dfda;
             background: #ffffff;
             background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#cbbbb8));
             background: -moz-linear-gradient(top, #ffffff, #cbbbb8);
@@ -87,7 +87,7 @@
         float: left;
         width: 20%;
         padding: 5px;
-        background:#bba95d /*#599274     */;
+        background: #dbcc8f /*#599274     */;
         color: white;
         font-size: 17px;
         border: 1px solid grey;
@@ -110,17 +110,18 @@
 
 <style>
     .hc {
-        background-color: #bba95d;
+        background-color: #dbcc8f;
         border: none;
         padding: 5px;
-        color: black;
+        color: white;
     }
 
     #btne {
-        background: #bba95d;
-        color: black;
+        background: #dbcc8f;
+        color: white;
         border: none;
-        float: right;
+       /* float: right;*/
+
     }
 </style>
 
@@ -356,12 +357,12 @@
 
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
 
-                                        <div class="form d-flex flex-row">
+                                        <div class="form-field  d-flex flex-row">
                                             <input type="hidden" value=@Session["nowCategoryID"] name="ProductCategoryID" />
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            @*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*@
                                             <input type="submit" class="btn btn-lg btn-block " value="搜尋" id="btne" />
                                         </div>
                                     </div>
