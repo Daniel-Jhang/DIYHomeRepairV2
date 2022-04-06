@@ -140,7 +140,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BackendController.cs" />
-    <Compile Include="Controllers\GoogleAPIController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\MemberLoginController.cs" />
@@ -213,7 +212,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\DIY.jpg" />
     <Content Include="Images\DIYImages\ChangeFaucet_demo.png" />
     <Content Include="Images\DIYImages\changeLight2-1.jpg" />
     <Content Include="Images\DIYImages\changeLight2-2.jpg" />
@@ -335,17 +333,6 @@
     <Content Include="Images\MemberImages\師傅2.jpg" />
     <Content Include="Images\MemberImages\材料1.jpg" />
     <Content Include="Images\PartialViewImages\2.png" />
-    <Content Include="Images\TaskerImages\avatar_04.svg" />
-    <Content Include="Images\TaskerImages\CaseImage01.jpg" />
-    <Content Include="Images\TaskerImages\CaseImage02.jpg" />
-    <Content Include="Images\TaskerImages\CaseImage03.jpg" />
-    <Content Include="Images\TaskerImages\CaseImage04.jpg" />
-    <Content Include="Images\TaskerImages\CaseImage05.jpg" />
-    <Content Include="Images\TaskerImages\CaseImage06.jpg" />
-    <Content Include="Images\TaskerImages\CaseImage07.jpg" />
-    <Content Include="Images\TaskerImages\CaseImage08.jpg" />
-    <Content Include="Images\TaskerImages\CaseImage09.jpg" />
-    <Content Include="Images\TaskerImages\CaseImage10.jpg" />
     <Content Include="Images\TaskerImages\CaseImage\CaseImage01.jpg" />
     <Content Include="Images\TaskerImages\CaseImage\CaseImage02.jpg" />
     <Content Include="Images\TaskerImages\CaseImage\CaseImage03.jpg" />
@@ -361,11 +348,7 @@
     <Content Include="Images\TaskerImages\demo03.jpg" />
     <Content Include="Images\TaskerImages\demo04.jpg" />
     <Content Include="Images\TaskerImages\demo05.jpg" />
-    <Content Include="Images\TaskerImages\DSCN2840.JPG" />
-    <Content Include="Images\TaskerImages\favpng_air-filter-vacuum-cleaner-pump-sludge.png" />
     <Content Include="Images\TaskerImages\living room.jpg" />
-    <Content Include="Images\TaskerImages\Pt046.jpg" />
-    <Content Include="Images\TaskerImages\Pt049.jpg" />
     <Content Include="Images\TaskerImages\Tasker01.png" />
     <Content Include="Images\TaskerImages\Tasker02.png" />
     <Content Include="Images\TaskerImages\Tasker03.png" />
@@ -424,14 +407,8 @@
     <Content Include="Images\TaskerImages\Tasker56.png" />
     <Content Include="Images\TaskerImages\testPlumber2.jpg" />
     <Content Include="Images\TaskerImages\testPlumber3.jpg" />
-    <Content Include="Images\TaskerImages\tool.jpg" />
     <Content Include="Images\TaskerImages\user01.png" />
-    <Content Include="Images\TaskerImages\—Pngtree—golden stars_516383.png" />
     <Content Include="Images\TaskerImages\未命名.png" />
-    <Content Include="Images\tk.png" />
-    <Content Include="Images\tool.png" />
-    <Content Include="Images\ToolImages\button.png" />
-    <Content Include="Images\ToolImages\defaultImage.jpg" />
     <Content Include="Images\ToolImages\DSCN2840.JPG" />
     <Content Include="Images\ToolImages\favpng_air-filter-vacuum-cleaner-pump-sludge.png" />
     <Content Include="Images\ToolImages\Pt001.jpg" />
@@ -556,13 +533,11 @@
     <Content Include="Images\ToolImages\Tl044.jpg" />
     <Content Include="Images\ToolImages\Tl045.jpg" />
     <Content Include="Images\ToolImages\Tl046.jpg" />
-    <Content Include="Images\ToolImages\tool.jpg" />
     <Content Include="Images\ToolImages\washhand.jpg" />
     <Content Include="Images\ToolImages\不鏽鋼管束-10入 大.jpg" />
     <Content Include="Images\ToolImages\不鏽鋼管束-10入 小.jpg" />
     <Content Include="Images\ToolImages\兩段360度防濺增壓節水龍頭 大.jpg" />
     <Content Include="Images\ToolImages\兩段360度防濺增壓節水龍頭小.jpg" />
-    <Content Include="Images\ToolImages\未命名.png" />
     <Content Include="Images\ToolImages\止洩帶12PCS組大.jpg" />
     <Content Include="Images\ToolImages\止洩帶12PCS組小.jpg" />
     <Content Include="Images\ToolImages\水晶外牙%28紅%29 小.jpg" />
@@ -570,8 +545,6 @@
     <Content Include="Images\ToolImages\洗手台1.jpg" />
     <Content Include="Images\ToolImages\洗手台2.jpg" />
     <Content Include="Images\ToolImages\活動板手.png" />
-    <Content Include="Images\wordfile.png" />
-    <Content Include="Images\元件\BOSS.png" />
     <Content Include="Images\元件\logo.png" />
     <Content Include="Images\元件\new四腳椅子.png" />
     <Content Include="Images\元件\new浴缸.png" />
@@ -591,7 +564,6 @@
     <Content Include="Images\元件\四腳椅子05.png" />
     <Content Include="Images\元件\嵌燈.png" />
     <Content Include="Images\元件\嵌燈01.png" />
-    <Content Include="Images\元件\師傅.png" />
     <Content Include="Images\元件\桌子.png" />
     <Content Include="Images\元件\桌子01.png" />
     <Content Include="Images\元件\櫃子.png" />
@@ -604,10 +576,6 @@
     <Content Include="Images\元件\沙發椅02.png" />
     <Content Include="Images\元件\浴缸01.png" />
     <Content Include="Images\元件\浴缸03.png" />
-    <Content Include="Images\元件\登入背景11.jpg" />
-    <Content Include="Images\元件\登入背景12.jpg" />
-    <Content Include="Images\元件\登入背景13.jpg" />
-    <Content Include="Images\元件\登入背景14.jpg" />
     <Content Include="Images\元件\登入背景15.jpg" />
     <Content Include="Images\元件\登入背景16.jpg" />
     <Content Include="Images\元件\系統櫃01.png" />
@@ -793,9 +761,7 @@
     <Content Include="Views\PartialView\EditTasker.cshtml" />
     <Content Include="Views\Tool\SetClickshopcar.cshtml" />
     <Content Include="Views\PartialView\Messageboard.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\GoogleAPI\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutForbackendUI.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
