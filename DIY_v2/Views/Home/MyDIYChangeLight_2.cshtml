@@ -264,135 +264,159 @@
     hr.new1 {
         border-top: 2px dashed black;
     }
+
+    /* GO TOP*/
+    #myBtn {
+        display: none; /* Hidden by default */
+        position: sticky; /* Fixed/sticky position */
+        bottom: 550px; /* Place the button at the bottom of the page */
+        left: 1740px; /* Place the button 30px from the right */
+        z-index: 99; /* Make sure it does not overlap */
+        border: none; /**/ /* Remove borders */
+        outline: none; /**/ /* Remove outline */
+        width: 90px;
+        background-color: transparent;
+        cursor: pointer; /**/ /* Add a mouse pointer on hover */
+
+        filter: drop-shadow(0 0 0.60rem #ee82ee);
+    }
 </style>
 
-
-<div class="container">
-    <br />
-    <br />
-    <div class="row">
-        <div class="col-md-9 embed-responsive">
-            <a href="@Url.Action("MyDIYChangeLight_2","Home")#chapter0" id="x1" class="btn btn-success tooltip-container tooltipPositionA animate__animated animate__backInLeft">
-                Here !
-                <span class="tooltip">燈泡不會亮嗎?</span>
-            </a>
-            <a href="@Url.Action("MyDIYChangeLight_1","Home")#chapter0" id="x2" class="btn btn-success tooltip-container tooltipPositionB animate__animated animate__backInLeft">
-                Here !
-                <span class="tooltip">要更換新的燈座嗎?</span>
-            </a>
-            @*注意: 圖片高度有用inline寫*@
-            <img src="~/Images/DIYImages/ChangeLight/ChangLight-1-Demo.png" class="img-responsive" style="max-width: 100%; height: 630px;" alt="Alternate Text" />
-        </div>
-
-        @*放零件、工具清單做超連結到商城*@
-        <div class="col-md-3">
-            <h3>工具</h3>
-            <ul class="list-group">
-                <li class="list-group-item">老虎鉗<a href="@Url.Action("Product","Tool")?ProductCategoryID=Ct018" class="btn btn-info btn-buy" , new { target="_blank" }>購買</a></li>
-                <li class="list-group-item">一字螺絲起子<a href="@Url.Action("Product","Tool")?ProductCategoryID=Ct011" class="btn btn-info btn-buy" , new { target="_blank" }>購買</a></li>
-            </ul>
-            <br />
-            <h3>零件</h3>
-            <ul class="list-group">
-                <li class="list-group-item">崁燈<a href="@Url.Action("Product","Tool")?ProductCategoryID=Ct014" class="btn btn-info btn-buy" , new { target="_blank" }>購買</a></li>
-                <li class="list-group-item">電火布<a href="@Url.Action("Product","Tool")?ProductCategoryID=Ct021" class="btn btn-info btn-buy" , new { target="_blank" }>購買</a></li>
-            </ul>
-            <br />
-            <h3 class="userInquire">問題</h3>
-            <div class="list-group userInquire">
-                <a href="@Url.Action("MyDIYChangeLight_2","Home")#chapter0" class="list-group-item userInquire">燈泡不會亮嗎?</a>
-                <a href="@Url.Action("MyDIYChangeLight_1","Home")#chapter0" class="list-group-item userInquire">要更換新的燈座嗎?</a>
+<div>
+    <div class="container">
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-md-9 embed-responsive">
+                <a href="@Url.Action("MyDIYChangeLight_2","Home")#chapter0" id="x1" class="btn btn-success tooltip-container tooltipPositionA animate__animated animate__backInLeft">
+                    Here !
+                    <span class="tooltip">燈泡不會亮嗎?</span>
+                </a>
+                <a href="@Url.Action("MyDIYChangeLight_1","Home")#chapter0" id="x2" class="btn btn-success tooltip-container tooltipPositionB animate__animated animate__backInLeft">
+                    Here !
+                    <span class="tooltip">要更換新的燈座嗎?</span>
+                </a>
+                @*注意: 圖片高度有用inline寫*@
+                <img src="~/Images/DIYImages/ChangeLight/ChangLight-1-Demo.png" class="img-responsive" style="max-width: 100%; height: 630px;" alt="Alternate Text" />
             </div>
-            <h3>不符合您的需求嗎?<a href="@Url.Action("Tasker","Tasker")" class="btn btn-danger" , new { target="_blank" }>找師傅</a></h3>
-        </div>
-    </div>
 
-    @*影片教學*@
-    <a name="chapter0"></a>
-    <div class="divider div-transparent div-dot"></div> @*水平分割線*@
-    <br />
-    <div class="row">
-        <div class="col-md-10">
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/grPxFGFbUjI?start=549" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
-        <div class="col-md-2 list-group">
-            <a href="#chapter1" class="list-group-item">燈泡拆卸</a>
-            <a href="#chapter2" class="list-group-item">識別燈泡規格</a>
-        </div>
-    </div>
-
-    <a name="chapter1"></a>@*影片章節*@
-    <div class="divider div-transparent div-dot"></div> @*水平分割線*@
-    @*步驟說明 >>> 開始*@
-    <br />
-    <h2 class="display-4">步驟教學<small>-更換崁燈燈泡</small></h2>
-
-    <!-- #region TimeLine -->
-    <div class="timeline">
-
-        <div class="timeLineContainer left">
-            <div class="content">
-                <h2>Step 1.</h2>
-                <img src="~/Images/DIYImages/changeLight2-1.jpg" class="img-responsive img-thumbnail" alt="步驟1." />
-                <h5>先把崁燈外圍燈罩拆開(有的是用轉的有的是向下拉)</h5>
-            </div>
-        </div>
-        <div class="timeLineContainer right">
-            <div class="content">
-                <h2>Step 2.</h2>
-                <img src="~/Images/DIYImages/changeLight2-2.jpg" class="img-responsive img-thumbnail" alt="步驟2." />
-                <h5>把燈泡轉下來</h5>
+            @*放零件、工具清單做超連結到商城*@
+            <div class="col-md-3">
+                <h3>工具</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">老虎鉗<a href="@Url.Action("Product","Tool")?ProductCategoryID=Ct018" class="btn btn-info btn-buy" , new { target="_blank" }>購買</a></li>
+                    <li class="list-group-item">一字螺絲起子<a href="@Url.Action("Product","Tool")?ProductCategoryID=Ct011" class="btn btn-info btn-buy" , new { target="_blank" }>購買</a></li>
+                </ul>
+                <br />
+                <h3>零件</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">崁燈<a href="@Url.Action("Product","Tool")?ProductCategoryID=Ct014" class="btn btn-info btn-buy" , new { target="_blank" }>購買</a></li>
+                    <li class="list-group-item">電火布<a href="@Url.Action("Product","Tool")?ProductCategoryID=Ct021" class="btn btn-info btn-buy" , new { target="_blank" }>購買</a></li>
+                </ul>
+                <br />
+                <h3 class="userInquire">問題</h3>
+                <div class="list-group userInquire">
+                    <a href="@Url.Action("MyDIYChangeLight_2","Home")#chapter0" class="list-group-item userInquire">燈泡不會亮嗎?</a>
+                    <a href="@Url.Action("MyDIYChangeLight_1","Home")#chapter0" class="list-group-item userInquire">要更換新的燈座嗎?</a>
+                </div>
+                <h3>不符合您的需求嗎?<a href="@Url.Action("Tasker","Tasker")" class="btn btn-danger" , new { target="_blank" }>找師傅</a></h3>
             </div>
         </div>
 
-        <div class="timeLineContainer left">
-            <div class="content">
-                <h2>Step 3.</h2>
-                <img src="~/Images/DIYImages/lightform1.jpg" class="img-responsive img-thumbnail" alt="步驟3." />
-                <h5>判斷燈泡規格</h5>
+        @*影片教學*@
+        <a name="chapter0"></a>
+        <div class="divider div-transparent div-dot"></div> @*水平分割線*@
+        <br />
+        <div class="row">
+            <div class="col-md-10">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/grPxFGFbUjI?start=549" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-md-2 list-group">
+                <a href="#chapter1" class="list-group-item">燈泡拆卸</a>
+                <a href="#chapter2" class="list-group-item">識別燈泡規格</a>
             </div>
         </div>
-    </div>
-    <!-- #endregion -->
-</div>@*end of container*@
+
+        <a name="chapter1"></a>@*影片章節*@
+        <div class="divider div-transparent div-dot"></div> @*水平分割線*@
+        @*步驟說明 >>> 開始*@
+        <br />
+        <h2 class="display-4">步驟教學<small>-更換崁燈燈泡</small></h2>
+
+        <!-- #region TimeLine -->
+        <div class="timeline">
+
+            <div class="timeLineContainer left">
+                <div class="content">
+                    <h2>Step 1.</h2>
+                    <img src="~/Images/DIYImages/changeLight2-1.jpg" class="img-responsive img-thumbnail" alt="步驟1." />
+                    <h5>先把崁燈外圍燈罩拆開(有的是用轉的有的是向下拉)</h5>
+                </div>
+            </div>
+            <div class="timeLineContainer right">
+                <div class="content">
+                    <h2>Step 2.</h2>
+                    <img src="~/Images/DIYImages/changeLight2-2.jpg" class="img-responsive img-thumbnail" alt="步驟2." />
+                    <h5>把燈泡轉下來</h5>
+                </div>
+            </div>
+
+            <div class="timeLineContainer left">
+                <div class="content">
+                    <h2>Step 3.</h2>
+                    <img src="~/Images/DIYImages/lightform1.jpg" class="img-responsive img-thumbnail" alt="步驟3." />
+                    <h5>判斷燈泡規格</h5>
+                </div>
+            </div>
+        </div>
+        <!-- #endregion -->
+    </div>@*end of container*@
 
 
-@*注意: 寬度有用inline寫*@
-<div class="container" style="max-width: 1116px; ">
-    <a name="chapter2"></a>
-    <div class="divider div-transparent div-dot"></div> @*水平分割線*@
-    <br />
+    @*注意: 寬度有用inline寫*@
+    <div class="container" style="max-width: 1116px; ">
+        <a name="chapter2"></a>
+        <div class="divider div-transparent div-dot"></div> @*水平分割線*@
+        <br />
 
-    <div class="row" style="background-color: #474e5d; ">
-        <div class="col-md-6">
-            <h1 style="color:white">怎麼辨識燈泡規格</h1>
-            <h3 style="color:white">常見燈泡螺口尺寸</h3>
-            <p style="color:white"><strong>市售燈泡的螺口尺寸規格以E10、E12、E14、E27命名</strong></p>
-            <p style="color:white"><strong>以公厘為單位，E14指的是14mm(1.4公分的螺口)、E27</strong></p>
-            <p style="color:white"><strong>指的是27mm(2.7公分的螺口)</strong></p>
-            <br />
-            <p style="color:red"><strong>E12常見於小夜燈、蠟燭燈等口徑較小的燈座上</strong></p>
-            <p style="color:red"><strong>E14常見於藝術燈、神明燈、小型燈為主</strong></p>
-            <p style="color:red"><strong>E27常見於家用、商用燈泡、普通型燈泡為主</strong></p>
-            <br />
-            <p style="color:white"><strong>但並不是一定採用的規格，亦有大燈泡使用E14、小燈</strong></p>
-            <p style="color:white"><strong>泡使用E27(如圖)</strong></p>
-            <p style="color:white"><strong>在選購上須留意螺口尺寸是否與燈座相符，如果不符合</strong></p>
-            <p style="color:white"><strong>時，可另行購買轉接頭進行轉接(較不建議)</strong></p>
+        <div class="row" style="background-color: #474e5d; ">
+            <div class="col-md-6">
+                <h1 style="color:white">怎麼辨識燈泡規格</h1>
+                <h3 style="color:white">常見燈泡螺口尺寸</h3>
+                <p style="color:white"><strong>市售燈泡的螺口尺寸規格以E10、E12、E14、E27命名</strong></p>
+                <p style="color:white"><strong>以公厘為單位，E14指的是14mm(1.4公分的螺口)、E27</strong></p>
+                <p style="color:white"><strong>指的是27mm(2.7公分的螺口)</strong></p>
+                <br />
+                <p style="color:red"><strong>E12常見於小夜燈、蠟燭燈等口徑較小的燈座上</strong></p>
+                <p style="color:red"><strong>E14常見於藝術燈、神明燈、小型燈為主</strong></p>
+                <p style="color:red"><strong>E27常見於家用、商用燈泡、普通型燈泡為主</strong></p>
+                <br />
+                <p style="color:white"><strong>但並不是一定採用的規格，亦有大燈泡使用E14、小燈</strong></p>
+                <p style="color:white"><strong>泡使用E27(如圖)</strong></p>
+                <p style="color:white"><strong>在選購上須留意螺口尺寸是否與燈座相符，如果不符合</strong></p>
+                <p style="color:white"><strong>時，可另行購買轉接頭進行轉接(較不建議)</strong></p>
+            </div>
+
+            <div class="col-md-6">
+                <br />
+                <br />
+                <img src="~/Images/DIYImages/ligt.jpg" class="img-responsive" />
+            </div>
         </div>
 
-        <div class="col-md-6">
-            <br />
-            <br />
-            <img src="~/Images/DIYImages/ligt.jpg" class="img-responsive" />
-        </div>
-    </div>
+        <br />
+        <br />
 
-    <br />
-    <br />
-</div>@*end of container*@
+
+    </div>@*end of container*@
+    @*GOTOP*@
+    <img src="~/Images/元件/gotop05.png" onclick="topFunction()" id="myBtn" title="Go to top" />
+</div>
+
+
+
 
 <script>
     var viewportWidth = $(window).width();
@@ -406,4 +430,25 @@
         $(".tooltip-container").show();
         $(".userInquire").hide();
     }
+
+    //GO TOP:
+    mybutton = document.getElementById("myBtn");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+
 </script>
