@@ -11,17 +11,35 @@ namespace DIY_v2.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class Order_Detail
     {
+        [DisplayName("流水號")]
         public int SerialNumber { get; set; }
+
+        [DisplayName("訂單日期")]
         public System.DateTime OrderDate { get; set; }
+
+        [DisplayName("訂單編號")]
         public string OrderID { get; set; }
+        
+        [DisplayName("會員編號")]
         public Nullable<int> MemberID { get; set; }
+
+        [DisplayName("產品編號")]
         public string ProductID { get; set; }
+
+        [DisplayName("產品名稱")]
         public string ProductName { get; set; }
+
+        [DisplayName("產品單價")]
         public Nullable<short> ProductPrice { get; set; }
+
+        [DisplayName("訂購數量")]
         public Nullable<short> OrderQuantity { get; set; }
+
+        [DisplayName("訂單狀態")]
         public string OrderStatus { get; set; }
     
         public virtual Member Member { get; set; }
