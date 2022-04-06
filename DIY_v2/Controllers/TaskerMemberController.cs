@@ -411,7 +411,7 @@ namespace DIY_v2.Controllers
 
             CVMTaskerMemberEditV2 viewModel = new CVMTaskerMemberEditV2();
             viewModel.taskerTable = taskerToEdit;
-            viewModel.taskerTable.TaskerDescription = taskerToEdit.TaskerDescription.Replace("<br/>", Environment.NewLine);
+            viewModel.taskerTable.TaskerDescription = taskerToEdit.TaskerDescription?.Replace("<br/>", Environment.NewLine);
             viewModel.memberTable = memberToEdit;
 
             return View(viewModel);

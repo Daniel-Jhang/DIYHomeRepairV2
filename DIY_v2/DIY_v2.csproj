@@ -19,7 +19,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44332</IISExpressSSLPort>
+    <IISExpressSSLPort>44303</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -429,6 +429,8 @@
     <Content Include="Images\TaskerImages\未命名.png" />
     <Content Include="Images\tk.png" />
     <Content Include="Images\tool.png" />
+    <Content Include="Images\ToolImages\button.png" />
+    <Content Include="Images\ToolImages\defaultImage.jpg" />
     <Content Include="Images\ToolImages\DSCN2840.JPG" />
     <Content Include="Images\ToolImages\favpng_air-filter-vacuum-cleaner-pump-sludge.png" />
     <Content Include="Images\ToolImages\Pt001.jpg" />
@@ -553,11 +555,13 @@
     <Content Include="Images\ToolImages\Tl044.jpg" />
     <Content Include="Images\ToolImages\Tl045.jpg" />
     <Content Include="Images\ToolImages\Tl046.jpg" />
+    <Content Include="Images\ToolImages\tool.jpg" />
     <Content Include="Images\ToolImages\washhand.jpg" />
     <Content Include="Images\ToolImages\不鏽鋼管束-10入 大.jpg" />
     <Content Include="Images\ToolImages\不鏽鋼管束-10入 小.jpg" />
     <Content Include="Images\ToolImages\兩段360度防濺增壓節水龍頭 大.jpg" />
     <Content Include="Images\ToolImages\兩段360度防濺增壓節水龍頭小.jpg" />
+    <Content Include="Images\ToolImages\未命名.png" />
     <Content Include="Images\ToolImages\止洩帶12PCS組大.jpg" />
     <Content Include="Images\ToolImages\止洩帶12PCS組小.jpg" />
     <Content Include="Images\ToolImages\水晶外牙%28紅%29 小.jpg" />
@@ -597,6 +601,10 @@
     <Content Include="Images\元件\沙發椅02.png" />
     <Content Include="Images\元件\浴缸01.png" />
     <Content Include="Images\元件\浴缸03.png" />
+    <Content Include="Images\元件\登入背景11.jpg" />
+    <Content Include="Images\元件\登入背景12.jpg" />
+    <Content Include="Images\元件\登入背景13.jpg" />
+    <Content Include="Images\元件\登入背景14.jpg" />
     <Content Include="Images\元件\登入背景15.jpg" />
     <Content Include="Images\元件\登入背景16.jpg" />
     <Content Include="Images\元件\系統櫃01.png" />
@@ -782,6 +790,8 @@
     <Content Include="Views\PartialView\EditTasker.cshtml" />
     <Content Include="Views\Tool\SetClickshopcar.cshtml" />
     <Content Include="Views\PartialView\Messageboard.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
