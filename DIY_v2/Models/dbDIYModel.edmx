@@ -111,7 +111,7 @@
           <Property Name="MemberID" Type="int" />
           <Property Name="MemberAccount" Type="nvarchar" MaxLength="15" />
           <Property Name="Comment" Type="nvarchar" MaxLength="500" />
-          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreateDate" Type="date" />
           <Property Name="Star" Type="smallint" />
         </EntityType>
         <EntityType Name="TaskerService">
@@ -123,7 +123,7 @@
           <Property Name="ServiceCategoryID" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="ServiceCategory" Type="nvarchar" MaxLength="10" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Order_Det__Membe__3E52440B">
+        <Association Name="FK__Order_Det__Membe__5070F446">
           <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
           <End Role="Order_Detail" Type="Self.Order_Detail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -135,7 +135,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Order_Det__Order__3D5E1FD2">
+        <Association Name="FK__Order_Det__Order__4F7CD00D">
           <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
           <End Role="Order_Detail" Type="Self.Order_Detail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -147,7 +147,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Order_Det__Produ__3F466844">
+        <Association Name="FK__Order_Det__Produ__5165187F">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="Order_Detail" Type="Self.Order_Detail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -159,7 +159,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Product__Product__286302EC">
+        <Association Name="FK__Product__Product__3A81B327">
           <End Role="Product_Category" Type="Self.Product_Category" Multiplicity="0..1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -171,7 +171,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductRe__Membe__33D4B598">
+        <Association Name="FK__ProductRe__Membe__45F365D3">
           <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
           <End Role="ProductReply" Type="Self.ProductReply" Multiplicity="*" />
           <ReferentialConstraint>
@@ -183,7 +183,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductRe__Produ__32E0915F">
+        <Association Name="FK__ProductRe__Produ__44FF419A">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="ProductReply" Type="Self.ProductReply" Multiplicity="*" />
           <ReferentialConstraint>
@@ -195,7 +195,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TaskerCom__Membe__37A5467C">
+        <Association Name="FK__TaskerCom__Membe__49C3F6B7">
           <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
           <End Role="TaskerComment" Type="Self.TaskerComment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -207,7 +207,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TaskerCom__Taske__36B12243">
+        <Association Name="FK__TaskerCom__Taske__48CFD27E">
           <End Role="Tasker" Type="Self.Tasker" Multiplicity="0..1" />
           <End Role="TaskerComment" Type="Self.TaskerComment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -219,7 +219,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TaskerSer__Taske__300424B4">
+        <Association Name="FK__TaskerSer__Taske__4222D4EF">
           <End Role="Tasker" Type="Self.Tasker" Multiplicity="1" />
           <End Role="TaskerService" Type="Self.TaskerService" Multiplicity="*" />
           <ReferentialConstraint>
@@ -253,39 +253,39 @@
           <EntitySet Name="Tasker" EntityType="Self.Tasker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaskerComment" EntityType="Self.TaskerComment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaskerService" EntityType="Self.TaskerService" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Order_Det__Membe__3E52440B" Association="Self.FK__Order_Det__Membe__3E52440B">
+          <AssociationSet Name="FK__Order_Det__Membe__5070F446" Association="Self.FK__Order_Det__Membe__5070F446">
             <End Role="Member" EntitySet="Member" />
             <End Role="Order_Detail" EntitySet="Order_Detail" />
           </AssociationSet>
-          <AssociationSet Name="FK__Order_Det__Order__3D5E1FD2" Association="Self.FK__Order_Det__Order__3D5E1FD2">
+          <AssociationSet Name="FK__Order_Det__Order__4F7CD00D" Association="Self.FK__Order_Det__Order__4F7CD00D">
             <End Role="Orders" EntitySet="Orders" />
             <End Role="Order_Detail" EntitySet="Order_Detail" />
           </AssociationSet>
-          <AssociationSet Name="FK__Order_Det__Produ__3F466844" Association="Self.FK__Order_Det__Produ__3F466844">
+          <AssociationSet Name="FK__Order_Det__Produ__5165187F" Association="Self.FK__Order_Det__Produ__5165187F">
             <End Role="Product" EntitySet="Product" />
             <End Role="Order_Detail" EntitySet="Order_Detail" />
           </AssociationSet>
-          <AssociationSet Name="FK__Product__Product__286302EC" Association="Self.FK__Product__Product__286302EC">
+          <AssociationSet Name="FK__Product__Product__3A81B327" Association="Self.FK__Product__Product__3A81B327">
             <End Role="Product_Category" EntitySet="Product_Category" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductRe__Membe__33D4B598" Association="Self.FK__ProductRe__Membe__33D4B598">
+          <AssociationSet Name="FK__ProductRe__Membe__45F365D3" Association="Self.FK__ProductRe__Membe__45F365D3">
             <End Role="Member" EntitySet="Member" />
             <End Role="ProductReply" EntitySet="ProductReply" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductRe__Produ__32E0915F" Association="Self.FK__ProductRe__Produ__32E0915F">
+          <AssociationSet Name="FK__ProductRe__Produ__44FF419A" Association="Self.FK__ProductRe__Produ__44FF419A">
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductReply" EntitySet="ProductReply" />
           </AssociationSet>
-          <AssociationSet Name="FK__TaskerCom__Membe__37A5467C" Association="Self.FK__TaskerCom__Membe__37A5467C">
+          <AssociationSet Name="FK__TaskerCom__Membe__49C3F6B7" Association="Self.FK__TaskerCom__Membe__49C3F6B7">
             <End Role="Member" EntitySet="Member" />
             <End Role="TaskerComment" EntitySet="TaskerComment" />
           </AssociationSet>
-          <AssociationSet Name="FK__TaskerCom__Taske__36B12243" Association="Self.FK__TaskerCom__Taske__36B12243">
+          <AssociationSet Name="FK__TaskerCom__Taske__48CFD27E" Association="Self.FK__TaskerCom__Taske__48CFD27E">
             <End Role="Tasker" EntitySet="Tasker" />
             <End Role="TaskerComment" EntitySet="TaskerComment" />
           </AssociationSet>
-          <AssociationSet Name="FK__TaskerSer__Taske__300424B4" Association="Self.FK__TaskerSer__Taske__300424B4">
+          <AssociationSet Name="FK__TaskerSer__Taske__4222D4EF" Association="Self.FK__TaskerSer__Taske__4222D4EF">
             <End Role="Tasker" EntitySet="Tasker" />
             <End Role="TaskerService" EntitySet="TaskerService" />
           </AssociationSet>
@@ -421,7 +421,7 @@
           <Property Name="MemberID" Type="Int32" />
           <Property Name="MemberAccount" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateDate" Type="DateTime" Precision="0" />
           <Property Name="Star" Type="Int16" />
           <NavigationProperty Name="Member" Relationship="Self.FK__TaskerCom__Membe__49C3F6B7" FromRole="TaskerComment" ToRole="Member" />
           <NavigationProperty Name="Tasker" Relationship="Self.FK__TaskerCom__Taske__48CFD27E" FromRole="TaskerComment" ToRole="Tasker" />
