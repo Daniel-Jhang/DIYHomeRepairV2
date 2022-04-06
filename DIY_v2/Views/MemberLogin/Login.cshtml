@@ -285,6 +285,10 @@
         .underlineHover:hover:after {
             width: 100%;
         }
+    .Error-message{
+        color:red;
+        font-weight:700;
+    }
 </style>
 <!-- #endregion -->
 @*------------新登入頁面------------*@
@@ -310,7 +314,7 @@
                             <input type="text" id="MemberAccount" name="MemberAccount" required="required" class="fadeIn second " placeholder="帳號" />
                             <input type="password" id="MemberPwd" name="MemberPwd" required="required" class="fadeIn third icon-user" placeholder="密碼" />
                             <input type="submit" value="登入" class="fadeIn fourth" />
-                            @ViewBag.Message
+                            <span class="Error-message">@ViewBag.Message</span> 
 
                         </form>
 
