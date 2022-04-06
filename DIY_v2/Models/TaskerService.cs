@@ -11,11 +11,21 @@ namespace DIY_v2.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TaskerService
     {
+        [DisplayName("師傅編號")]
+        [Required]
         public int TaskerID { get; set; }
+
+        [DisplayName("服務類別編號")]
+        [Required(ErrorMessage = "請選取服務類別")]
         public string ServiceCategoryID { get; set; }
+
+        [DisplayName("服務類別")]
+        [Required(ErrorMessage = "請選取服務類別")]
         public string ServiceCategory { get; set; }
     
         public virtual Tasker Tasker { get; set; }

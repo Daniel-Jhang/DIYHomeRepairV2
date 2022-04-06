@@ -11,17 +11,32 @@ namespace DIY_v2.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TaskerComment
     {
+        [DisplayName("留言編號")]
         public int ReplyID { get; set; }
+
+        [DisplayName("師傅編號")]
         public Nullable<int> TaskerID { get; set; }
+
+        [DisplayName("會員編號")]
         public Nullable<int> MemberID { get; set; }
+
+        [DisplayName("師傅帳號")]
         public string MemberAccount { get; set; }
+
+        [DisplayName("評論內容")]
+        [StringLength(500, ErrorMessage = "評論內容請控制在500個字以內")]
         public string Comment { get; set; }
+
+        [DisplayName("留言時間")]
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<short> Star { get; set; }
-    
+
+        [DisplayName("留言帳號")]
         public virtual Member Member { get; set; }
         public virtual Tasker Tasker { get; set; }
     }

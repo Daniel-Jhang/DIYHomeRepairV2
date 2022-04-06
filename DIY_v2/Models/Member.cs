@@ -11,7 +11,9 @@ namespace DIY_v2.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Member
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,17 +24,54 @@ namespace DIY_v2.Models
             this.TaskerComment = new HashSet<TaskerComment>();
             this.Orders = new HashSet<Orders>();
         }
-    
+
+        [DisplayName("會員編號")]
         public int MemberID { get; set; }
+
+        [DisplayName("帳號")]
+        [Required]
+        [StringLength(15, ErrorMessage = "帳號必須是5-15個字元"), MinLength(5)]
         public string MemberAccount { get; set; }
+
+        [DisplayName("密碼")]
+        [Required]
         public string MemberPwd { get; set; }
+
+        [DisplayName("姓名")]
+        [Required]
+        [StringLength(15, ErrorMessage = "名字不可超過15個字元")]
         public string MemberName { get; set; }
+
+        [DisplayName("性別")]
+        [Required]
         public string MemberGender { get; set; }
+
+        [DisplayName("生日")]
+        [Required]
+        [DataType(DataType.Date, ErrorMessage = "生日欄位必須符合日期格式:西元年/月/日")]
         public System.DateTime MemberBirthday { get; set; }
+
+        [DisplayName("暱稱")]
+        [Required]
+        [StringLength(15, ErrorMessage = "暱稱不得超過15個字元")]
         public string MemberNickname { get; set; }
+
+        [DisplayName("電子郵件")]
+        [Required]
+        [EmailAddress(ErrorMessage = "Email格式有誤")]
         public string MemberEmail { get; set; }
+
+        [DisplayName("地址")]
+        [Required]
+        [StringLength(50, ErrorMessage = "地址不得超過50個字元")]
         public string MemberAddress { get; set; }
+
+        [DisplayName("電話")]
+        [Required]
+        [RegularExpression(@"(\d{2,3}-?|\(\d{2,3}\))\d{3,4}-?\d{4}|09\d{2}(\d{6}|-\d{3}-\d{3})", ErrorMessage = "請符合電話格式 09XX-XXX-XXX ， 0X-XXX-XXXX 或 0X-XXXX-XXXX")]
         public string MemberPhone { get; set; }
+
+        [DisplayName("權限")]
         public string Permission { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
