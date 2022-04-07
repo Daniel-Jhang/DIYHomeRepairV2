@@ -70,10 +70,11 @@
 
 
                             <td>
-                                @Html.ActionLink("修改", "EditProduct", new { ProductID = item.ProductID }) |
-                                @Html.ActionLink("商品詳細資料", "ProductDetail", "Tool", new { ProductID = item.ProductID }, new { htmlAttributes = new { @class = "form-control" } }) |
+                                @Html.ActionLink("修改", "EditProduct", new { ProductID = item.ProductID }, new {  @class = "btn btn-info" } ) 
+                                @Html.ActionLink("詳細資料", "ProductDetail", "Tool", new { ProductID = item.ProductID }, new {@class = "btn btn-info" }) 
+                                @Html.ActionLink("管理留言", "ManageReply", new { ProductID = item.ProductID }, new { @class = " btn btn-info" })
                                 @Html.ActionLink("刪除", "DeleteProduct", new { ProductID = item.ProductID }, new { onclick = "return  confirm('確定刪除嗎?');", @class = " btn btn-danger" })
-                                @Html.ActionLink("管理留言", "ManageReply", new { ProductID = item.ProductID }, new { @class = " btn btn-danger" })
+
                             </td>
                         </tr>
                     }

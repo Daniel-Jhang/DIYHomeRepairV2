@@ -6,7 +6,11 @@
 }
 
 <h2>會員管理系統</h2>
-
+<style>
+    a{
+        color:black;
+    }
+</style>
 <section class="ftco-section ">
     <div class="container-fluid">
         <div class="row">
@@ -53,7 +57,7 @@
                                 @Html.DisplayFor(modelItem => item.MemberNickname)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.MemberEmail)
+                                @Html.DisplayFor(modelItem => item.MemberEmail )
                             </td>
 
 
@@ -70,7 +74,7 @@
                                 }
                             </td>
                             <td>
-                                @Html.ActionLink("詳細資訊", "MemberDetail", new { MemberID = item.MemberID })
+                                @Html.ActionLink("詳細資訊", "MemberDetail", new { MemberID = item.MemberID }, htmlAttributes: new {@class="btn btn-info"})
                             </td>
                         </tr>
                     }

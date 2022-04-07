@@ -4,81 +4,87 @@
     ViewBag.Title = "MemberDetail";
 }
 
-<h2>MemberDetail</h2>
 
-<div>
-    <h4>Member</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>師傅狀態管理</h2>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
             @Html.DisplayNameFor(model => model.MemberAccount)
-        </dt>
-
-        <dd>
+        </div>
+        <div class="col-md-10">
             @Html.DisplayFor(model => model.MemberAccount)
-        </dd>
+        </div>
+    </div>
 
-        <dt>
+    <div class="row">
+        <div class="col-md-2">
             @Html.DisplayNameFor(model => model.MemberName)
-        </dt>
-
-        <dd>
+        </div>
+        <div class="col-md-10">
             @Html.DisplayFor(model => model.MemberName)
-        </dd>
-
-        <dt>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
             @Html.DisplayNameFor(model => model.MemberGender)
-        </dt>
-
-        <dd>
+        </div>
+        <div class="col-md-10">
             @Html.DisplayFor(model => model.MemberGender)
-        </dd>
-
-        <dt>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
             @Html.DisplayNameFor(model => model.MemberBirthday)
-        </dt>
-
-        <dd>
+        </div>
+        <div class="col-md-10">
             @Html.DisplayFor(model => model.MemberBirthday)
-        </dd>
-
-        <dt>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
             @Html.DisplayNameFor(model => model.MemberNickname)
-        </dt>
-
-        <dd>
+        </div>
+        <div class="col-md-10">
             @Html.DisplayFor(model => model.MemberNickname)
-        </dd>
-
-        <dt>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
             @Html.DisplayNameFor(model => model.MemberEmail)
-        </dt>
-
-        <dd>
+        </div>
+        <div class="col-md-10">
             @Html.DisplayFor(model => model.MemberEmail)
-        </dd>
-
-        <dt>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
             @Html.DisplayNameFor(model => model.MemberAddress)
-        </dt>
-
-        <dd>
+        </div>
+        <div class="col-md-10">
             @Html.DisplayFor(model => model.MemberAddress)
-        </dd>
+        </div>
+    </div>
 
-        <dt>
+    <div class="row">
+        <div class="col-md-2">
             @Html.DisplayNameFor(model => model.MemberPhone)
-        </dt>
-
-        <dd>
+        </div>
+        <div class="col-md-10">
             @Html.DisplayFor(model => model.MemberPhone)
-        </dd>
+        </div>
+    </div>
 
-        <dt>
+    <div class="row">
+        <div class="col-md-2">
             @Html.DisplayNameFor(model => model.Permission)
-        </dt>
-
-        <dd>
+        </div>
+        <div class="col-md-10">
             @{
                 if (@Model.Permission == "1" || @Model.Permission == "2")
                 {
@@ -89,18 +95,53 @@
                     <span>停權</span>
                 }
             }
-        </dd>
-        
-        
-                @Html.ActionLink("停權", "StopMember",new { MemberID = Model.MemberID }, new { @class = "btn btn-primary" } )
+        </div>
+    </div>
 
-         
-                @Html.ActionLink("啟用", "StarMember", new { MemberID = Model.MemberID }, new {  @class = "btn btn-primary" } )
-          
-       
-    </dl>
+    <div class="row">
+        <div class="col-md-12">
+            @Html.ActionLink("停權", "StopMember", new { MemberID = Model.MemberID }, new { @class = "btn btn-primary" })
+
+
+            @Html.ActionLink("啟用", "StarMember", new { MemberID = Model.MemberID }, new { @class = "btn btn-primary" })
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            @Html.ActionLink("回上一頁", "ManageMember", new { }, htmlAttributes: new { @class = "btn btn-info" })
+
+        </div>
+
+    </div>
+
 </div>
-<p>
-    
-    @Html.ActionLink("回上一頁", "ManageMember")
-</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
