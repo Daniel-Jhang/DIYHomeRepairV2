@@ -156,7 +156,7 @@
     /* Hide the images by default */
 
     .mySlides {
-        /*    display: none;*/
+        display: none;
     }
     /* Add a pointer when hovering over the thumbnail images */
 
@@ -335,6 +335,7 @@
 <!-- #endregion -->
 <!-- #endregion -->
 
+<script src="~/static/js/jquery.min.js"></script>
 
 @{
     string path = "../Images/TaskerImages/" + Model.taskers.Select(x => x.TaskerImage).FirstOrDefault();
@@ -581,6 +582,9 @@
                                     }
                                 }
                             }
+
+                            <div id="autoFill" onclick="autoFill()">+</div>@*自動帶入註冊資料*@
+
                             <div style=" display: flex;">
                                 <div class="messageboardA column col-md-12">
                                     @*<div class="column col-md-6 border-image">
@@ -589,7 +593,7 @@
                                     @*<div class="column col-md-12">*@
                                     <form method="post" action="@Url.Action("TaskerDetail")">
                                         <input type="hidden" name="TaskerID" value="@Model.taskers[0].TaskerID" />
-                                        <textarea class="reply-main" name="comment" placeholder="請輸入你的評論"></textarea><br />
+                                        <textarea id="taskerComment" class="reply-main" name="comment" placeholder="請輸入你的評論"></textarea><br />
                                         <input type="submit" value="送出" />
                                     </form>
                                     @*</div>*@
@@ -606,6 +610,13 @@
 
 
                         <script>
+                            $(document).ready(function () {
+                                // 自動帶入註冊資料
+                                $("#autoFill").click(function () {
+                                    $("#taskerComment").val("師傅做事有效率，迅速解決問題")
+                                })
+                            })
+
                             var slideIndex = 1;
                             showSlides(slideIndex);
 
@@ -617,27 +628,42 @@
                                 showSlides(slideIndex = n);
                             }
 
+                            //function showSlides(n) {
+                            //    var i;
+                            //    var slides = document.getElementsByClassName("mySlides");
+                            //    var dots = document.getElementsByClassName("demo");
+                            //    var captionText = document.getElementById("caption");
+                            //    if (n > slides.length) {
+                            //        slideIndex = 1
+                            //    }
+                            //    if (n < 1) {
+                            //        slideIndex = slides.length
+                            //    }
+                            //    for (i = 0; i < slides.length; i++) {
+                            //        slides[i].style.display = "none";
+                            //    }
+                            //    for (i = 0; i < dots.length; i++) {
+                            //        dots[i].className = dots[i].className.replace(" active", "");
+                            //    }
+                            //    slides[slideIndex - 1].style.display = "block";
+                            //    dots[slideIndex - 1].className += " active";
+                            //    captionText.innerHTML = dots[slideIndex - 1].alt;
+                            //}
+
                             function showSlides(n) {
-                                var i;
-                                var slides = document.getElementsByClassName("mySlides");
-                                var dots = document.getElementsByClassName("demo");
-                                var captionText = document.getElementById("caption");
-                                if (n > slides.length) {
-                                    slideIndex = 1
-                                }
-                                if (n < 1) {
-                                    slideIndex = slides.length
-                                }
+                                let i;
+                                let slides = document.getElementsByClassName("mySlides");
+                           
+                                if (n > slides.length) { slideIndex = 1 }
+                                if (n < 1) { slideIndex = slides.length }
                                 for (i = 0; i < slides.length; i++) {
                                     slides[i].style.display = "none";
                                 }
-                                for (i = 0; i < dots.length; i++) {
-                                    dots[i].className = dots[i].className.replace(" active", "");
-                                }
+                           
                                 slides[slideIndex - 1].style.display = "block";
-                                dots[slideIndex - 1].className += " active";
-                                captionText.innerHTML = dots[slideIndex - 1].alt;
+                              
                             }
+
                         </script>
 
                     </div>
