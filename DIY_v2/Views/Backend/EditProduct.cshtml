@@ -3,6 +3,12 @@
 @{
     ViewBag.Title = "編輯產品資訊";
 }
+@{
+    Layout =none;
+}
+@{
+    Layout = "~/Views/Shared/_LayoutForbackendUI.cshtml";
+}
 
 <h2>EditProduct</h2>
 <style>
@@ -15,8 +21,8 @@
 @*20220329 修改AddProduct >>> EditProduct*@
 @using (Html.BeginForm("EditProduct", "Backend", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    @Html.AntiForgeryToken()
-    
+@Html.AntiForgeryToken()
+
 <div class="form-horizontal">
     <h4>Product</h4>
     <hr />
@@ -39,7 +45,7 @@
         </div>
     </div>
 
- 
+
     <div class="form-group">
         @Html.LabelFor(model => model.ProductImage, htmlAttributes: new { @class = "control-label col-md-2" })
 
