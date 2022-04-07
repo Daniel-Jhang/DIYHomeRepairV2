@@ -152,12 +152,21 @@
                                         @{
                                             if (@User.Identity.Name != String.Empty)
                                             {
-                                                <input type="button" class="AdCar buy-button" value="加入購物車" />
+
+                                                <button type="button" class="AdCar buy-button" >
+
+                                                    <b> 加入購物車 </b>
+                                                </button>
+                                                @*<input type="button" class="AdCar buy-button" value="加入購物車" />*@
                                             }
                                             else
                                             {
+                                                <button type="button" class="buy-button" onclick="location.href='https://localhost:44332/MemberLogin/Login'">
+                                                   
+                                                    <b> 加入購物車 </b>
+                                                </button>
                                                 @*<input type="button" class="toMember " value="加入購物車" onclick="location.href='https://localhost:44332/MemberLogin/Login'" />*@
-                                                <a class="buy-button" href="https://localhost:44332/Tool/SetClickshopcar">加入購物車</a>
+                                                @*<a class="buy-button" href="https://localhost:44332/Tool/SetClickshopcar">加入購物車</a>*@
 
                                             }
 

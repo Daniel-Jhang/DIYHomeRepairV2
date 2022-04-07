@@ -4,108 +4,62 @@
 }
 
 <style>
-    /*    .reply-main {
-        height: 400px;
-        width: 900px;
+    /*    .price{
+        box-sizing:border-box;
+        overflow:hidden;
+        width:150px;
     }*/
-    /*    背景顏色*/
-    body {
-        background-color: aliceblue;
-        color: black
-    }
-    /*    兩個部份的背景*/
-    .Product-area, .Reply-area {
-        background-color: white;
-        border-radius: 15px;
-        padding: 10px;
-        margin: 10px;
-    }
-
-    /*    以下為留言板CSS*/
-
-    /* Style inputs */
-    input[type=text], select, textarea {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ccc;
-        margin-top: 6px;
-        margin-bottom: 16px;
-        resize: vertical;
+    .buy-button {
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        padding: 12px 24px;
+        border: 1px solid #a99c99;
+        border-radius: 8px;
+        background: #f1dfda;
+        background: -webkit-gradient(linear, left top, left bottom, from(#f1dfda), to(#a99c99));
+        background: -moz-linear-gradient(top, #f1dfda, #a99c99);
+        background: linear-gradient(to bottom, #f1dfda, #a99c99);
+        -webkit-box-shadow: #ffffff 0px 0px 40px 0px;
+        -moz-box-shadow: #ffffff 0px 0px 40px 0px;
+        box-shadow: #ffffff 0px 0px 40px 0px;
+        text-shadow: #ffffff 1px 1px 1px;
+        font: normal normal bold 16px arial;
+        color: #111111;
+        text-decoration: none;
     }
 
-    input[type=submit] {
-        background-color: #92badd;
-        color: white;
-        padding: 12px 20px;
-        border: none;
-        cursor: pointer;
-    }
-
-        input[type=submit]:hover {
-            background-color: #A6CAF0;
+        .buy-button:hover,
+        .buy-button:focus {
+            border: 1px solid #f1dfda;
+            background: #ffffff;
+            background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#cbbbb8));
+            background: -moz-linear-gradient(top, #ffffff, #cbbbb8);
+            background: linear-gradient(to bottom, #ffffff, #cbbbb8);
+            color: #111111;
+            text-decoration: none;
         }
 
-    /* Style the container/contact section */
-
-
-    /* Create two columns that float next to eachother */
-    .column {
-        float: left;
-        width: 50%;
-        margin-top: 6px;
-        padding: 20px;
-    }
-
-    /* Clear floats after the columns */
-    .row:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
-
-    /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-    @@media screen and (max-width: 600px) {
-        .column, input[type=submit] {
-            width: 100%;
-            margin-top: 0;
+        .buy-button:active {
+            background: #a99c99;
+            background: -webkit-gradient(linear, left top, left bottom, from(#a99c99), to(#a99c99));
+            background: -moz-linear-gradient(top, #a99c99, #a99c99);
+            background: linear-gradient(to bottom, #a99c99, #a99c99);
         }
-    }
 
-    .messageboard {
-        display: inline-block;
-        letter-spacing: 0.3ch;
-        border: 3px solid #333333;
-        border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
-        background-color: #EEE;
-    }
-
-    .fromA {
-        margin-bottom: 30px;
-    }
-
-    .border-image {
-        border-radius: 10px;
-        border-image-source: linear-gradient(45deg, gold, deeppink);
-        border-image-slice: 1;
-        border-image-repeat: stretch;
-    }
-
-    .messageboardA {
-        display: inline-block;
-        letter-spacing: 0.3ch;
-        border: 3px solid #333333;
-        border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
-        background-color: white;
-        margin: auto
-    }
-
-    .replyContent {
-        background-color: rgba(211,230,246,.3);
-        border-radius: 5px;
-        margin-left: -40px;
-        min-height: 50px;
-        padding-left: 40px;
-    }
+        .buy-button:before {
+            content: "\0000a0";
+            display: inline-block;
+            height: 24px;
+            width: 24px;
+            line-height: 24px;
+            margin: 0 4px -6px -4px;
+            position: relative;
+            top: 0px;
+            left: 0px;
+            background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABsklEQVRIibXVvWpUQRQH8F80xGUJQYRFIkFRQyLbaREkT2DjC6TwRaztfAUrCwuRPIBYWdqIhW4CfhJsNCLB3WRJFIs5406u3P2I6x+Ge86c/5wz55yZuTMSmo7jAL9MCU18xJdiPJmW8zJIHgt4i+VpOJ6Nb68y/wo38PmEfv+UeLaG0MGDIEKjkMt1R8VcyXmN29ir28EdPDIo23usFfq9GFlfC07Wn+MWnBqSwbJUuh62sVToR+gX+lJwsn5OlHdUgLnQt7FS2H9W+CvByT4v4NOwAHv4EUTYwmoNV9i2Qr4Y678P4YNnUhm62I9dd2P0C1s3bPuF7Wl2UpcBqUx30cJ1fMVi6PdjtHAe34LTijW5XEMDvMFVqWkfpH40Qs8Z9DAf87nJlw3KNTKDdsgH2DG43acL3pXYQH67ro2bQUc6HQvS2X4XAZvSRTsTcjtsTel4tmPtSMxh16CRhwaN7Vfkw4L3cBznGS+wPsmCKureoowObuLlBD6PPZwzI8jreIyzEzi/VA0yDhpT4vyFeWxKf7nN0CfiDDumsBGc1fhuTMoZFeC/459LNC5O3OTfmvd7Bl92lsYAAAAASUVORK5CYII=") no-repeat left center transparent;
+            background-size: 100% 100%;
+        }
 </style>
 
 
@@ -124,29 +78,19 @@
                             @*會彈出圖片*@
                             <a href="@Model.Products_normal[0].ProductImage" class="image-popup prod-img-bg"><img src="@Model.Products_normal[0].ProductImage" class="img-fluid" alt="Colorlib Template"></a>
                         </div>
-                        <div class="col-lg-6 product-details pl-md-5 ftco-animate">
+                        <div class="col-lg-6  pl-md-5 ftco-animate">
                             <h3 class="name">@Model.Products_normal[0].ProductName</h3>
                             <div class="rating d-flex">
-                                <p class="text-left mr-4">
-                                    @*評價星星*@
-                                    <a href="#" class="mr-2">5.0</a>
-                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                </p>
-                                <p class="text-left mr-4">
-                                    <a href="#" class="mr-2" style="color: #000;">100 <span style="color: #bbb;">評價</span></a>
-                                </p>
+                               
+                                
                                 <p class="text-left">
                                     <a href="#" class="mr-2" style="color: #000;">500 <span style="color: #bbb;">已售出</span></a>
                                 </p>
                             </div>
-                            <p class="price"><span>$@Model.Products_normal[0].ProductPrice</span></p>
+                            <h3 class="price"><span>$@Model.Products_normal[0].ProductPrice</span></h3>
 
 
-                            <p>@Html.Raw(@Model.Products_normal[0].ProductDescription)</p>
+                            <p >@Html.Raw(@Model.Products_normal[0].ProductDescription)</p>
 
 
 
@@ -160,36 +104,49 @@
                                             <i class="ion-ios-remove"></i>
                                         </button>
                                     </span>
-                                    <input style="margin-top:0px;" type="text" id="quantity" name="quantity" class="quantity form-control input-number " value="1" min="1" max="100">
-                                    <span class="input-group-btn ml-2 ">
+                                    <input style="margin-top:0px; " type="text" id="quantity" name="quantity" class="quantity form-control input-number " value="1" min="1" max="100" >
+                                    <span class="input-group-btn ml-3 ">
                                         <button type="button" class="quantity-right-plus btn" data-type="plus" data-field="" onclick="add()">
                                             <i class="ion-ios-add"></i>
                                         </button>
                                     </span>
                                     &emsp;
-                                    @{
-                                        if (@User.Identity.Name != String.Empty)
-                                        {
-                                            <input type="button" class="AdCar" value="加入購物車" />
+                                    <div>
+                                        @{
+                                            if (@User.Identity.Name != String.Empty)
+                                            {
+
+                                                <button type="button" class="AdCar buy-button">
+                                                    <b> 加入購物車 </b>
+                                                </button>
+                                                @*<input type="button" class="AdCar buy-button" value="加入購物車" />*@
+                                            }
+                                            else
+                                            {
+                                                <button type="button" class="buy-button" onclick="location.href='https://localhost:44332/MemberLogin/Login'">
+                                                    <b> 加入購物車 </b>
+                                                </button>
+                                                @*<input type="button" class="toMember " value="加入購物車" onclick="location.href='https://localhost:44332/MemberLogin/Login'" />*@
+                                                @*<a class="buy-button" href="https://localhost:44332/Tool/SetClickshopcar">加入購物車</a>*@
+
+                                            }
+
                                         }
-                                        else
-                                        {
-                                            <input type="button" class="toMember " value="加入購物車" onclick="location.href='https://localhost:44332/Tool/SetClickshopcar'" />
+                                    </div>
 
-
-                                        }
-
-                                    }
                                 </div>
-                                <div class="w-100"></div>
+
 
                             </div>
+
                             <input type="hidden" class="Id" value=@Model.Products_normal[0].ProductID>
                             <input type="hidden" class="ProductPrice" value=@Model.Products_normal[0].ProductPrice>
 
                         </div>
+                        
+                            
+                        </div>
                     </div>
-                </div>
 
 
             </div>
