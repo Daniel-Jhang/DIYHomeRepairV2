@@ -336,6 +336,9 @@
     <Content Include="Images\MemberImages\師傅2.jpg" />
     <Content Include="Images\MemberImages\材料1.jpg" />
     <Content Include="Images\PartialViewImages\2.png" />
+    <Content Include="Images\TaskerImages\avatar_03.svg" />
+    <Content Include="Images\TaskerImages\avatar_04.svg" />
+    <Content Include="Images\TaskerImages\avatar_05.svg" />
     <Content Include="Images\TaskerImages\CaseImage\CaseImage01.jpg" />
     <Content Include="Images\TaskerImages\CaseImage\CaseImage02.jpg" />
     <Content Include="Images\TaskerImages\CaseImage\CaseImage03.jpg" />
@@ -351,6 +354,9 @@
     <Content Include="Images\TaskerImages\demo03.jpg" />
     <Content Include="Images\TaskerImages\demo04.jpg" />
     <Content Include="Images\TaskerImages\demo05.jpg" />
+    <Content Include="Images\TaskerImages\littleIcon1.png" />
+    <Content Include="Images\TaskerImages\littleIcon2.png" />
+    <Content Include="Images\TaskerImages\littleIcon3.png" />
     <Content Include="Images\TaskerImages\living room.jpg" />
     <Content Include="Images\TaskerImages\Tasker01.png" />
     <Content Include="Images\TaskerImages\Tasker02.png" />

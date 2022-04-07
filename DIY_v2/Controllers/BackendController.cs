@@ -138,7 +138,7 @@ namespace DIY_v2.Controllers
 
         #region 師傅管理系統
         // GET: TaskerIndex
-        public ActionResult TaskerIndex(string pickTasker, int page = 1)
+        public ActionResult TaskerIndex(string keyword, int page = 1)
         {
             int currentPage = page < 1 ? 1 : page; // 避免頁數跑到負數
             var taskers = (from t in db.Tasker
@@ -146,9 +146,9 @@ namespace DIY_v2.Controllers
                            orderby t.TaskerID
                            select t).Distinct().ToList();
 
-            if (!string.IsNullOrWhiteSpace(pickTasker))
+            if (!string.IsNullOrWhiteSpace(keyword))
             {
-                taskers = taskers.Where(x => x.TaskerName.Contains(pickTasker)).ToList();
+                taskers = taskers.Where(x => x.TaskerName.Contains(keyword)).ToList();
             }
 
             var result = taskers.ToPagedList(currentPage, 10);
@@ -440,9 +440,15 @@ namespace DIY_v2.Controllers
         }
         #endregion
         #region 訂單狀態管理
-        public ActionResult ManageOrder()
+        public ActionResult ManageOrder(string keyword)
         {
             var result = db.Orders.Where(x => x.OrderStatus != "購物車").ToList();
+
+            if (!string.IsNullOrWhiteSpace(keyword))
+            {
+                result = result.Where(x => x.Member.MemberAccount.Contains(keyword)).ToList();
+            }
+
             return View(result);
         }
         public ActionResult ManageOrderDetail(string OrderID)

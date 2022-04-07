@@ -320,7 +320,7 @@
     }
 
     /*留言板*/
-/*    .reply-main {
+    /*    .reply-main {
         height: 80px;
         width: 600px;
     }*/
@@ -333,7 +333,6 @@
     }
 </style>
 <!-- #endregion -->
-
 <!-- #endregion -->
 
 
@@ -557,16 +556,24 @@
                             @{
                                 if (Model.taskerComment.Count > 0)
                                 {
+                                    // 亂數產生留言頭像
+                                    Random random = new Random();
+                                    int i = random.Next(1, 4);
+                                    string iconPath = $"../Images/TaskerImages/littleIcon{i}.png";
+
                                     foreach (var item in Model.taskerComment)
                                     {
                                         <h5>@item.MemberAccount</h5>
                                         <div class="row">
-                                            <div class="col-md-1"><img class="img-responsive" src="~/Images/TaskerImages/avatar_04.svg" alt="Alternate Text" style="width:35px;" /></div>
+                                            <div class="col-md-1"><img class="img-responsive" src=@iconPath alt="Alternate Text" style="width:35px;" /></div>
                                             <div class="col-md-11 embed-responsive">
                                                 <div class="commentContent">@item.Comment</div>
                                                 <span><small>@item.CreateDate</small></span>
                                             </div>
                                         </div>
+                                        // 亂數產生留言頭像
+                                        i = random.Next(1, 4);
+                                        iconPath = $"../Images/TaskerImages/littleIcon{i}.png";
                                         @*注意: 有使用Inline margin*@
                                         @*<span style="margin-left: 37px;"><small>@item.CreateDate</small></span>*@
                                         <br />
@@ -580,11 +587,11 @@
                                             <img class="" src="~/Images/元件/登入背景16.jpg" style="width:100%">
                                         </div>*@
                                     @*<div class="column col-md-12">*@
-                                        <form method="post" action="@Url.Action("TaskerDetail")">
-                                            <input type="hidden" name="TaskerID" value="@Model.taskers[0].TaskerID" />
-                                            <textarea class="reply-main" name="comment" placeholder="請輸入你的評論"></textarea><br />
-                                            <input type="submit" value="送出" />
-                                        </form>
+                                    <form method="post" action="@Url.Action("TaskerDetail")">
+                                        <input type="hidden" name="TaskerID" value="@Model.taskers[0].TaskerID" />
+                                        <textarea class="reply-main" name="comment" placeholder="請輸入你的評論"></textarea><br />
+                                        <input type="submit" value="送出" />
+                                    </form>
                                     @*</div>*@
                                 </div>
                             </div>

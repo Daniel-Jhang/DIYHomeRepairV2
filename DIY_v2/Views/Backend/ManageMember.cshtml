@@ -3,6 +3,9 @@
 @using PagedList.Mvc
 
 @{
+    ViewBag.Title = "會員管理系統";
+}
+@{
     Layout = "~/Views/Shared/_LayoutForbackendUI.cshtml";
 }
 <style>
@@ -19,7 +22,7 @@
             color: black;
         }
     </style>
-    <section class="ftco-section "  style="padding:0px;">
+    <section class="ftco-section " style="padding:0px;">
         <div class="container-fluid">
             <div class="row">
 
@@ -28,7 +31,7 @@
                     <table class="table">
                         <tr>
                             <th>
-                                @Html.DisplayNameFor(model => model[0].MemberName)
+                                @Html.DisplayNameFor(model => model[0].MemberAccount)
                             </th>
 
                             <th>
