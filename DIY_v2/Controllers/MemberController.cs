@@ -117,7 +117,7 @@ namespace DIY_v2.Controllers
                     {
                         ViewData["newPwdError"] = "display:none";
                         ViewData["pwdCheckError"] = "display:none";
-                        ViewBag.Message = "新密碼不同，修改失敗";
+                        ViewBag.Message = "新密碼兩次輸入不同，修改失敗";
                         return View();
                     }
                 }
