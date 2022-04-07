@@ -261,13 +261,13 @@
     <!-- #endregion -->
 
 
-    <div class="py-5 cs1">
+    <div class="py-5 cs1 ">
         <div class="container">
 
             <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light " id="ftco-navbar" style="position:absolute; z-index:7">
 
                 <div class="container">
-                    <a class="navbar-brand" href="@Url.Action("Index","Home")"><img src="~/Images/元件/logo.png" /> DIY居家修繕</a>
+                    <a class="navbar-brand" href="@Url.Action("Index","Home")"><img src="~/Images/元件/logo.png" /><span id="txtba"> DIY居家修繕</span></a>
                     <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="oi oi-menu"></span> Menu
                     </button>
@@ -275,7 +275,7 @@
                         @{
                             if (@Session["Permission"]?.ToString() != "0")
                             {
-                                <ul class="navbar-nav ml-auto">
+                                <ul class="navbar-nav ml-auto" id="navc">
 
                                     <li class="nav-item dropdown">
                                         <a href="" class="dropdown-toggle nav-link" style="font-size:16px;" data-toggle="dropdown">DIY</a>
@@ -416,7 +416,9 @@
 
 
 
-                                </ul><div class="MyUser">
+                                </ul>
+                       
+                                <div class="MyUser">
                                     <div class="chip">
                                         @{
                                             //這邊是登入後頭像設定

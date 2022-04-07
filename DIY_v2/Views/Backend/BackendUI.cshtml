@@ -3,10 +3,142 @@
     ViewBag.Title = "後台管理系統";
 }
 
-@{
-    Layout = "~/Views/Shared/_LayoutForbackendUI.cshtml";
-}
+
+
+<style>
+    .cs1 {
+        display: none;
+    }
+    .cs2 {
+        background-color: #4fb7ca;
+    
+    }
+    #txtba {
+        display: none;
+    }
+    #navc {
+        display: none;
+    }
+
+    #ftco-navbar {
+        display: none;
+    }
+
+
+</style>
+
+<div class="py-3 cs2">
+    <div class="container-fluid">
+        <div class="row    d-flex flex-row  col-md-12">
+            <div class="col-md-2 ">
+
+
+                <a class="navbar-brand" href="#"><img src="~/Images/元件/logo.png" /><span style="color: white;padding:10px;font-size:25px;">後台管理</span></a>
+            </div>
+          <div class="col-md-8">
+
+          </div>
+          <div class="col-md-2 ">
+
+
+              @{
+                  if (@Session["Permission"]?.ToString() != "0")
+                  {
+
+                      <div style="position:relative;top:15px;" class="MyUser ">
+                          <div class="chip ">
+                              @{
+                                  //這邊是登入後頭像設定
+                                  if (@Session["Permission"]?.ToString() == "2")
+                                  {
+                                      <img src="~/Images/元件/師傅.png" alt="Person" width="96" height="96">
+                                  }
+                                  if (@Session["Permission"]?.ToString() == "1")
+                                  {
+                                      <img src="~/Images/元件/Userimg.png" alt="Person" width="96" height="96">
+                                  }
+
+
+                              }
+
+
+
+                              @if (@Session["Permission"]?.ToString() == null)
+                              {
+                                  <a class="btn btn-success" href="@Url.Action("Login","MemberLogin")">登入</a>
+                              }
+                              else
+                              {
+                                  <span>Hi! @Session["MemberName"]</span>
+                              }
+                              <a class="btn btn-success" href="@Url.Action("Logout","Member")">登出</a>
+                          </div>
+                      </div>
+                  }
+                  else
+                  {
+                      /////這邊事後台管理頭像部分
+                      <div @*style="position:relative; left:900px;"*@><img src="~/Images/元件/BOSS.png" alt="Person" width="30" height="30"><a class="btn btn-success" href="@Url.Action("Logout","Member")">登出</a></div>
+                  }
+              }
+
+          </div>
+            
 
 
 
 
+        </div>
+    </div>
+</div>
+ <aside id="sidebar" class="column">
+        <div class="container-fluid" >
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-xs-12 sidebar " style="background-color: black; height: 1000px;">
+                    @*搜尋欄*@
+                    <div class="sidebar-box" style="background-color: black;">
+                        <form action="#" class="search-form">
+                            <div class="form-group">
+                                <span class="icon ion-ios-search" style="color: #4fb7ca; border: 5px; "></span>
+                                <input type="text" class="form-control" placeholder="" style="border-color: #4fb7ca; background-color: black;">
+                            </div>
+                        </form>
+                    </div>
+                    @*選取按鈕*@
+                    <div class="sidebar-box " style="background-color: black;">
+                        <h3 class="heading"><span class="btn btn-info btn-lg glyphicon glyphicon-list">項目  </span></h3>
+                        <ul class="categories " style="background-color: black;">
+
+                            <li>
+                                <a href="@Url.Action("ManageProduct","Backend")" class="btn btn-info btn-lg glyphicon glyphicon-pencil" style="color:white;">商品資料</a>
+                            </li>
+
+
+                            <li>
+                                <a href="@Url.Action("TaskerIndex","Backend")" class="btn btn-info btn-lg glyphicon glyphicon glyphicon-pencil" style="color:white;">師傅資料</a>
+                            </li>
+
+
+                            <li>
+                                <a href="@Url.Action("ManageMember","Backend")" class="btn btn-info btn-lg glyphicon glyphicon glyphicon-pencil" style="color:white;">會員資料</a>
+                            </li>
+
+
+                            <li>
+                                <a href="@Url.Action("ManageOrder","Backend")" class="btn btn-info btn-lg glyphicon glyphicon glyphicon-pencil" style="color:white;">訂單資料</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+       
+
+            </div>
+        </div>
+    </aside> <!-- .section -->
+
+
+
+
+   
