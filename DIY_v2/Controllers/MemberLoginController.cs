@@ -68,6 +68,16 @@ namespace DIY_v2.Controllers
                 Session["TaskerID"] = TaskerID;
                 var MemberID = member.MemberID;
                 Session["MemberID"] = MemberID;
+
+                var Alreadydata = db.Tasker.Where(x => x.MemberID == member.MemberID).FirstOrDefault();
+
+                if (Alreadydata != null)
+                {
+                    Session["AlreadyData"] = "Y";
+
+                }
+
+
             }
             //使用Session變數記錄歡迎詞
             
