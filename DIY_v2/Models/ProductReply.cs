@@ -11,14 +11,21 @@ namespace DIY_v2.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     public partial class ProductReply
     {
+        [DisplayName("留言編號")]
         public int ReplyID { get; set; }
+        [DisplayName("產品編號")]
         public string ProductID { get; set; }
+        [DisplayName("會員編號")]
         public Nullable<int> MemberID { get; set; }
+        [DisplayName("會員帳戶")]
         public string MemberAccount { get; set; }
+        [DisplayName("評論內容")]
         public string Replymain { get; set; }
+        [DisplayName("留言時間")]
         public Nullable<System.DateTime> Initdate { get; set; }
         public Nullable<short> Star { get; set; }
     

@@ -353,7 +353,11 @@
                                                         {
                                                             <li><a href="@Url.Action("TaskerRegister","TaskerMember")" class="dropdown-item">師傅資料登入</a></li>
                                                         }
-                                                        <li><a href="@Url.Action("TaskerMemberEditV2","TaskerMember")?id=@Session["MemberID"]" class="dropdown-item">我的帳戶</a></li>
+                                                        @if (Session["AlreadyData"]?.ToString() == "Y")
+                                                        {
+                                                            <li><a href="@Url.Action("TaskerMemberEditV2","TaskerMember")?id=@Session["MemberID"]" class="dropdown-item">我的帳戶</a></li>
+                                                        }
+
                                                         @*<li><a href="@Url.Action("Index","TaskerMember")" class="dropdown-item">基本資料</a></li>*@
                                                         <li><a href="@Url.Action("TaskerDetail","Tasker")?TaskerID=@Session["TaskerID"]" class="dropdown-item">查看主頁</a></li>
                                                         <li><a href="@Url.Action("Myorder","Member")" class="dropdown-item">訂單查詢</a></li>

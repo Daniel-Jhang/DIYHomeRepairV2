@@ -118,115 +118,129 @@ namespace DIY_v2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult TaskerRegister(Tasker tasker, HttpPostedFileBase taskerPhoto, HttpPostedFileBase[] casePhotos, bool? serviceCategoryChk1, bool? serviceCategoryChk2, bool? serviceCategoryChk3, int MemberID = 19)
         {
-            string MemberAccoumt = User.Identity.Name;
-            int mid = db.Member.Where(x => x.MemberAccount == MemberAccoumt).Select(x => x.MemberID).FirstOrDefault();
-            
-            #region 上傳圖片
-            string taskerFileName = "";// 圖檔名稱
-            if (taskerPhoto != null)
+            if (ModelState.IsValid)
             {
-                if (taskerPhoto.ContentLength > 0)
-                {
-                    // 取得圖檔名稱
-                    taskerFileName = Path.GetFileName(taskerPhoto.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Images/TaskerImages"), taskerFileName);
-                    taskerPhoto.SaveAs(path);
-                    tasker.TaskerImage = taskerFileName;
-                }
-            }
-            else
-            {
-                tasker.TaskerImage = db.Tasker.Where(x => x.TaskerID == tasker.TaskerID).Select(x => x.TaskerImage).FirstOrDefault();
-            }
+                string MemberAccoumt = User.Identity.Name;
+                int mid = db.Member.Where(x => x.MemberAccount == MemberAccoumt).Select(x => x.MemberID).FirstOrDefault();
 
-            string caseFileName = ""; // 圖檔名稱
-            string strCaseImage = "";
-            if (casePhotos != null)
-            {
-                // 使用 for 迴圈取得所有上傳的檔案
-                for (int i = 0; i < casePhotos.Length; i++)
+                #region 上傳圖片
+                string taskerFileName = "";// 圖檔名稱
+                if (taskerPhoto != null)
                 {
-                    // 取得目前檔案上傳的 HttpPostedFileBase 物件
-                    // 即須引數的 photos[i] 可以取得第 i 個所上傳的檔案
-                    HttpPostedFileBase f = (HttpPostedFileBase)casePhotos[i];
-                    // 若目前檔案上傳的 HttpPostedFileBase 物件的檔案名稱不為空白
-                    // 即表示第 i 個 f 物件有指定上傳檔案
-                    if (f != null)// 判斷檔案是否不為null
+                    if (taskerPhoto.ContentLength > 0)
                     {
                         // 取得圖檔名稱
-                        caseFileName = Path.GetFileName(f.FileName);
-                        strCaseImage += caseFileName + ",";
-                        // 將檔案儲存道專案的 Images 資料夾下
-                        var path = Path.Combine(Server.MapPath("~/Images/TaskerImages"), caseFileName);
-                        f.SaveAs(path);
+                        taskerFileName = Path.GetFileName(taskerPhoto.FileName);
+                        var path = Path.Combine(Server.MapPath("~/Images/TaskerImages"), taskerFileName);
+                        taskerPhoto.SaveAs(path);
+                        tasker.TaskerImage = taskerFileName;
                     }
-                    else
-                    {
-                        if (i == casePhotos.Length - 1)
-                        {
-                            tasker.CaseImage = db.Tasker.Where(x => x.TaskerID == tasker.TaskerID).Select(x => x.CaseImage).FirstOrDefault();
-                        }
-                    }
-
-                }
-                //如果三個casephoto都沒傳資料  把之前的值傳到caseImage裡面  不然會是空白
-                if (casePhotos[0] == null && casePhotos[1] == null && casePhotos[2] == null)
-                {
-                    tasker.CaseImage = db.Tasker.Where(x => x.TaskerID == tasker.TaskerID).Select(x => x.CaseImage).FirstOrDefault();
                 }
                 else
                 {
-                    //把結尾逗號去掉  因為之前都是存   檔名,檔名,  最後會多一個,
-                    strCaseImage = strCaseImage.TrimEnd(',');
-                    tasker.CaseImage = strCaseImage;
+                    tasker.TaskerImage = db.Tasker.Where(x => x.TaskerID == tasker.TaskerID).Select(x => x.TaskerImage).FirstOrDefault();
                 }
-            }
 
-            #endregion
+                string caseFileName = ""; // 圖檔名稱
+                string strCaseImage = "";
+                if (casePhotos != null)
+                {
+                    // 使用 for 迴圈取得所有上傳的檔案
+                    for (int i = 0; i < casePhotos.Length; i++)
+                    {
+                        // 取得目前檔案上傳的 HttpPostedFileBase 物件
+                        // 即須引數的 photos[i] 可以取得第 i 個所上傳的檔案
+                        HttpPostedFileBase f = (HttpPostedFileBase)casePhotos[i];
+                        // 若目前檔案上傳的 HttpPostedFileBase 物件的檔案名稱不為空白
+                        // 即表示第 i 個 f 物件有指定上傳檔案
+                        if (f != null)// 判斷檔案是否不為null
+                        {
+                            // 取得圖檔名稱
+                            caseFileName = Path.GetFileName(f.FileName);
+                            strCaseImage += caseFileName + ",";
+                            // 將檔案儲存道專案的 Images 資料夾下
+                            var path = Path.Combine(Server.MapPath("~/Images/TaskerImages"), caseFileName);
+                            f.SaveAs(path);
+                        }
+                        else
+                        {
+                            if (i == casePhotos.Length - 1)
+                            {
+                                tasker.CaseImage = db.Tasker.Where(x => x.TaskerID == tasker.TaskerID).Select(x => x.CaseImage).FirstOrDefault();
+                            }
+                        }
 
-            tasker.TaskerDescription = tasker.TaskerDescription.Replace(Environment.NewLine, "<br/>");
-            db.Tasker.Add(tasker);
-            db.SaveChanges();
+                    }
+                    //如果三個casephoto都沒傳資料  把之前的值傳到caseImage裡面  不然會是空白
+                    if (casePhotos[0] == null && casePhotos[1] == null && casePhotos[2] == null)
+                    {
+                        tasker.CaseImage = db.Tasker.Where(x => x.TaskerID == tasker.TaskerID).Select(x => x.CaseImage).FirstOrDefault();
+                    }
+                    else
+                    {
+                        //把結尾逗號去掉  因為之前都是存   檔名,檔名,  最後會多一個,
+                        strCaseImage = strCaseImage.TrimEnd(',');
+                        tasker.CaseImage = strCaseImage;
+                    }
+                }
 
-            var nowmemberID = db.Tasker.Where(x => x.MemberID == mid).Select(x => x.TaskerID).FirstOrDefault();
-            //把三個服務先弄出來  如果有 要加服務時能用
-            TaskerService ts1 = new TaskerService() { TaskerID = nowmemberID, ServiceCategoryID = "1", ServiceCategory = "衛浴裝修" };
-            TaskerService ts2 = new TaskerService() { TaskerID = nowmemberID, ServiceCategoryID = "2", ServiceCategory = "抓漏/堵塞" };
-            TaskerService ts3 = new TaskerService() { TaskerID = nowmemberID, ServiceCategoryID = "3", ServiceCategory = "水電安裝/修繕" };
+                #endregion
 
-            #region 服務一判斷
+                tasker.TaskerDescription = tasker.TaskerDescription.Replace(Environment.NewLine, "<br/>");
+                db.Tasker.Add(tasker);
+                db.SaveChanges();
 
-            if (serviceCategoryChk1 == true)
-            {
-                db.TaskerService.Add(ts1);
+                var nowmemberID = db.Tasker.Where(x => x.MemberID == mid).Select(x => x.TaskerID).FirstOrDefault();
+                //把三個服務先弄出來  如果有 要加服務時能用
+                TaskerService ts1 = new TaskerService() { TaskerID = nowmemberID, ServiceCategoryID = "1", ServiceCategory = "衛浴裝修" };
+                TaskerService ts2 = new TaskerService() { TaskerID = nowmemberID, ServiceCategoryID = "2", ServiceCategory = "抓漏/堵塞" };
+                TaskerService ts3 = new TaskerService() { TaskerID = nowmemberID, ServiceCategoryID = "3", ServiceCategory = "水電安裝/修繕" };
+
+                #region 服務一判斷
+
+                if (serviceCategoryChk1 == true)
+                {
+                    db.TaskerService.Add(ts1);
+                    db.SaveChanges();
+                }
+
+                #endregion
+                #region 服務二判斷
+
+                if (serviceCategoryChk2 == true)
+                {
+                    db.TaskerService.Add(ts2);
+                    db.SaveChanges();
+                }
+                #endregion
+
+                #region 服務三判斷
+                if (serviceCategoryChk3 == true)
+                {
+                    db.TaskerService.Add(ts3);
+                    db.SaveChanges();
+                }
+                #endregion
+
+
                 db.SaveChanges();
             }
-
-            #endregion
-            #region 服務二判斷
-
-            if (serviceCategoryChk2 == true)
+            else
             {
-                db.TaskerService.Add(ts2);
-                db.SaveChanges();
+                return View();
             }
-            #endregion
-
-            #region 服務三判斷
-            if (serviceCategoryChk3 == true)
-            {
-                db.TaskerService.Add(ts3);
-                db.SaveChanges();
-            }
-            #endregion
-
-
-            db.SaveChanges();
 
 
             // 傳資料給師父專區 > 查看主頁的師傅專區
             var TaskerID = db.Tasker.Where(x => x.MemberID == tasker.MemberID).Select(x => x.TaskerID).FirstOrDefault();
             Session["TaskerID"] = TaskerID;
+            var Alreadydata = db.Tasker.Where(x => x.MemberID == tasker.MemberID).FirstOrDefault();
+
+            if (Alreadydata != null)
+            {
+                Session["AlreadyData"] = "Y";
+                
+            }
 
             return RedirectToAction("Index", "Home");
         }

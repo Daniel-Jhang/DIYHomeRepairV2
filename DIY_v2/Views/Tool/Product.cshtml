@@ -152,7 +152,7 @@
                                         @{
                                             if (@User.Identity.Name != String.Empty)
                                             {
-                                                <input type="button" class="AdCar" value="加入購物車" />
+                                                <input type="button" class="AdCar buy-button" value="加入購物車" />
                                             }
                                             else
                                             {
@@ -209,36 +209,36 @@
             </div>
 
             @*側邊欄*@
-            <div class="col-md-4 col-lg-2">
-                <form method="post" colorlib-form-2" action="@Url.Action("Product")" class="exampleA">
-                    <div class="sidebar">
-                        @*搜索欄*@
-                        <div class="sidebar-box-2">
+        <div class="col-md-4 col-lg-2">
+            <form method="post" colorlib-form-2" action="@Url.Action("Product")" class="exampleA">
+                <div class="sidebar">
+                    @*搜索欄*@
+                    <div class="sidebar-box-2">
 
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <!-- Load icon library -->
-                                    <!-- The form -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!-- Load icon library -->
+                                <!-- The form -->
 
-                                    <input type="text" placeholder="請輸入商品" name="search">
-                                    <button type="submit"><i class="fa fa-search"></i></button>
-
-                                </div>
+                                <input type="text" placeholder="請輸入商品" name="keyword">
+                                <button type="submit"><i class="fa fa-search"></i></button>
 
                             </div>
 
-                        </form>
+                        </div>
+
+
                     </div>
 
-                        <div class="sidebar-box-2">
-                            <h2  style="color:black;"class="heading hc">產品類別</h2>
+                    <div class="sidebar-box-2">
+                        <h2 style="color:black;" class="heading hc">產品類別</h2>
 
                         @*-----------------------------------------------------------*@
                         @*@foreach (var item in Model.Categories)
-                            {
+                    {
 
-                                <p> @Html.ActionLink(@item.ProductCategory, "Product", new { ProductCategoryID = item.ProductCategoryID })</p>
-                            }*@
+                        <p> @Html.ActionLink(@item.ProductCategory, "Product", new { ProductCategoryID = item.ProductCategoryID })</p>
+                    }*@
                         @*------------------------------------------------------------------*@
 
 
@@ -319,48 +319,51 @@
                             </div>
                         </div>
 
-                        </div>
-                        <div class="sidebar-box-2">
-                            <h2 style="color:black;" class="heading hc">價格範圍</h2>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <div class="form d-flex  flex-row">
-                                            <input  style="width: 100%; text-align: center;" class="price form-control" type="text" placeholder="請輸入最低金額" name="Minprice" />
-                                            <label for="guests" style="padding: 10px 0 0 5px; color: black;"></label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12">
-                                    <div class="form-group">
-
-                                        <div class="form d-flex flex-row">
-
-                                            <input style="width: 100%; text-align: center;" class="rangeBox form-control" type="text" placeholder="請輸入最高金額" name="Maxprice" />
-                                            <label for="guests" style="padding: 10px 0 0 5px; color: black;"></label>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="col-md-10">
-                                    <div class="form-group">
-
-                                        <div class="form-field  d-flex flex-row">
-                                            <input type="hidden" value=@Session["nowCategoryID"] name="ProductCategoryID" />
-                                            @*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*@
-                                            <input type="submit" class="btn btn-lg btn-block " value="搜尋" id="btne" />
-                                        </div>
+                    </div>
+                    <div class="sidebar-box-2">
+                        <h2 style="color:black;" class="heading hc">價格範圍</h2>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="form d-flex  flex-row">
+                                        <input style="width: 100%; text-align: center;" class="price form-control" type="text" placeholder="請輸入最低金額" name="Minprice" />
+                                        <label for="guests" style="padding: 10px 0 0 5px; color: black;"></label>
                                     </div>
                                 </div>
                             </div>
-                        </form>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+
+                                    <div class="form d-flex flex-row">
+
+                                        <input style="width: 100%; text-align: center;" class="rangeBox form-control" type="text" placeholder="請輸入最高金額" name="Maxprice" />
+                                        <label for="guests" style="padding: 10px 0 0 5px; color: black;"></label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-10">
+                                <div class="form-group">
+
+                                    <div class="form-field  d-flex flex-row">
+                                        <input type="hidden" value=@Session["nowCategoryID"] name="ProductCategoryID" />
+                                        @*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*@
+                                        <input type="submit" class="btn btn-lg btn-block " value="搜尋" id="btne" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                </div>
+                    </div>
+            </form>
+            
             </div>
         </div>
-    </div>
+        </div>
+    
 </section>
 <script src="~/Scripts/jquery-3.4.1.js"></script>
 
