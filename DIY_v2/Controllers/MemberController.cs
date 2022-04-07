@@ -31,6 +31,7 @@ namespace DIY_v2.Controllers
             string MemberAccount = User.Identity.Name;
             //找出未成為訂單明細的資料，即購物車內容
             var Member = db.Member.Where(x => x.MemberAccount == MemberAccount).FirstOrDefault();
+            ViewBag.MemberAccount = MemberAccount;
 
             return View(Member);
         }
@@ -38,9 +39,9 @@ namespace DIY_v2.Controllers
         [HttpPost]
         public ActionResult EditData(Member member)
         {
+            string MemberAccount = User.Identity.Name;
             if (ModelState.IsValid)
             {
-                string MemberAccount = User.Identity.Name;
                 var MemberItem = db.Member.Where(x => x.MemberAccount == MemberAccount).FirstOrDefault();
                 MemberItem.MemberName = member.MemberName;
                 MemberItem.MemberGender = member.MemberGender;
@@ -50,12 +51,13 @@ namespace DIY_v2.Controllers
                 MemberItem.MemberAddress = member.MemberAddress;
                 MemberItem.MemberPhone = member.MemberPhone;
                 db.SaveChanges();
-               
+                ViewBag.MemberAccount = MemberAccount;
                 Session["memberEdit"] = "資料修改完成";
-                return View(MemberItem);
+                return RedirectToAction("EditData");
             }
             else
             {
+                ViewBag.MemberAccount = MemberAccount;
                 return View(member);
             }
           
