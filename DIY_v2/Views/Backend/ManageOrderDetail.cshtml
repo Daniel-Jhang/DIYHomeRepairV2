@@ -2,86 +2,92 @@
 @{
     ViewBag.Title = "訂單狀態管理";
 }
-
-<h2>
-    訂單詳細
-</h2>
-
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.od.FirstOrDefault().OrderDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.od.FirstOrDefault().ProductName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.od.FirstOrDefault().ProductPrice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.od.FirstOrDefault().OrderQuantity)
-        </th>
-        
-        <th>
-            @Html.DisplayNameFor(model => model.od.FirstOrDefault().Member.MemberAccount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.od.FirstOrDefault().Orders.RecipientName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.od.FirstOrDefault().ProductName)
-        </th>
-        
-    </tr>
-
-@foreach (var item in Model.od) {
-    int? count = 0;
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductName)
-        </td>
-        <td>
-            $@Html.DisplayFor(modelItem => item.ProductPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderQuantity)
-        </td>
-    
-        <td>
-            @Html.DisplayFor(modelItem => item.Member.MemberAccount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Orders.RecipientName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Product.ProductName)
-        </td>
-       
-    </tr>
-    count += item.OrderQuantity * item.ProductPrice;
-    Session["ordercount"] = Convert.ToInt32(Session["ordercount"]) + count;
+@{
+    Layout = "~/Views/Shared/_LayoutForbackendUI.cshtml";
 }
 
-</table>
-<hr />
-<span>小記:</span>
-<p><b>@Session["ordercount"]</b></p>
-<form method="post" action="@Url.Action("ChangeOrder")">
-    <div class="form-group">
-        @Html.LabelFor(model => model.od.FirstOrDefault().OrderStatus, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.od.FirstOrDefault().OrderStatus, Model.selectListItems, new { @class = "form-control", name = "OrderStatus" })
-            <input type="hidden" name="OrderID" value="@Model.od.FirstOrDefault().OrderID"/>
+<div class="col-md-10">
+    <h2>
+        訂單詳細
+    </h2>
 
 
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.od.FirstOrDefault().OrderDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.od.FirstOrDefault().ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.od.FirstOrDefault().ProductPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.od.FirstOrDefault().OrderQuantity)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.od.FirstOrDefault().Member.MemberAccount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.od.FirstOrDefault().Orders.RecipientName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.od.FirstOrDefault().ProductName)
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model.od)
+        {
+            int? count = 0;
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    $@Html.DisplayFor(modelItem => item.ProductPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderQuantity)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Member.MemberAccount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Orders.RecipientName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.ProductName)
+                </td>
+
+            </tr>
+            count += item.OrderQuantity * item.ProductPrice;
+            Session["ordercount"] = Convert.ToInt32(Session["ordercount"]) + count;
+        }
+
+    </table>
+    <hr />
+    <span>小記:</span>
+    <p><b>@Session["ordercount"]</b></p>
+    <form method="post" action="@Url.Action("ChangeOrder")">
+        <div class="form-group">
+            @Html.LabelFor(model => model.od.FirstOrDefault().OrderStatus, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.od.FirstOrDefault().OrderStatus, Model.selectListItems, new { @class = "form-control", name = "OrderStatus" })
+                <input type="hidden" name="OrderID" value="@Model.od.FirstOrDefault().OrderID" />
+
+
+            </div>
         </div>
-    </div>
-    <input type="submit" value="修改" />   
-</form>
-<br />
-<br />
-<br />
+        <input type="submit" value="修改" />
+    </form>
+    <br />
+    <br />
+    <br />
+</div>

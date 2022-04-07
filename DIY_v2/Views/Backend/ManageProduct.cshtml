@@ -3,6 +3,7 @@
 @using PagedList.Mvc
 @{
     ViewBag.Title = "商品管理系統";
+        Layout = "../Shared/_LayoutForbackendUI.cshtml";
 }
 <style>
     .productImage {
@@ -10,118 +11,95 @@
         height: 100px;
     }
 </style>
-<h2>商品管理系統</h2>
 <link href="~/Content/PagedList.css" rel="stylesheet">
 
-<section class="ftco-section ">
+<div class="col-md-10">
+    <section class="ftco-section " style="padding:0px; ">
+        <h2>商品管理系統</h2>
+        <div class="container-fluid">
 
-    <div class="container-fluid">
 
-        <div class="row">
 
-          
-            <div class="col-lg-10 col-md-10 col-xs-12 order-lg-last ftco-animate">
-                <p>
-                    @Html.ActionLink("新增商品", "AddProduct", new {} ,htmlAttributes: new { @class = "btn btn-primary" })
-                </p>
-                <table class="table">
+
+
+            <p>
+                @Html.ActionLink("新增商品", "AddProduct", new { }, htmlAttributes: new { @class = "btn btn-primary" })
+            </p>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().ProductImage)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().ProductName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().ProductPrice)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().ProductCost)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().InStock)
+                    </th>
+
+
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
                     <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.FirstOrDefault().ProductImage)
-                        </th>
+                        <td>
+                            <img class="productImage" src=@item.ProductImage>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductName)
+                        </td>
+                        <td>
+                            $@Html.DisplayFor(modelItem => item.ProductPrice)
+                        </td>
 
-                        <th>
-                            @Html.DisplayNameFor(model => model.FirstOrDefault().ProductName)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.FirstOrDefault().ProductPrice)
-                        </th>
-
-                        <th>
-                            @Html.DisplayNameFor(model => model.FirstOrDefault().ProductCost)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.FirstOrDefault().InStock)
-                        </th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductCost)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.InStock)
+                        </td>
 
 
-                        <th></th>
+                        <td>
+                            @Html.ActionLink("修改", "EditProduct", new { ProductID = item.ProductID }, new { @class = "btn btn-info" })
+                            @Html.ActionLink("詳細資料", "ProductDetail", "Tool", new { ProductID = item.ProductID }, new { @class = "btn btn-info" })
+                            @Html.ActionLink("管理留言", "ManageReply", new { ProductID = item.ProductID }, new { @class = " btn btn-info" })
+                            @Html.ActionLink("刪除", "DeleteProduct", new { ProductID = item.ProductID }, new { onclick = "return  confirm('確定刪除嗎?');", @class = " btn btn-danger" })
+
+                        </td>
                     </tr>
+                }
 
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                <img class="productImage" src=@item.ProductImage>
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ProductName)
-                            </td>
-                            <td>
-                                $@Html.DisplayFor(modelItem => item.ProductPrice)
-                            </td>
-
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ProductCost)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.InStock)
-                            </td>
+            </table>
+            <!-- .col-md-8 -->
 
 
-                            <td>
-                                @Html.ActionLink("修改", "EditProduct", new { ProductID = item.ProductID }, new {  @class = "btn btn-info" } ) 
-                                @Html.ActionLink("詳細資料", "ProductDetail", "Tool", new { ProductID = item.ProductID }, new {@class = "btn btn-info" }) 
-                                @Html.ActionLink("管理留言", "ManageReply", new { ProductID = item.ProductID }, new { @class = " btn btn-info" })
-                                @Html.ActionLink("刪除", "DeleteProduct", new { ProductID = item.ProductID }, new { onclick = "return  confirm('確定刪除嗎?');", @class = " btn btn-danger" })
 
-                            </td>
-                        </tr>
-                    }
-
-                </table>
-            </div> <!-- .col-md-8 -->
-            <div class="col-lg-2 col-md-2 col-xs-12 sidebar ftco-animate ">
-
-                @*搜尋欄*@
-                <div class="sidebar-box">
-                    <form action="@Url.Action("ManageProduct")" class="search-form" method="post">
-                        <div class="form-group">
-                            <span class="icon ion-ios-search"></span>
-                            <input type="text" class="form-control" placeholder="" name="keyword" />
-                            <input type="submit" value="搜尋" />
-                        </div>
-                    </form>
-
-                </div>
-                @*選取按鈕*@
-                <div class="sidebar-box ftco-animate">
-                    <h3 class="heading">項目</h3>
-                    <ul class="categories">
-                        <li><a href="@Url.Action("ManageProduct","Backend")">商品資料</a></li>
-                        <li><a href="@Url.Action("TaskerIndex","Backend")">師傅資料</a></li>
-                        <li><a href="@Url.Action("ManageMember","Backend")">會員資料</a></li>
-                        <li><a href="@Url.Action("ManageOrder","Backend")">訂單資料</a></li>
-                    </ul>
-                </div>
-
-
-            </div>
-
+            @{ if (@Session["backkeyword"] != null)
+                {
+                    @Html.PagedListPager(Model, page => Url.Action("ManageProduct", new { page, keyword = @Session["backkeyword"] }))
+                }
+                else
+                {
+                    @Html.PagedListPager(Model, page => Url.Action("ManageProduct", new { page }))
+                }
+            }
         </div>
-    </div>
 
-</section> <!-- .section -->
+    </section>
+</div>
+ <!-- .section -->
 
-@{ if (@Session["backkeyword"] != null)
-    {
-        @Html.PagedListPager(Model, page => Url.Action("ManageProduct", new { page, keyword = @Session["backkeyword"] }))
-    }
-    else
-    {
-        @Html.PagedListPager(Model, page => Url.Action("ManageProduct", new { page }))
-    }
-}
 
 
 

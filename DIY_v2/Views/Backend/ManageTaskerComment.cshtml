@@ -3,66 +3,70 @@
 @{
     ViewBag.Title = "管理師傅評價";
 }
+@{
+    Layout = "~/Views/Shared/_LayoutForbackendUI.cshtml";
+}
+<div class="col-md-10">
+    <h2>管理師傅評價</h2>
 
-<h2>管理師傅評價</h2>
-
-@*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>*@
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.MemberAccount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Comment)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreateDate)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Star)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.Member.MemberAccount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tasker.TaskerName)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    @*<p>
+            @Html.ActionLink("Create New", "Create")
+        </p>*@
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.MemberAccount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Comment)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreateDate)
-            </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Star)
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.Member.MemberAccount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tasker.TaskerName)
-            </td>
-            <td>
-                @*@Html.ActionLink("Edit", "Edit", new { id=item.ReplyID }) |*@
-                @*@Html.ActionLink("Details", "Details", new { id=item.ReplyID }) |*@
-                @Html.ActionLink("刪除留言", "DeleteTaskerComment", new { ReplyID = item.ReplyID }, new { onclick = "return confirm('確定刪除嗎?')", @class = "btn btn-danger" })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.MemberAccount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Star)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Member.MemberAccount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tasker.TaskerName)
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MemberAccount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateDate)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Star)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Member.MemberAccount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tasker.TaskerName)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { id=item.ReplyID }) |*@
+                    @*@Html.ActionLink("Details", "Details", new { id=item.ReplyID }) |*@
+                    @Html.ActionLink("刪除留言", "DeleteTaskerComment", new { ReplyID = item.ReplyID }, new { onclick = "return confirm('確定刪除嗎?')", @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
 
-@Html.ActionLink("回上頁", "TaskerIndex", null, new { @class = "btn btn-info" })
-<br />
-<br />
+    </table>
+
+    @Html.ActionLink("回上頁", "TaskerIndex", null, new { @class = "btn btn-info" })
+    <br />
+    <br />
+</div>

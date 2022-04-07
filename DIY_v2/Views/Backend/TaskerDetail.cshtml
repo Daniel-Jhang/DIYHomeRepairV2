@@ -3,122 +3,132 @@
 @{
     ViewBag.Title = "TaskerDetail";
 }
+@{
+    Layout = "~/Views/Shared/_LayoutForbackendUI.cshtml";
+}
+<style>
+    body{
+        font-size:18px;
+    }
+</style>
+<div class="col-md-10">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>師傅狀態管理</h2>
+            </div>
 
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h2>師傅狀態管理</h2>
         </div>
 
-    </div>
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(model => model.TaskerName):
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.TaskerName)
+            </div>
+        </div>
 
-    <div class="row">
-        <div class="col-md-2">
-            @Html.DisplayNameFor(model => model.TaskerName)
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(model => model.ServiceQuote):
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ServiceQuote)
+            </div>
         </div>
-        <div class="col-md-10">
-            @Html.DisplayFor(model => model.TaskerName)
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(model => model.TaskerTel):
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.TaskerTel)
+            </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(model => model.TaskerPhone):
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.TaskerPhone)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(model => model.ServiceTime_Start):
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ServiceTime_Start)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(model => model.ServiceTime_End):
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ServiceTime_End)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(model => model.ServiceArea):
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ServiceArea)
+            </div>
+        </div>
 
-    <div class="row">
-        <div class="col-md-2">
-            @Html.DisplayNameFor(model => model.ServiceQuote)
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(model => model.Feature):
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Feature)
+            </div>
         </div>
-        <div class="col-md-10">
-            @Html.DisplayFor(model => model.ServiceQuote)
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            @Html.DisplayNameFor(model => model.TaskerTel)
-        </div>
-        <div class="col-md-10">
-            @Html.DisplayFor(model => model.TaskerTel)
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            @Html.DisplayNameFor(model => model.TaskerPhone)
-        </div>
-        <div class="col-md-10">
-            @Html.DisplayFor(model => model.TaskerPhone)
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            @Html.DisplayNameFor(model => model.ServiceTime_Start)
-        </div>
-        <div class="col-md-10">
-            @Html.DisplayFor(model => model.ServiceTime_Start)
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            @Html.DisplayNameFor(model => model.ServiceTime_End)
-        </div>
-        <div class="col-md-10">
-            @Html.DisplayFor(model => model.ServiceTime_End)
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            @Html.DisplayNameFor(model => model.ServiceArea)
-        </div>
-        <div class="col-md-10">
-            @Html.DisplayFor(model => model.ServiceArea)
-        </div>
-    </div>
-   
-    <div class="row">
-        <div class="col-md-2">
-            @Html.DisplayNameFor(model => model.Feature)
-        </div>
-        <div class="col-md-10">
-            @Html.DisplayFor(model => model.Feature)
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-md-2">
-            @Html.DisplayNameFor(model => model.MemberID)
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(model => model.MemberID):
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.MemberID)
+            </div>
         </div>
-        <div class="col-md-10">
-            @Html.DisplayFor(model => model.MemberID)
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            @Html.DisplayNameFor(model => model.Permission)
-        </div>
-        <div class="col-md-10">
-            @{
-                if (@Model.Permission == "1" || @Model.Permission == "2")
-                {
-                    <span>正常</span>
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayNameFor(model => model.Permission):
+            </div>
+            <div class="col-md-10">
+                @{
+                    if (@Model.Permission == "1" || @Model.Permission == "2")
+                    {
+                        <span>正常</span>
+                    }
+                    else
+                    {
+                        <span>停權</span>
+                    }
                 }
-                else
-                {
-                    <span>停權</span>
-                }
-            }
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            @Html.ActionLink("停權", "StopTasker", new { TaskerID = Model.TaskerID }, new { @class = "btn btn-primary" })
+        <div class="row">
+            <div class="col-md-12">
+                @Html.ActionLink("停權", "StopTasker", new { TaskerID = Model.TaskerID }, new { @class = "btn btn-primary" })
 
 
-            @Html.ActionLink("啟用", "StartTasker", new { TaskerID = Model.TaskerID }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("啟用", "StartTasker", new { TaskerID = Model.TaskerID }, new { @class = "btn btn-primary" })
+            </div>
+
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.ActionLink("回上一頁", "TaskerIndex", new { }, htmlAttributes: new { @class = "btn btn-info" })
+            </div>
 
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            @Html.ActionLink("回上一頁", "TaskerIndex", new { }  ,htmlAttributes: new { @class = "btn btn-info" })
         </div>
 
     </div>
 
 </div>
+

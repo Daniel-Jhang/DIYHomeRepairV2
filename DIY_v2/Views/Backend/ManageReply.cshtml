@@ -3,53 +3,57 @@
 @{
     ViewBag.Title = "商品留言管理";
 }
-
-<h2>管理商品留言</h2>
-
-
-<table class="table">
-    <tr>
-
-        <th>
-            @Html.DisplayNameFor(model => model.MemberAccount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Replymain)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Initdate)
-        </th>
+@{
+    Layout = "~/Views/Shared/_LayoutForbackendUI.cshtml";
+}
+<div class="col-md-10">
+    <h2>管理商品留言</h2>
 
 
+    <table class="table">
+        <tr>
 
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-<tr>
-
-    <td>
-        @Html.DisplayFor(modelItem => item.MemberAccount)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Replymain)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Initdate)
-    </td>
+            <th>
+                @Html.DisplayNameFor(model => model.MemberAccount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Replymain)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Initdate)
+            </th>
 
 
 
-    <td>
-        @Html.ActionLink("管理會員", "ManageMember", new { pickMember = item.MemberAccount }, htmlAttributes: new { @class = "btn btn-info" })
-        @Html.ActionLink("刪除留言", "deleteReply", new { ReplyID = item.ReplyID, ProductID = item.ProductID }, htmlAttributes: new { onclick = "return  confirm('確定刪除嗎?');", @class = "btn btn-danger" })
+            <th></th>
+        </tr>
 
-    </td>
-</tr>
-    }
+        @foreach (var item in Model)
+        {
+            <tr>
 
-</table>
-@Html.ActionLink("回上頁", "ManageProduct", null, new { @class = "btn btn-info" })
-<br />
-<br />
+                <td>
+                    @Html.DisplayFor(modelItem => item.MemberAccount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Replymain)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Initdate)
+                </td>
+
+
+
+                <td>
+                    @Html.ActionLink("管理會員", "ManageMember", new { pickMember = item.MemberAccount }, htmlAttributes: new { @class = "btn btn-info" })
+                    @Html.ActionLink("刪除留言", "deleteReply", new { ReplyID = item.ReplyID, ProductID = item.ProductID }, htmlAttributes: new { onclick = "return  confirm('確定刪除嗎?');", @class = "btn btn-danger" })
+
+                </td>
+            </tr>
+        }
+
+    </table>
+    @Html.ActionLink("回上頁", "ManageProduct", null, new { @class = "btn btn-info" })
+    <br />
+    <br />
+</div>

@@ -152,7 +152,7 @@
                 <div class="MyUser">
                         <div class="chip">
                             <img src="~/Images/元件/Userimg.png" alt="Person" width="96" height="96">
-                            <span>Hi! @Session["MemberName"]</span>
+                         
                             <a class="btn btn-success" href="@Url.Action(" Logout","Member")">登出</a>
                         </div>
                     </div>
@@ -174,7 +174,7 @@
                         <form action="#" class="search-form">
                             <div class="form-group">
                                 <span class="icon ion-ios-search" style="color: #4fb7ca; border: 5px; "></span>
-                                <input type="text" class="form-control" placeholder="" style="border-color: #4fb7ca; background-color: black;">
+                                <input type="text" class="form-control" name="keyword" placeholder="" style="border-color: #4fb7ca; background-color: black;">
                             </div>
                         </form>
                     </div>

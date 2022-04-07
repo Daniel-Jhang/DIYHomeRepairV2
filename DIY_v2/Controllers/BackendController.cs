@@ -354,13 +354,13 @@ namespace DIY_v2.Controllers
         #endregion
 
         #region 會員管理系統
-        public ActionResult ManageMember(string pickMember, int page = 1)   /*撈資料庫*/
+        public ActionResult ManageMember(string keyword, int page = 1)   /*撈資料庫*/
         {
             int currentPage = page < 1 ? 1 : page; // 避免頁數跑到負數
             var members = db.Member.ToList();
-            if (!string.IsNullOrWhiteSpace(pickMember))
+            if (!string.IsNullOrWhiteSpace(keyword))
             {
-                members = members.Where(x => x.MemberAccount.Contains(pickMember)).ToList();
+                members = members.Where(x => x.MemberAccount.Contains(keyword)).ToList();
             }
 
             var result = members.ToPagedList(currentPage, 10);
