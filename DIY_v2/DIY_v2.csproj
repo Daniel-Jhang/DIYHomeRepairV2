@@ -587,6 +587,7 @@
     <Content Include="Images\元件\登入背景16.jpg" />
     <Content Include="Images\元件\系統櫃01.png" />
     <Content Include="Images\元件\系統櫃02.png" />
+    <Content Include="Images\元件\素材01.jpg" />
     <Content Include="Images\元件\背景圖片18.jpg" />
     <Content Include="Images\元件\蓮蓬頭02.png" />
     <Content Include="Images\元件\鏡子01.png" />
@@ -597,6 +598,7 @@
     <Content Include="Images\元件\電燈02.png" />
     <Content Include="Images\元件\電視.png" />
     <Content Include="Images\元件\電視01.png" />
+    <Content Include="Images\元件\首頁DIY01.jpg" />
     <Content Include="Images\元件\馬桶03.png" />
     <Content Include="Images\元件\馬桶04.png" />
     <Content Include="Models\dbDIYModel.Context.tt">

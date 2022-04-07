@@ -230,7 +230,7 @@
     #tab-demo {
         text-align: left;
         position: relative;
-        background-image: url(/Images/元件/VCG211258126145.jpg);
+        background-image: url(/Images/元件/素材01.jpg);
     }
 
      #tab-demo > ul {
@@ -247,16 +247,16 @@
         display: inline-block;
         vertical-align: top;
         font-family: '微軟正黑體';
-        font-size:25px;
+        font-size: 25px;
         margin: 0 -1px -1px 0;
         border: 1px solid #BCBCBC;
         height: 30px;
-        line-height:30px;
+        line-height: 30px;
         background: #cdcdcd;
         padding: 0 15px;
         list-style: none;
         box-sizing: border-box;
-        background-color: snow;
+        background-color: #fffaf0;
     }
 
     #tab-demo > ul > li a {
@@ -265,7 +265,7 @@
 
     }
 
-     #tab-demo > ul > li.active {
+     #tab-demo > ul > li.active {               
             border-bottom: 1px solid #fff;
             background-image: url(/Images/元件/VCG41N1247454989.jpg);
       }
@@ -278,7 +278,7 @@
     }
 
     .tab-inner {
-        height:700px;
+        height:600px;
     }
 
     /*------------------手機板顯示畫面CSS--------------------*/
@@ -327,6 +327,8 @@
         .page{
             display: none;
             visibility: hidden;
+     
+
         }
 
         #div1 {
@@ -378,66 +380,72 @@
 
 
 
-<div class="parallax">
+<div class="container-sm">
     <div id="anj">
 
-        <h2 class="animate__animated  animate__bounce  animate__delay-0.5s" style="color: #fff;">DIY 居家修繕</h2>
+        <h4 class="ml4">
+            <span class="letters letters-1">Ready</span>
+            <span class="letters letters-2">Set</span>
+            <span class="letters letters-3">Go!</span>
+        </h4>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+        <h2 class="animate__animated  animate__bounce  animate__delay-0.5s" style="color: #fff;">試著自己動手做吧!!</h2>
     </div>
-    @*<img src="~/Images/DIY.jpg" style="width:100%;height:600px;" />*@
-</div>
-<style>
 
-    #anj {
-        font-size: 30px;
-        text-align: center;
-        background: rgba(0,0,0,0.5);
-        padding: 50px;
-    }
+    <style>
 
-    .parallax {
-        /* 設定背景圖片/居中/不重覆 */
-        background: url(../../Images/DIY.jpg) center center no-repeat;
-        /* 設定區塊高度 */
-        min-height: 600px;
-        /* 背景自動縮放/固定 */
-        background-attachment: fixed;
-        background-size: cover;
-    }
-</style>
+        #anj {
+            font-size: 30px;
+            text-align: center;
+            background: rgba(0,0,0,0.5);
+            padding: 50px;
+        }
 
+        .parallax {
+            /* 設定背景圖片/居中/不重覆 */
+            background: url(../../Images/元件/首頁DIY01.jpg) center center no-repeat;
+            /* 設定區塊高度 */
+            min-height: 300px;
+            /* 背景自動縮放/固定 */
+            background-attachment: fixed;
+            background-size: 100%;
+        }
+    </style>
 
 
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12 ">
-            @* 1 *@
-            <div class="d-flex flex-row  " data-aos="fade-right"
-                 data-aos-offset="300"
-                 data-aos-easing="ease-in-sine">
-                <img src="~/Images/wordfile.png" style="width: 500px; height: 300px;" />
-                <b style="position:relative;bottom:-120px;">我們有提供零件的販售</b>
-            </div>
-            @* 2 *@
-            <div class=" d-flex flex-row @*animate__animated animate__fadeInRight*@" data-aos="fade-left"
-                 data-aos-offset="300"
-                 data-aos-easing="ease-in-sine">
 
-                <img src="~/Images/tool.png" style="width: 500px; height: 300px; " />
-                <b style="position:relative;bottom:-120px;">我們有提供修繕文件</b>
-            </div>
-            @* 3 *@
-            <div class=" d-flex flex-row " data-aos="fade-right"
+    @*<div class="container">
+        <div class="row">
+            <div class="col-lg-12 ">*@
+
+    @*<div class="d-flex flex-row  " data-aos="fade-right"
+             data-aos-offset="300"
+             data-aos-easing="ease-in-sine">
+            <img src="~/Images/wordfile.png" style="width: 500px; height: 300px;" />
+            <b style="position:relative;bottom:-120px;">我們有提供零件的販售</b>
+        </div>*@
+
+    @*<div class=" d-flex flex-row @*animate__animated animate__fadeInRight*@@*" data-aos="fade-left"
+             data-aos-offset="300"
+             data-aos-easing="ease-in-sine">
+
+            <img src="~/Images/tool.png" style="width: 500px; height: 300px; " />
+            <b style="position:relative;bottom:-120px;">我們有提供修繕文件</b>
+        </div>*@
+
+    @*<div class=" d-flex flex-row " data-aos="fade-right"
                  data-aos-offset="300"
                  data-aos-easing="ease-in-sine">
 
                 <img src="~/Images/tk.png" style="width: 500px; height: 300px; " />
                 <b style="position: relative; bottom: -120px;">我們有提供找師傅的服務</b>
             </div>
-        </div>
+        </div>*@
 
 
-        <div class="container" style="padding: 100px 50px 10px;">
+    @*<div class="container" style="padding: 100px 50px 10px;">
 
 
             <button type="button" class="btn btn-warning"
@@ -446,235 +454,263 @@
                 讓我們開始！
             </button>
 
-        </div>
+        </div>*@
 
-        <script>
+    @*<script>
             $(function () {
                 $("[data-toggle='popover']").popover();
             });
-        </script>
+        </script>*@
 
+    @*</div>
+
+
+        </div>*@
+
+
+    <br />
+    <style>
+        .li01 a h3:before {
+            content: '';
+            display: block;
+            margin-top: -50px;
+            height: 50px;
+            visibility: hidden;
+        }
+
+        .container-sm {
+            max-height: 1600px;
+            background: url(../../Images/元件/素材01.jpg);
+        }
+
+        .ml4 {
+            position: relative;
+            font-weight: 800;
+            font-size: 3.5em;
+        }
+
+            .ml4 .letters {
+                position: absolute;
+                margin: auto;
+                left: 0;
+                top: 200px;
+                right: 0;
+                opacity: 0;
+            }
+    </style>
+
+    <div class="container-sm">
+
+
+        @*<img src="~/Images/DIY.jpg" style="width:100%;height:600px;" />*@
+        <img class="acv" src="~/Images/元件/素材01.jpg" alt="" style="height:600px;width:100%;">
     </div>
+    <div class="container" data-aos="zoom-in" style="position:relative; top:-200px;">
+        <div class="page" id="tab-demo">
 
+            <ul class="tab-title container ">
 
-</div>
+                <li class="li01"><a href="#tab01"></a>客廳</li>
+                <li class="li02"><a href="#tab02"></a>浴室</li>
+            </ul>
+            @*<li class="li01"><a href="#tab01">客廳</a></li>
+                <li class="li02"><a href="#tab02">浴室</a></li>*@
 
+            <!-- #region 浴室 -->
+            @*--------------------------------------------浴室---------------------------------------------*@
+            <div id="tab02" class="tab-inner">
 
-<br />
-<style>
-    .li01 a h3:before {
-        content: '';
-        display: block;
-        margin-top: -50px;
-        height: 50px;
-        visibility: hidden;
-    }
-</style>
+                <div class="">
 
-<div class="container " data-aos="zoom-in">
-    <div class="page " id="tab-demo">
+                    <img class="" id="bath" src="~/Images/IndexImages/1589356215_2.jpg" alt="" style="width:100%;">
 
-        <ul class="tab-title container " style="">
-          
-            <li class="li01"><a href="#tab01"></a>客廳</li>
-            <li class="li02"><a href="#tab02"></a>浴室</li>
-        </ul>
-        @*<li class="li01"><a href="#tab01">客廳</a></li>
-        <li class="li02"><a href="#tab02">浴室</a></li>*@
-
-        <!-- #region 浴室 -->
-        @*--------------------------------------------浴室---------------------------------------------*@
-        <div id="tab02" class="tab-inner">
-
-            <div class="">
-
-                <img class=""id="bath" src="~/Images/IndexImages/1589356215_2.jpg" alt="" style="width:100%;">
-
-            </div>
-
-            @*馬桶*@
-            <div class="toolA" id="div1">
-
-                <a href=""><img class="idex01 toolA" src="~/Images/元件/馬桶04.png" alt="" style="width:190px;"></a>
-
-            </div>
-
-            @*水龍頭*@
-            <div class="toolA" id="div1">
-
-                <a href=""><img class="idex02 toolA" src="~/Images/元件/水龍頭05.png" alt="" style="width:404px;"></a>
-
-            </div>
-
-            @*鏡子*@
-            <div class="toolA" id="div1">
-
-                <a href=""><img class="idex03 toolA" src="~/Images/元件/鏡子01.png" alt="" style="width:310px;"></a>
-
-            </div>
-
-
-            @*櫃子*@
-            @*<div class="toolA" id="div2">
-
-                    <a href=""><img class="idex04 toolA" src="~/Images/元件/櫃子02 .png" alt="" style="width:175px;"></a>
-
-                </div>*@
-
-            @*蓮蓬頭*@
-            <div class="toolA" id="div1">
-
-                <a href=""><img class="idex05 toolA" src="~/Images/元件/蓮蓬頭02.png" alt="" style="width:165px;"></a>
-
-            </div>
-
-            @*浴缸*@
-
-            <div class="toolA" id="div1">
-
-                <a href=""><img class="idex06 toolA" src="~/Images/元件/new浴缸.png" alt="" style="width:190px;"></a>
-
-            </div>
-
-
-
-        </div>
-        <!-- #endregion -->
-        <!-- #region 客廳 -->
-        @*--------------------------------------------客廳--------------------------------------*@
-        <div id="tab01" class="tab-inner">
-
-            <div class="">
-
-                <img id="bath" class="" src="~/Images/IndexImages/living room02.jpg" alt="" style="width:100%;">
-
-            </div>
-
-            @*嵌燈*@
-            <div class="toolA" id="div4">
-
-                <a href=""><img class="idex07 toolA" src="~/Images/元件/嵌燈.png" alt="" style="width:170px;"></a>
-
-            </div>
-
-
-
-
-            @*系統櫃*@
-            <div class="toolA" id="div3">
-
-                <a href=""><img class="idex09 toolA" src="~/Images/元件/系統櫃02.png" alt="" style="width:400px;"></a>
-
-            </div>
-
-
-            @*門把*@
-            <div class="toolA" id="div4">
-
-                <a href=""><img class="idex10 toolA" src="~/Images/元件/門把01.png" alt="" style="width:50px;"></a>
-
-            </div>
-
-
-
-            @*桌子*@
-            <div class="toolA" id="div1">
-
-                <a href=""><img class="idex11 toolA" src="~/Images/元件/桌子01.png" alt="" style="width:280px;"></a>
-
-            </div>
-
-            @*椅子01*@
-
-            <div class="toolA" id="div1">
-
-                <a href=""><img class="idex12 toolA" src="~/Images/元件/沙發椅02.png" alt="" style="width:172px;"></a>
-
-            </div>
-
-            @*椅子02*@
-
-
-            <div class="toolA" id="div1">
-
-                <a href=""><img class="idex13 toolA" src="~/Images/元件/四腳椅子02.png" alt="" style="width:248px;"></a>
-
-            </div>
-
-            @*電視*@
-            <div class="toolA" id="div1">
-
-                <a href=""><img class="idex14 toolA" src="~/Images/元件/電視01.png" alt="" style="width:125px;"></a>
-
-            </div>
-
-
-
-        </div>
-        <!-- #endregion -->
-
-    </div>
-
-</div>
-
-
-<!-- #region 手機板的頁面 -->
-@*-----------------------------------手機板的頁面--------------------------------*@
-<div class="container  idexp page1">
-
-    <div class="row">
-
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="width:100%">
-            <div class="carousel-inner">
-
-                <div class="carousel-item">
-                    <h3 class="textA">客廳</h3>
-                    <img class="" src="~/Images/IndexImages/living room02.jpg" style="width:100%" alt="">
-                    <div class="phonemode  userInquire">
-                        <a href=""><p class="phonemodeA userInquire">電視</p></a>
-                        <a href=""><p class="phonemodeA userInquire">沙發椅</p></a>
-                        <a href=""><p class="phonemodeA userInquire">四腳椅子</p></a>
-                        <a href=""><p class="phonemodeA userInquire">桌子</p></a>
-                        <a href=""><p class="phonemodeA userInquire">門把</p></a>
-                        <a href=""><p class="phonemodeA userInquire">電視</p></a>
-                        <a href=""><p class="phonemodeA userInquire">系統櫃</p></a>
-                        <a href=""><p class="phonemodeA userInquire">電燈</p></a>
-                    </div>
-                </div>
-                <div class="carousel-item active">
-                    <h3 class="textA">浴室</h3>
-                    <img class="" src="~/Images/IndexImages/1589356215_2.jpg" style="width:100%" alt="">
-                    <div class="phonemode  userInquire">
-                        <a href=""><p class="phonemodeA userInquire">馬桶</p></a>
-                        <a href=""><p class="phonemodeA userInquire">水龍頭</p></a>
-                        <a href=""><p class="phonemodeA userInquire">鏡子</p></a>
-                        <a href=""><p class="phonemodeA userInquire">櫃子</p></a>
-                        <a href=""><p class="phonemodeA userInquire">蓮蓬頭</p></a>
-                        <a href=""><p class="phonemodeA userInquire">浴缸</p></a>
-                    </div>
                 </div>
 
+                @*馬桶*@
+                <div class="toolA" id="div1">
+
+                    <a href=""><img class="idex01 toolA" src="~/Images/元件/馬桶04.png" alt="" style="width:190px;"></a>
+
+                </div>
+
+                @*水龍頭*@
+                <div class="toolA" id="div1">
+
+                    <a href="@Url.Action("MyDIYChangFaucet","Home")"><img class="idex02 toolA" src="~/Images/元件/水龍頭05.png" alt="" style="width:404px;"></a>
+
+                </div>
+
+                @*鏡子*@
+                <div class="toolA" id="div1">
+
+                    <a href=""><img class="idex03 toolA" src="~/Images/元件/鏡子01.png" alt="" style="width:310px;"></a>
+
+                </div>
+
+
+                @*櫃子*@
+                @*<div class="toolA" id="div2">
+
+                        <a href=""><img class="idex04 toolA" src="~/Images/元件/櫃子02 .png" alt="" style="width:175px;"></a>
+
+                    </div>*@
+
+                @*蓮蓬頭*@
+                <div class="toolA" id="div1">
+
+                    <a href=""><img class="idex05 toolA" src="~/Images/元件/蓮蓬頭02.png" alt="" style="width:165px;"></a>
+
+                </div>
+
+                @*浴缸*@
+
+                <div class="toolA" id="div1">
+
+                    <a href=""><img class="idex06 toolA" src="~/Images/元件/new浴缸.png" alt="" style="width:190px;"></a>
+
+                </div>
+
+
+
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+            <!-- #endregion -->
+            <!-- #region 客廳 -->
+            @*--------------------------------------------客廳--------------------------------------*@
+            <div id="tab01" class="tab-inner">
+
+                <div class="">
+
+                    <img id="bath" class="" src="~/Images/IndexImages/living room02.jpg" alt="" style="width:100%;">
+
+                </div>
+
+                @*嵌燈*@
+                <div class="toolA" id="div4">
+
+                    <a href="@Url.Action("MyDIYChangeLight_1","Home")"><img class="idex07 toolA" src="~/Images/元件/嵌燈.png" alt="" style="width:170px;"></a>
+
+                </div>
+
+
+
+
+                @*系統櫃*@
+                <div class="toolA" id="div3">
+
+                    <a href=""><img class="idex09 toolA" src="~/Images/元件/系統櫃02.png" alt="" style="width:400px;"></a>
+
+                </div>
+
+
+                @*門把*@
+                <div class="toolA" id="div4">
+
+                    <a href=""><img class="idex10 toolA" src="~/Images/元件/門把01.png" alt="" style="width:50px;"></a>
+
+                </div>
+
+
+
+                @*桌子*@
+                <div class="toolA" id="div1">
+
+                    <a href=""><img class="idex11 toolA" src="~/Images/元件/桌子01.png" alt="" style="width:280px;"></a>
+
+                </div>
+
+                @*椅子01*@
+
+                <div class="toolA" id="div1">
+
+                    <a href=""><img class="idex12 toolA" src="~/Images/元件/沙發椅02.png" alt="" style="width:172px;"></a>
+
+                </div>
+
+                @*椅子02*@
+
+
+                <div class="toolA" id="div1">
+
+                    <a href=""><img class="idex13 toolA" src="~/Images/元件/四腳椅子02.png" alt="" style="width:248px;"></a>
+
+                </div>
+
+                @*電視*@
+                <div class="toolA" id="div1">
+
+                    <a href=""><img class="idex14 toolA" src="~/Images/元件/電視01.png" alt="" style="width:125px;"></a>
+
+                </div>
+
+
+
+            </div>
+            <!-- #endregion -->
+
+
+
         </div>
 
     </div>
 
+
+    <!-- #region 手機板的頁面 -->
+    @*-----------------------------------手機板的頁面--------------------------------*@
+    <div class="container  idexp page1">
+
+        <div class="row">
+
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="width:100%">
+                <div class="carousel-inner">
+
+                    <div class="carousel-item">
+                        <h3 class="textA">客廳</h3>
+                        <img class="" src="~/Images/IndexImages/living room02.jpg" style="width:100%" alt="">
+                        <div class="phonemode  userInquire">
+                            <a href=""><p class="phonemodeA userInquire">電視</p></a>
+                            <a href=""><p class="phonemodeA userInquire">沙發椅</p></a>
+                            <a href=""><p class="phonemodeA userInquire">四腳椅子</p></a>
+                            <a href=""><p class="phonemodeA userInquire">桌子</p></a>
+                            <a href=""><p class="phonemodeA userInquire">門把</p></a>
+                            <a href=""><p class="phonemodeA userInquire">電視</p></a>
+                            <a href=""><p class="phonemodeA userInquire">系統櫃</p></a>
+                            <a href=""><p class="phonemodeA userInquire">電燈</p></a>
+                        </div>
+                    </div>
+                    <div class="carousel-item active">
+                        <h3 class="textA">浴室</h3>
+                        <img class="" src="~/Images/IndexImages/1589356215_2.jpg" style="width:100%" alt="">
+                        <div class="phonemode  userInquire">
+                            <a href=""><p class="phonemodeA userInquire">馬桶</p></a>
+                            <a href=""><p class="phonemodeA userInquire">水龍頭</p></a>
+                            <a href=""><p class="phonemodeA userInquire">鏡子</p></a>
+                            <a href=""><p class="phonemodeA userInquire">櫃子</p></a>
+                            <a href=""><p class="phonemodeA userInquire">蓮蓬頭</p></a>
+                            <a href=""><p class="phonemodeA userInquire">浴缸</p></a>
+                        </div>
+                    </div>
+
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- #endregion -->
 </div>
-<!-- #endregion -->
 
 
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
 
-<script src="~/Scripts/jquery-3.4.1.js"></script>
-
-<script>
+    <script>
     @* 切換頁面 *@
     $(function () {
         var $li = $('ul.tab-title li');
@@ -713,17 +749,60 @@
     console.log($('#tab-demo'));
 
 
-</script>
+        var ml4 = {};
+        ml4.opacityIn = [0, 1];
+        ml4.scaleIn = [0.2, 1];
+        ml4.scaleOut = 3;
+        ml4.durationIn = 800;
+        ml4.durationOut = 600;
+        ml4.delay = 500;
 
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
+        anime.timeline({ loop: true })
+            .add({
+                targets: '.ml4 .letters-1',
+                opacity: ml4.opacityIn,
+                scale: ml4.scaleIn,
+                duration: ml4.durationIn
+            }).add({
+                targets: '.ml4 .letters-1',
+                opacity: 0,
+                scale: ml4.scaleOut,
+                duration: ml4.durationOut,
+                easing: "easeInExpo",
+                delay: ml4.delay
+            }).add({
+                targets: '.ml4 .letters-2',
+                opacity: ml4.opacityIn,
+                scale: ml4.scaleIn,
+                duration: ml4.durationIn
+            }).add({
+                targets: '.ml4 .letters-2',
+                opacity: 0,
+                scale: ml4.scaleOut,
+                duration: ml4.durationOut,
+                easing: "easeInExpo",
+                delay: ml4.delay
+            }).add({
+                targets: '.ml4 .letters-3',
+                opacity: ml4.opacityIn,
+                scale: ml4.scaleIn,
+                duration: ml4.durationIn
+            }).add({
+                targets: '.ml4 .letters-3',
+                opacity: 0,
+                scale: ml4.scaleOut,
+                duration: ml4.durationOut,
+                easing: "easeInExpo",
+                delay: ml4.delay
+            }).add({
+                targets: '.ml4',
+                opacity: 0,
+                duration: 500,
+                delay: 500
+            });
+    </script>
+
+    
 
 
 
