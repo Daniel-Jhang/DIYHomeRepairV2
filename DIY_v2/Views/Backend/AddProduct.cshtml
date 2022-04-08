@@ -9,6 +9,25 @@
         font-size:36px;
     }
 </style>
+<style>
+    .productImage {
+        width: 300px;
+        height: 300px;
+    }
+
+
+    body {
+        font-size: 24px;
+    }
+
+    input[type="text"] {
+        font-size: 24px;
+    }
+
+    select {
+        font-size: 24px;
+    }
+</style>
 
 <div class="col-md-10">
 
@@ -75,7 +94,7 @@
             <div style="font-size:20px;" class="form-group">
                <label class="control-label col-md-2">產品類別</label>
                 <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.ProductCategoryID, (IEnumerable<SelectListItem>)@Session["ct"], new { @class = "form-control", name = "ProductCategoryID" })
+                    @Html.DropDownListFor(model => model.ProductCategoryID, (IEnumerable<SelectListItem>)@Session["ct"], new { @class = "form-control", name = "ProductCategoryID" , style = " font-size: 24px;" })
                     @Html.ValidationMessageFor(model => model.ProductCategoryID, "", new { @class = "text-danger" })
 
                 </div>

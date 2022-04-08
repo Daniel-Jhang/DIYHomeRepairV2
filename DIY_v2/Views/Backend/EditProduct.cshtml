@@ -15,8 +15,14 @@
         height: 300px;
     }
 
- 
+
     body {
+        font-size: 24px;
+    }
+    input[type="text"] {
+        font-size: 24px;
+    }
+    select {
         font-size: 24px;
     }
 
@@ -24,7 +30,7 @@
 <div class="col-md-10">
     <div class="col-md-2"></div>
     <div class="col-md-10"><h2>修改產品資訊</h2></div>
-    
+
     @*20220329 修改AddProduct >>> EditProduct*@
     @using (Html.BeginForm("EditProduct", "Backend", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
@@ -67,13 +73,7 @@
                     @Html.ValidationMessageFor(model => model.ProductCost, "", new { @class = "text-danger" })
                 </div>
             </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.ProductDescription, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <textarea class="form-control" name="ProductDescription">@Model.ProductDescription.Replace( "<br>","\r\n")</textarea>
-                    @Html.ValidationMessageFor(model => model.ProductDescription, "", new { @class = "text-danger" })
-                </div>
-            </div>
+
 
             <div class="form-group">
                 @Html.LabelFor(model => model.InStock, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -84,11 +84,20 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.ProductCategoryID, "ProductCategoryID", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div  class="col-md-10 ">
-                    @Html.DropDownListFor(model => model.ProductCategoryID, (IEnumerable<SelectListItem>)@Session["choosect"], new { @class = "form-control", name = "ProductCategoryID" })
+                <label class="control-label col-md-2">產品類別</label>
+                <div class="col-md-10 ">
+                    @Html.DropDownListFor(model => model.ProductCategoryID, (IEnumerable<SelectListItem>)@Session["choosect"], new { @class = "form-control", name = "ProductCategoryID",style= " font-size: 24px;" })
                     @Html.ValidationMessageFor(model => model.ProductCategoryID, "", new { @class = "text-danger" })
 
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProductDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <textarea name="ProductDescription" style="height:200px; width:100%;">@Model.ProductDescription.Replace( "<br>","\r\n")</textarea>
+                    @Html.ValidationMessageFor(model => model.ProductDescription, "", new { @class = "text-danger" })
                 </div>
             </div>
 
@@ -105,18 +114,18 @@
 
 </div>
 
-    <script>
-        function selectImgFile(files) {
-            if (!files.length) {
-                return false;
-            }
-
-            let file = files[0];
-            let reader = new FileReader();
-            reader.onload = function () {
-                document.getElementById('showImg').src = this.result;
-            };
-
-            reader.readAsDataURL(file);
+<script>
+    function selectImgFile(files) {
+        if (!files.length) {
+            return false;
         }
-    </script>
+
+        let file = files[0];
+        let reader = new FileReader();
+        reader.onload = function () {
+            document.getElementById('showImg').src = this.result;
+        };
+
+        reader.readAsDataURL(file);
+    }
+</script>

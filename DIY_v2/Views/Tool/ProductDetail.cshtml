@@ -351,7 +351,7 @@
 <script src="~/Scripts/jquery-3.4.1.js"></script>
 
 <script>
-    var x = $('.carcount').text();
+   
     $('.AdCar').click(function () {
         var ProductID = $('.Id').val();
         var ProductName = $('.name').text();
@@ -364,7 +364,8 @@
             data: { "ProductID": ProductID, "ProductName": ProductName, "ProductPrice": ProductPrice, "Quantity": Quantity },
             success() {
                 window.alert("已經加入購物車")
-                x = (parseInt(x) + 1).toString();
+                var s=@Session["shoppingcarcoumt"];
+                 x = (parseInt(s) + 1).toString();
 
 
                 $('.carcount').text(x);
