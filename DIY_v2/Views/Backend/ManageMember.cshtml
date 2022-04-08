@@ -13,7 +13,7 @@
 }
 <style>
     body {
-        font-size: 18px;
+        font-size:20px;
     }
 </style>
 
@@ -89,7 +89,7 @@
                                     }
                                 </td>
                                 <td>
-                                    @Html.ActionLink("詳細資訊", "MemberDetail", new { MemberID = item.MemberID })
+                                    @Html.ActionLink("詳細資訊", "MemberDetail", new { MemberID = item.MemberID }, new { @class = "btn btn-info" })
                                 </td>
                             </tr>
                         }

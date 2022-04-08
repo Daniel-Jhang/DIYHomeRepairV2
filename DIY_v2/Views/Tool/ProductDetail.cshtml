@@ -4,11 +4,10 @@
 }
 
 <style>
-    /*    .price{
-        box-sizing:border-box;
-        overflow:hidden;
-        width:150px;
-    }*/
+
+
+
+
     .buy-button {
         display: inline-block;
         text-align: center;
@@ -60,7 +59,124 @@
             background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABsklEQVRIibXVvWpUQRQH8F80xGUJQYRFIkFRQyLbaREkT2DjC6TwRaztfAUrCwuRPIBYWdqIhW4CfhJsNCLB3WRJFIs5406u3P2I6x+Ge86c/5wz55yZuTMSmo7jAL9MCU18xJdiPJmW8zJIHgt4i+VpOJ6Nb68y/wo38PmEfv+UeLaG0MGDIEKjkMt1R8VcyXmN29ir28EdPDIo23usFfq9GFlfC07Wn+MWnBqSwbJUuh62sVToR+gX+lJwsn5OlHdUgLnQt7FS2H9W+CvByT4v4NOwAHv4EUTYwmoNV9i2Qr4Y678P4YNnUhm62I9dd2P0C1s3bPuF7Wl2UpcBqUx30cJ1fMVi6PdjtHAe34LTijW5XEMDvMFVqWkfpH40Qs8Z9DAf87nJlw3KNTKDdsgH2DG43acL3pXYQH67ro2bQUc6HQvS2X4XAZvSRTsTcjtsTel4tmPtSMxh16CRhwaN7Vfkw4L3cBznGS+wPsmCKureoowObuLlBD6PPZwzI8jreIyzEzi/VA0yDhpT4vyFeWxKf7nN0CfiDDumsBGc1fhuTMoZFeC/459LNC5O3OTfmvd7Bl92lsYAAAAASUVORK5CYII=") no-repeat left center transparent;
             background-size: 100% 100%;
         }
+
+    .add-button {
+        height: 30px;
+        width: 30px;
+    }
+
+    .sub-button {
+        height: 30px;
+        width: 30px;
+        position: center center;
+    }
 </style>
+
+<style>
+    /*    .reply-main {
+        height: 400px;
+        width: 900px;
+    }*/
+    /*    背景顏色*/
+    body {
+        background-color: aliceblue;
+        color: black
+    }
+    /*    兩個部份的背景*/
+    .Product-area, .Reply-area {
+        background-color: white;
+        border-radius: 15px;
+        
+        margin: 10px;
+    }
+
+    /*    以下為留言板CSS*/
+
+    /* Style inputs */
+    input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        resize: vertical;
+    }
+
+    input[type=submit] {
+        background-color: #92badd;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        cursor: pointer;
+    }
+
+        input[type=submit]:hover {
+            background-color: #A6CAF0;
+        }
+
+    /* Style the container/contact section */
+
+
+    /* Create two columns that float next to eachother */
+    .column {
+        float: left;
+        width: 50%;
+        margin-top: 6px;
+        padding: 20px;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+    @@media screen and (max-width: 600px) {
+        .column, input[type=submit] {
+            width: 100%;
+            margin-top: 0;
+        }
+    }
+
+    .messageboard {
+        display: inline-block;
+        letter-spacing: 0.3ch;
+        border: 3px solid #333333;
+        border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+        background-color: #EEE;
+    }
+
+    .fromA {
+        margin-bottom: 30px;
+    }
+
+    .border-image {
+        border-radius: 10px;
+        border-image-source: linear-gradient(45deg, gold, deeppink);
+        border-image-slice: 1;
+        border-image-repeat: stretch;
+    }
+
+    .messageboardA {
+        display: inline-block;
+        letter-spacing: 0.3ch;
+        border: 3px solid #333333;
+        border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+        background-color: white;
+        margin: auto
+    }
+
+    .replyContent {
+        background-color: rgba(211,230,246,.3);
+        border-radius: 5px;
+        margin-left: -40px;
+        min-height: 50px;
+        padding-left: 40px;
+    }
+</style>
+
 
 
 
@@ -69,9 +185,10 @@
     <div class="container">
 
         <div class="row">
-            <div class="Product-area shadow col-md-12">
-                <h3>產品資訊</h3>
+            <div class="Product-area shadow col-md-12 d-flex ">
+
                 <div class="container">
+                    <h3>產品資訊</h3>
                     <div class="row">
 
                         <div class="col-lg-6 mb-5 ftco-animate">
@@ -81,16 +198,16 @@
                         <div class="col-lg-6  pl-md-5 ftco-animate">
                             <h3 class="name">@Model.Products_normal[0].ProductName</h3>
                             <div class="rating d-flex">
-                               
-                                
+
+
                                 <p class="text-left">
-                                    <a href="#" class="mr-2" style="color: #000;">500 <span style="color: #bbb;">已售出</span></a>
+                                    <a href="#" class="mr-2" style="color: #000;">563 <span style="color: #bbb;">已售出</span></a>
                                 </p>
                             </div>
                             <h3 class="price"><span>$@Model.Products_normal[0].ProductPrice</span></h3>
 
 
-                            <p >@Html.Raw(@Model.Products_normal[0].ProductDescription)</p>
+                            <p style="font-size:18px; color:black">@Html.Raw(@Model.Products_normal[0].ProductDescription)</p>
 
 
 
@@ -98,41 +215,43 @@
                                 <div class="col-md-12">
                                     <p style="color: #000;">還剩 @Model.Products_normal[0].InStock 件</p>
                                 </div>
-                                <div class="input-group col-md-8 d-flex mb-3">
-                                    <span class="input-group-btn mr-2">
-                                        <button type="button" class="quantity-left-minus btn" data-type="minus" data-field="" onclick="sub()">
-                                            <i class="ion-ios-remove"></i>
-                                        </button>
-                                    </span>
-                                    <input style="margin-top:0px; " type="text" id="quantity" name="quantity" class="quantity form-control input-number " value="1" min="1" max="100" >
-                                    <span class="input-group-btn ml-3 ">
-                                        <button type="button" class="quantity-right-plus btn" data-type="plus" data-field="" onclick="add()">
-                                            <i class="ion-ios-add"></i>
-                                        </button>
-                                    </span>
+                                <div class="input-group col-md-9 d-flex mb-3">
+
+                                    <span style="font-size:24px; color:black; padding:10px;text-align:center center">數量</span>
+                                    <button type="button" class="btn " data-type="minus" data-field="" onclick="sub()" style=" margin: 5px; padding: 1px ;margin-bottom:22px;">
+                                        <img class="sub-button" src="~/Images/元件/sub.png" style="height: 15px; width: 15px; padding:1px" />
+                                    </button>
+
+                                    <input style="width: 10%; margin-bottom: 22px; " type="text" id="quantity" name="quantity" class="quantity " value="1" min="1" max="100">
+
+                                    <button type="button" class=" btn  " onclick="add()" style="margin: 5px; padding: 1px; margin-bottom:22px; ">
+                                        <img class="sub-button" src="~/Images/元件/add.png" style="position: center center; margin: 5px; height: 15px; width: 15px;" />
+                                    </button>
+
+
                                     &emsp;
-                                    <div>
-                                        @{
-                                            if (@User.Identity.Name != String.Empty)
-                                            {
 
-                                                <button type="button" class="AdCar buy-button">
-                                                    <b> 加入購物車 </b>
-                                                </button>
-                                                @*<input type="button" class="AdCar buy-button" value="加入購物車" />*@
-                                            }
-                                            else
-                                            {
-                                                <button type="button" class="buy-button" onclick="location.href='https://localhost:44332/MemberLogin/Login'">
-                                                    <b> 加入購物車 </b>
-                                                </button>
-                                                @*<input type="button" class="toMember " value="加入購物車" onclick="location.href='https://localhost:44332/MemberLogin/Login'" />*@
-                                                @*<a class="buy-button" href="https://localhost:44332/Tool/SetClickshopcar">加入購物車</a>*@
+                                    @{
+                                        if (@User.Identity.Name != String.Empty)
+                                        {
 
-                                            }
+                                            <button type="button" class="AdCar buy-button" style="width: 150px; font-size: 14px; margin-top: 5px; margin-bottom: 22px;">
+                                                <b> 加入購物車 </b>
+                                            </button>
+                                            @*<input type="button" class="AdCar buy-button" value="加入購物車" />*@
+                                        }
+                                        else
+                                        {
+                                            <button type="button" style="width: 150px; font-size: 14px; margin-top: 5px ;margin-bottom:22px;" class="buy-button" onclick="location.href='https://localhost:44332/MemberLogin/Login'">
+                                                <b> 加入購物車 </b>
+                                            </button>
+                                            @*<input type="button" class="toMember " value="加入購物車" onclick="location.href='https://localhost:44332/MemberLogin/Login'" />*@
+                                            @*<a class="buy-button" href="https://localhost:44332/Tool/SetClickshopcar">加入購物車</a>*@
 
                                         }
-                                    </div>
+
+                                    }
+
 
                                 </div>
 
@@ -143,16 +262,16 @@
                             <input type="hidden" class="ProductPrice" value=@Model.Products_normal[0].ProductPrice>
 
                         </div>
-                        
-                            
-                        </div>
+
+
                     </div>
+                </div>
 
 
             </div>
         </div>
         <!-- #region 留言區 -->
-        <div class="row">
+        <div class="row" style="margin-top:30px;">
             <div class="Reply-area shadow col-md-12">
 
                 <h4>商品評價</h4>

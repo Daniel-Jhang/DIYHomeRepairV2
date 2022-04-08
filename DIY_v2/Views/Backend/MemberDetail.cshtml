@@ -6,6 +6,11 @@
 @{
     Layout = "~/Views/Shared/_LayoutForbackendUI.cshtml";
 }
+<style>
+    body {
+        font-size:24px;
+    }
+</style>
 <div class="col-md-10">
     <div class="container">
         <div class="row">
@@ -15,8 +20,8 @@
 
         </div>
 
-        <div class="row">
-            <div class="col-md-2">
+        <div  style="margin:10px;" class="row">
+            <div  class="col-md-2">
                 @Html.DisplayNameFor(model => model.MemberAccount)
             </div>
             <div class="col-md-10">
@@ -24,7 +29,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div style="margin:10px;" class="row">
             <div class="col-md-2">
                 @Html.DisplayNameFor(model => model.MemberName):
             </div>
@@ -32,7 +37,7 @@
                 @Html.DisplayFor(model => model.MemberName)
             </div>
         </div>
-        <div class="row">
+        <div style="margin:10px;" class="row">
             <div class="col-md-2">
                 @Html.DisplayNameFor(model => model.MemberGender):
             </div>
@@ -40,7 +45,7 @@
                 @Html.DisplayFor(model => model.MemberGender)
             </div>
         </div>
-        <div class="row">
+        <div style="margin:10px;" class="row">
             <div class="col-md-2">
                 @Html.DisplayNameFor(model => model.MemberBirthday):
             </div>
@@ -48,7 +53,7 @@
                 @Html.DisplayFor(model => model.MemberBirthday)
             </div>
         </div>
-        <div class="row">
+        <div style="margin:10px;" class="row">
             <div class="col-md-2">
                 @Html.DisplayNameFor(model => model.MemberNickname):
             </div>
@@ -56,7 +61,7 @@
                 @Html.DisplayFor(model => model.MemberNickname)
             </div>
         </div>
-        <div class="row">
+        <div style="margin:10px;" class="row">
             <div class="col-md-2">
                 @Html.DisplayNameFor(model => model.MemberEmail):
             </div>
@@ -64,7 +69,7 @@
                 @Html.DisplayFor(model => model.MemberEmail)
             </div>
         </div>
-        <div class="row">
+        <div style="margin:10px;" class="row">
             <div class="col-md-2">
                 @Html.DisplayNameFor(model => model.MemberAddress):
             </div>
@@ -73,7 +78,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div  style="margin:10px;"class="row">
             <div class="col-md-2">
                 @Html.DisplayNameFor(model => model.MemberPhone):
             </div>
@@ -82,7 +87,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div style="margin:10px;" class="row">
             <div class="col-md-2">
                 @Html.DisplayNameFor(model => model.Permission):
             </div>
@@ -100,8 +105,8 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-12">
+        <div style="margin:10px;" class="row">
+            <div style="margin:10px;" class="col-md-12">
                 @Html.ActionLink("停權", "StopMember", new { MemberID = Model.MemberID }, new { @class = "btn btn-primary" })
 
 
@@ -109,8 +114,8 @@
             </div>
 
         </div>
-        <div class="row">
-            <div class="col-md-12">
+        <div style="margin-top:-20px;margin-left:9px;" class="row">
+            <div  style="margin:10px;" class="col-md-12">
                 @Html.ActionLink("回上一頁", "ManageMember", new { }, htmlAttributes: new { @class = "btn btn-info" })
 
             </div>

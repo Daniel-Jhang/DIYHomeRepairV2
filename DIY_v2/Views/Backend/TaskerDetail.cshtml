@@ -8,19 +8,22 @@
 }
 <style>
     body{
-        font-size:18px;
+        font-size:24px;
+    }
+    .marA{
+        margin: 10px;
     }
 </style>
-<div class="col-md-10">
+<div class="col-md-10 ">
     <div class="container">
-        <div class="row">
+        <div class="row marA">
             <div class="col-md-12">
                 <h2>師傅狀態管理</h2>
             </div>
 
         </div>
 
-        <div class="row">
+        <div class="row marA">
             <div class="col-md-2">
                 @Html.DisplayNameFor(model => model.TaskerName):
             </div>
@@ -29,7 +32,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row marA">
             <div class="col-md-2">
                 @Html.DisplayNameFor(model => model.ServiceQuote):
             </div>
@@ -37,7 +40,7 @@
                 @Html.DisplayFor(model => model.ServiceQuote)
             </div>
         </div>
-        <div class="row">
+        <div class="row marA">
             <div class="col-md-2">
                 @Html.DisplayNameFor(model => model.TaskerTel):
             </div>
@@ -45,7 +48,7 @@
                 @Html.DisplayFor(model => model.TaskerTel)
             </div>
         </div>
-        <div class="row">
+        <div class="row marA">
             <div class="col-md-2">
                 @Html.DisplayNameFor(model => model.TaskerPhone):
             </div>
@@ -53,7 +56,7 @@
                 @Html.DisplayFor(model => model.TaskerPhone)
             </div>
         </div>
-        <div class="row">
+        <div class="row marA">
             <div class="col-md-2">
                 @Html.DisplayNameFor(model => model.ServiceTime_Start):
             </div>
@@ -61,7 +64,7 @@
                 @Html.DisplayFor(model => model.ServiceTime_Start)
             </div>
         </div>
-        <div class="row">
+        <div class="row marA">
             <div class="col-md-2">
                 @Html.DisplayNameFor(model => model.ServiceTime_End):
             </div>
@@ -69,7 +72,7 @@
                 @Html.DisplayFor(model => model.ServiceTime_End)
             </div>
         </div>
-        <div class="row">
+        <div class="row marA">
             <div class="col-md-2">
                 @Html.DisplayNameFor(model => model.ServiceArea):
             </div>
@@ -78,7 +81,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row marA">
             <div class="col-md-2">
                 @Html.DisplayNameFor(model => model.Feature):
             </div>
@@ -87,7 +90,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row marA">
             <div class="col-md-2">
                 @Html.DisplayNameFor(model => model.MemberID):
             </div>
@@ -95,7 +98,7 @@
                 @Html.DisplayFor(model => model.MemberID)
             </div>
         </div>
-        <div class="row">
+        <div class="row marA">
             <div class="col-md-2">
                 @Html.DisplayNameFor(model => model.Permission):
             </div>
@@ -112,7 +115,7 @@
                 }
             </div>
         </div>
-        <div class="row">
+        <div class="row marA">
             <div class="col-md-12">
                 @Html.ActionLink("停權", "StopTasker", new { TaskerID = Model.TaskerID }, new { @class = "btn btn-primary" })
 
@@ -121,7 +124,7 @@
             </div>
 
         </div>
-        <div class="row">
+        <div class="row marA">
             <div class="col-md-12">
                 @Html.ActionLink("回上一頁", "TaskerIndex", new { }, htmlAttributes: new { @class = "btn btn-info" })
             </div>

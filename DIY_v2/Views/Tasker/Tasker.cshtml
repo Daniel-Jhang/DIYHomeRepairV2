@@ -25,6 +25,13 @@
         #btns:hover {
             background: #FF8282;
         }
+
+    .text {
+        font-size:20px;
+    }
+    .textTasker {
+        font-size:30px;
+    }
 </style>
 
 @*裝飾用背景圖*@
@@ -41,7 +48,7 @@
                     <div class="sidebar">
 
                         <div class="sidebar-box-2">
-                            <a href="@Url.Action("Index","GoogleAPI")" class="btn btn-lg btn-danger btn-block">地圖搜尋</a>
+                            <a href="@Url.Action("Index","GoogleAPI")" style="color:black;font-size:18px;" class="btn btn-lg btn-danger btn-block">地圖搜尋</a>
                         </div>
 
                         @*服務地區*@
@@ -156,7 +163,7 @@
                                                 </p>
                                             </div>
                                         </div>-->
-                                        <h3>@item.TaskerName</h3> @*師傅名稱*@
+                                        <h2 class="textTasker">@item.TaskerName</h2> @*師傅名稱*@
                                         @{ @*判斷營業時間*@
                                         string openOrClose = "";
                                         double currentTime = DateTime.Now.TimeOfDay.TotalHours;
