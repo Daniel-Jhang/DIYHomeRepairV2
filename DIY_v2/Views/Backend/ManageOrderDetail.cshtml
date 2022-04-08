@@ -78,13 +78,13 @@
 
     </table>
     <hr />
-    <span>小記:</span>
-    <p><b>@Session["ordercount"]</b></p>
+    <span>小計:</span>
+    <span><b>@Session["ordercount"]</b></span>
     <form method="post" action="@Url.Action("ChangeOrder")">
         <div class="form-group">
             @Html.LabelFor(model => model.od.FirstOrDefault().OrderStatus, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.od.FirstOrDefault().OrderStatus, Model.selectListItems, new { @class = "form-control", name = "OrderStatus" })
+                @Html.DropDownListFor(model => model.od.FirstOrDefault().OrderStatus, Model.selectListItems, new { @class = "form-control", name = "OrderStatus",  @style="width:200px;"})
                 <input type="hidden" name="OrderID" value="@Model.od.FirstOrDefault().OrderID" />
 
 
