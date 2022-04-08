@@ -13,7 +13,7 @@
 <div class="col-md-10">
 
     <div class="col-md-2"></div>
-    <div class="col-md-10"><span class="title">新增產品</span><span><input type="button" class="quick-input" onclick="quickinput()" value="+"></span></div>
+    <div style="font-size:20px;margin-top:-5px;" class="col-md-10"><span style="font-size:35px;" class="title">新增產品</span><span><input type="button" class="quick-input" onclick="quickinput()" value="+"></span></div>
     @using (Html.BeginForm("AddProduct", "Backend", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
@@ -31,7 +31,7 @@
                     </div>
                 </div>*@
 
-            <div class="form-group">
+            <div style="font-size:20px;" class="form-group">
                 @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
@@ -39,7 +39,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div style="font-size:20px;" class="form-group">
                 @Html.LabelFor(model => model.ProductPrice, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.ProductPrice, new { htmlAttributes = new { @class = "form-control" } })
@@ -47,7 +47,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div style="font-size:20px;" class="form-group">
                 @Html.LabelFor(model => model.ProductImage, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     <img class="productImage" src="~/Images/ToolImages/defaultImage.jpg" id="showImg" name="photo">
@@ -56,7 +56,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div style="font-size:20px;" class="form-group">
                 @Html.LabelFor(model => model.ProductCost, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.ProductCost, new { htmlAttributes = new { @class = "form-control" } })
@@ -64,7 +64,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div  style="font-size:20px;"class="form-group">
                 @Html.LabelFor(model => model.InStock, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.InStock, new { htmlAttributes = new { @class = "form-control" } })
@@ -72,7 +72,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div style="font-size:20px;" class="form-group">
                 @Html.LabelFor(model => model.ProductCategoryID, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownListFor(model => model.ProductCategoryID, (IEnumerable<SelectListItem>)@Session["ct"], new { @class = "form-control", name = "ProductCategoryID" })
@@ -80,7 +80,7 @@
 
                 </div>
             </div>
-            <div class="form-group">
+            <div  style="font-size:20px;"class="form-group">
                 @Html.LabelFor(model => model.ProductDescription, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     <textarea class="form-control" name="ProductDescription"></textarea>
@@ -92,7 +92,7 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="新增" class="btn btn-default btn-primary" />
+                    <input style="font-size:20px;" type="submit" value="新增" class="btn btn-default btn-primary" />
                 </div>
             </div>
         </div>
