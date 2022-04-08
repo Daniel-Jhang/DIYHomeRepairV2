@@ -86,7 +86,7 @@ namespace DIY_v2.Controllers
 
             if (MemberAccount == "applelevel0")
             {
-                return RedirectToAction("BackendUI", "Backend");
+                return RedirectToAction("ManageProduct", "Backend");
             }
             if (Session["Clickshoppingcar"] != null)
             {
