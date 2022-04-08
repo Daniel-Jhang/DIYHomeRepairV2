@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+<script src="~/static/js/jquery.min.js"></script>
 
 <style>
     @@font-face {
@@ -316,92 +316,85 @@
         {
             @Html.AntiForgeryToken()
 
-            <div class="form-horizontal">
-                <h4>會員基本資料</h4>
-                <hr />
-                @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    @Html.HiddenFor(model => model.MemberID)*@
+    <div class="form-horizontal">
+        <h4>會員基本資料</h4>
+        <hr />
+        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.MemberID)*@
 
-                <div class="form-wrapper">
-                    <h5 style="color:springgreen">@Session["memberEdit"]</h5>
-                </div>
-                <br />
-                <div class="form-wrapper">
-                    <h6>會員帳號 : <a style="font-size:18px;">@ViewBag.MemberAccount</a></h6>
-                    <input type="hidden" name="name" value="" />
-                </div>
-                <br>
+        <div class="form-wrapper">
+            <h5 style="color:springgreen">@Session["memberEdit"]</h5>
+        </div>
+        <br />
+        <div class="form-wrapper">
+            <h6>會員帳號 : <a style="font-size:18px;">@ViewBag.MemberAccount</a></h6>
+            <input type="hidden" name="name" value="" />
+        </div>
+        <br>
 
-                <div class="form-wrapper">
-                    <h6>會員姓名</h6>
+        <div class="form-wrapper">
+            <h6>會員姓名</h6>
 
-                    @Html.TextBoxFor(model => model.MemberName, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.MemberName, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(model => model.MemberName, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.MemberName, "", new { @class = "text-danger" })
 
-                </div>
+        </div>
 
-                <div class="form-wrapper">
-                    <h6>會員性別</h6>
+        <div class="form-wrapper">
+            <h6>會員性別</h6>
 
-                    @Html.RadioButtonFor(m => m.MemberGender, "M")<label>男性</label>
-                    @Html.RadioButtonFor(m => m.MemberGender, "F")<label>女性</label>
-                    @Html.ValidationMessageFor(model => model.MemberGender, "", new { @class = "text-danger" })
+            @Html.RadioButtonFor(m => m.MemberGender, "M")<label>男性</label>
+            @Html.RadioButtonFor(m => m.MemberGender, "F")<label>女性</label>
+            @Html.ValidationMessageFor(model => model.MemberGender, "", new { @class = "text-danger" })
 
-                </div>
+        </div>
 
-                <div class="form-wrapper">
-                    <h6>會員生日</h6>
+        <div class="form-wrapper">
+            <h6>會員生日</h6>
 
-                    @Html.TextBoxFor(model => model.MemberBirthday, "{0:yyyy/MM/dd}", htmlAttributes: new { @class = "form-control", @id = "datefield" })
-                    @*@Html.EditorFor(model => model.MemberBirthday.ToShortDateString(), new { htmlAttributes = new { @class = "form-control" } })*@
-                    @Html.ValidationMessageFor(model => model.MemberBirthday, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(model => model.MemberBirthday, "{0:yyyy/MM/dd}", htmlAttributes: new { @class = "form-control", @id = "datefield" })
+            @*@Html.EditorFor(model => model.MemberBirthday.ToShortDateString(), new { htmlAttributes = new { @class = "form-control" } })*@
+            @Html.ValidationMessageFor(model => model.MemberBirthday, "", new { @class = "text-danger" })
 
-                </div>
+        </div>
 
-                <div class="form-wrapper">
-                    <h6>會員暱稱</h6>
+        <div class="form-wrapper">
+            <h6>會員暱稱</h6>
 
-                    @Html.EditorFor(model => model.MemberNickname, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.MemberNickname, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.MemberNickname, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.MemberNickname, "", new { @class = "text-danger" })
 
-                </div>
+        </div>
 
-                <div class="form-wrapper">
-                    <h6>會員信箱</h6>
+        <div class="form-wrapper">
+            <h6>會員信箱</h6>
 
-                    @Html.EditorFor(model => model.MemberEmail, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.MemberEmail, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.MemberEmail, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.MemberEmail, "", new { @class = "text-danger" })
 
-                </div>
+        </div>
 
-                <div class="form-wrapper">
-                    <h6>會員地址</h6>
+        <div class="form-wrapper">
+            <h6>會員地址</h6>
 
-                    @Html.EditorFor(model => model.MemberAddress, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.MemberAddress, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.MemberAddress, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.MemberAddress, "", new { @class = "text-danger" })
 
-                </div>
+        </div>
 
-                <div class="form-wrapper">
-                    <h6>會員手機</h6>
+        <div class="form-wrapper">
+            <h6>會員手機</h6>
 
-                    @Html.EditorFor(model => model.MemberPhone, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.MemberPhone, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.MemberPhone, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.MemberPhone, "", new { @class = "text-danger" })
 
-                </div>
-
-
-
-                <input type="submit" value="修改" class="buttonA" />
+        </div>
 
 
-            </div>
+        <input type="submit" value="修改" class="buttonA" />
+        @*<input id="theBtnForEdit" type="submit" value="修改" class="buttonA" onclick="return confirm('資料修改完成')" />*@
+    </div>
         }
-
-
-
-
-
 
     </div>
 </div>
@@ -412,3 +405,11 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
+<script>
+    //function showMsg() {
+    //    alert("資料修改完成");
+    //}
+    //$("#theBtnForEdit").click(function () {
+    //    alert("資料修改完成");
+    //})
+</script>
