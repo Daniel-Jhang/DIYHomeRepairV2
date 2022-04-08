@@ -50,7 +50,7 @@
 
 
                 <td>
-                    @Html.ActionLink("管理會員", "ManageMember", new { pickMember = item.MemberAccount }, htmlAttributes: new { @class = "btn btn-info" })
+                    @Html.ActionLink("管理會員", "ManageMember", new { keyword = item.MemberAccount }, htmlAttributes: new { @class = "btn btn-info" })
                     @Html.ActionLink("刪除留言", "deleteReply", new { ReplyID = item.ReplyID, ProductID = item.ProductID }, htmlAttributes: new { onclick = "return  confirm('確定刪除嗎?');", @class = "btn btn-danger" })
 
                 </td>
