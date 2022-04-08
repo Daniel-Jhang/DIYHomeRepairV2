@@ -321,6 +321,11 @@
                 <hr />
                 @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     @Html.HiddenFor(model => model.MemberID)*@
+
+                <div class="form-wrapper">
+                    <h5>@Session["memberEdit"]</h5>
+                </div>
+                <br />
                 <div class="form-wrapper">
                     <h6>會員帳號 : <a style="font-size:18px;">@ViewBag.MemberAccount</a></h6>
                     <input type="hidden" name="name" value="" />
