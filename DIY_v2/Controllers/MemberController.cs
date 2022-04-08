@@ -40,27 +40,27 @@ namespace DIY_v2.Controllers
         public ActionResult EditData(Member member)
         {
             string MemberAccount = User.Identity.Name;
-            if (ModelState.IsValid)
-            {
-                var MemberItem = db.Member.Where(x => x.MemberAccount == MemberAccount).FirstOrDefault();
-                MemberItem.MemberName = member.MemberName;
-                MemberItem.MemberGender = member.MemberGender;
-                MemberItem.MemberBirthday = member.MemberBirthday;
-                MemberItem.MemberNickname = member.MemberNickname;
-                MemberItem.MemberEmail = member.MemberEmail;
-                MemberItem.MemberAddress = member.MemberAddress;
-                MemberItem.MemberPhone = member.MemberPhone;
-                db.SaveChanges();
-                ViewBag.MemberAccount = MemberAccount;
-                Session["memberEdit"] = "資料修改完成";
-                return RedirectToAction("EditData");
-            }
-            else
-            {
-                ViewBag.MemberAccount = MemberAccount;
-                return View(member);
-            }
-          
+            //if (ModelState.IsValid)
+            //{
+            var MemberItem = db.Member.Where(x => x.MemberAccount == MemberAccount).FirstOrDefault();
+            MemberItem.MemberName = member.MemberName;
+            MemberItem.MemberGender = member.MemberGender;
+            MemberItem.MemberBirthday = member.MemberBirthday;
+            MemberItem.MemberNickname = member.MemberNickname;
+            MemberItem.MemberEmail = member.MemberEmail;
+            MemberItem.MemberAddress = member.MemberAddress;
+            MemberItem.MemberPhone = member.MemberPhone;
+            db.SaveChanges();
+            ViewBag.MemberAccount = MemberAccount;
+            Session["memberEdit"] = "資料修改完成";
+            return RedirectToAction("EditData");
+            //}
+            //else
+            //{
+            //    ViewBag.MemberAccount = MemberAccount;
+            //    return View(member);
+            //}
+
         }
 
         public ActionResult PasswordChange()
@@ -113,7 +113,7 @@ namespace DIY_v2.Controllers
                         Session["shoppingcarcoumt"] = 0;
                         Session["isRegister"] = "Y";
 
-                        return RedirectToAction("Login","MemberLogin");
+                        return RedirectToAction("Login", "MemberLogin");
                     }
                     else
                     {
@@ -178,7 +178,7 @@ namespace DIY_v2.Controllers
 
             // for 同會員資料按鈕(只有4個資料索性用Session)
             var MemberInfomation = db.Member.Where(x => x.MemberAccount == MemberAccount);
-            Session["RecipientName"] = MemberInfomation.Select(x=>x.MemberName).FirstOrDefault();
+            Session["RecipientName"] = MemberInfomation.Select(x => x.MemberName).FirstOrDefault();
             Session["RecipientEmail"] = MemberInfomation.Select(x => x.MemberEmail).FirstOrDefault();
             Session["RecipientAddress"] = MemberInfomation.Select(x => x.MemberAddress).FirstOrDefault();
             Session["RecipientPhone"] = MemberInfomation.Select(x => x.MemberPhone).FirstOrDefault();
