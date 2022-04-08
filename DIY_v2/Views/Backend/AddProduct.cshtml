@@ -73,7 +73,7 @@
             </div>
 
             <div style="font-size:20px;" class="form-group">
-                @Html.LabelFor(model => model.ProductCategoryID, htmlAttributes: new { @class = "control-label col-md-2" })
+               <label class="control-label col-md-2">產品類別</label>
                 <div class="col-md-10">
                     @Html.DropDownListFor(model => model.ProductCategoryID, (IEnumerable<SelectListItem>)@Session["ct"], new { @class = "form-control", name = "ProductCategoryID" })
                     @Html.ValidationMessageFor(model => model.ProductCategoryID, "", new { @class = "text-danger" })
@@ -83,7 +83,7 @@
             <div  style="font-size:20px;"class="form-group">
                 @Html.LabelFor(model => model.ProductDescription, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    <textarea class="form-control" name="ProductDescription"></textarea>
+                    <textarea  name="ProductDescription" style="height:200px; width:100%;"></textarea>
                     @Html.ValidationMessageFor(model => model.ProductDescription, "", new { @class = "text-danger" })
 
                 </div>
@@ -98,9 +98,9 @@
         </div>
     }
 
-    <div>
+    @*<div>
         @Html.ActionLink("Back to List", "Index")
-    </div>
+    </div>*@
 
 
 </div>

@@ -362,7 +362,7 @@ namespace DIY_v2.Controllers
             {
                 members = members.Where(x => x.MemberAccount.Contains(keyword)).ToList();
             }
-
+            Session["Memberkeyword"] = keyword;
             var result = members.ToPagedList(currentPage, 10);
 
             return View(result);

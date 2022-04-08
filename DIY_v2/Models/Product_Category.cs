@@ -20,7 +20,7 @@ namespace DIY_v2.Models
         {
             this.Product = new HashSet<Product>();
         }
-    
+        [DisplayName("產品類別")]
         public string ProductCategoryID { get; set; }
         [DisplayName("產品類別")]
         public string ProductCategory { get; set; }

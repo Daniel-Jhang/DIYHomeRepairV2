@@ -13,18 +13,18 @@
 }
 <style>
     body {
-        font-size:20px;
+        font-size: 20px;
     }
 </style>
 
-
+<style>
+    a {
+        color: black;
+    }
+</style>
 <div class="col-md-10">
     <h2>會員管理系統</h2>
-    <style>
-        a {
-            color: black;
-        }
-    </style>
+
     <section class="ftco-section " style="padding:0px;">
         <div class="container-fluid">
             <div class="row">
@@ -101,6 +101,16 @@
             </div>
         </div>
 
+        
+        @{ if (@Session["Memberkeyword"] != null)
+            {
+                @Html.PagedListPager(Model, page => Url.Action("ManageMember", new { page, keyword = @Session["backkeyword"] }))
+            }
+            else
+            {
+                @Html.PagedListPager(Model, page => Url.Action("ManageMember", new { page }))
+            }
+        }
     </section>
     <!-- .section -->
 </div>
