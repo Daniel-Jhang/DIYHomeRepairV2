@@ -435,7 +435,7 @@ namespace DIY_v2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult TaskerMemberEditV2(CVMTaskerMemberEditV2 viewModel, HttpPostedFileBase taskerPhoto, HttpPostedFileBase[] casePhotos, bool? serviceCategoryChk1, bool? serviceCategoryChk2, bool? serviceCategoryChk3)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid != true)
             {
                 string MemberAccount = User.Identity.Name;
                 var MemberItem = db.Member.Where(x => x.MemberAccount == MemberAccount).FirstOrDefault();
