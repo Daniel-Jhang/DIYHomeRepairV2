@@ -323,6 +323,7 @@
         .page1{
             display: none;
             visibility: hidden;
+          
         }
         .page{
             display: none;
@@ -382,7 +383,7 @@
 
 <div class="container-sm">
     <div id="anj">
-
+        @*文字動畫*@
         <h4 class="ml4">
             <span class="letters letters-1">Ready</span>
             <span class="letters letters-2">Set</span>
@@ -479,24 +480,24 @@
         }
 
         .container-sm {
-            max-height: 1600px;
+            max-height: 1500px;
             background: url(../../Images/元件/素材01.jpg);
         }
-
+        /*文字動畫*/
         .ml4 {
             position: relative;
             font-weight: 800;
             font-size: 3.5em;
         }
 
-            .ml4 .letters {
+        .ml4 .letters {
                 position: absolute;
                 margin: auto;
                 left: 0;
-                top: 200px;
+                top: 150px;
                 right: 0;
                 opacity: 0;
-            }
+        }
     </style>
 
     <div class="container-sm">
@@ -505,7 +506,7 @@
         @*<img src="~/Images/DIY.jpg" style="width:100%;height:600px;" />*@
         <img class="acv" src="~/Images/元件/素材01.jpg" alt="" style="height:600px;width:100%;">
     </div>
-    <div class="container" data-aos="zoom-in" style="position:relative; top:-200px;">
+    <div class="container" data-aos="zoom-in" style="position:relative; top:-400px;">
         <div class="page" id="tab-demo">
 
             <ul class="tab-title container ">
@@ -708,6 +709,7 @@
 </div>
 
 
+
     <script src="~/Scripts/jquery-3.4.1.js"></script>
 
     <script>
@@ -748,7 +750,7 @@
 
     console.log($('#tab-demo'));
 
-
+    /*文字動畫*/
         var ml4 = {};
         ml4.opacityIn = [0, 1];
         ml4.scaleIn = [0.2, 1];
