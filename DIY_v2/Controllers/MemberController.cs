@@ -32,7 +32,7 @@ namespace DIY_v2.Controllers
             //找出未成為訂單明細的資料，即購物車內容
             var Member = db.Member.Where(x => x.MemberAccount == MemberAccount).FirstOrDefault();
             ViewBag.MemberAccount = MemberAccount;
-
+            ViewBag.MemberPwd = Member.MemberPwd;
             return View(Member);
         }
 
@@ -40,26 +40,29 @@ namespace DIY_v2.Controllers
         public ActionResult EditData(Member member)
         {
             string MemberAccount = User.Identity.Name;
-            //if (ModelState.IsValid)
-            //{
-            var MemberItem = db.Member.Where(x => x.MemberAccount == MemberAccount).FirstOrDefault();
-            MemberItem.MemberName = member.MemberName;
-            MemberItem.MemberGender = member.MemberGender;
-            MemberItem.MemberBirthday = member.MemberBirthday;
-            MemberItem.MemberNickname = member.MemberNickname;
-            MemberItem.MemberEmail = member.MemberEmail;
-            MemberItem.MemberAddress = member.MemberAddress;
-            MemberItem.MemberPhone = member.MemberPhone;
-            db.SaveChanges();
-            ViewBag.MemberAccount = MemberAccount;
-            Session["memberEdit"] = "資料修改完成";
-            return RedirectToAction("EditData");
-            //}
-            //else
-            //{
-            //    ViewBag.MemberAccount = MemberAccount;
-            //    return View(member);
-            //}
+            if (ModelState.IsValid)
+            {
+                var MemberItem = db.Member.Where(x => x.MemberAccount == MemberAccount).FirstOrDefault();
+                MemberItem.MemberAccount = member.MemberAccount;
+                MemberItem.MemberPwd = member.MemberPwd;
+                MemberItem.MemberName = member.MemberName;
+                MemberItem.MemberGender = member.MemberGender;
+                MemberItem.MemberBirthday = member.MemberBirthday;
+                MemberItem.MemberNickname = member.MemberNickname;
+                MemberItem.MemberEmail = member.MemberEmail;
+                MemberItem.MemberAddress = member.MemberAddress;
+                MemberItem.MemberPhone = member.MemberPhone;
+                MemberItem.Permission = member.Permission;
+                db.SaveChanges();
+                Session["memberEdit"] = "資料修改完成";
+                return View();
+                //return RedirectToAction("EditData");
+            }
+            else
+            {
+                ViewBag.MemberAccount = MemberAccount;
+                return View(member);
+            }
 
         }
 
