@@ -6,7 +6,7 @@
 }
 
 <script src="~/static/js/jquery.min.js"></script>
-
+<link href="~/Content/toastr.css" rel="stylesheet" />
 <style>
     @@font-face {
         font-family: "Poppins-Regular";
@@ -297,6 +297,13 @@
     .buttonA {
         margin-top: -10px;
     }
+
+    .replaceFormFormat {
+        width: 50%;
+        padding-top: 36px;
+        padding-left: 45px;
+        padding-right: 45px;
+    }
     /*# sourceMappingURL=style.css.map */
 
 </style>
@@ -312,104 +319,128 @@
         <div class="image-holder">
             <img src="~/Images/元件/登入背景14.jpg" alt="">
         </div>
-        @using (Html.BeginForm())
-        {
+
+        <div class="replaceFormFormat">
+            @*@using (Html.BeginForm())
+                {*@
+
             @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>會員基本資料</h4>
-        <hr />
-        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.MemberID)*@
+            <div class="form-horizontal">
+                <h4>會員基本資料</h4>
+                <hr />
+                @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.MemberID)*@
 
-        <div class="form-wrapper">
-            <h5 style="color:springgreen">@Session["memberEdit"]</h5>
+                <div class="form-wrapper">
+                    <h6>會員帳號 : <a style="font-size:18px;">@ViewBag.MemberAccount</a></h6>
+                    <input type="hidden" id="MemberAccount" name="MemberAccount" value="@ViewBag.MemberAccount" />
+                    <input type="hidden" id="MemberPwd" name="MemberPwd" value="@ViewBag.MemberPwd" />
+                </div>
+                <br>
+
+                <div class="form-wrapper">
+                    <h6>會員姓名</h6>
+                    @Html.TextBoxFor(model => model.MemberName, htmlAttributes: new { id = "MemberName", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MemberName, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-wrapper">
+                    <h6>會員性別</h6>
+                    @Html.RadioButtonFor(m => m.MemberGender, "M")<label>男性</label>
+                    @Html.RadioButtonFor(m => m.MemberGender, "F")<label>女性</label>
+                    @Html.ValidationMessageFor(model => model.MemberGender, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-wrapper">
+                    <h6>會員生日</h6>
+                    @Html.TextBoxFor(model => model.MemberBirthday, "{0:yyyy/MM/dd}", htmlAttributes: new { @class = "form-control", @id = "datefield" })
+                    @Html.ValidationMessageFor(model => model.MemberBirthday, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-wrapper">
+                    <h6>會員暱稱</h6>
+                    @Html.EditorFor(model => model.MemberNickname, new { htmlAttributes = new { id = "MemberNickname", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MemberNickname, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-wrapper">
+                    <h6>會員信箱</h6>
+                    @Html.EditorFor(model => model.MemberEmail, new { htmlAttributes = new { id = "MemberEmail", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MemberEmail, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-wrapper">
+                    <h6>會員地址</h6>
+                    @Html.EditorFor(model => model.MemberAddress, new { htmlAttributes = new { id = "MemberAddress", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MemberAddress, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-wrapper">
+                    <h6>會員手機</h6>
+                    @Html.EditorFor(model => model.MemberPhone, new { htmlAttributes = new { id = "MemberPhone", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MemberPhone, "", new { @class = "text-danger" })
+                </div>
+
+                <input type="hidden" id="Permission" name="Permission" value="1" />
+
+                <input id="toastrSuccess" type="submit" value="修改" class="buttonA" />
+
+            </div>
+            @*}*@
         </div>
-        <br />
-        <div class="form-wrapper">
-            <h6>會員帳號 : <a style="font-size:18px;">@ViewBag.MemberAccount</a></h6>
-            <input type="hidden" name="name" value="" />
-        </div>
-        <br>
-
-        <div class="form-wrapper">
-            <h6>會員姓名</h6>
-
-            @Html.TextBoxFor(model => model.MemberName, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.MemberName, "", new { @class = "text-danger" })
-
-        </div>
-
-        <div class="form-wrapper">
-            <h6>會員性別</h6>
-
-            @Html.RadioButtonFor(m => m.MemberGender, "M")<label>男性</label>
-            @Html.RadioButtonFor(m => m.MemberGender, "F")<label>女性</label>
-            @Html.ValidationMessageFor(model => model.MemberGender, "", new { @class = "text-danger" })
-
-        </div>
-
-        <div class="form-wrapper">
-            <h6>會員生日</h6>
-
-            @Html.TextBoxFor(model => model.MemberBirthday, "{0:yyyy/MM/dd}", htmlAttributes: new { @class = "form-control", @id = "datefield" })
-            @*@Html.EditorFor(model => model.MemberBirthday.ToShortDateString(), new { htmlAttributes = new { @class = "form-control" } })*@
-            @Html.ValidationMessageFor(model => model.MemberBirthday, "", new { @class = "text-danger" })
-
-        </div>
-
-        <div class="form-wrapper">
-            <h6>會員暱稱</h6>
-
-            @Html.EditorFor(model => model.MemberNickname, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.MemberNickname, "", new { @class = "text-danger" })
-
-        </div>
-
-        <div class="form-wrapper">
-            <h6>會員信箱</h6>
-
-            @Html.EditorFor(model => model.MemberEmail, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.MemberEmail, "", new { @class = "text-danger" })
-
-        </div>
-
-        <div class="form-wrapper">
-            <h6>會員地址</h6>
-
-            @Html.EditorFor(model => model.MemberAddress, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.MemberAddress, "", new { @class = "text-danger" })
-
-        </div>
-
-        <div class="form-wrapper">
-            <h6>會員手機</h6>
-
-            @Html.EditorFor(model => model.MemberPhone, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.MemberPhone, "", new { @class = "text-danger" })
-
-        </div>
-
-
-        <input type="submit" value="修改" class="buttonA" />
-        @*<input id="theBtnForEdit" type="submit" value="修改" class="buttonA" onclick="return confirm('資料修改完成')" />*@
-    </div>
-        }
-
     </div>
 </div>
-
-
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
 
+
+<script src="~/Scripts/toastr.js"></script>
 <script>
-    //function showMsg() {
-    //    alert("資料修改完成");
-    //}
-    //$("#theBtnForEdit").click(function () {
-    //    alert("資料修改完成");
-    //})
+    $(function () {
+
+        $("#toastrSuccess").click(function () {
+
+            toastr.options = {
+                "showDuration": "5000",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+
+            var member = {
+                MemberAccount: $("#MemberAccount").val(),
+                MemberPwd: $("#MemberPwd").val(),
+                MemberName: $("#MemberName").val(),
+                MemberGender: $("input[type='radio']:checked").val(),
+                MemberBirthday: $("#datefield").val(),
+                MemberNickname: $("#MemberNickname").val(),
+                MemberEmail: $("#MemberEmail").val(),
+                MemberAddress: $("#MemberAddress").val(),
+                MemberPhone: $("#MemberPhone").val(),
+                Permission: $("#Permission").val()
+            };
+
+            $.ajax({
+                url: "https://localhost:44332/Member/EditData",
+                type: "post",
+                data: member,
+                datatype: "json",
+                cache: false,
+                success: function (data) {
+                    toastr.success("資料修改完成", "系統提示");
+                },
+                error: function (xhr) {
+                    alert("資料修改失敗");
+                }
+            })
+
+        })
+    });
 </script>
