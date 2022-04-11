@@ -426,8 +426,8 @@ namespace DIY_v2.Controllers
             var result = db.Member.Where(x => x.MemberID == MemberID).FirstOrDefault();
             result.Permission = "N";
             db.SaveChanges();
-
-            return RedirectToAction("ManageMember");
+            string name = result.MemberAccount;
+            return RedirectToAction("ManageMember", new { keyword = name }) ;
 
         }
         public ActionResult StarMember(int MemberID)
