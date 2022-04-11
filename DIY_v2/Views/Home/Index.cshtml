@@ -378,7 +378,7 @@
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.1.1/jquery.js"></script>
-
+<link href="~/Content/toastr.css" rel="stylesheet" />
 
 
 <div class="container-sm">
@@ -711,8 +711,15 @@
 
 
     <script src="~/Scripts/jquery-3.4.1.js"></script>
-
+    <script src="~/Scripts/toastr.js"></script>
     <script>
+
+
+
+
+
+
+
     @* 切換頁面 *@
     $(function () {
         var $li = $('ul.tab-title li');
@@ -802,6 +809,25 @@
                 duration: 500,
                 delay: 500
             });
+       
+              /*師傅登入後吐司*/
+        var Permission ="@(Session["Permission"] as string)";
+        var AlreadyData="@(Session["AlreadyData"] as  string)";
+
+        if (Permission== "2" && AlreadyData=="0") {
+            toastr.options = {
+                "showDuration": "5000",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            toastr.success("您已經註冊為師傅會員，請登入水電行資料", "系統提示");
+        }
+
     </script>
 
     

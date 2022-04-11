@@ -70,12 +70,19 @@ namespace DIY_v2.Controllers
                 Session["MemberID"] = MemberID;
 
                 var Alreadydata = db.Tasker.Where(x => x.MemberID == member.MemberID).FirstOrDefault();
-
-                if (Alreadydata != null)
+                if (Session["Permission"].ToString() == "2")
                 {
-                    Session["AlreadyData"] = "Y";
+                    if (Alreadydata != null)
+                    {
+                        Session["AlreadyData"] = "Y";
 
+                    }
+                    else
+                    {
+                        Session["AlreadyData"] = "0";
+                    }
                 }
+                    
 
 
             }
